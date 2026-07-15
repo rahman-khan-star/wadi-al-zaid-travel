@@ -41,16 +41,45 @@
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center gap-1">
-          <a href="#hero" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
-          <a href="#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
-          <a href="#why-us" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">About</a>
-          <a href="#contact" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="#hero" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <div class="relative group">
+            <button class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5 flex items-center gap-1">
+              Destinations <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Maldives</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Paris</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Bali</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Santorini</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Dubai</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5 flex items-center gap-1">
+              Tour Packages <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Honeymoon</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Family</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Adventure</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-accent">Group Tours</a>
+            </div>
+          </div>
+          <a href="#" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Visa Services</a>
+          <a href="#" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Umrah Packages</a>
+          <a href="#" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Hotels</a>
+          <a href="blog.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Blog</a>
+          <a href="#contact" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
 
-          <a href="#contact" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25">
-            <span>Contact Agent</span>
+          <button id="darkModeBtn" class="ml-2 w-9 h-9 flex items-center justify-center rounded-lg text-white/60 hover:text-accent hover:bg-white/5 transition-colors" title="Dark Mode">
+            <i class="fas fa-moon text-sm"></i>
+          </button>
+          <a href="admin.html" class="px-3 py-2 text-sm font-medium text-white/60 hover:text-accent transition-colors rounded-lg hover:bg-white/5" title="Admin Panel">
+            <i class="fas fa-lock text-sm"></i> Admin
           </a>
-          <a href="admin.html" class="ml-2 px-3 py-2.5 rounded-xl text-xs font-medium text-white/50 hover:text-accent hover:bg-white/5 transition-colors" title="Admin Panel">
-            <i class="fas fa-lock"></i>
+
+          <a href="booking.html" class="ml-2 btn-accent px-5 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25">
+            Book Now
           </a>
         </div>
 
@@ -70,10 +99,15 @@
         <div class="mt-12 flex flex-col gap-1">
           <a href="#hero" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
           <a href="#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
-          <a href="#why-us" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">About</a>
+          <a href="#" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Tour Packages</a>
+          <a href="#" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Visa Services</a>
+          <a href="#" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Umrah Packages</a>
+          <a href="#" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Hotels</a>
+          <a href="blog.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Blog</a>
           <a href="#contact" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
-          <a href="#contact" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white">
-            <span>Contact Agent</span>
+          <a href="admin.html" class="mobile-link px-4 py-3 text-white/60 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium"><i class="fas fa-lock mr-2"></i>Admin</a>
+          <a href="booking.html" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white">
+            <span>Book Now</span>
           </a>
         </div>
         <div class="mt-10 pt-6 border-t border-white/10">
