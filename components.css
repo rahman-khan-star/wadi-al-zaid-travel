@@ -374,13 +374,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .btn-accent { background: var(--accent); color: white; }
 .btn-accent:hover { background: var(--accent-dark); }
 .nav-scrolled {
-  background: rgba(255, 255, 255, 0.98) !important;
+  background: rgba(15, 29, 58, 0.98) !important;
   backdrop-filter: blur(12px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .nav-scrolled .nav-link,
 .nav-scrolled a:not(.btn-accent):not(.flex) {
-  color: #374151 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 .nav-scrolled a:hover {
   color: var(--accent) !important;
