@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wadi Al Zaid Tours &amp; Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+</head>
+<body class="bg-white text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 sm:gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+          <div class="leading-tight">
+            <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#hero" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="#why-us" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">About</a>
+          <a href="#contact" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+
+          <a href="#contact" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25">
+            <span>Contact Agent</span>
+          </a>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="#hero" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="#why-us" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">About</a>
+          <a href="#contact" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="#contact" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white">
+            <span>Contact Agent</span>
+          </a>
+        </div>
+        <div class="mt-10 pt-6 border-t border-white/10">
+          <p class="text-xs text-white/40 uppercase tracking-widest mb-3">Reach Us</p>
+          <a href="tel:+1234567890" class="flex items-center gap-3 text-sm text-white/60 hover:text-accent transition-colors py-2">
+            <i class="fas fa-phone text-accent"></i> +1 (234) 567-890
+          </a>
+          <a href="https://wa.me/1234567890" target="_blank" class="flex items-center gap-3 text-sm text-white/60 hover:text-accent transition-colors py-2">
+            <i class="fab fa-whatsapp text-accent text-lg"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <main role="main" id="mainContent">
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero-bg min-h-screen flex items-center relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 w-full">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-4 sm:mb-6 border border-white/10">
+          <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+          <span class="text-xs sm:text-sm text-white/80 font-medium">Your Adventure Starts Here</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.1] mb-4 sm:mb-6">
+          Explore the<br/>
+          <span class="text-accent">World</span> With Us
+        </h1>
+        <p class="text-sm sm:text-xl text-white/70 max-w-lg mb-6 sm:mb-10 leading-relaxed">
+          Discover breathtaking destinations, create unforgettable memories, and let our expert team craft the perfect journey just for you.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="bg-white/95 backdrop-blur-xl rounded-2xl p-2 shadow-2xl shadow-black/20 max-w-4xl">
+          <div class="grid grid-cols-2 md:grid md:grid-cols-5 gap-1.5">
+            <div class="flex items-center gap-2 px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-xl bg-gray-50 hover:bg-white transition-colors min-w-0">
+              <i class="fas fa-plane-departure text-accent text-xs sm:text-sm flex-shrink-0"></i>
+              <div class="flex-1 min-w-0">
+                <label class="block text-[8px] sm:text-[9px] uppercase tracking-widest text-navy/40 font-semibold">From</label>
+                <input type="text" placeholder="City" class="search-input w-full bg-transparent text-[11px] sm:text-xs font-medium text-navy outline-none placeholder:text-navy/30 mt-0.5 truncate" />
+              </div>
+            </div>
+            <div class="flex items-center gap-2 px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-xl bg-gray-50 hover:bg-white transition-colors min-w-0">
+              <i class="fas fa-map-marker-alt text-accent text-xs sm:text-sm flex-shrink-0"></i>
+              <div class="flex-1 min-w-0">
+                <label class="block text-[8px] sm:text-[9px] uppercase tracking-widest text-navy/40 font-semibold">To</label>
+                <input type="text" placeholder="Where?" class="search-input w-full bg-transparent text-[11px] sm:text-xs font-medium text-navy outline-none placeholder:text-navy/30 mt-0.5 truncate" />
+              </div>
+            </div>
+            <div class="flex items-center gap-2 px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-xl bg-gray-50 hover:bg-white transition-colors min-w-0">
+              <i class="fas fa-calendar-alt text-accent text-xs sm:text-sm flex-shrink-0"></i>
+              <div class="flex-1 min-w-0">
+                <label class="block text-[8px] sm:text-[9px] uppercase tracking-widest text-navy/40 font-semibold">Date</label>
+                <input type="date" class="search-input w-full bg-transparent text-[11px] sm:text-xs font-medium text-navy outline-none mt-0.5 truncate" />
+              </div>
+            </div>
+            <div class="flex items-center gap-2 px-2.5 sm:px-3 py-2 sm:py-2.5 rounded-xl bg-gray-50 hover:bg-white transition-colors min-w-0">
+              <i class="fas fa-users text-accent text-xs sm:text-sm flex-shrink-0"></i>
+              <div class="flex-1 min-w-0">
+                <label class="block text-[8px] sm:text-[9px] uppercase tracking-widest text-navy/40 font-semibold">Guests</label>
+                <select class="search-input w-full bg-transparent text-[11px] sm:text-xs font-medium text-navy outline-none mt-0.5 cursor-pointer truncate">
+                  <option>1</option>
+                  <option>2</option>
+                  <option selected>3</option>
+                  <option>4</option>
+                  <option>5+</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn-accent col-span-2 md:col-span-1 px-6 py-2.5 sm:py-3 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/30 whitespace-nowrap flex-shrink-0">
+              <span><i class="fas fa-search mr-1.5"></i>Search</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 mt-8">
+          <a href="#contact" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-white/20 transition-all">
+            <i class="fas fa-headset text-accent"></i>
+            Talk to an Agent
+          </a>
+          <a href="#destinations" class="inline-flex items-center gap-2 text-white/70 hover:text-white px-4 py-3 text-sm font-medium transition-colors">
+            View Destinations <i class="fas fa-arrow-right text-accent"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
+      <span class="text-xs uppercase tracking-widest">Scroll</span>
+      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+        <div class="w-1.5 h-3 bg-accent rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED DESTINATIONS ========== -->
+  <section id="destinations" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-8 sm:mb-16 fade-in">
+        <span class="inline-block text-accent text-xs sm:text-sm font-bold uppercase tracking-[3px] mb-2 sm:mb-3">Popular Destinations</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-navy mb-2 sm:mb-4">Where Will You Go?</h2>
+        <p class="text-navy/50 max-w-lg mx-auto text-sm sm:text-lg">Handpicked destinations that promise adventure, relaxation, and memories that last a lifetime.</p>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+        <!-- Card 1 -->
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm shadow-navy/5 fade-in group">
+          <div class="relative h-40 sm:h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80" alt="Maldives" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">Popular</div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base sm:text-xl font-bold text-navy">Maldives</h3>
+              <div class="flex items-center gap-1 text-accent">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-sm font-bold">4.9</span>
+              </div>
+            </div>
+            <p class="text-navy/50 text-sm mb-4 leading-relaxed">Crystal waters, overwater villas, and pristine white-sand beaches await.</p>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs text-navy/40 uppercase tracking-wide">From</span>
+                <p class="text-2xl font-black text-accent">$1,299</p>
+              </div>
+              <button class="px-5 py-2.5 bg-navy/5 hover:bg-accent hover:text-white rounded-xl text-sm font-semibold text-navy transition-all">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm shadow-navy/5 fade-in group">
+          <div class="relative h-40 sm:h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&q=80" alt="Paris" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-navy">Paris, France</h3>
+              <div class="flex items-center gap-1 text-accent">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-sm font-bold">4.8</span>
+              </div>
+            </div>
+            <p class="text-navy/50 text-sm mb-4 leading-relaxed">The City of Lights — iconic landmarks, world-class cuisine, and romance.</p>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs text-navy/40 uppercase tracking-wide">From</span>
+                <p class="text-2xl font-black text-accent">$899</p>
+              </div>
+              <button class="px-5 py-2.5 bg-navy/5 hover:bg-accent hover:text-white rounded-xl text-sm font-semibold text-navy transition-all">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm shadow-navy/5 fade-in group">
+          <div class="relative h-40 sm:h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80" alt="Santorini" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-3 left-3 bg-navy text-white text-xs font-bold px-3 py-1 rounded-full">Trending</div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-navy">Santorini, Greece</h3>
+              <div class="flex items-center gap-1 text-accent">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-sm font-bold">4.9</span>
+              </div>
+            </div>
+            <p class="text-navy/50 text-sm mb-4 leading-relaxed">Blue domes, golden sunsets, and the Aegean Sea at your doorstep.</p>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs text-navy/40 uppercase tracking-wide">From</span>
+                <p class="text-2xl font-black text-accent">$1,099</p>
+              </div>
+              <button class="px-5 py-2.5 bg-navy/5 hover:bg-accent hover:text-white rounded-xl text-sm font-semibold text-navy transition-all">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm shadow-navy/5 fade-in group">
+          <div class="relative h-40 sm:h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80" alt="Bali" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-navy">Bali, Indonesia</h3>
+              <div class="flex items-center gap-1 text-accent">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-sm font-bold">4.7</span>
+              </div>
+            </div>
+            <p class="text-navy/50 text-sm mb-4 leading-relaxed">Lush rice terraces, sacred temples, and vibrant coral reefs.</p>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs text-navy/40 uppercase tracking-wide">From</span>
+                <p class="text-2xl font-black text-accent">$799</p>
+              </div>
+              <button class="px-5 py-2.5 bg-navy/5 hover:bg-accent hover:text-white rounded-xl text-sm font-semibold text-navy transition-all">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm shadow-navy/5 fade-in group">
+          <div class="relative h-40 sm:h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=600&q=80" alt="Swiss Alps" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-navy">Swiss Alps</h3>
+              <div class="flex items-center gap-1 text-accent">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-sm font-bold">4.8</span>
+              </div>
+            </div>
+            <p class="text-navy/50 text-sm mb-4 leading-relaxed">Majestic peaks, cozy chalets, and some of the best skiing on Earth.</p>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs text-navy/40 uppercase tracking-wide">From</span>
+                <p class="text-2xl font-black text-accent">$1,499</p>
+              </div>
+              <button class="px-5 py-2.5 bg-navy/5 hover:bg-accent hover:text-white rounded-xl text-sm font-semibold text-navy transition-all">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm shadow-navy/5 fade-in group">
+          <div class="relative h-40 sm:h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80" alt="Dubai" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">New</div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-navy">Dubai, UAE</h3>
+              <div class="flex items-center gap-1 text-accent">
+                <i class="fas fa-star text-xs"></i>
+                <span class="text-sm font-bold">4.8</span>
+              </div>
+            </div>
+            <p class="text-navy/50 text-sm mb-4 leading-relaxed">Futuristic skyline, luxury shopping, and desert adventures.</p>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs text-navy/40 uppercase tracking-wide">From</span>
+                <p class="text-2xl font-black text-accent">$999</p>
+              </div>
+              <button class="px-5 py-2.5 bg-navy/5 hover:bg-accent hover:text-white rounded-xl text-sm font-semibold text-navy transition-all">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section id="why-us" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 sm:mb-16 fade-in">
+        <span class="inline-block text-accent text-xs sm:text-sm font-bold uppercase tracking-[3px] mb-2 sm:mb-3">Why Choose Us</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-navy mb-2 sm:mb-4">Travel With Confidence</h2>
+        <p class="text-navy/50 max-w-lg mx-auto text-sm sm:text-lg">We take care of every detail so you can focus on making memories.</p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        <!-- Feature 1 -->
+        <div class="feature-card fade-in text-center p-4 sm:p-8 rounded-2xl bg-gray-50 hover:bg-navy group transition-all duration-300">
+          <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-5 text-accent text-lg sm:text-2xl transition-all">
+            <i class="fas fa-hand-holding-dollar"></i>
+          </div>
+          <h3 class="text-sm sm:text-lg font-bold text-navy group-hover:text-white mb-1 sm:mb-2 transition-colors">Best Prices</h3>
+          <p class="text-xs sm:text-sm text-navy/50 group-hover:text-white/60 transition-colors leading-relaxed">Unbeatable deals and transparent pricing.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card fade-in text-center p-4 sm:p-8 rounded-2xl bg-gray-50 hover:bg-navy group transition-all duration-300">
+          <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-5 text-accent text-lg sm:text-2xl transition-all">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3 class="text-sm sm:text-lg font-bold text-navy group-hover:text-white mb-1 sm:mb-2 transition-colors">24/7 Support</h3>
+          <p class="text-xs sm:text-sm text-navy/50 group-hover:text-white/60 transition-colors leading-relaxed">Our team is always just a call away.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card fade-in text-center p-4 sm:p-8 rounded-2xl bg-gray-50 hover:bg-navy group transition-all duration-300">
+          <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-5 text-accent text-lg sm:text-2xl transition-all">
+            <i class="fas fa-compass"></i>
+          </div>
+          <h3 class="text-sm sm:text-lg font-bold text-navy group-hover:text-white mb-1 sm:mb-2 transition-colors">Expert Guides</h3>
+          <p class="text-xs sm:text-sm text-navy/50 group-hover:text-white/60 transition-colors leading-relaxed">Experienced local guides who know every gem.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card fade-in text-center p-4 sm:p-8 rounded-2xl bg-gray-50 hover:bg-navy group transition-all duration-300">
+          <div class="feature-icon w-12 h-12 sm:w-16 sm:h-16 bg-accent/10 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-5 text-accent text-lg sm:text-2xl transition-all">
+            <i class="fas fa-suitcase-rolling"></i>
+          </div>
+          <h3 class="text-sm sm:text-lg font-bold text-navy group-hover:text-white mb-1 sm:mb-2 transition-colors">Custom Packages</h3>
+          <p class="text-xs sm:text-sm text-navy/50 group-hover:text-white/60 transition-colors leading-relaxed">Tailor-made itineraries for your dreams.</p>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="mt-8 sm:mt-16 bg-navy rounded-2xl p-5 sm:p-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 fade-in">
+        <div class="text-center">
+          <p class="text-2xl sm:text-4xl font-black text-accent">10K+</p>
+          <p class="text-xs sm:text-sm text-white/50 mt-1">Happy Travelers</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl sm:text-4xl font-black text-accent">50+</p>
+          <p class="text-xs sm:text-sm text-white/50 mt-1">Destinations</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl sm:text-4xl font-black text-accent">12</p>
+          <p class="text-xs sm:text-sm text-white/50 mt-1">Years Experience</p>
+        </div>
+        <div class="text-center">
+          <p class="text-2xl sm:text-4xl font-black text-accent">98%</p>
+          <p class="text-xs sm:text-sm text-white/50 mt-1">Satisfaction Rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section id="testimonials" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-6 sm:mb-10 fade-in">
+        <span class="inline-block text-accent text-xs sm:text-sm font-bold uppercase tracking-[3px] mb-2 sm:mb-3">Testimonials</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-navy mb-2 sm:mb-4">What Our Travelers Say</h2>
+        <p class="text-navy/50 max-w-lg mx-auto text-sm sm:text-lg">Real stories from real adventurers who explored the world with us.</p>
+      </div>
+
+      <!-- Horizontal Scroll -->
+      <div id="testimonialScroll" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory" style="scrollbar-width: thin; scrollbar-color: #e8952f #f1f5f9;">
+        <!-- Testimonial 1 -->
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <div class="bg-white rounded-xl p-5 shadow-sm shadow-navy/5 h-full">
+            <div class="flex gap-0.5 mb-3">
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+            </div>
+            <p class="text-navy/70 text-sm leading-relaxed mb-4 italic">"An absolutely incredible experience! The team handled every detail perfectly. From the airport pickup to the hotel, everything was seamless."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah" class="w-9 h-9 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p class="font-bold text-navy text-sm">Sarah Mitchell</p>
+                <p class="text-xs text-navy/40">Maldives Trip, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <div class="bg-white rounded-xl p-5 shadow-sm shadow-navy/5 h-full">
+            <div class="flex gap-0.5 mb-3">
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+            </div>
+            <p class="text-navy/70 text-sm leading-relaxed mb-4 italic">"Wadi Al Zaid planned our honeymoon to Santorini and it was pure magic. The private sunset dinner, the cave hotel — truly unforgettable."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmed" class="w-9 h-9 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p class="font-bold text-navy text-sm">Ahmed Khan</p>
+                <p class="text-xs text-navy/40">Santorini Trip, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <div class="bg-white rounded-xl p-5 shadow-sm shadow-navy/5 h-full">
+            <div class="flex gap-0.5 mb-3">
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star-half-alt text-accent text-xs"></i>
+            </div>
+            <p class="text-navy/70 text-sm leading-relaxed mb-4 italic">"Best travel agency we've ever used! The Bali package was perfectly curated — adventure, culture, and relaxation all in one trip."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Fatima" class="w-9 h-9 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p class="font-bold text-navy text-sm">Fatima Al-Rashid</p>
+                <p class="text-xs text-navy/40">Bali Trip, 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <div class="bg-white rounded-xl p-5 shadow-sm shadow-navy/5 h-full">
+            <div class="flex gap-0.5 mb-3">
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+            </div>
+            <p class="text-navy/70 text-sm leading-relaxed mb-4 italic">"The Swiss Alps trip was a dream come true. The chalet, the skiing, the views — everything was world-class. Will definitely book again!"</p>
+            <div class="flex items-center gap-3">
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Omar" class="w-9 h-9 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p class="font-bold text-navy text-sm">Omar Hassan</p>
+                <p class="text-xs text-navy/40">Swiss Alps Trip, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <div class="bg-white rounded-xl p-5 shadow-sm shadow-navy/5 h-full">
+            <div class="flex gap-0.5 mb-3">
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+            </div>
+            <p class="text-navy/70 text-sm leading-relaxed mb-4 italic">"Dubai was spectacular! The desert safari, the city tour, the hotel — all top notch. The team made sure we didn't miss a thing."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Layla" class="w-9 h-9 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p class="font-bold text-navy text-sm">Layla Ibrahim</p>
+                <p class="text-xs text-navy/40">Dubai Trip, 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 6 -->
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <div class="bg-white rounded-xl p-5 shadow-sm shadow-navy/5 h-full">
+            <div class="flex gap-0.5 mb-3">
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+              <i class="fas fa-star text-accent text-xs"></i>
+            </div>
+            <p class="text-navy/70 text-sm leading-relaxed mb-4 italic">"Paris with Wadi Al Zaid was magical. The guided tours, the restaurant picks, the skip-the-line passes — pure luxury at a great price."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David" class="w-9 h-9 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p class="font-bold text-navy text-sm">David Chen</p>
+                <p class="text-xs text-navy/40">Paris Trip, 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="flex justify-center mt-6 gap-2 items-center text-navy/30">
+        <i class="fas fa-arrow-left text-xs"></i>
+        <span class="text-xs uppercase tracking-widest">Scroll to see more</span>
+        <i class="fas fa-arrow-right text-xs"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT / INQUIRY ========== -->
+  <section id="contact" class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 sm:mb-16 fade-in">
+        <span class="inline-block text-accent text-xs sm:text-sm font-bold uppercase tracking-[3px] mb-2 sm:mb-3">Get In Touch</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-navy mb-2 sm:mb-4">Start Your Journey</h2>
+        <p class="text-navy/50 max-w-lg mx-auto text-sm sm:text-lg">Tell us about your dream trip and we'll make it happen.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-6 sm:gap-10 items-start">
+        <!-- Form -->
+        <div class="lg:col-span-3 fade-in">
+          <form id="inquiryForm" class="bg-gray-50 rounded-2xl p-5 sm:p-8">
+            <div class="grid sm:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
+              <div>
+                <label class="block text-[10px] sm:text-xs font-bold uppercase tracking-widest text-navy/40 mb-1.5 sm:mb-2">Full Name</label>
+                <input type="text" placeholder="John Doe" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white rounded-xl border border-navy/10 text-xs sm:text-sm text-navy outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all" required />
+              </div>
+              <div>
+                <label class="block text-[10px] sm:text-xs font-bold uppercase tracking-widest text-navy/40 mb-1.5 sm:mb-2">Phone / WhatsApp</label>
+                <input type="tel" placeholder="+1 (234) 567-890" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white rounded-xl border border-navy/10 text-xs sm:text-sm text-navy outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all" required />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3 sm:gap-5 mb-3 sm:mb-5">
+              <div>
+                <label class="block text-[10px] sm:text-xs font-bold uppercase tracking-widest text-navy/40 mb-1.5 sm:mb-2">Destination</label>
+                <select class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white rounded-xl border border-navy/10 text-xs sm:text-sm text-navy outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all cursor-pointer">
+                  <option value="">Select destination</option>
+                  <option>Maldives</option>
+                  <option>Paris, France</option>
+                  <option>Santorini, Greece</option>
+                  <option>Bali, Indonesia</option>
+                  <option>Swiss Alps</option>
+                  <option>Dubai, UAE</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] sm:text-xs font-bold uppercase tracking-widest text-navy/40 mb-1.5 sm:mb-2">Travel Date</label>
+                <input type="date" class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white rounded-xl border border-navy/10 text-xs sm:text-sm text-navy outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all" />
+              </div>
+            </div>
+            <div class="mb-4 sm:mb-6">
+              <label class="block text-[10px] sm:text-xs font-bold uppercase tracking-widest text-navy/40 mb-1.5 sm:mb-2">Message</label>
+              <textarea rows="3" placeholder="Tell us about your dream trip..." class="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white rounded-xl border border-navy/10 text-xs sm:text-sm text-navy outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn-accent w-full py-3 sm:py-4 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25">
+              <span><i class="fas fa-paper-plane mr-2"></i>Submit Inquiry</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="lg:col-span-2 fade-in space-y-4 sm:space-y-6">
+          <!-- Quick Contact Card -->
+          <div class="bg-navy rounded-2xl p-5 sm:p-8 text-white">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Talk to an Agent Now</h3>
+            <p class="text-white/60 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">Prefer to skip the form? Reach us directly — we're always ready to help plan your perfect trip.</p>
+
+            <div class="space-y-3 sm:space-y-4">
+              <a href="tel:+1234567890" class="flex items-center gap-3 sm:gap-4 bg-white/5 hover:bg-white/10 rounded-xl p-3 sm:p-4 transition-colors group">
+                <div class="w-11 h-11 sm:w-14 sm:h-14 bg-accent rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-lg sm:text-xl group-hover:scale-110 transition-transform shadow-lg shadow-accent/30 flex-shrink-0">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-[10px] sm:text-xs text-white/40 uppercase tracking-wide">Call Us</p>
+                  <p class="font-bold text-sm sm:text-lg truncate">+1 (234) 567-890</p>
+                </div>
+              </a>
+
+              <a href="mailto:info@wadialzaid.com" class="flex items-center gap-3 sm:gap-4 bg-white/5 hover:bg-white/10 rounded-xl p-3 sm:p-4 transition-colors group">
+                <div class="w-11 h-11 sm:w-14 sm:h-14 bg-accent rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-lg sm:text-xl group-hover:scale-110 transition-transform shadow-lg shadow-accent/30 flex-shrink-0">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-[10px] sm:text-xs text-white/40 uppercase tracking-wide">Email Us</p>
+                  <p class="font-bold text-sm sm:text-lg truncate">info@wadialzaid.com</p>
+                </div>
+              </a>
+
+              <a href="https://wa.me/1234567890" target="_blank" class="flex items-center gap-3 sm:gap-4 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 rounded-xl p-3 sm:p-4 transition-colors group">
+                <div class="w-11 h-11 sm:w-14 sm:h-14 bg-[#25D366] rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl group-hover:scale-110 transition-transform shadow-lg shadow-[#25D366]/30 flex-shrink-0">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-[10px] sm:text-xs text-white/40 uppercase tracking-wide">WhatsApp</p>
+                  <p class="font-bold text-sm sm:text-lg text-[#25D366] truncate">Chat With Us Now</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Office Hours -->
+          <div class="bg-gray-50 rounded-2xl p-4 sm:p-6">
+            <h4 class="font-bold text-navy mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
+              <i class="fas fa-clock text-accent"></i> Office Hours
+            </h4>
+            <div class="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-navy/60">
+              <div class="flex justify-between"><span>Sun - Thu</span><span class="font-medium text-navy">9:00 AM - 6:00 PM</span></div>
+              <div class="flex justify-between"><span>Friday</span><span class="font-medium text-navy">9:00 AM - 1:00 PM</span></div>
+              <div class="flex justify-between"><span>Saturday</span><span class="font-medium text-navy">Closed</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
+        <!-- Brand -->
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <a href="#" class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <div class="leading-tight">
+              <span class="text-lg sm:text-xl font-extrabold tracking-tight">Wadi Al Zaid</span>
+              <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+            </div>
+          </a>
+          <p class="text-white/50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-xs">Crafting unforgettable travel experiences since 2013.</p>
+          <div class="flex gap-2 sm:gap-3">
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="https://wa.me/1234567890" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 bg-white/5 hover:bg-[#25D366] rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all">
+              <i class="fab fa-whatsapp text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Quick Links</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="#hero" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Home</a></li>
+            <li><a href="#destinations" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Destinations</a></li>
+            <li><a href="#why-us" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">About Us</a></li>
+            <li><a href="#testimonials" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Testimonials</a></li>
+            <li><a href="#contact" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Destinations -->
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Destinations</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Maldives</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Paris, France</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Santorini, Greece</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Bali, Indonesia</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Dubai, UAE</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Contact Us</h4>
+          <ul class="space-y-3 sm:space-y-4">
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-phone text-accent mt-0.5 text-sm"></i>
+              <div>
+                <p class="text-xs sm:text-sm text-white/60">+1 (234) 567-890</p>
+                <p class="text-xs sm:text-sm text-white/60">+1 (234) 567-891</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-envelope text-accent mt-0.5 text-sm"></i>
+              <p class="text-xs sm:text-sm text-white/60">info@wadialzaid.com</p>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-map-marker-alt text-accent mt-0.5 text-sm"></i>
+              <p class="text-xs sm:text-sm text-white/60">123 Travel Avenue, Suite 100<br/>Dubai, UAE</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3">
+        <p class="text-xs sm:text-sm text-white/30">&copy; 2026 Wadi Al Zaid Tours &amp; Travel. All rights reserved.</p>
+        <div class="flex gap-4 sm:gap-5">
+          <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Privacy Policy</a>
+          <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== FLOATING CONTACT BUTTON ========== -->
+  <div id="contactBar" class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
+    <a href="https://wa.me/1234567890" target="_blank" class="flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg transition-all hover:scale-105">
+      <i class="fab fa-whatsapp text-lg"></i>
+      <span class="text-sm font-semibold">WhatsApp</span>
+    </a>
+    <a href="tel:+1234567890" class="flex items-center gap-2 bg-accent hover:bg-accent-dark text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg transition-all hover:scale-105">
+      <i class="fas fa-phone text-lg"></i>
+      <span class="text-sm font-semibold">Call Us</span>
+    </a>
+    <a href="mailto:info@wadialzaid.com" class="flex items-center gap-2 bg-navy hover:bg-navy-light text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg transition-all hover:scale-105">
+      <i class="fas fa-envelope text-lg"></i>
+      <span class="text-sm font-semibold">Email</span>
+    </a>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    const contactBar = document.getElementById('contactBar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+
+      // Show/hide contact bar on scroll
+      if (scrollY > 400 || window.innerWidth < 768) {
+        contactBar.style.opacity = '1';
+        contactBar.style.pointerEvents = 'auto';
+      } else {
+        contactBar.style.opacity = '0';
+        contactBar.style.pointerEvents = 'none';
+      }
+
+      lastScroll = scrollY;
+    });
+
+    // Initialize contact bar state
+    if (window.innerWidth < 768) {
+      contactBar.style.opacity = '1';
+      contactBar.style.pointerEvents = 'auto';
+    } else {
+      contactBar.style.opacity = '0';
+      contactBar.style.pointerEvents = 'none';
+    }
+    contactBar.style.transition = 'opacity 0.3s ease';
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenuFn() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeMenu.addEventListener('click', closeMenuFn);
+    menuOverlay.addEventListener('click', closeMenuFn);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenuFn));
+
+    // Testimonial horizontal scroll - auto-scroll
+    const testimonialScroll = document.getElementById('testimonialScroll');
+    let testimonialAutoScroll;
+
+    function startTestimonialScroll() {
+      testimonialAutoScroll = setInterval(() => {
+        if (testimonialScroll.scrollLeft + testimonialScroll.clientWidth >= testimonialScroll.scrollWidth - 10) {
+          testimonialScroll.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          testimonialScroll.scrollBy({ left: 260, behavior: 'smooth' });
+        }
+      }, 3000);
+    }
+
+    startTestimonialScroll();
+
+    testimonialScroll.addEventListener('mouseenter', () => clearInterval(testimonialAutoScroll));
+    testimonialScroll.addEventListener('mouseleave', startTestimonialScroll);
+    testimonialScroll.addEventListener('touchstart', () => clearInterval(testimonialAutoScroll), { passive: true });
+    testimonialScroll.addEventListener('touchend', startTestimonialScroll);
+
+    // Form submission
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const originalHTML = btn.innerHTML;
+
+      btn.innerHTML = '<span><i class="fas fa-check mr-2"></i>Inquiry Sent!</span>';
+      btn.classList.add('bg-green-500');
+      btn.classList.remove('btn-accent');
+
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.classList.remove('bg-green-500');
+        btn.classList.add('btn-accent');
+        this.reset();
+      }, 3000);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 80;
+          const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: pos, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

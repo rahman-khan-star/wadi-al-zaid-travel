@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <button class="w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+          <a href="index.html" class="flex items-center gap-2 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-8 h-8 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <span class="text-lg font-extrabold text-white tracking-tight hidden sm:block">Wadi Al Zaid</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="hidden md:flex items-center bg-white/10 rounded-xl px-4 py-2 gap-2">
+            <i class="fas fa-search text-white/40 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-white text-sm outline-none placeholder-white/40 w-48" />
+          </div>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bell text-lg"></i>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+          <div class="flex items-center gap-3 cursor-pointer">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-9 h-9 rounded-xl border-2 border-accent/50" />
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold text-white leading-tight">John Doe</p>
+              <p class="text-[10px] text-white/50">Premium Member</p>
+            </div>
+            <i class="fas fa-chevron-down text-white/40 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar fixed top-16 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 transition-all duration-300 overflow-y-auto">
+    <div class="p-4">
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-2xl p-4 mb-6">
+        <div class="flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-12 h-12 rounded-xl border-2 border-accent/50" />
+          <div class="sidebar-text">
+            <p class="font-bold text-white text-sm">John Doe</p>
+            <p class="text-[10px] text-accent">Premium Member</p>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/10 flex justify-between sidebar-text">
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">12</p>
+            <p class="text-[9px] text-white/50">Trips</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">2,450</p>
+            <p class="text-[9px] text-white/50">Points</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">4.9</p>
+            <p class="text-[9px] text-white/50">Rating</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="dashboard.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-th-large w-5 text-center"></i>
+          <span class="sidebar-text">Dashboard</span>
+        </a>
+        <a href="bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-suitcase w-5 text-center"></i>
+          <span class="sidebar-text">My Bookings</span>
+        </a>
+        <a href="#history" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-history w-5 text-center"></i>
+          <span class="sidebar-text">Booking History</span>
+        </a>
+        <a href="wishlist.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-heart w-5 text-center"></i>
+          <span class="sidebar-text">Wishlist</span>
+          <span class="ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">3</span>
+        </a>
+        <a href="profile.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-user w-5 text-center"></i>
+          <span class="sidebar-text">My Profile</span>
+        </a>
+        <a href="notifications.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy">
+          <i class="fas fa-bell w-5 text-center"></i>
+          <span class="sidebar-text">Notifications</span>
+          <span class="ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+        </a>
+        <a href="support.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-headset w-5 text-center"></i>
+          <span class="sidebar-text">Support</span>
+        </a>
+        <a href="profile.html#settings" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-cog w-5 text-center"></i>
+          <span class="sidebar-text">Settings</span>
+        </a>
+        <hr class="my-3 border-gray-100" />
+        <a href="login.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50">
+          <i class="fas fa-sign-out-alt w-5 text-center"></i>
+          <span class="sidebar-text">Logout</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- SIDEBAR OVERLAY (Mobile) -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="lg:ml-64 pt-16 min-h-screen transition-all duration-300" role="main" id="mainContent">
+    <div class="p-4 sm:p-6 lg:p-8">
+
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-black text-navy flex items-center gap-3">
+              <i class="fas fa-bell text-accent"></i> Notifications
+            </h1>
+            <p class="text-navy/50 text-sm mt-1">You have <span class="font-bold text-red-500" id="unreadCount">5</span> unread notifications</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="markAllRead()" class="px-4 py-2.5 bg-white border border-gray-200 text-navy text-sm font-medium rounded-xl hover:bg-gray-50 transition-colors">
+              <i class="fas fa-check-double mr-2"></i> Mark All Read
+            </button>
+            <button onclick="clearAll()" class="px-4 py-2.5 bg-red-50 text-red-500 text-sm font-medium rounded-xl hover:bg-red-100 transition-colors">
+              <i class="fas fa-trash mr-2"></i> Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-2 fade-up">
+        <button onclick="filterNotifications('all')" class="filter-tab active px-5 py-2.5 rounded-xl text-sm font-medium bg-accent text-white whitespace-nowrap" data-filter="all">
+          All Notifications
+        </button>
+        <button onclick="filterNotifications('unread')" class="filter-tab px-5 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 whitespace-nowrap" data-filter="unread">
+          Unread (5)
+        </button>
+        <button onclick="filterNotifications('booking')" class="filter-tab px-5 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 whitespace-nowrap" data-filter="booking">
+          Bookings
+        </button>
+        <button onclick="filterNotifications('payment')" class="filter-tab px-5 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 whitespace-nowrap" data-filter="payment">
+          Payments
+        </button>
+        <button onclick="filterNotifications('promo')" class="filter-tab px-5 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 whitespace-nowrap" data-filter="promo">
+          Promotions
+        </button>
+      </div>
+
+      <!-- Notifications List -->
+      <div id="notificationsContainer" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-up">
+        <!-- Notifications will be rendered here -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center fade-up">
+        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-bell-slash text-4xl text-gray-300"></i>
+        </div>
+        <h3 class="text-xl font-bold text-navy mb-2">No notifications</h3>
+        <p class="text-navy/50 text-sm mb-6 max-w-md mx-auto">You're all caught up! New notifications will appear here.</p>
+        <a href="destination.html" class="btn-accent px-6 py-3 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25 inline-flex items-center gap-2">
+          <span><i class="fas fa-compass mr-1"></i> Explore Destinations</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" style="position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; opacity: 0; transform: translateY(1rem); pointer-events: none; transition: all 0.3s ease;">
+    <div style="background: #0f1d3a; color: white; padding: 1rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); display: flex; align-items: center; gap: 0.75rem; min-width: 320px;">
+      <i id="toastIcon" class="fas fa-check-circle" style="color: #22c55e; font-size: 1.125rem;"></i>
+      <span id="toastMessage" style="font-size: 0.875rem; font-weight: 500; flex: 1;"></span>
+      <button onclick="hideToast()" style="color: rgba(255,255,255,0.5); margin-left: 0.5rem; cursor: pointer; background: none; border: none;">
+        <i class="fas fa-times" style="font-size: 0.75rem;"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ─── Sample Notifications Data ────────────────────
+    let notifications = [
+      {
+        id: 1,
+        type: 'booking',
+        icon: 'fa-plane',
+        iconBg: 'bg-blue-50',
+        iconColor: 'text-blue-500',
+        title: 'Trip Reminder',
+        message: 'Your Maldives trip is in 11 days! Make sure to check your documents and pack accordingly.',
+        time: '2 hours ago',
+        read: false
+      },
+      {
+        id: 2,
+        type: 'payment',
+        icon: 'fa-check-circle',
+        iconBg: 'bg-green-50',
+        iconColor: 'text-green-500',
+        title: 'Payment Confirmed',
+        message: 'Payment of $3,044 for Maldives Paradise Escape has been successfully processed.',
+        time: '1 day ago',
+        read: false
+      },
+      {
+        id: 3,
+        type: 'promo',
+        icon: 'fa-gift',
+        iconBg: 'bg-purple-50',
+        iconColor: 'text-purple-500',
+        title: 'Reward Points Earned',
+        message: 'You earned 150 points for your recent booking. Keep earning to unlock exclusive benefits!',
+        time: '2 days ago',
+        read: false
+      },
+      {
+        id: 4,
+        type: 'promo',
+        icon: 'fa-tag',
+        iconBg: 'bg-accent/10',
+        iconColor: 'text-accent',
+        title: 'Special Offer',
+        message: 'Get 20% off on all Bali packages this week. Book now before the offer expires!',
+        time: '3 days ago',
+        read: false
+      },
+      {
+        id: 5,
+        type: 'booking',
+        icon: 'fa-suitcase',
+        iconBg: 'bg-navy/5',
+        iconColor: 'text-navy/60',
+        title: 'Booking Confirmed',
+        message: 'Your Paris Romantic Getaway has been confirmed. Check your email for details.',
+        time: '4 days ago',
+        read: false
+      },
+      {
+        id: 6,
+        type: 'payment',
+        icon: 'fa-receipt',
+        iconBg: 'bg-green-50',
+        iconColor: 'text-green-500',
+        title: 'Invoice Available',
+        message: 'Your invoice for Swiss Alps Ski Trip is now available. Download it from your bookings.',
+        time: '1 week ago',
+        read: true
+      },
+      {
+        id: 7,
+        type: 'booking',
+        icon: 'fa-plane-arrival',
+        iconBg: 'bg-blue-50',
+        iconColor: 'text-blue-500',
+        title: 'Check-in Reminder',
+        message: 'Online check-in for your Tokyo Cultural Experience opens in 24 hours.',
+        time: '1 week ago',
+        read: true
+      },
+      {
+        id: 8,
+        type: 'promo',
+        icon: 'fa-star',
+        iconBg: 'bg-yellow-50',
+        iconColor: 'text-yellow-500',
+        title: 'VIP Membership Upgrade',
+        message: 'Congratulations! You\'ve been upgraded to VIP status. Enjoy exclusive perks and discounts.',
+        time: '2 weeks ago',
+        read: true
+      }
+    ];
+
+    let currentFilter = 'all';
+
+    // ─── Render Notifications ─────────────────────────
+    function renderNotifications() {
+      const container = document.getElementById('notificationsContainer');
+      const emptyState = document.getElementById('emptyState');
+      
+      let filtered = notifications;
+      if (currentFilter === 'unread') {
+        filtered = notifications.filter(n => !n.read);
+      } else if (currentFilter !== 'all') {
+        filtered = notifications.filter(n => n.type === currentFilter);
+      }
+      
+      if (filtered.length === 0) {
+        container.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      
+      container.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+      
+      container.innerHTML = filtered.map(n => `
+        <div class="notification-item ${!n.read ? 'unread' : ''} p-4 sm:p-5 border-b border-gray-100 last:border-0 cursor-pointer" onclick="markAsRead(${n.id})">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 ${n.iconBg} rounded-xl flex items-center justify-center shrink-0">
+              <i class="fas ${n.icon} ${n.iconColor} text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <h4 class="font-bold text-sm text-navy">${n.title}</h4>
+                ${!n.read ? '<span class="w-2 h-2 bg-accent rounded-full"></span>' : ''}
+              </div>
+              <p class="text-sm text-navy/60 mb-2 line-clamp-2">${n.message}</p>
+              <p class="text-xs text-navy/40"><i class="fas fa-clock mr-1"></i> ${n.time}</p>
+            </div>
+            <button onclick="event.stopPropagation(); deleteNotification(${n.id})" class="w-8 h-8 flex items-center justify-center rounded-lg text-navy/30 hover:text-red-500 hover:bg-red-50 transition-colors shrink-0">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+      
+      updateCounts();
+    }
+
+    // ─── Filter Notifications ─────────────────────────
+    function filterNotifications(filter) {
+      currentFilter = filter;
+      
+      // Update active tab
+      document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.classList.remove('active', 'bg-accent', 'text-white');
+        tab.classList.add('bg-white', 'border', 'border-gray-200', 'text-navy/60');
+      });
+      document.querySelector(`[data-filter="${filter}"]`).classList.add('active', 'bg-accent', 'text-white');
+      document.querySelector(`[data-filter="${filter}"]`).classList.remove('bg-white', 'border', 'border-gray-200', 'text-navy/60');
+      
+      renderNotifications();
+    }
+
+    // ─── Mark as Read ─────────────────────────────────
+    function markAsRead(id) {
+      const notification = notifications.find(n => n.id === id);
+      if (notification) {
+        notification.read = true;
+        renderNotifications();
+      }
+    }
+
+    // ─── Mark All Read ────────────────────────────────
+    function markAllRead() {
+      notifications.forEach(n => n.read = true);
+      renderNotifications();
+      showToast('All notifications marked as read', 'success');
+    }
+
+    // ─── Delete Notification ──────────────────────────
+    function deleteNotification(id) {
+      notifications = notifications.filter(n => n.id !== id);
+      renderNotifications();
+      showToast('Notification deleted', 'success');
+    }
+
+    // ─── Clear All ────────────────────────────────────
+    function clearAll() {
+      notifications = [];
+      renderNotifications();
+      showToast('All notifications cleared', 'success');
+    }
+
+    // ─── Update Counts ────────────────────────────────
+    function updateCounts() {
+      const unread = notifications.filter(n => !n.read).length;
+      document.getElementById('unreadCount').textContent = unread;
+      
+      // Update filter tab counts
+      document.querySelector('[data-filter="unread"]').textContent = `Unread (${unread})`;
+    }
+
+    // ─── Toast Notification ───────────────────────────
+    let toastTimeout;
+    
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+      
+      if (toastTimeout) clearTimeout(toastTimeout);
+      
+      toastMessage.textContent = message;
+      
+      if (type === 'success') {
+        toastIcon.className = 'fas fa-check-circle';
+        toastIcon.style.color = '#22c55e';
+      } else if (type === 'error') {
+        toastIcon.className = 'fas fa-exclamation-circle';
+        toastIcon.style.color = '#ef4444';
+      } else {
+        toastIcon.className = 'fas fa-info-circle';
+        toastIcon.style.color = '#3b82f6';
+      }
+      
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+      toast.style.pointerEvents = 'auto';
+      
+      toastTimeout = setTimeout(() => hideToast(), 4000);
+    }
+    
+    function hideToast() {
+      const toast = document.getElementById('toast');
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(1rem)';
+      toast.style.pointerEvents = 'none';
+    }
+
+    // ─── Initialize ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNotifications();
+    });
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

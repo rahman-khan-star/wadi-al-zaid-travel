@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Messages - Wadi Al Zaid Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="components.css">
+</head>
+<body class="bg-navy-dark text-white min-h-screen">
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar fixed left-0 top-0 h-screen w-64 bg-navy border-r border-white/5 z-50 flex flex-col">
+            <div class="p-5 border-b border-white/5 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-orange flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-mountain text-white text-sm"></i>
+                </div>
+                <div class="sidebar-text">
+                    <h1 class="font-bold text-sm leading-tight">Wadi Al Zaid</h1>
+                    <p class="text-xs text-gray-400">Admin Panel</p>
+                </div>
+            </div>
+            <nav class="flex-1 py-4 overflow-y-auto" role="navigation" aria-label="Main navigation">
+                <a href="admin.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span>
+                </a>
+                <a href="manage-destinations.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span>
+                </a>
+                <a href="manage-bookings.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-calendar-check w-5 text-center"></i><span class="sidebar-text">Bookings</span>
+                </a>
+                <a href="manage-payments.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span>
+                </a>
+                <a href="manage-refunds.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-undo w-5 text-center"></i><span class="sidebar-text">Refunds</span>
+                </a>
+                <a href="manage-customers.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span>
+                </a>
+                <a href="manage-reviews.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span>
+                </a>
+                <a href="manage-team.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team</span>
+                </a>
+                <div class="px-5 py-2 mt-2">
+                    <p class="sidebar-text text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Communication</p>
+                </div>
+                <a href="manage-messages.html" class="sidebar-link active flex items-center gap-3 px-5 py-3 text-sm" aria-current="page">
+                    <i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Messages</span>
+                    <span class="sidebar-text ml-auto bg-orange text-white text-xs px-2 py-0.5 rounded-full">12</span>
+                </a>
+                <a href="notifications.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span>
+                    <span class="sidebar-text ml-auto bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">5</span>
+                </a>
+                <div class="px-5 py-2 mt-2">
+                    <p class="sidebar-text text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Insights</p>
+                </div>
+                <a href="reports-analytics.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports</span>
+                </a>
+                <div class="px-5 py-2 mt-2">
+                    <p class="sidebar-text text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Security</p>
+                </div>
+                <a href="activity-logs.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span>
+                </a>
+                <a href="login-history.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span>
+                </a>
+                <a href="backup-restore.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span>
+                </a>
+                <a href="maintenance-mode.html" class="sidebar-link flex items-center gap-3 px-5 py-3 text-gray-400 text-sm">
+                    <i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span>
+                </a>
+            </nav>
+            <div class="p-4 border-t border-white/5">
+                <div class="sidebar-text flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-orange/20 flex items-center justify-center">
+                        <i class="fas fa-user-shield text-orange text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">Admin User</p>
+                        <p class="text-xs text-gray-500">Super Admin</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="mainContent" role="main" class="main-content ml-64 flex-1 min-h-screen">
+            <!-- Top Bar -->
+            <header class="sticky top-0 z-40 glass px-6 py-3 flex items-center justify-between border-b border-white/5">
+                <div class="flex items-center gap-4">
+                    <button id="sidebarToggle" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition">
+                        <i class="fas fa-bars text-sm"></i>
+                    </button>
+                    <div class="text-sm text-gray-400">
+                        <span>Home</span><span class="mx-2">/</span><span class="text-orange">Messages</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="darkModeToggle" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition">
+                        <i class="fas fa-moon text-sm"></i>
+                    </button>
+                    <button class="w-9 h-9 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center relative transition">
+                        <i class="fas fa-bell text-sm"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange rounded-full text-[9px] flex items-center justify-center font-bold">3</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="p-6">
+                <!-- Page Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 fade-up">
+                    <div>
+                        <h1 class="text-2xl font-bold mb-1">Messages</h1>
+                        <p class="text-gray-400 text-sm">Manage customer communications and inquiries</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="exportMessages()" class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium transition flex items-center gap-2">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <button onclick="openComposeModal()" class="px-4 py-2 rounded-lg bg-orange hover:bg-orange-dark text-sm font-medium transition flex items-center gap-2">
+                            <i class="fas fa-pen"></i> Compose
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stat Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                    <div class="glass-card rounded-xl p-4 fade-up">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/15 flex items-center justify-center"><i class="fas fa-envelope text-blue-400"></i></div>
+                            <span class="text-xs text-gray-500">All</span>
+                        </div>
+                        <p class="text-2xl font-bold">347</p>
+                        <p class="text-xs text-gray-400 mt-1">Total Messages</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-4 fade-up">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange/15 flex items-center justify-center"><i class="fas fa-envelope-open text-orange"></i></div>
+                            <span class="text-xs text-green-400"><i class="fas fa-arrow-up mr-1"></i>15%</span>
+                        </div>
+                        <p class="text-2xl font-bold text-orange">12</p>
+                        <p class="text-xs text-gray-400 mt-1">Unread</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-4 fade-up">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-green-500/15 flex items-center justify-center"><i class="fas fa-check-circle text-green-400"></i></div>
+                            <span class="text-xs text-gray-500">85%</span>
+                        </div>
+                        <p class="text-2xl font-bold text-green-400">298</p>
+                        <p class="text-xs text-gray-400 mt-1">Replied</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-4 fade-up">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-yellow-500/15 flex items-center justify-center"><i class="fas fa-clock text-yellow-400"></i></div>
+                            <span class="text-xs text-red-400"><i class="fas fa-arrow-up mr-1"></i>3</span>
+                        </div>
+                        <p class="text-2xl font-bold text-yellow-400">8</p>
+                        <p class="text-xs text-gray-400 mt-1">Pending</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-4 fade-up">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-red-500/15 flex items-center justify-center"><i class="fas fa-exclamation-triangle text-red-400"></i></div>
+                            <span class="text-xs text-gray-500">Filter</span>
+                        </div>
+                        <p class="text-2xl font-bold text-red-400">29</p>
+                        <p class="text-xs text-gray-400 mt-1">Spam</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-4 fade-up">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/15 flex items-center justify-center"><i class="fas fa-calendar-day text-purple-400"></i></div>
+                            <span class="text-xs text-gray-400">Today</span>
+                        </div>
+                        <p class="text-2xl font-bold text-purple-400">5</p>
+                        <p class="text-xs text-gray-400 mt-1">Today</p>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex items-center gap-6 mb-6 border-b border-white/10 fade-up">
+                    <button class="tab-btn active pb-3 text-sm font-semibold" onclick="switchTab('inbox')">
+                        <i class="fas fa-inbox mr-2"></i>Inbox
+                    </button>
+                    <button class="tab-btn pb-3 text-sm font-semibold text-gray-400" onclick="switchTab('analytics')">
+                        <i class="fas fa-chart-line mr-2"></i>Analytics
+                    </button>
+                </div>
+
+                <!-- Inbox Tab -->
+                <div id="inboxTab">
+                    <!-- Filters -->
+                    <div class="glass-card rounded-xl p-4 mb-6 fade-up">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+                            <div class="lg:col-span-2 relative">
+                                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                                <input type="text" id="searchInput" placeholder="Search messages..." oninput="filterMessages()" class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-navy border border-white/10 text-sm focus:border-orange focus:outline-none transition">
+                            </div>
+                            <select id="typeFilter" onchange="filterMessages()" class="px-4 py-2.5 rounded-lg bg-navy border border-white/10 text-sm focus:border-orange focus:outline-none">
+                                <option value="">All Types</option>
+                                <option value="inquiry">Inquiry</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="visa">Visa</option>
+                            </select>
+                            <select id="statusFilter" onchange="filterMessages()" class="px-4 py-2.5 rounded-lg bg-navy border border-white/10 text-sm focus:border-orange focus:outline-none">
+                                <option value="">All Status</option>
+                                <option value="unread">Unread</option>
+                                <option value="read">Read</option>
+                                <option value="replied">Replied</option>
+                                <option value="pending">Pending</option>
+                                <option value="archived">Archived</option>
+                                <option value="spam">Spam</option>
+                            </select>
+                            <select id="priorityFilter" onchange="filterMessages()" class="px-4 py-2.5 rounded-lg bg-navy border border-white/10 text-sm focus:border-orange focus:outline-none">
+                                <option value="">All Priority</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center justify-between mt-3 pt-3 border-t border-white/5">
+                            <div class="flex items-center gap-2" id="bulkActions" style="display:none">
+                                <span class="text-sm text-gray-400"><span id="selectedCount">0</span> selected</span>
+                                <button onclick="bulkAction('read')" class="px-3 py-1.5 rounded-lg bg-green-500/15 text-green-400 text-xs font-medium hover:bg-green-500/25 transition">Mark Read</button>
+                                <button onclick="bulkAction('archive')" class="px-3 py-1.5 rounded-lg bg-blue-500/15 text-blue-400 text-xs font-medium hover:bg-blue-500/25 transition">Archive</button>
+                                <button onclick="bulkAction('delete')" class="px-3 py-1.5 rounded-lg bg-red-500/15 text-red-400 text-xs font-medium hover:bg-red-500/25 transition">Delete</button>
+                            </div>
+                            <div class="flex items-center gap-2 ml-auto">
+                                <span class="text-sm text-gray-400">Sort by:</span>
+                                <select id="sortFilter" onchange="filterMessages()" class="px-3 py-1.5 rounded-lg bg-navy border border-white/10 text-sm focus:border-orange focus:outline-none">
+                                    <option value="newest">Newest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                    <option value="priority">Priority</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages Table -->
+                    <div class="glass-card rounded-xl overflow-hidden fade-up">
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b border-white/5 bg-navy-dark/50">
+                                        <th class="px-4 py-3 text-left"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()" class="checkbox-custom"></th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Customer</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Subject</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Type</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Date</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Priority</th>
+                                        <th class="px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Status</th>
+                                        <th class="px-4 py-3 text-right text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="messagesTableBody" class="divide-y divide-white/5">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="flex items-center justify-between px-4 py-3 border-t border-white/5">
+                            <p class="text-sm text-gray-400">Showing <span id="showingStart">1</span>-<span id="showingEnd">10</span> of <span id="totalMessages">10</span> messages</p>
+                            <div class="flex items-center gap-1" id="pagination"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Tab -->
+                <div id="analyticsTab" class="hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                        <div class="glass-card rounded-xl p-5 fade-up">
+                            <h3 class="font-semibold mb-4"><i class="fas fa-chart-line mr-2 text-orange"></i>Daily Message Volume</h3>
+                            <canvas id="dailyVolumeChart" height="220"></canvas>
+                        </div>
+                        <div class="glass-card rounded-xl p-5 fade-up">
+                            <h3 class="font-semibold mb-4"><i class="fas fa-chart-pie mr-2 text-orange"></i>By Category</h3>
+                            <canvas id="categoryChart" height="220"></canvas>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="glass-card rounded-xl p-5 fade-up">
+                            <h3 class="font-semibold mb-4"><i class="fas fa-clock mr-2 text-orange"></i>Average Response Time (hours)</h3>
+                            <canvas id="responseTimeChart" height="220"></canvas>
+                        </div>
+                        <div class="glass-card rounded-xl p-5 fade-up">
+                            <h3 class="font-semibold mb-4"><i class="fas fa-chart-bar mr-2 text-orange"></i>Status Distribution</h3>
+                            <canvas id="statusChart" height="220"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Message Details Drawer -->
+    <div id="messageDrawer" class="drawer fixed right-0 top-0 h-screen w-full md:w-[480px] bg-navy border-l border-white/10 z-50 overflow-y-auto">
+        <div class="sticky top-0 bg-navy/95 backdrop-blur-sm border-b border-white/5 p-4 flex items-center justify-between">
+            <h3 class="font-semibold">Message Details</h3>
+            <button onclick="closeDrawer()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+        </div>
+        <div id="drawerContent" class="p-5"></div>
+    </div>
+    <div id="drawerOverlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="closeDrawer()"></div>
+
+    <!-- Compose Modal -->
+    <div id="composeModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="modal bg-navy rounded-2xl border border-white/10 w-full max-w-lg">
+            <div class="p-5 border-b border-white/5 flex items-center justify-between">
+                <h3 class="font-semibold text-lg">Compose Message</h3>
+                <button onclick="closeComposeModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition"><i class="fas fa-times text-sm"></i></button>
+            </div>
+            <div class="p-5 space-y-4">
+                <div>
+                    <label class="text-sm text-gray-400 mb-1 block">To</label>
+                    <input type="email" placeholder="customer@email.com" class="w-full px-4 py-2.5 rounded-lg bg-navy-dark border border-white/10 text-sm focus:border-orange focus:outline-none">
+                </div>
+                <div>
+                    <label class="text-sm text-gray-400 mb-1 block">Subject</label>
+                    <input type="text" placeholder="Message subject..." class="w-full px-4 py-2.5 rounded-lg bg-navy-dark border border-white/10 text-sm focus:border-orange focus:outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-sm text-gray-400 mb-1 block">Type</label>
+                        <select class="w-full px-4 py-2.5 rounded-lg bg-navy-dark border border-white/10 text-sm focus:border-orange focus:outline-none">
+                            <option>Inquiry</option>
+                            <option>Complaint</option>
+                            <option>Feedback</option>
+                            <option>Partnership</option>
+                            <option>Visa</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-sm text-gray-400 mb-1 block">Priority</label>
+                        <select class="w-full px-4 py-2.5 rounded-lg bg-navy-dark border border-white/10 text-sm focus:border-orange focus:outline-none">
+                            <option>Medium</option>
+                            <option>High</option>
+                            <option>Low</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="text-sm text-gray-400 mb-1 block">Message</label>
+                    <textarea rows="5" placeholder="Type your message..." class="w-full px-4 py-2.5 rounded-lg bg-navy-dark border border-white/10 text-sm focus:border-orange focus:outline-none resize-none"></textarea>
+                </div>
+            </div>
+            <div class="p-5 border-t border-white/5 flex items-center justify-end gap-3">
+                <button onclick="closeComposeModal()" class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm transition">Cancel</button>
+                <button onclick="sendMessage()" class="px-5 py-2 rounded-lg bg-orange hover:bg-orange-dark text-sm font-medium transition">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="modal bg-navy rounded-2xl border border-white/10 w-full max-w-sm text-center">
+            <div class="p-6">
+                <div class="w-16 h-16 rounded-full bg-red-500/15 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-trash text-red-400 text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-lg mb-2">Delete Message</h3>
+                <p class="text-gray-400 text-sm">Are you sure you want to delete this message? This action cannot be undone.</p>
+            </div>
+            <div class="p-4 border-t border-white/5 flex items-center justify-center gap-3">
+                <button onclick="closeDeleteModal()" class="px-5 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm transition">Cancel</button>
+                <button onclick="confirmDelete()" class="px-5 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-sm font-medium transition">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-[100] flex flex-col gap-2"></div>
+
+    <script src="components.js"></script>
+    <script>
+        // Messages Data
+        let messages = [
+            { id: 1, name: "Sarah Mitchell", email: "sarah.m@email.com", avatar: "SM", subject: "Group Tour Booking for 15 People", body: "Hello, I am interested in booking a group tour for 15 people to Wadi Al Zaid. We are a corporate team looking for a 3-day adventure package. Could you please provide a detailed itinerary and pricing? We are flexible with dates and would prefer something in the next 2 months. Also, do you offer any group discounts? Looking forward to hearing from you.", type: "inquiry", date: "2026-07-14", priority: "high", status: "unread", category: "tour" },
+            { id: 2, name: "Ahmed Al-Rashidi", email: "ahmed.r@email.com", avatar: "AR", subject: "Visa Requirements for Oman", body: "I need to know the visa requirements for a group of 8 tourists from the UK visiting Oman next month. What documents do they need? How long does the process take? Are there any special requirements for group visas?", type: "visa", date: "2026-07-13", priority: "medium", status: "read", category: "visa" },
+            { id: 3, name: "Jennifer Park", email: "jennifer.p@email.com", avatar: "JP", subject: "Complaint: Delayed Tour Start", body: "I am writing to complain about my recent experience with your company. The Desert Safari tour on July 10th was supposed to start at 6 AM but the bus arrived at 7:30 AM without any prior notification. This caused us to miss the sunrise experience which was the main highlight. I would like a partial refund or a complimentary tour.", type: "complaint", date: "2026-07-12", priority: "high", status: "pending", category: "complaint" },
+            { id: 4, name: "Marco Rossi", email: "marco.r@email.com", avatar: "MR", subject: "Partnership Proposal - European Market", body: "Dear Wadi Al Zaid Team, I represent a leading European travel agency based in Milan. We specialize in Middle East luxury tours and would like to propose a strategic partnership. We have over 2,000 active clients who frequently travel to the Gulf region. Could we schedule a meeting to discuss collaboration opportunities?", type: "partnership", date: "2026-07-11", priority: "medium", status: "unread", category: "partnership" },
+            { id: 5, name: "Fatima Hassan", email: "fatima.h@email.com", avatar: "FH", subject: "Family Package Inquiry", body: "Hi, we are a family of 6 (2 adults, 4 children aged 8-14) looking for a family-friendly tour package during the school holidays in August. What options do you have that would be suitable for children? Do you provide child safety equipment for activities?", type: "inquiry", date: "2026-07-10", priority: "medium", status: "replied", category: "tour" },
+            { id: 6, name: "David Chen", email: "david.c@email.com", avatar: "DC", subject: "Excellent Service Feedback", body: "I just wanted to take a moment to thank your team for an incredible experience during our Wahiba Sands trip last week. Our guide, Hassan, was exceptional - knowledgeable, friendly, and very safety-conscious. The camp setup was luxurious and the cultural experiences were authentic. I will definitely recommend Wadi Al Zaid to all my friends.", type: "feedback", date: "2026-07-09", priority: "low", status: "replied", category: "feedback" },
+            { id: 7, name: "Lisa Thompson", email: "lisa.t@email.com", avatar: "LT", subject: "Refund Request - Cancelled Booking", body: "I had to cancel my booking (Ref: WAZ-2026-4521) due to a medical emergency. I have attached the medical certificate as requested. Could you please process the refund at your earliest convenience? The booking was for 2 people for the Jebel Akhdar Trek, originally scheduled for July 20th.", type: "complaint", date: "2026-07-08", priority: "high", status: "pending", category: "complaint" },
+            { id: 8, name: "Yuki Tanaka", email: "yuki.t@email.com", avatar: "YT", subject: "Adventure Tour Customization", body: "I am planning a trip to Oman in September and I am interested in customizing an adventure tour. I want to include mountain biking, rock climbing, and diving. Is it possible to create a bespoke itinerary? I am an experienced adventurer and would love some off-the-beaten-path locations.", type: "inquiry", date: "2026-07-07", priority: "medium", status: "read", category: "tour" },
+            { id: 9, name: "Robert Williams", email: "robert.w@email.com", avatar: "RW", subject: "Corporate Event Partnership", body: "Our company is planning a team-building event for 50 employees in October. We are looking for an adventure tour operator who can provide team challenges, camping, and cultural experiences. Could you provide a proposal with pricing? We are flexible on duration (3-5 days).", type: "partnership", date: "2026-07-06", priority: "high", status: "unread", category: "partnership" },
+            { id: 10, name: "Maria Garcia", email: "maria.g@email.com", avatar: "MG", subject: "Spam - Unsolicited Services", body: "Buy cheap Oman tour packages at 50% discount! Visit our website for amazing deals. We offer the best prices guaranteed. Click here to book now: [suspicious link removed]", type: "spam", date: "2026-07-05", priority: "low", status: "spam", category: "spam" }
+        ];
+
+        let currentPage = 1;
+        const perPage = 8;
+        let selectedIds = new Set();
+        let deleteTargetId = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMessages();
+            initDarkMode();
+        });
+
+        // Dark Mode
+        function initDarkMode() {
+            const toggle = document.getElementById('darkModeToggle');
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark');
+                const isDark = document.body.classList.contains('dark');
+                toggle.innerHTML = isDark ? '<i class="fas fa-sun text-sm"></i>' : '<i class="fas fa-moon text-sm"></i>';
+            });
+        }
+
+        // Tab System
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('inboxTab').classList.toggle('hidden', tab !== 'inbox');
+            document.getElementById('analyticsTab').classList.toggle('hidden', tab !== 'analytics');
+            if (tab === 'analytics') initCharts();
+        }
+
+        // Filter Messages
+        function getFilteredMessages() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const type = document.getElementById('typeFilter').value;
+            const status = document.getElementById('statusFilter').value;
+            const priority = document.getElementById('priorityFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+
+            let filtered = messages.filter(m => {
+                if (search && !m.name.toLowerCase().includes(search) && !m.subject.toLowerCase().includes(search)) return false;
+                if (type && m.type !== type) return false;
+                if (status && m.status !== status) return false;
+                if (priority && m.priority !== priority) return false;
+                return true;
+            });
+
+            if (sort === 'newest') filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            else if (sort === 'oldest') filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+            else if (sort === 'priority') {
+                const p = { high: 0, medium: 1, low: 2 };
+                filtered.sort((a, b) => p[a.priority] - p[b.priority]);
+            }
+            return filtered;
+        }
+
+        function filterMessages() {
+            currentPage = 1;
+            selectedIds.clear();
+            document.getElementById('selectAll').checked = false;
+            updateBulkActions();
+            renderMessages();
+        }
+
+        // Render Messages
+        function renderMessages() {
+            const filtered = getFilteredMessages();
+            const totalPages = Math.ceil(filtered.length / perPage);
+            const start = (currentPage - 1) * perPage;
+            const pageMessages = filtered.slice(start, start + perPage);
+
+            const tbody = document.getElementById('messagesTableBody');
+            tbody.innerHTML = pageMessages.map(m => `
+                <tr class="hover:bg-white/[0.02] transition cursor-pointer ${m.status === 'unread' ? 'bg-orange/[0.03]' : ''}" onclick="openDrawer(${m.id})">
+                    <td class="px-4 py-3" onclick="event.stopPropagation()"><input type="checkbox" class="checkbox-custom" ${selectedIds.has(m.id)?'checked':''} onchange="toggleSelect(${m.id})"></td>
+                    <td class="px-4 py-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-orange/15 flex items-center justify-center text-orange text-sm font-semibold">${m.avatar}</div>
+                            <div>
+                                <p class="text-sm font-medium ${m.status==='unread'?'text-white':'text-gray-300'}">${m.name}</p>
+                                <p class="text-xs text-gray-500">${m.email}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 text-sm ${m.status==='unread'?'font-semibold':'text-gray-300'}">${m.subject}</td>
+                    <td class="px-4 py-3"><span class="text-xs capitalize px-2 py-1 rounded-full ${m.type==='inquiry'?'bg-blue-500/15 text-blue-400':m.type==='complaint'?'bg-red-500/15 text-red-400':m.type==='partnership'?'bg-purple-500/15 text-purple-400':m.type==='visa'?'bg-yellow-500/15 text-yellow-400':'bg-green-500/15 text-green-400'}">${m.type}</span></td>
+                    <td class="px-4 py-3 text-sm text-gray-400">${formatDate(m.date)}</td>
+                    <td class="px-4 py-3"><span class="priority-${m.priority} text-xs font-semibold uppercase"><i class="fas fa-circle text-[6px] mr-1"></i>${m.priority}</span></td>
+                    <td class="px-4 py-3"><span class="status-badge status-${m.status}">${m.status}</span></td>
+                    <td class="px-4 py-3" onclick="event.stopPropagation()">
+                        <div class="flex items-center justify-end gap-1">
+                            <button onclick="openDrawer(${m.id})" class="w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-gray-400 hover:text-blue-400 transition" title="View"><i class="fas fa-eye text-xs"></i></button>
+                            <button onclick="replyTo(${m.id})" class="w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-gray-400 hover:text-orange transition" title="Reply"><i class="fas fa-reply text-xs"></i></button>
+                            <button onclick="archiveMessage(${m.id})" class="w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-gray-400 hover:text-yellow-400 transition" title="Archive"><i class="fas fa-archive text-xs"></i></button>
+                            <button onclick="deleteMessage(${m.id})" class="w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-gray-400 hover:text-red-400 transition" title="Delete"><i class="fas fa-trash text-xs"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            document.getElementById('showingStart').textContent = filtered.length ? start + 1 : 0;
+            document.getElementById('showingEnd').textContent = Math.min(start + perPage, filtered.length);
+            document.getElementById('totalMessages').textContent = filtered.length;
+
+            renderPagination(totalPages);
+        }
+
+        function formatDate(d) {
+            const date = new Date(d);
+            const now = new Date();
+            const diff = Math.floor((now - date) / 86400000);
+            if (diff === 0) return 'Today';
+            if (diff === 1) return 'Yesterday';
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        // Pagination
+        function renderPagination(total) {
+            const container = document.getElementById('pagination');
+            let html = `<button class="pagination-btn w-8 h-8 rounded-lg text-sm ${currentPage===1?'text-gray-600 cursor-not-allowed':''}" onclick="goToPage(${currentPage-1})" ${currentPage===1?'disabled':''}><i class="fas fa-chevron-left text-xs"></i></button>`;
+            for (let i = 1; i <= total; i++) {
+                html += `<button class="pagination-btn w-8 h-8 rounded-lg text-sm ${i===currentPage?'active':''}" onclick="goToPage(${i})">${i}</button>`;
+            }
+            html += `<button class="pagination-btn w-8 h-8 rounded-lg text-sm ${currentPage===total?'text-gray-600 cursor-not-allowed':''}" onclick="goToPage(${currentPage+1})" ${currentPage===total?'disabled':''}><i class="fas fa-chevron-right text-xs"></i></button>`;
+            container.innerHTML = html;
+        }
+
+        function goToPage(p) {
+            const filtered = getFilteredMessages();
+            const total = Math.ceil(filtered.length / perPage);
+            if (p < 1 || p > total) return;
+            currentPage = p;
+            selectedIds.clear();
+            document.getElementById('selectAll').checked = false;
+            updateBulkActions();
+            renderMessages();
+        }
+
+        // Select
+        function toggleSelect(id) {
+            if (selectedIds.has(id)) selectedIds.delete(id); else selectedIds.add(id);
+            updateBulkActions();
+        }
+        function toggleSelectAll() {
+            const filtered = getFilteredMessages();
+            const start = (currentPage - 1) * perPage;
+            const page = filtered.slice(start, start + perPage);
+            const allSelected = page.every(m => selectedIds.has(m.id));
+            if (allSelected) page.forEach(m => selectedIds.delete(m.id));
+            else page.forEach(m => selectedIds.add(m.id));
+            updateBulkActions();
+            renderMessages();
+        }
+        function updateBulkActions() {
+            document.getElementById('bulkActions').style.display = selectedIds.size > 0 ? 'flex' : 'none';
+            document.getElementById('selectedCount').textContent = selectedIds.size;
+        }
+
+        // Bulk Actions
+        function bulkAction(action) {
+            if (selectedIds.size === 0) return;
+            if (action === 'delete') {
+                deleteTargetId = 'bulk';
+                document.getElementById('deleteModal').classList.add('open');
+            } else {
+                selectedIds.forEach(id => {
+                    const m = messages.find(x => x.id === id);
+                    if (m) {
+                        if (action === 'read') m.status = 'read';
+                        if (action === 'archive') m.status = 'archived';
+                    }
+                });
+                selectedIds.clear();
+                renderMessages();
+                showToast(`${action.charAt(0).toUpperCase() + action.slice(1)} applied successfully`, 'success');
+            }
+        }
+
+        // Message Actions
+        function archiveMessage(id) {
+            const m = messages.find(x => x.id === id);
+            if (m) { m.status = 'archived'; renderMessages(); showToast('Message archived', 'success'); }
+        }
+        function deleteMessage(id) {
+            deleteTargetId = id;
+            document.getElementById('deleteModal').classList.add('open');
+        }
+        function confirmDelete() {
+            if (deleteTargetId === 'bulk') {
+                messages = messages.filter(m => !selectedIds.has(m.id));
+                selectedIds.clear();
+            } else if (deleteTargetId) {
+                messages = messages.filter(m => m.id !== deleteTargetId);
+            }
+            closeDeleteModal();
+            renderMessages();
+            showToast('Message deleted', 'danger');
+        }
+        function closeDeleteModal() { document.getElementById('deleteModal').classList.remove('open'); deleteTargetId = null; }
+
+        // Drawer
+        function openDrawer(id) {
+            const m = messages.find(x => x.id === id);
+            if (!m) return;
+            if (m.status === 'unread') { m.status = 'read'; renderMessages(); }
+
+            const content = document.getElementById('drawerContent');
+            content.innerHTML = `
+                <div class="mb-5">
+                    <div class="flex items-start gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-orange/15 flex items-center justify-center text-orange font-bold">${m.avatar}</div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold">${m.name}</h4>
+                            <p class="text-sm text-gray-400">${m.email}</p>
+                        </div>
+                        <span class="status-badge status-${m.status}">${m.status}</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span><i class="fas fa-calendar mr-1"></i>${new Date(m.date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })}</span>
+                        <span class="capitalize"><i class="fas fa-tag mr-1"></i>${m.type}</span>
+                        <span class="capitalize"><i class="fas fa-flag mr-1 priority-${m.priority}"></i>${m.priority}</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-3">${m.subject}</h3>
+                    <div class="bg-navy-dark/50 rounded-xl p-4 text-sm text-gray-300 leading-relaxed border border-white/5">${m.body}</div>
+                </div>
+                <div class="mb-5">
+                    <h4 class="font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-reply text-orange"></i> Reply</h4>
+                    <textarea id="replyBox" rows="4" placeholder="Type your reply..." class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-white/10 text-sm focus:border-orange focus:outline-none resize-none mb-3"></textarea>
+                    <div class="flex items-center gap-2">
+                        <button onclick="sendReply(${m.id})" class="px-4 py-2 rounded-lg bg-orange hover:bg-orange-dark text-sm font-medium transition"><i class="fas fa-paper-plane mr-1"></i>Send Reply</button>
+                        <button class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm transition"><i class="fas fa-paperclip mr-1"></i>Attach</button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-3 flex items-center gap-2"><i class="fas fa-sticky-note text-yellow-400"></i> Internal Notes</h4>
+                    <textarea rows="3" placeholder="Add internal notes..." class="w-full px-4 py-3 rounded-xl bg-navy-dark border border-white/10 text-sm focus:border-orange focus:outline-none resize-none mb-3"></textarea>
+                    <button class="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm transition">Save Note</button>
+                </div>
+            `;
+            document.getElementById('messageDrawer').classList.add('open');
+            document.getElementById('drawerOverlay').classList.remove('hidden');
+        }
+        function closeDrawer() {
+            document.getElementById('messageDrawer').classList.remove('open');
+            document.getElementById('drawerOverlay').classList.add('hidden');
+        }
+        function sendReply(id) {
+            const text = document.getElementById('replyBox').value.trim();
+            if (!text) { showToast('Please type a reply', 'warning'); return; }
+            const m = messages.find(x => x.id === id);
+            if (m) m.status = 'replied';
+            closeDrawer();
+            renderMessages();
+            showToast('Reply sent successfully', 'success');
+        }
+        function replyTo(id) { openDrawer(id); }
+
+        // Compose Modal
+        function openComposeModal() { document.getElementById('composeModal').classList.add('open'); }
+        function closeComposeModal() { document.getElementById('composeModal').classList.remove('open'); }
+        function sendMessage() { closeComposeModal(); showToast('Message sent successfully', 'success'); }
+
+        // Charts
+        let chartsInit = false;
+        function initCharts() {
+            if (chartsInit) return;
+            chartsInit = true;
+            const labels = { color: '#94a3b8', font: { family: 'Inter' } };
+            const grid = { color: 'rgba(255,255,255,0.05)' };
+
+            new Chart(document.getElementById('dailyVolumeChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Messages',
+                        data: [42, 38, 55, 47, 63, 31, 28],
+                        borderColor: '#e8952f',
+                        backgroundColor: 'rgba(232,149,47,0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#e8952f',
+                        pointRadius: 4
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: labels, grid }, y: { ticks: labels, grid } } }
+            });
+
+            new Chart(document.getElementById('categoryChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Inquiries', 'Complaints', 'Partnerships', 'Visa', 'Feedback'],
+                    datasets: [{ data: [142, 45, 38, 67, 55], backgroundColor: ['#3b82f6', '#ef4444', '#a855f7', '#f59e0b', '#22c55e'], borderWidth: 0 }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 }, padding: 12 } } }, cutout: '65%' }
+            });
+
+            new Chart(document.getElementById('responseTimeChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Avg Hours',
+                        data: [2.1, 1.8, 3.2, 2.5, 1.4, 4.1, 3.8],
+                        backgroundColor: 'rgba(232,149,47,0.6)',
+                        borderRadius: 6,
+                        barThickness: 28
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: labels, grid }, y: { ticks: labels, grid } } }
+            });
+
+            new Chart(document.getElementById('statusChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Unread', 'Read', 'Replied', 'Pending', 'Archived', 'Spam'],
+                    datasets: [{ data: [12, 45, 298, 8, 25, 29], backgroundColor: ['#e8952f', '#6b7280', '#3b82f6', '#f59e0b', '#374151', '#ef4444'], borderWidth: 0 }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 }, padding: 12 } } }, cutout: '65%' }
+            });
+        }
+
+        // Export
+        function exportMessages() { showToast('Exporting messages to CSV...', 'info'); }
+
+        // Toast
+        function showToast(msg, type = 'info') {
+            const colors = { success: 'bg-green-500', danger: 'bg-red-500', warning: 'bg-yellow-500', info: 'bg-blue-500' };
+            const icons = { success: 'fa-check-circle', danger: 'fa-times-circle', warning: 'fa-exclamation-circle', info: 'fa-info-circle' };
+            const toast = document.createElement('div');
+            toast.className = `toast ${colors[type]} px-5 py-3 rounded-xl text-sm font-medium shadow-xl flex items-center gap-2`;
+            toast.innerHTML = `<i class="fas ${icons[type]}"></i> ${msg}`;
+            document.getElementById('toastContainer').appendChild(toast);
+            requestAnimationFrame(() => toast.classList.add('show'));
+            setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3000);
+        }
+    </script>
+</body>
+</html>

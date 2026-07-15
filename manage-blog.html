@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Management - Wadi Al Zaid Admin</title>
+<link rel="stylesheet" href="components.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        navy: { 50:'#e8eaf0', 100:'#c5c9d9', 200:'#9ea5be', 300:'#7780a3', 400:'#596390', 500:'#3b477e', 600:'#354176', 700:'#2d396b', 800:'#263161', 900:'#0f1d3a' },
+        accent: { 50:'#fdf3e5', 100:'#fbe2bf', 200:'#f8ce94', 300:'#f5b969', 400:'#f0a94a', 500:'#e8952f', 600:'#d88a2b', 700:'#c47c26', 800:'#b06f22', 900:'#8e581a' },
+      },
+      fontFamily: { inter: ['Inter', 'sans-serif'] },
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-inter min-h-screen">
+<a href="#mainContent" class="skip-link">Skip to main content</a>
+
+<!-- Toast -->
+<div id="toast" class="toast">
+  <div class="flex items-center gap-3 px-5 py-3 rounded-xl shadow-2xl bg-white border border-gray-200">
+    <i id="toastIcon" class="fas fa-check-circle text-green-500 text-lg"></i>
+    <span id="toastMsg" class="text-sm font-medium text-gray-800"></span>
+  </div>
+</div>
+
+<!-- Mobile Overlay -->
+<div id="mobileOverlay" class="mobile-overlay" onclick="toggleSidebar()"></div>
+
+<!-- Sidebar -->
+<aside id="sidebar" class="sidebar fixed top-0 left-0 h-full bg-white z-50 flex flex-col border-r border-gray-200">
+  <div class="p-4 flex items-center gap-3 border-b border-gray-200 min-h-[64px]">
+    <div class="w-9 h-9 rounded-lg bg-accent-500 flex items-center justify-center flex-shrink-0">
+      <i class="fas fa-mountain text-white text-sm"></i>
+    </div>
+    <div class="logo-text overflow-hidden">
+      <span class="text-gray-900 font-bold text-sm leading-tight block">Wadi Al Zaid</span>
+      <span class="text-accent-500 text-[10px] font-medium">Admin Panel</span>
+    </div>
+  </div>
+  <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto" id="sidebarNav" role="navigation" aria-label="Main navigation">
+    <a href="admin.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-th-large w-5 text-center"></i><span class="nav-text">Dashboard</span>
+    </a>
+    <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-map-marker-alt w-5 text-center"></i><span class="nav-text">Destinations</span>
+    </a>
+    <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-calendar-check w-5 text-center"></i><span class="nav-text">Bookings</span>
+    </a>
+    <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-credit-card w-5 text-center"></i><span class="nav-text">Payments</span>
+    </a>
+    <a href="manage-refunds.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-undo w-5 text-center"></i><span class="nav-text">Refunds</span>
+    </a>
+    <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-users w-5 text-center"></i><span class="nav-text">Customers</span>
+    </a>
+    <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-star w-5 text-center"></i><span class="nav-text">Reviews</span>
+    </a>
+    <a href="manage-team.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-user-tie w-5 text-center"></i><span class="nav-text">Team</span>
+    </a>
+    <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-envelope w-5 text-center"></i><span class="nav-text">Messages</span>
+    </a>
+    <a href="notifications.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-bell w-5 text-center"></i><span class="nav-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">5</span>
+    </a>
+    <div class="border-t border-gray-200 my-2"></div>
+    <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl bg-accent-50 text-accent-500 border border-accent-200 transition-all text-sm font-semibold" aria-current="page">
+      <i class="fas fa-blog w-5 text-center"></i><span class="nav-text">Blog</span>
+    </a>
+    <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-chart-bar w-5 text-center"></i><span class="nav-text">Reports</span>
+    </a>
+    <div class="border-t border-gray-200 my-2"></div>
+    <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-history w-5 text-center"></i><span class="nav-text">Activity Logs</span>
+    </a>
+    <a href="login-history.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-sign-in-alt w-5 text-center"></i><span class="nav-text">Login History</span>
+    </a>
+    <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="nav-text">Backup & Restore</span>
+    </a>
+    <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-tools w-5 text-center"></i><span class="nav-text">Maintenance Mode</span>
+    </a>
+  </nav>
+  <div class="p-3 border-t border-gray-200">
+    <button onclick="toggleSidebar()" class="collapse-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition-all text-sm font-medium">
+      <i class="fas fa-chevron-left w-5 text-center transition-transform"></i><span class="nav-text">Collapse</span>
+    </button>
+    <div class="flex items-center gap-3 px-3 py-3 mt-2 rounded-xl bg-gray-100">
+      <div class="w-8 h-8 rounded-full bg-accent-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">A</div>
+      <div class="overflow-hidden admin-text">
+        <p class="text-gray-900 text-xs font-semibold truncate">Admin User</p>
+        <p class="text-gray-500 text-[10px] truncate">admin@walzaid.com</p>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<div id="mainContent" role="main" class="transition-all duration-300 ml-[260px] min-h-screen">
+  <!-- Top Bar -->
+  <header class="sticky top-0 z-30 bg-white border-b border-gray-200">
+    <div class="flex items-center justify-between px-6 py-3">
+      <div class="flex items-center gap-4">
+        <button onclick="toggleSidebar()" class="lg:hidden text-gray-400 hover:text-gray-600">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <div class="text-sm text-gray-400">
+          <span class="cursor-pointer hover:text-accent-500 transition-colors" onclick="location.href='admin.html'">Dashboard</span>
+          <i class="fas fa-chevron-right mx-2 text-[10px]"></i>
+          <span class="text-gray-900 font-semibold">Blog Management</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="openModal('addModal')" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-accent-500/25">
+          <i class="fas fa-plus text-xs"></i> Add New Article
+        </button>
+        <button onclick="showToast('Articles exported successfully!','success')" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-all border border-gray-200">
+          <i class="fas fa-download text-xs"></i> Export Articles
+        </button>
+        <button onclick="document.getElementById('headerNotif').classList.toggle('hidden')" class="relative p-2 rounded-xl hover:bg-gray-100 transition-colors">
+          <i class="fas fa-bell text-gray-400"></i>
+          <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="p-6 space-y-6">
+    <!-- Mobile Buttons -->
+    <div class="flex sm:hidden gap-3">
+      <button onclick="openModal('addModal')" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-accent-500 text-white rounded-xl text-sm font-semibold">
+        <i class="fas fa-plus text-xs"></i> New Article
+      </button>
+      <button onclick="showToast('Articles exported!','success')" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium border border-gray-200">
+        <i class="fas fa-download text-xs"></i> Export
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 lg:grid-cols-6 gap-4 fade-up" id="statsRow">
+      <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+        <div class="mb-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center"><i class="fas fa-newspaper text-white text-sm"></i></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900">48</p>
+        <p class="text-xs text-gray-500 mt-1">Total Articles</p>
+      </div>
+      <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+        <div class="mb-3">
+          <div class="w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center"><i class="fas fa-check-circle text-white text-sm"></i></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900">32</p>
+        <p class="text-xs text-gray-500 mt-1">Published</p>
+      </div>
+      <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+        <div class="mb-3">
+          <div class="w-10 h-10 rounded-xl bg-gray-500 flex items-center justify-center"><i class="fas fa-file-alt text-white text-sm"></i></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900">8</p>
+        <p class="text-xs text-gray-500 mt-1">Draft</p>
+      </div>
+      <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+        <div class="mb-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-400 flex items-center justify-center"><i class="fas fa-clock text-white text-sm"></i></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900">4</p>
+        <p class="text-xs text-gray-500 mt-1">Scheduled</p>
+      </div>
+      <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+        <div class="mb-3">
+          <div class="w-10 h-10 rounded-xl bg-accent-500 flex items-center justify-center"><i class="fas fa-eye text-white text-sm"></i></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900">124.5K</p>
+        <p class="text-xs text-gray-500 mt-1">Total Views</p>
+      </div>
+      <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+        <div class="mb-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500 flex items-center justify-center"><i class="fas fa-comments text-white text-sm"></i></div>
+        </div>
+        <p class="text-2xl font-bold text-gray-900">1,892</p>
+        <p class="text-xs text-gray-500 mt-1">Total Comments</p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex items-center gap-1 bg-white rounded-xl p-1 border border-gray-200 fade-up w-fit shadow-sm">
+      <button onclick="switchTab('articles')" id="tabArticles" class="tab-btn px-5 py-2 rounded-lg text-sm font-semibold transition-all bg-accent-500 text-white shadow">
+        <i class="fas fa-newspaper mr-1.5"></i> Articles
+      </button>
+      <button onclick="switchTab('comments')" id="tabComments" class="tab-btn px-5 py-2 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700">
+        <i class="fas fa-comments mr-1.5"></i> Comments
+      </button>
+      <button onclick="switchTab('analytics')" id="tabAnalytics" class="tab-btn px-5 py-2 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700">
+        <i class="fas fa-chart-line mr-1.5"></i> Analytics
+      </button>
+    </div>
+
+    <!-- Articles Tab -->
+    <div id="articlesTab" class="space-y-4 fade-up">
+      <!-- Filters -->
+      <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 items-end gap-3">
+          <div class="relative">
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+            <input type="text" id="searchInput" placeholder="Search articles..." oninput="renderArticles()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+          </div>
+          <select id="filterStatus" onchange="renderArticles()" class="px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <option value="">All Status</option>
+            <option value="Published">Published</option>
+            <option value="Draft">Draft</option>
+            <option value="Scheduled">Scheduled</option>
+            <option value="Archived">Archived</option>
+          </select>
+          <select id="filterCategory" onchange="renderArticles()" class="px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <option value="">All Categories</option>
+            <option value="Travel Tips">Travel Tips</option>
+            <option value="Destination Guides">Destination Guides</option>
+            <option value="Travel News">Travel News</option>
+            <option value="Honeymoon">Honeymoon</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Cultural">Cultural</option>
+          </select>
+          <select id="filterSort" onchange="renderArticles()" class="px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="views">Most Views</option>
+            <option value="comments">Most Comments</option>
+          </select>
+          <button onclick="resetFilters()" class="px-4 py-2.5 text-gray-500 hover:text-gray-700 text-sm font-medium hover:bg-gray-100 rounded-xl transition-all">
+            <i class="fas fa-redo mr-1"></i> Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Bulk Actions -->
+      <div id="bulkBar" class="hidden bg-accent-50 border border-accent-200 rounded-xl p-3 flex items-center justify-between">
+        <span class="text-sm font-medium text-accent-600"><span id="selectedCount">0</span> selected</span>
+        <div class="flex items-center gap-2">
+          <button onclick="bulkAction('publish')" class="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg text-xs font-semibold transition-all">Publish</button>
+          <button onclick="bulkAction('archive')" class="px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-xs font-semibold transition-all">Archive</button>
+          <button onclick="bulkAction('delete')" class="px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg text-xs font-semibold transition-all">Delete</button>
+          <button onclick="bulkAction('export')" class="px-3 py-1.5 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg text-xs font-semibold transition-all">Export</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="table-container">
+          <table class="w-full">
+            <thead class="bg-gray-50 sticky top-0 z-10">
+              <tr>
+                <th class="pl-4 py-3 text-left w-10"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()" class="rounded border-gray-300 text-accent-500 focus:ring-accent-500"></th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Image</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Article</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Author</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Views</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Comments</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                <th class="px-3 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="articlesTableBody" class="divide-y divide-gray-100"></tbody>
+          </table>
+        </div>
+        <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+          <p id="tableInfo" class="text-xs text-gray-500"></p>
+          <div id="pagination" class="flex items-center gap-1"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comments Tab -->
+    <div id="commentsTab" class="hidden space-y-4 fade-up">
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="table-container">
+          <table class="w-full">
+            <thead class="bg-gray-50 sticky top-0">
+              <tr>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Commenter</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Comment</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Article</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="commentsTableBody" class="divide-y divide-gray-100"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics Tab -->
+    <div id="analyticsTab" class="hidden space-y-6 fade-up">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+          <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-trophy text-accent-500 mr-2"></i>Most Viewed Articles</h3>
+          <div style="height:280px"><canvas id="chartViews"></canvas></div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+          <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-chart-line text-accent-500 mr-2"></i>Views by Month</h3>
+          <div style="height:280px"><canvas id="chartMonthly"></canvas></div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+          <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-pie-chart text-accent-500 mr-2"></i>Category Performance</h3>
+          <div style="height:280px"><canvas id="chartCategory"></canvas></div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+          <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-user-clock text-accent-500 mr-2"></i>Reader Engagement</h3>
+          <div style="height:280px"><canvas id="chartEngagement"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Modal -->
+<div id="addModal" class="modal-overlay" onclick="if(event.target===this)closeModal('addModal')">
+  <div class="modal-content bg-white rounded-2xl w-full max-w-3xl mx-4 border border-gray-200 shadow-2xl" onclick="event.stopPropagation()">
+    <div class="sticky top-0 z-10 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+      <h2 id="modalTitle" class="text-lg font-bold text-gray-900">Add New Article</h2>
+      <button onclick="closeModal('addModal')" class="p-2 hover:bg-gray-100 rounded-xl transition-all"><i class="fas fa-times text-gray-500"></i></button>
+    </div>
+    <div class="p-6 space-y-5">
+      <!-- Featured Image -->
+      <div>
+        <label class="block text-xs font-semibold text-gray-600 mb-2">Featured Image</label>
+        <div id="imageUpload" class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:border-accent-500 transition-all" onclick="document.getElementById('fileInput').click()">
+          <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+          <p class="text-sm text-gray-500">Drag & drop or click to upload</p>
+          <p class="text-xs text-gray-400 mt-1">PNG, JPG up to 5MB</p>
+          <input type="file" id="fileInput" class="hidden" accept="image/*" onchange="handleImageUpload(event)">
+        </div>
+        <div id="imagePreview" class="hidden mt-3 relative inline-block">
+          <img id="previewImg" class="w-32 h-20 object-cover rounded-lg">
+          <button onclick="removeImage()" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full text-xs hover:bg-red-600"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <!-- Title -->
+      <div>
+        <label class="block text-xs font-semibold text-gray-600 mb-2">Article Title</label>
+        <input type="text" id="articleTitle" oninput="autoSlug()" placeholder="Enter article title" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500">
+      </div>
+      <!-- Slug -->
+      <div>
+        <label class="block text-xs font-semibold text-gray-600 mb-2">URL Slug</label>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-gray-400 whitespace-nowrap">/blog/</span>
+          <input type="text" id="articleSlug" placeholder="article-url-slug" class="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500">
+        </div>
+      </div>
+      <!-- Description -->
+      <div>
+        <label class="block text-xs font-semibold text-gray-600 mb-2">Short Description</label>
+        <textarea id="articleDesc" rows="2" placeholder="Brief description..." class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 resize-none"></textarea>
+      </div>
+      <!-- Rich Editor -->
+      <div>
+        <label class="block text-xs font-semibold text-gray-600 mb-2">Content</label>
+        <div class="rich-editor-toolbar flex items-center gap-1 p-2 bg-gray-50 border border-gray-200 rounded-t-xl border-b-0">
+          <button onclick="this.classList.toggle('active')" class="p-2 rounded-lg hover:bg-gray-200 text-sm font-bold text-gray-500 transition-all" title="Bold">B</button>
+          <button onclick="this.classList.toggle('active')" class="p-2 rounded-lg hover:bg-gray-200 text-sm italic text-gray-500 transition-all" title="Italic">I</button>
+          <button onclick="this.classList.toggle('active')" class="p-2 rounded-lg hover:bg-gray-200 text-sm underline text-gray-500 transition-all" title="Underline">U</button>
+          <div class="w-px h-5 bg-gray-300 mx-1"></div>
+          <button class="p-2 rounded-lg hover:bg-gray-200 text-gray-500 transition-all" title="Bullet List"><i class="fas fa-list-ul text-xs"></i></button>
+          <button class="p-2 rounded-lg hover:bg-gray-200 text-gray-500 transition-all" title="Numbered List"><i class="fas fa-list-ol text-xs"></i></button>
+          <div class="w-px h-5 bg-gray-300 mx-1"></div>
+          <button class="p-2 rounded-lg hover:bg-gray-200 text-gray-500 transition-all" title="Link"><i class="fas fa-link text-xs"></i></button>
+          <button class="p-2 rounded-lg hover:bg-gray-200 text-gray-500 transition-all" title="Image"><i class="fas fa-image text-xs"></i></button>
+          <button class="p-2 rounded-lg hover:bg-gray-200 text-gray-500 transition-all" title="Heading"><i class="fas fa-heading text-xs"></i></button>
+        </div>
+        <textarea id="articleContent" rows="8" placeholder="Write your article content here..." class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-b-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-500/50 resize-none"></textarea>
+      </div>
+      <!-- Category & Tags -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-2">Category</label>
+          <select id="articleCategory" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <option value="">Select category</option>
+            <option value="Travel Tips">Travel Tips</option>
+            <option value="Destination Guides">Destination Guides</option>
+            <option value="Travel News">Travel News</option>
+            <option value="Honeymoon">Honeymoon</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Cultural">Cultural</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-2">Tags</label>
+          <div class="flex flex-wrap gap-2 p-2.5 bg-gray-50 border border-gray-200 rounded-xl min-h-[42px] cursor-text" onclick="document.getElementById('tagInput').focus()">
+            <div id="tagContainer" class="flex flex-wrap gap-1.5"></div>
+            <input type="text" id="tagInput" placeholder="Add tag..." onkeydown="handleTagInput(event)" class="flex-1 min-w-[80px] bg-transparent text-sm text-gray-800 focus:outline-none">
+          </div>
+        </div>
+      </div>
+      <!-- SEO -->
+      <div class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+        <h4 class="text-xs font-bold text-gray-600 mb-3"><i class="fas fa-search mr-1"></i> SEO Settings</h4>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 mb-1">Meta Title</label>
+            <input type="text" id="metaTitle" placeholder="SEO title..." class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 mb-1">Meta Description</label>
+            <textarea id="metaDesc" rows="2" placeholder="SEO description..." class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-500/50 resize-none"></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- Toggles -->
+      <div class="flex flex-wrap gap-6">
+        <label class="flex items-center gap-3 cursor-pointer">
+          <div class="relative"><input type="checkbox" id="featuredToggle" class="sr-only peer"><div class="w-10 h-5 bg-gray-300 rounded-full peer peer-checked:bg-accent-500 transition-colors"></div><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow peer-checked:translate-x-5 transition-transform"></div></div>
+          <span class="text-sm font-medium text-gray-600">Featured Post</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer">
+          <div class="relative"><input type="checkbox" id="scheduleToggle" class="sr-only peer" onchange="toggleSchedule()"><div class="w-10 h-5 bg-gray-300 rounded-full peer peer-checked:bg-accent-500 transition-colors"></div><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow peer-checked:translate-x-5 transition-transform"></div></div>
+          <span class="text-sm font-medium text-gray-600">Schedule Publish</span>
+        </label>
+      </div>
+      <div id="scheduleSection" class="hidden">
+        <label class="block text-xs font-semibold text-gray-600 mb-2">Schedule Date & Time</label>
+        <input type="datetime-local" id="scheduleDate" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+      </div>
+    </div>
+    <div class="sticky bottom-0 bg-white border-t border-gray-200 px-6 py-4 flex items-center justify-end gap-3 rounded-b-2xl">
+      <button onclick="saveArticle('draft')" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Save Draft</button>
+      <button onclick="showToast('Preview opened in new tab','info')" class="px-5 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-xl text-sm font-semibold transition-all"><i class="fas fa-eye mr-1.5"></i>Preview</button>
+      <button onclick="saveArticle('publish')" class="px-5 py-2.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-accent-500/25"><i class="fas fa-paper-plane mr-1.5"></i>Publish</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reply Modal -->
+<div id="replyModal" class="modal-overlay" onclick="if(event.target===this)closeModal('replyModal')">
+  <div class="modal-content bg-white rounded-2xl w-full max-w-lg mx-4 border border-gray-200 shadow-2xl" onclick="event.stopPropagation()">
+    <div class="sticky top-0 z-10 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+      <h2 class="text-lg font-bold text-gray-900">Reply to Comment</h2>
+      <button onclick="closeModal('replyModal')" class="p-2 hover:bg-gray-100 rounded-xl transition-all"><i class="fas fa-times text-gray-500"></i></button>
+    </div>
+    <div class="p-6 space-y-4">
+      <div id="replyTo" class="bg-gray-50 rounded-xl p-3 border border-gray-200">
+        <p class="text-xs text-gray-500 mb-1">Replying to:</p>
+        <p id="replyToText" class="text-sm text-gray-700"></p>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-gray-600 mb-2">Your Reply</label>
+        <textarea id="replyText" rows="4" placeholder="Write your reply..." class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 resize-none"></textarea>
+      </div>
+    </div>
+    <div class="px-6 py-4 flex items-center justify-end gap-3 border-t border-gray-200">
+      <button onclick="closeModal('replyModal')" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+      <button onclick="submitReply()" class="px-5 py-2.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-accent-500/25">Send Reply</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===================== DATA =====================
+const colors = ['#e8952f','#3b82f6','#10b981','#8b5cf6','#ef4444','#f59e0b','#06b6d4','#ec4899'];
+const authorNames = ['Ahmed Al-Rashid','Sara Al-Mansoori','Khalid Bin-Faisal','Fatima Al-Zahra','Omar Al-Harbi','Layla Nasser'];
+const avatarColors = ['#e8952f','#3b82f6','#10b981','#8b5cf6','#ef4444','#06b6d4'];
+function getInitials(name){return name.split(' ').map(n=>n[0]).join('').substring(0,2)}
+function randomImg(seed){return `https://picsum.photos/seed/${seed}/400/250`}
+
+let articles = [
+  {id:1,title:"Top 10 Must-Visit Destinations for 2025",slug:"top-10-destinations-2025",desc:"Discover the most breathtaking travel destinations that should be on every traveler's bucket list this year.",content:"Lorem ipsum content about travel destinations...",author:"Ahmed Al-Rashid",category:"Destination Guides",date:"2025-01-15",views:12580,comments:142,status:"Published",featured:true,thumbnail:"travel-dest",tags:["destinations","2025","travel"]},
+  {id:2,title:"Essential Travel Safety Tips for Solo Travelers",slug:"travel-safety-solo",desc:"Stay safe on your next adventure with our comprehensive guide to solo travel safety around the world.",content:"Lorem ipsum content about safety...",author:"Sara Al-Mansoori",category:"Travel Tips",date:"2025-01-12",views:9840,comments:98,status:"Published",featured:false,thumbnail:"safety-tips",tags:["safety","solo travel","tips"]},
+  {id:3,title:"Best Honeymoon Spots in the Middle East",slug:"honeymoon-middle-east",desc:"Romantic getaways and luxurious resorts perfect for couples seeking an unforgettable honeymoon experience.",content:"Lorem ipsum content about honeymoon...",author:"Fatima Al-Zahra",category:"Honeymoon",date:"2025-01-10",views:8720,comments:87,status:"Published",featured:true,thumbnail:"honeymoon",tags:["honeymoon","romance","resorts"]},
+  {id:4,title:"Adventure Tourism: Desert Safari Guide",slug:"desert-safari-guide",desc:"Everything you need to know about planning the ultimate desert safari adventure in the Arabian Peninsula.",content:"Lorem ipsum content about safari...",author:"Khalid Bin-Faisal",category:"Adventure",date:"2025-01-08",views:7650,comments:76,status:"Published",featured:false,thumbnail:"desert-safari",tags:["adventure","desert","safari"]},
+  {id:5,title:"Cultural Heritage Sites You Must Experience",slug:"cultural-heritage-sites",desc:"Explore the rich cultural tapestry of the Middle East through its magnificent historical and heritage sites.",content:"Lorem ipsum content about culture...",author:"Omar Al-Harbi",category:"Cultural",date:"2025-01-05",views:6430,comments:64,status:"Published",featured:false,thumbnail:"heritage",tags:["culture","heritage","history"]},
+  {id:6,title:"Budget Travel: How to Explore More for Less",slug:"budget-travel-guide",desc:"Smart strategies and insider tips for traveling on a budget without compromising on experiences.",content:"Lorem ipsum content about budget travel...",author:"Layla Nasser",category:"Travel Tips",date:"2025-01-03",views:11200,comments:134,status:"Published",featured:false,thumbnail:"budget-travel",tags:["budget","tips","saving"]},
+  {id:7,title:"New Visa Policies for GCC Tourists 2025",slug:"visa-policies-gcc-2025",desc:"Updated visa requirements and policies that will affect travelers visiting GCC countries this year.",content:"Lorem ipsum content about visa policies...",author:"Ahmed Al-Rashid",category:"Travel News",date:"2025-01-02",views:15800,comments:203,status:"Published",featured:true,thumbnail:"visa-news",tags:["visa","news","gcc"]},
+  {id:8,title:"Luxury Desert Glamping Experiences",slug:"desert-glamping",desc:"Experience the magic of the desert with our curated list of luxury glamping spots under the stars.",content:"Lorem ipsum content about glamping...",author:"Sara Al-Mansoori",category:"Adventure",date:"2024-12-28",views:5420,comments:45,status:"Draft",featured:false,thumbnail:"glamping",tags:["luxury","desert","glamping"]},
+  {id:9,title:"Family-Friendly Travel Destinations in Oman",slug:"family-oman",desc:"The best places in Oman for family vacations with kids-friendly attractions and comfortable stays.",content:"Lorem ipsum content about family travel...",author:"Fatima Al-Zahra",category:"Destination Guides",date:"2024-12-25",views:4890,comments:38,status:"Draft",featured:false,thumbnail:"family-oman",tags:["family","oman","kids"]},
+  {id:10,title:"Sustainable Travel: Eco-Friendly Adventures",slug:"sustainable-travel",desc:"How to minimize your carbon footprint while exploring the world's most beautiful destinations.",content:"Lorem ipsum content about eco travel...",author:"Khalid Bin-Faisal",category:"Travel Tips",date:"2025-01-20",views:0,comments:0,status:"Scheduled",featured:false,thumbnail:"eco-travel",tags:["eco","sustainable","green"]},
+  {id:11,title:"Wadi Bani Khalid: A Complete Visitor Guide",slug:"wadi-bani-khalid-guide",desc:"Everything you need to know about visiting one of Oman's most stunning wadis and natural pools.",content:"Lorem ipsum content about Wadi Bani Khalid...",author:"Omar Al-Harbi",category:"Destination Guides",date:"2025-01-25",views:0,comments:0,status:"Scheduled",featured:false,thumbnail:"wadi-guide",tags:["wadi","oman","guide"]},
+  {id:12,title:"The Art of Omani Hospitality",slug:"omani-hospitality",desc:"Discover the warm traditions of Omani hospitality and why it's considered among the finest in the world.",content:"Lorem ipsum content about hospitality...",author:"Layla Nasser",category:"Cultural",date:"2024-12-10",views:3200,comments:28,status:"Archived",featured:false,thumbnail:"hospitality",tags:["culture","hospitality","traditions"]}
+];
+
+const comments = [
+  {id:1,name:"John Smith",article:"Top 10 Must-Visit Destinations for 2025",text:"Amazing article! We visited three of these places last year and they were incredible.",date:"2025-01-14",status:"approved",avatar:"JS"},
+  {id:2,name:"Maria Garcia",article:"Best Honeymoon Spots in the Middle East",text:"We booked our honeymoon based on your recommendations. Thank you so much!",date:"2025-01-13",status:"approved",avatar:"MG"},
+  {id:3,name:"Ali Hassan",article:"Adventure Tourism: Desert Safari Guide",text:"The tips about what to pack were very helpful. Would love more content like this.",date:"2025-01-12",status:"pending",avatar:"AH"},
+  {id:4,name:"Emily Chen",article:"Budget Travel: How to Explore More for Less",text:"This saved me hundreds on my last trip! Sharing with all my travel friends.",date:"2025-01-11",status:"approved",avatar:"EC"},
+  {id:5,name:"David Wilson",article:"New Visa Policies for GCC Tourists 2025",text:"Very timely information. The new visa rules are confusing and this really helped.",date:"2025-01-10",status:"pending",avatar:"DW"},
+  {id:6,name:"Sara Khan",article:"Essential Travel Safety Tips for Solo Travelers",text:"As a solo female traveler, these tips give me so much confidence. Thank you!",date:"2025-01-09",status:"approved",avatar:"SK"},
+  {id:7,name:"Michael Brown",article:"Cultural Heritage Sites You Must Experience",text:"Beautiful photography! The heritage sites section was particularly inspiring.",date:"2025-01-08",status:"approved",avatar:"MB"},
+  {id:8,name:"Fatima Ahmed",article:"Luxury Desert Glamping Experiences",text:"Can you add pricing details for the glamping sites? That would be very useful.",date:"2025-01-07",status:"pending",avatar:"FA"}
+];
+
+// ===================== STATE =====================
+let currentPage = 1;
+const perPage = 6;
+let selectedIds = new Set();
+let tags = [];
+let editingId = null;
+let chartsInitialized = false;
+
+// ===================== TOAST =====================
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  const icon=document.getElementById('toastIcon');
+  const m=document.getElementById('toastMsg');
+  m.textContent=msg;
+  icon.className=type==='success'?'fas fa-check-circle text-green-500 text-lg':type==='error'?'fas fa-exclamation-circle text-red-500 text-lg':'fas fa-info-circle text-blue-500 text-lg';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ===================== TABS =====================
+function switchTab(tab){
+  document.getElementById('articlesTab').classList.add('hidden');
+  document.getElementById('commentsTab').classList.add('hidden');
+  document.getElementById('analyticsTab').classList.add('hidden');
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.className='tab-btn px-5 py-2 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700'});
+  if(tab==='articles'){document.getElementById('articlesTab').classList.remove('hidden');document.getElementById('tabArticles').className='tab-btn px-5 py-2 rounded-lg text-sm font-semibold transition-all bg-accent-500 text-white shadow';}
+  else if(tab==='comments'){document.getElementById('commentsTab').classList.remove('hidden');document.getElementById('tabComments').className='tab-btn px-5 py-2 rounded-lg text-sm font-semibold transition-all bg-accent-500 text-white shadow';renderComments();}
+  else{document.getElementById('analyticsTab').classList.remove('hidden');document.getElementById('tabAnalytics').className='tab-btn px-5 py-2 rounded-lg text-sm font-semibold transition-all bg-accent-500 text-white shadow';if(!chartsInitialized)initCharts();}
+}
+
+// ===================== ARTICLES RENDER =====================
+function getFilteredArticles(){
+  const search=document.getElementById('searchInput').value.toLowerCase();
+  const status=document.getElementById('filterStatus').value;
+  const cat=document.getElementById('filterCategory').value;
+  const sort=document.getElementById('filterSort').value;
+  let list=[...articles];
+  if(search)list=list.filter(a=>a.title.toLowerCase().includes(search)||a.author.toLowerCase().includes(search));
+  if(status)list=list.filter(a=>a.status===status);
+  if(cat)list=list.filter(a=>a.category===cat);
+  if(sort==='newest')list.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  else if(sort==='oldest')list.sort((a,b)=>new Date(a.date)-new Date(b.date));
+  else if(sort==='views')list.sort((a,b)=>b.views-a.views);
+  else if(sort==='comments')list.sort((a,b)=>b.comments-a.comments);
+  return list;
+}
+
+function renderArticles(){
+  const list=getFilteredArticles();
+  const total=list.length;
+  const totalPages=Math.ceil(total/perPage);
+  if(currentPage>totalPages)currentPage=1;
+  const start=(currentPage-1)*perPage;
+  const pageList=list.slice(start,start+perPage);
+  const tbody=document.getElementById('articlesTableBody');
+  tbody.innerHTML=pageList.map(a=>{
+    const statusColors={Published:'bg-green-50 text-green-700 border border-green-200',Draft:'bg-gray-100 text-gray-600 border border-gray-200',Scheduled:'bg-blue-50 text-blue-700 border border-blue-200',Archived:'bg-orange-50 text-orange-700 border border-orange-200'};
+    const catColors={'Travel Tips':'bg-teal-50 text-teal-700 border border-teal-200','Destination Guides':'bg-indigo-50 text-indigo-700 border border-indigo-200','Travel News':'bg-rose-50 text-rose-700 border border-rose-200','Honeymoon':'bg-pink-50 text-pink-700 border border-pink-200','Adventure':'bg-amber-50 text-amber-700 border border-amber-200','Cultural':'bg-purple-50 text-purple-700 border border-purple-200'};
+    const authorIdx=authorNames.indexOf(a.author)%avatarColors.length;
+    const checked=selectedIds.has(a.id)?'checked':'';
+    return `<tr class="hover:bg-gray-50 transition-colors ${checked?'bg-accent-50':''}">
+      <td class="pl-4 py-3"><input type="checkbox" ${checked} onchange="toggleSelect(${a.id})" class="rounded border-gray-300 text-accent-500 focus:ring-accent-500"></td>
+      <td class="px-3 py-3"><img src="https://picsum.photos/seed/${a.thumbnail}/80/80" class="w-10 h-10 rounded-lg object-cover" alt=""></td>
+      <td class="px-3 py-3 max-w-[280px]"><p class="font-semibold text-sm text-gray-900 leading-tight">${a.featured?'<i class="fas fa-star text-accent-500 text-xs mr-1"></i>':''}${a.title}</p><p class="text-xs text-gray-500 mt-0.5 line-clamp-2" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${a.desc}</p></td>
+      <td class="px-3 py-3"><div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0" style="background:${avatarColors[authorIdx]}">${getInitials(a.author)}</div><span class="text-xs font-medium text-gray-600 whitespace-nowrap">${a.author.split(' ')[0]}</span></div></td>
+      <td class="px-3 py-3"><span class="status-badge ${catColors[a.category]||''} text-[10px]">${a.category}</span></td>
+      <td class="px-3 py-3 text-xs text-gray-500 whitespace-nowrap">${new Date(a.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</td>
+      <td class="px-3 py-3 text-xs font-semibold text-gray-700">${a.views>0?a.views.toLocaleString():'-'}</td>
+      <td class="px-3 py-3 text-xs font-semibold text-gray-700">${a.comments>0?a.comments:'-'}</td>
+      <td class="px-3 py-3"><span class="status-badge ${statusColors[a.status]||''}">${a.status}</span></td>
+      <td class="px-3 py-3"><div class="flex items-center gap-1">
+        <button onclick="viewArticle(${a.id})" class="p-1.5 hover:bg-blue-50 rounded-lg text-blue-500 transition-all" title="View"><i class="fas fa-eye text-xs"></i></button>
+        <button onclick="editArticle(${a.id})" class="p-1.5 hover:bg-accent-50 rounded-lg text-accent-500 transition-all" title="Edit"><i class="fas fa-edit text-xs"></i></button>
+        <button onclick="deleteArticle(${a.id})" class="p-1.5 hover:bg-red-50 rounded-lg text-red-500 transition-all" title="Delete"><i class="fas fa-trash text-xs"></i></button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('tableInfo').textContent=`Showing ${start+1}-${Math.min(start+perPage,total)} of ${total} articles`;
+  renderPagination(totalPages);
+  updateBulkBar();
+}
+
+function renderPagination(totalPages){
+  const pg=document.getElementById('pagination');
+  let html=`<button onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage===1?'text-gray-400 cursor-not-allowed':'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-left"></i></button>`;
+  for(let i=1;i<=totalPages;i++){
+    if(totalPages>7&&i>3&&i<totalPages-1&&Math.abs(i-currentPage)>1){if(i===4||i===totalPages-2)html+=`<span class="px-2 text-gray-400">...</span>`;continue;}
+    html+=`<button onclick="goPage(${i})" class="w-8 h-8 rounded-lg text-xs font-semibold ${i===currentPage?'bg-accent-500 text-white shadow':'text-gray-600 hover:bg-gray-100'} transition-all">${i}</button>`;
+  }
+  html+=`<button onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage===totalPages?'text-gray-400 cursor-not-allowed':'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-right"></i></button>`;
+  pg.innerHTML=html;
+}
+
+function goPage(p){currentPage=p;renderArticles();document.getElementById('articlesTab').scrollIntoView({behavior:'smooth'});}
+function resetFilters(){document.getElementById('searchInput').value='';document.getElementById('filterStatus').value='';document.getElementById('filterCategory').value='';document.getElementById('filterSort').value='newest';currentPage=1;selectedIds.clear();renderArticles();}
+
+// ===================== SELECTION =====================
+function toggleSelect(id){if(selectedIds.has(id))selectedIds.delete(id);else selectedIds.add(id);renderArticles();}
+function toggleSelectAll(){
+  const cb=document.getElementById('selectAll');
+  const list=getFilteredArticles();
+  const start=(currentPage-1)*perPage;
+  const pageList=list.slice(start,start+perPage);
+  if(cb.checked){pageList.forEach(a=>selectedIds.add(a.id));}else{pageList.forEach(a=>selectedIds.delete(a.id));}
+  renderArticles();
+}
+function updateBulkBar(){
+  const bar=document.getElementById('bulkBar');
+  const cnt=document.getElementById('selectedCount');
+  if(selectedIds.size>0){bar.classList.remove('hidden');bar.classList.add('flex');cnt.textContent=selectedIds.size;}
+  else{bar.classList.add('hidden');bar.classList.remove('flex');}
+}
+
+function bulkAction(action){
+  if(action==='delete'){
+    articles=articles.filter(a=>!selectedIds.has(a.id));
+    showToast(`${selectedIds.size} article(s) deleted`,'success');
+  } else if(action==='publish'){
+    articles.forEach(a=>{if(selectedIds.has(a.id))a.status='Published';});
+    showToast(`${selectedIds.size} article(s) published`,'success');
+  } else if(action==='archive'){
+    articles.forEach(a=>{if(selectedIds.has(a.id))a.status='Archived';});
+    showToast(`${selectedIds.size} article(s) archived`,'success');
+  } else {
+    showToast('Articles exported successfully!','success');
+  }
+  selectedIds.clear();
+  document.getElementById('selectAll').checked=false;
+  renderArticles();
+}
+
+// ===================== ARTICLE ACTIONS =====================
+function viewArticle(id){const a=articles.find(x=>x.id===id);showToast(`Viewing: ${a.title}`,'info');}
+function deleteArticle(id){
+  if(!confirm('Are you sure you want to delete this article?'))return;
+  articles=articles.filter(a=>a.id!==id);
+  selectedIds.delete(id);
+  renderArticles();
+  showToast('Article deleted successfully','success');
+}
+function editArticle(id){
+  editingId=id;
+  const a=articles.find(x=>x.id===id);
+  document.getElementById('modalTitle').textContent='Edit Article';
+  document.getElementById('articleTitle').value=a.title;
+  document.getElementById('articleSlug').value=a.slug;
+  document.getElementById('articleDesc').value=a.desc;
+  document.getElementById('articleContent').value=a.content;
+  document.getElementById('articleCategory').value=a.category;
+  document.getElementById('metaTitle').value=a.title;
+  document.getElementById('metaDesc').value=a.desc;
+  document.getElementById('featuredToggle').checked=a.featured;
+  tags=[...a.tags];
+  renderTags();
+  openModal('addModal');
+}
+function openModal(id){document.getElementById(id).classList.add('active');document.body.classList.add('modal-open');}
+function closeModal(id){document.getElementById(id).classList.remove('active');document.body.classList.remove('modal-open');if(id==='addModal'){resetForm();}}
+
+function resetForm(){
+  editingId=null;
+  document.getElementById('modalTitle').textContent='Add New Article';
+  document.getElementById('articleTitle').value='';
+  document.getElementById('articleSlug').value='';
+  document.getElementById('articleDesc').value='';
+  document.getElementById('articleContent').value='';
+  document.getElementById('articleCategory').value='';
+  document.getElementById('metaTitle').value='';
+  document.getElementById('metaDesc').value='';
+  document.getElementById('featuredToggle').checked=false;
+  document.getElementById('scheduleToggle').checked=false;
+  document.getElementById('scheduleSection').classList.add('hidden');
+  tags=[];
+  renderTags();
+  document.getElementById('imagePreview').classList.add('hidden');
+  document.getElementById('imageUpload').classList.remove('hidden');
+}
+function autoSlug(){const t=document.getElementById('articleTitle').value;document.getElementById('articleSlug').value=t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+function toggleSchedule(){document.getElementById('scheduleSection').classList.toggle('hidden',!document.getElementById('scheduleToggle').checked);}
+
+// ===================== IMAGE UPLOAD =====================
+function handleImageUpload(e){
+  const file=e.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    document.getElementById('previewImg').src=ev.target.result;
+    document.getElementById('imagePreview').classList.remove('hidden');
+    document.getElementById('imageUpload').classList.add('hidden');
+  };
+  reader.readAsDataURL(file);
+}
+function removeImage(){document.getElementById('imagePreview').classList.add('hidden');document.getElementById('imageUpload').classList.remove('hidden');document.getElementById('fileInput').value='';}
+
+// ===================== TAGS =====================
+function handleTagInput(e){
+  if(e.key==='Enter'&&e.target.value.trim()){
+    e.preventDefault();
+    const val=e.target.value.trim().toLowerCase();
+    if(!tags.includes(val)){tags.push(val);renderTags();}
+    e.target.value='';
+  }
+}
+function removeTag(idx){tags.splice(idx,1);renderTags();}
+function renderTags(){
+  const c=document.getElementById('tagContainer');
+  c.innerHTML=tags.map((t,i)=>`<span class="tag-chip">${t}<button onclick="removeTag(${i})" class="ml-1 hover:text-red-400"><i class="fas fa-times text-[10px]"></i></button></span>`).join('');
+}
+
+// ===================== SAVE ARTICLE =====================
+function saveArticle(status){
+  const title=document.getElementById('articleTitle').value.trim();
+  if(!title){showToast('Please enter an article title','error');return;}
+  if(editingId){
+    const a=articles.find(x=>x.id===editingId);
+    a.title=title;
+    a.slug=document.getElementById('articleSlug').value;
+    a.desc=document.getElementById('articleDesc').value;
+    a.content=document.getElementById('articleContent').value;
+    a.category=document.getElementById('articleCategory').value||'Travel Tips';
+    a.featured=document.getElementById('featuredToggle').checked;
+    a.tags=[...tags];
+    if(status==='publish')a.status='Published';
+    showToast('Article updated successfully','success');
+  } else {
+    const newArticle={
+      id:Date.now(),
+      title,
+      slug:document.getElementById('articleSlug').value||title.toLowerCase().replace(/[^a-z0-9]+/g,'-'),
+      desc:document.getElementById('articleDesc').value,
+      content:document.getElementById('articleContent').value,
+      author:'Admin User',
+      category:document.getElementById('articleCategory').value||'Travel Tips',
+      date:new Date().toISOString().split('T')[0],
+      views:0,comments:0,
+      status:document.getElementById('scheduleToggle').checked?'Scheduled':status==='publish'?'Published':'Draft',
+      featured:document.getElementById('featuredToggle').checked,
+      thumbnail:'new-'+Date.now(),
+      tags:[...tags]
+    };
+    articles.unshift(newArticle);
+    showToast(status==='publish'?'Article published successfully!':'Article saved as draft','success');
+  }
+  closeModal('addModal');
+  renderArticles();
+}
+
+// ===================== COMMENTS =====================
+function renderComments(){
+  const tbody=document.getElementById('commentsTableBody');
+  const statusColors={approved:'bg-green-50 text-green-700 border border-green-200',pending:'bg-yellow-50 text-yellow-700 border border-yellow-200'};
+  tbody.innerHTML=comments.map(c=>{
+    const colors=['#e8952f','#3b82f6','#10b981','#8b5cf6','#ef4444','#06b6d4'];
+    const clr=colors[c.id%colors.length];
+    return `<tr class="hover:bg-gray-50 transition-colors">
+      <td class="px-4 py-3"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:${clr}">${c.avatar}</div><span class="text-sm font-medium text-gray-900">${c.name}</span></div></td>
+      <td class="px-4 py-3 max-w-[300px]"><p class="text-sm text-gray-600 truncate">${c.text}</p></td>
+      <td class="px-4 py-3 text-xs text-gray-500 max-w-[180px] truncate">${c.article}</td>
+      <td class="px-4 py-3 text-xs text-gray-500 whitespace-nowrap">${new Date(c.date).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</td>
+      <td class="px-4 py-3"><span class="status-badge ${statusColors[c.status]}">${c.status}</span></td>
+      <td class="px-4 py-3"><div class="flex items-center gap-1">
+        ${c.status==='pending'?`<button onclick="approveComment(${c.id})" class="p-1.5 hover:bg-green-50 rounded-lg text-green-600 transition-all" title="Approve"><i class="fas fa-check text-xs"></i></button>`:''}
+        <button onclick="openReplyModal(${c.id})" class="p-1.5 hover:bg-blue-50 rounded-lg text-blue-600 transition-all" title="Reply"><i class="fas fa-reply text-xs"></i></button>
+        <button onclick="deleteComment(${c.id})" class="p-1.5 hover:bg-red-50 rounded-lg text-red-600 transition-all" title="Delete"><i class="fas fa-trash text-xs"></i></button>
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+
+function approveComment(id){
+  const c=comments.find(x=>x.id===id);
+  c.status='approved';
+  renderComments();
+  showToast('Comment approved','success');
+}
+function deleteComment(id){
+  if(!confirm('Delete this comment?'))return;
+  const idx=comments.findIndex(x=>x.id===id);
+  comments.splice(idx,1);
+  renderComments();
+  showToast('Comment deleted','success');
+}
+function openReplyModal(id){
+  const c=comments.find(x=>x.id===id);
+  document.getElementById('replyToText').textContent=`${c.name}: "${c.text.substring(0,80)}..."`;
+  document.getElementById('replyText').value='';
+  openModal('replyModal');
+}
+function submitReply(){
+  const text=document.getElementById('replyText').value.trim();
+  if(!text){showToast('Please write a reply','error');return;}
+  closeModal('replyModal');
+  showToast('Reply sent successfully','success');
+}
+
+// ===================== CHARTS =====================
+function initCharts(){
+  chartsInitialized=true;
+  const textColor='#6b7280';
+  const gridColor='rgba(0,0,0,0.05)';
+  Chart.defaults.color=textColor;
+  Chart.defaults.font.family='Inter';
+
+  // Most Viewed
+  new Chart(document.getElementById('chartViews'),{
+    type:'bar',
+    data:{labels:['Visa Policies','Destinations 2025','Budget Travel','Safety Tips','Honeymoon','Desert Safari'],datasets:[{data:[15800,12580,11200,9840,8720,7650],backgroundColor:colors.slice(0,6),borderRadius:6,barThickness:24}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gridColor},ticks:{font:{size:11}}},y:{grid:{display:false},ticks:{font:{size:11}}}}}
+  });
+
+  // Monthly Views
+  new Chart(document.getElementById('chartMonthly'),{
+    type:'line',
+    data:{labels:['Jul','Aug','Sep','Oct','Nov','Dec','Jan'],datasets:[{label:'Views',data:[8200,9500,11200,10800,13400,14200,15600],borderColor:'#e8952f',backgroundColor:'rgba(232,149,47,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#e8952f',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:gridColor},ticks:{font:{size:11}}},y:{grid:{color:gridColor},ticks:{font:{size:11}}}}}
+  });
+
+  // Category
+  new Chart(document.getElementById('chartCategory'),{
+    type:'doughnut',
+    data:{labels:['Travel Tips','Destination Guides','Adventure','Honeymoon','Cultural','Travel News'],datasets:[{data:[35,25,18,12,6,4],backgroundColor:colors.slice(0,6),borderWidth:0,hoverOffset:8}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{padding:12,usePointStyle:true,pointStyle:'circle',font:{size:11}}}}}
+  });
+
+  // Engagement
+  new Chart(document.getElementById('chartEngagement'),{
+    type:'bar',
+    data:{labels:['Avg. Time (min)','Pages/Session','Bounce Rate (%)','Return Rate (%)','Newsletter Signups','Social Shares'],datasets:[{label:'This Month',data:[4.2,3.1,38,52,128,256],backgroundColor:'rgba(232,149,47,0.8)',borderRadius:6,barThickness:20},{label:'Last Month',data:[3.8,2.7,42,48,98,198],backgroundColor:'rgba(59,130,246,0.5)',borderRadius:6,barThickness:20}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{padding:12,usePointStyle:true,pointStyle:'circle',font:{size:11}}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:gridColor},ticks:{font:{size:11}}}}}
+  });
+}
+
+function updateChartColors(){
+  const textColor='#6b7280';
+  const gridColor='rgba(0,0,0,0.05)';
+  Chart.defaults.color=textColor;
+  Object.values(Chart.instances).forEach(c=>{
+    if(c.options.scales){
+      Object.values(c.options.scales).forEach(s=>{if(s.grid)s.grid.color=gridColor;});
+    }
+    c.update();
+  });
+}
+
+// ===================== DRAG & DROP =====================
+const imageUpload=document.getElementById('imageUpload');
+imageUpload.addEventListener('dragover',e=>{e.preventDefault();imageUpload.classList.add('border-accent-500','bg-accent-500/5');});
+imageUpload.addEventListener('dragleave',()=>{imageUpload.classList.remove('border-accent-500','bg-accent-500/5');});
+imageUpload.addEventListener('drop',e=>{
+  e.preventDefault();
+  imageUpload.classList.remove('border-accent-500','bg-accent-500/5');
+  const file=e.dataTransfer.files[0];
+  if(file&&file.type.startsWith('image/')){
+    const reader=new FileReader();
+    reader.onload=function(ev){
+      document.getElementById('previewImg').src=ev.target.result;
+      document.getElementById('imagePreview').classList.remove('hidden');
+      imageUpload.classList.add('hidden');
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// ===================== KEYBOARD =====================
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal-overlay.active').forEach(m=>{m.classList.remove('active');});
+    document.body.classList.remove('modal-open');
+  }
+});
+
+// ===================== INIT =====================
+renderArticles();
+</script>
+<script src="components.js"></script>
+</body>
+</html>

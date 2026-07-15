@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support Center - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+          <a href="index.html" class="flex items-center gap-2 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-8 h-8 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <span class="text-lg font-extrabold text-white tracking-tight hidden sm:block">Wadi Al Zaid</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="hidden md:flex items-center bg-white/10 rounded-xl px-4 py-2 gap-2">
+            <i class="fas fa-search text-white/40 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-white text-sm outline-none placeholder-white/40 w-48" />
+          </div>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bell text-lg"></i>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+          <div class="flex items-center gap-3 cursor-pointer" onclick="toggleProfileMenu()">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-9 h-9 rounded-xl border-2 border-accent/50" />
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold text-white leading-tight">John Doe</p>
+              <p class="text-[10px] text-white/50">Premium Member</p>
+            </div>
+            <i class="fas fa-chevron-down text-white/40 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar fixed top-16 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 transition-all duration-300 overflow-y-auto custom-scroll">
+    <div class="p-4">
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-2xl p-4 mb-6">
+        <div class="flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-12 h-12 rounded-xl border-2 border-accent/50" />
+          <div class="sidebar-text">
+            <p class="font-bold text-white text-sm">John Doe</p>
+            <p class="text-[10px] text-accent">Premium Member</p>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/10 flex justify-between sidebar-text">
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">12</p>
+            <p class="text-[9px] text-white/50">Trips</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">2,450</p>
+            <p class="text-[9px] text-white/50">Points</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">4.9</p>
+            <p class="text-[9px] text-white/50">Rating</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="dashboard.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-th-large w-5 text-center"></i>
+          <span class="sidebar-text">Dashboard</span>
+        </a>
+        <a href="bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-suitcase w-5 text-center"></i>
+          <span class="sidebar-text">My Bookings</span>
+        </a>
+        <a href="#history" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-history w-5 text-center"></i>
+          <span class="sidebar-text">Booking History</span>
+        </a>
+        <a href="wishlist.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-heart w-5 text-center"></i>
+          <span class="sidebar-text">Wishlist</span>
+          <span class="ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">3</span>
+        </a>
+        <a href="profile.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-user w-5 text-center"></i>
+          <span class="sidebar-text">My Profile</span>
+        </a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-bell w-5 text-center"></i>
+          <span class="sidebar-text">Notifications</span>
+          <span class="ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+        </a>
+        <a href="support.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy">
+          <i class="fas fa-headset w-5 text-center"></i>
+          <span class="sidebar-text">Support</span>
+        </a>
+        <a href="profile.html#settings" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-cog w-5 text-center"></i>
+          <span class="sidebar-text">Settings</span>
+        </a>
+        <hr class="my-3 border-gray-100" />
+        <a href="login.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50">
+          <i class="fas fa-sign-out-alt w-5 text-center"></i>
+          <span class="sidebar-text">Logout</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- SIDEBAR OVERLAY (Mobile) -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="lg:ml-64 pt-16 min-h-screen transition-all duration-300" id="mainContent" role="main">
+    <div class="p-4 sm:p-6 lg:p-8">
+
+      <!-- Hero Section -->
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-2xl p-6 sm:p-10 mb-8 fade-up">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-2xl sm:text-4xl font-black text-white mb-3">How can we help you?</h1>
+          <p class="text-white/60 text-sm sm:text-base mb-6">Search our help center or browse categories below</p>
+          <div class="relative max-w-xl mx-auto">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-navy/40"></i>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search for help articles, FAQs..."
+              class="w-full pl-12 pr-4 py-4 bg-white rounded-xl text-sm outline-none shadow-lg"
+              oninput="filterFAQs()"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Categories -->
+      <div class="mb-8 fade-up">
+        <h2 class="text-xl font-bold text-navy mb-5 flex items-center gap-2">
+          <i class="fas fa-th-large text-accent"></i> Support Categories
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Category 1 -->
+          <div class="category-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="filterByCategory('booking')">
+            <div class="category-icon w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-suitcase text-blue-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Booking Assistance</h3>
+            <p class="text-xs text-navy/50">Help with reservations, modifications, and cancellations</p>
+            <div class="flex items-center gap-1 mt-3 text-accent text-xs font-medium">
+              <span>24 articles</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
+            </div>
+          </div>
+          <!-- Category 2 -->
+          <div class="category-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="filterByCategory('payment')">
+            <div class="category-icon w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-credit-card text-green-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Payments & Refunds</h3>
+            <p class="text-xs text-navy/50">Payment methods, refunds, and billing inquiries</p>
+            <div class="flex items-center gap-1 mt-3 text-accent text-xs font-medium">
+              <span>18 articles</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
+            </div>
+          </div>
+          <!-- Category 3 -->
+          <div class="category-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="filterByCategory('visa')">
+            <div class="category-icon w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-passport text-purple-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Visa Services</h3>
+            <p class="text-xs text-navy/50">Visa requirements, applications, and processing</p>
+            <div class="flex items-center gap-1 mt-3 text-accent text-xs font-medium">
+              <span>12 articles</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
+            </div>
+          </div>
+          <!-- Category 4 -->
+          <div class="category-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="filterByCategory('flight')">
+            <div class="category-icon w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-plane text-orange-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Flight Issues</h3>
+            <p class="text-xs text-navy/50">Flight bookings, changes, delays, and cancellations</p>
+            <div class="flex items-center gap-1 mt-3 text-accent text-xs font-medium">
+              <span>15 articles</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
+            </div>
+          </div>
+          <!-- Category 5 -->
+          <div class="category-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="filterByCategory('hotel')">
+            <div class="category-icon w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-hotel text-pink-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Hotel Reservations</h3>
+            <p class="text-xs text-navy/50">Hotel bookings, upgrades, and special requests</p>
+            <div class="flex items-center gap-1 mt-3 text-accent text-xs font-medium">
+              <span>20 articles</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
+            </div>
+          </div>
+          <!-- Category 6 -->
+          <div class="category-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="filterByCategory('technical')">
+            <div class="category-icon w-14 h-14 bg-navy/5 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-cog text-navy/60 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Technical Support</h3>
+            <p class="text-xs text-navy/50">Website issues, account access, and app support</p>
+            <div class="flex items-center gap-1 mt-3 text-accent text-xs font-medium">
+              <span>16 articles</span>
+              <i class="fas fa-arrow-right text-[10px]"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Support Options -->
+      <div class="mb-8 fade-up">
+        <h2 class="text-xl font-bold text-navy mb-5 flex items-center gap-2">
+          <i class="fas fa-phone-alt text-accent"></i> Contact Support
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Live Chat -->
+          <div class="contact-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 text-center cursor-pointer" onclick="openLiveChat()">
+            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 relative">
+              <i class="fas fa-comments text-accent text-xl"></i>
+              <span class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white pulse-dot"></span>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Live Chat</h3>
+            <p class="text-xs text-navy/50 mb-3">Chat with our support team</p>
+            <span class="text-xs text-green-600 font-medium"><i class="fas fa-circle text-[6px] mr-1"></i> Online Now</span>
+          </div>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/1234567890" target="_blank" class="contact-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 text-center">
+            <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">WhatsApp</h3>
+            <p class="text-xs text-navy/50 mb-3">Message us on WhatsApp</p>
+            <span class="text-xs text-accent font-medium">+1 (234) 567-890</span>
+          </a>
+          <!-- Email -->
+          <a href="mailto:support@wadialzaid.com" class="contact-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 text-center">
+            <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-envelope text-blue-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Email</h3>
+            <p class="text-xs text-navy/50 mb-3">Send us an email</p>
+            <span class="text-xs text-accent font-medium">support@wadialzaid.com</span>
+          </a>
+          <!-- Phone -->
+          <a href="tel:+1234567890" class="contact-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 text-center">
+            <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-phone-alt text-purple-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-navy mb-1">Phone Call</h3>
+            <p class="text-xs text-navy/50 mb-3">Call our support line</p>
+            <span class="text-xs text-accent font-medium">+1 (234) 567-890</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6 mb-8">
+        <!-- FAQ Section -->
+        <div class="lg:col-span-2 fade-up">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
+            <div class="flex items-center justify-between mb-5">
+              <h2 class="font-bold text-lg flex items-center gap-2">
+                <i class="fas fa-question-circle text-accent"></i> Frequently Asked Questions
+              </h2>
+              <button onclick="expandAllFAQs()" class="text-xs text-accent hover:text-accent-dark font-medium">Expand All</button>
+            </div>
+            <div id="faqContainer" class="space-y-3">
+              <!-- FAQ 1 -->
+              <div class="faq-item bg-gray-50 rounded-xl border border-gray-100 overflow-hidden" data-category="booking">
+                <button onclick="toggleFAQ(this)" class="faq-question w-full flex items-center justify-between p-4 text-left">
+                  <span class="font-medium text-sm text-navy">How do I modify or cancel my booking?</span>
+                  <i class="fas fa-chevron-down faq-icon text-navy/40 text-xs"></i>
+                </button>
+                <div class="faq-answer px-4 pb-4">
+                  <p class="text-sm text-navy/60">You can modify or cancel your booking by going to "My Bookings" in your dashboard. Select the booking you want to change and click "Modify" or "Cancel". Please note that cancellation policies vary depending on the package and timing.</p>
+                </div>
+              </div>
+              <!-- FAQ 2 -->
+              <div class="faq-item bg-gray-50 rounded-xl border border-gray-100 overflow-hidden" data-category="payment">
+                <button onclick="toggleFAQ(this)" class="faq-question w-full flex items-center justify-between p-4 text-left">
+                  <span class="font-medium text-sm text-navy">What payment methods do you accept?</span>
+                  <i class="fas fa-chevron-down faq-icon text-navy/40 text-xs"></i>
+                </button>
+                <div class="faq-answer px-4 pb-4">
+                  <p class="text-sm text-navy/60">We accept all major credit cards (Visa, Mastercard, American Express), PayPal, bank transfers, and cash on arrival for select destinations. All online payments are secured with 256-bit SSL encryption.</p>
+                </div>
+              </div>
+              <!-- FAQ 3 -->
+              <div class="faq-item bg-gray-50 rounded-xl border border-gray-100 overflow-hidden" data-category="visa">
+                <button onclick="toggleFAQ(this)" class="faq-question w-full flex items-center justify-between p-4 text-left">
+                  <span class="font-medium text-sm text-navy">Do you provide visa assistance?</span>
+                  <i class="fas fa-chevron-down faq-icon text-navy/40 text-xs"></i>
+                </button>
+                <div class="faq-answer px-4 pb-4">
+                  <p class="text-sm text-navy/60">Yes, we provide comprehensive visa assistance for most destinations. Our visa team will guide you through the application process, help you prepare documents, and track your application status. Visa fees are separate from tour packages.</p>
+                </div>
+              </div>
+              <!-- FAQ 4 -->
+              <div class="faq-item bg-gray-50 rounded-xl border border-gray-100 overflow-hidden" data-category="payment">
+                <button onclick="toggleFAQ(this)" class="faq-question w-full flex items-center justify-between p-4 text-left">
+                  <span class="font-medium text-sm text-navy">How long does a refund take to process?</span>
+                  <i class="fas fa-chevron-down faq-icon text-navy/40 text-xs"></i>
+                </button>
+                <div class="faq-answer px-4 pb-4">
+                  <p class="text-sm text-navy/60">Refunds are typically processed within 5-7 business days. The refund will be credited to the original payment method. For credit card payments, it may take an additional 3-5 business days to appear on your statement.</p>
+                </div>
+              </div>
+              <!-- FAQ 5 -->
+              <div class="faq-item bg-gray-50 rounded-xl border border-gray-100 overflow-hidden" data-category="flight">
+                <button onclick="toggleFAQ(this)" class="faq-question w-full flex items-center justify-between p-4 text-left">
+                  <span class="font-medium text-sm text-navy">What happens if my flight is delayed or cancelled?</span>
+                  <i class="fas fa-chevron-down faq-icon text-navy/40 text-xs"></i>
+                </button>
+                <div class="faq-answer px-4 pb-4">
+                  <p class="text-sm text-navy/60">In case of flight delays or cancellations, our team will assist you with rebooking on the next available flight. We also help arrange accommodation if overnight stay is required. Additional costs due to airline issues are covered under our travel protection plan.</p>
+                </div>
+              </div>
+              <!-- FAQ 6 -->
+              <div class="faq-item bg-gray-50 rounded-xl border border-gray-100 overflow-hidden" data-category="booking">
+                <button onclick="toggleFAQ(this)" class="faq-question w-full flex items-center justify-between p-4 text-left">
+                  <span class="font-medium text-sm text-navy">Can I add extra services to my booking?</span>
+                  <i class="fas fa-chevron-down faq-icon text-navy/40 text-xs"></i>
+                </button>
+                <div class="faq-answer px-4 pb-4">
+                  <p class="text-sm text-navy/60">Yes, you can add extra services like airport transfers, spa treatments, excursions, and special meals through your dashboard or by contacting our support team. Additional services are subject to availability and may incur extra charges.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="space-y-6">
+          <!-- Emergency Contact -->
+          <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-5 sm:p-6 text-white fade-up">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-exclamation-circle text-xl"></i>
+              </div>
+              <h3 class="font-bold text-lg">Emergency Contact</h3>
+            </div>
+            <p class="text-white/80 text-sm mb-4">For urgent travel emergencies, 24/7 support is available.</p>
+            <a href="tel:+1234567890" class="flex items-center gap-3 p-3 bg-white/20 rounded-xl hover:bg-white/30 transition-colors mb-3">
+              <i class="fas fa-phone-alt"></i>
+              <span class="font-bold">+1 (234) 567-890</span>
+            </a>
+            <a href="mailto:emergency@wadialzaid.com" class="flex items-center gap-3 p-3 bg-white/20 rounded-xl hover:bg-white/30 transition-colors">
+              <i class="fas fa-envelope"></i>
+              <span class="font-medium text-sm">emergency@wadialzaid.com</span>
+            </a>
+          </div>
+
+          <!-- Business Hours -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+              <i class="fas fa-clock text-accent"></i> Business Hours
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-sm text-navy/60">Monday - Friday</span>
+                <span class="font-medium text-sm">9:00 AM - 8:00 PM</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-sm text-navy/60">Saturday</span>
+                <span class="font-medium text-sm">10:00 AM - 6:00 PM</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-sm text-navy/60">Sunday</span>
+                <span class="font-medium text-sm">Closed</span>
+              </div>
+              <div class="flex items-center justify-between py-2">
+                <span class="text-sm text-navy/60">Emergency Support</span>
+                <span class="text-xs text-green-600 font-bold"><i class="fas fa-circle text-[6px] mr-1"></i> 24/7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create Support Ticket & Recent Tickets -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-8">
+        <!-- Create Ticket Form -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+          <h3 class="font-bold text-lg mb-5 flex items-center gap-2">
+            <i class="fas fa-ticket-alt text-accent"></i> Create Support Ticket
+          </h3>
+          <form id="ticketForm" onsubmit="submitTicket(event)">
+            <div class="space-y-4">
+              <!-- Subject -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Subject</label>
+                <input type="text" id="ticketSubject" placeholder="Brief description of your issue" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" required />
+              </div>
+              <!-- Category -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Category</label>
+                <select id="ticketCategory" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none" required>
+                  <option value="">Select a category</option>
+                  <option value="booking">Booking Assistance</option>
+                  <option value="payment">Payments & Refunds</option>
+                  <option value="visa">Visa Services</option>
+                  <option value="flight">Flight Issues</option>
+                  <option value="hotel">Hotel Reservations</option>
+                  <option value="technical">Technical Support</option>
+                </select>
+              </div>
+              <!-- Priority -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Priority</label>
+                <div class="flex items-center gap-3">
+                  <label class="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl cursor-pointer hover:border-accent transition-colors">
+                    <input type="radio" name="priority" value="low" class="accent-accent" />
+                    <span class="text-sm">Low</span>
+                  </label>
+                  <label class="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl cursor-pointer hover:border-accent transition-colors">
+                    <input type="radio" name="priority" value="medium" checked class="accent-accent" />
+                    <span class="text-sm">Medium</span>
+                  </label>
+                  <label class="flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl cursor-pointer hover:border-accent transition-colors">
+                    <input type="radio" name="priority" value="high" class="accent-accent" />
+                    <span class="text-sm">High</span>
+                  </label>
+                </div>
+              </div>
+              <!-- Message -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Message</label>
+                <textarea id="ticketMessage" rows="4" placeholder="Describe your issue in detail..." class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none resize-none" required></textarea>
+              </div>
+              <!-- File Upload -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Attachments (Optional)</label>
+                <div class="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-accent transition-colors cursor-pointer" onclick="document.getElementById('fileInput').click()">
+                  <input type="file" id="fileInput" class="hidden" multiple onchange="handleFileSelect(event)" />
+                  <i class="fas fa-cloud-upload-alt text-3xl text-navy/20 mb-2"></i>
+                  <p class="text-sm text-navy/50">Click to upload or drag and drop</p>
+                  <p class="text-xs text-navy/30 mt-1">PNG, JPG, PDF up to 10MB</p>
+                </div>
+                <div id="fileList" class="mt-3 space-y-2"></div>
+              </div>
+              <!-- Submit -->
+              <button type="submit" id="submitBtn" class="btn-accent w-full py-3 rounded-xl text-white font-bold text-sm">
+                <span id="submitText"><i class="fas fa-paper-plane mr-2"></i> Submit Ticket</span>
+                <span id="submitLoading" class="hidden"><i class="fas fa-spinner fa-spin mr-2"></i> Submitting...</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Recent Tickets -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="font-bold text-lg flex items-center gap-2">
+              <i class="fas fa-list text-accent"></i> Recent Tickets
+            </h3>
+            <span class="text-xs text-navy/50">3 tickets</span>
+          </div>
+
+          <!-- Tickets Table -->
+          <div id="ticketsContainer" class="space-y-3">
+            <!-- Ticket 1 -->
+            <div class="ticket-row p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-xs text-navy/50">#TKT-001</span>
+                  <span class="status-open text-[10px] font-bold px-2 py-0.5 rounded-full">Open</span>
+                </div>
+                <span class="text-xs text-navy/40">Jul 10, 2026</span>
+              </div>
+              <h4 class="font-medium text-sm text-navy mb-2">Flight cancellation refund request</h4>
+              <div class="flex items-center justify-between">
+                <span class="priority-high text-[10px] font-bold px-2 py-0.5 rounded-full">High Priority</span>
+                <button onclick="viewTicket('TKT-001')" class="text-xs text-accent hover:text-accent-dark font-medium">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+              </div>
+            </div>
+            <!-- Ticket 2 -->
+            <div class="ticket-row p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-xs text-navy/50">#TKT-002</span>
+                  <span class="status-progress text-[10px] font-bold px-2 py-0.5 rounded-full">In Progress</span>
+                </div>
+                <span class="text-xs text-navy/40">Jul 8, 2026</span>
+              </div>
+              <h4 class="font-medium text-sm text-navy mb-2">Hotel room upgrade inquiry</h4>
+              <div class="flex items-center justify-between">
+                <span class="priority-medium text-[10px] font-bold px-2 py-0.5 rounded-full">Medium Priority</span>
+                <button onclick="viewTicket('TKT-002')" class="text-xs text-accent hover:text-accent-dark font-medium">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+              </div>
+            </div>
+            <!-- Ticket 3 -->
+            <div class="ticket-row p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-xs text-navy/50">#TKT-003</span>
+                  <span class="status-resolved text-[10px] font-bold px-2 py-0.5 rounded-full">Resolved</span>
+                </div>
+                <span class="text-xs text-navy/40">Jul 5, 2026</span>
+              </div>
+              <h4 class="font-medium text-sm text-navy mb-2">Visa documentation help</h4>
+              <div class="flex items-center justify-between">
+                <span class="priority-low text-[10px] font-bold px-2 py-0.5 rounded-full">Low Priority</span>
+                <button onclick="viewTicket('TKT-003')" class="text-xs text-accent hover:text-accent-dark font-medium">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State (hidden by default) -->
+          <div id="emptyTickets" class="hidden text-center py-8">
+            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-ticket-alt text-2xl text-gray-300"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-1">No tickets yet</h4>
+            <p class="text-xs text-navy/50">Create a support ticket to get help</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Live Chat Modal -->
+  <div id="chatModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full max-h-[80vh] overflow-hidden">
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-navy to-navy-light p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Agent" alt="Agent" class="w-10 h-10 rounded-xl" />
+            <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-navy"></span>
+          </div>
+          <div>
+            <p class="font-bold text-white text-sm">Support Agent</p>
+            <p class="text-xs text-white/60">Online</p>
+          </div>
+        </div>
+        <button onclick="closeChatModal()" class="w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="p-4 h-64 overflow-y-auto custom-scroll bg-gray-50">
+        <div class="space-y-4">
+          <div class="flex items-start gap-2">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Agent" alt="Agent" class="w-8 h-8 rounded-lg" />
+            <div class="bg-white p-3 rounded-xl rounded-tl-none shadow-sm max-w-[80%]">
+              <p class="text-sm text-navy">Hello! How can I help you today?</p>
+              <p class="text-[10px] text-navy/40 mt-1">Just now</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="p-4 border-t border-gray-100">
+        <div class="flex items-center gap-2">
+          <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent" onkeypress="handleChatKeypress(event)" />
+          <button onclick="sendChatMessage()" class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center hover:bg-accent-dark transition-colors">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Ticket Modal -->
+  <div id="ticketModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-navy">Ticket Details</h3>
+          <button onclick="closeTicketModal()" class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors">
+            <i class="fas fa-times text-navy/50"></i>
+          </button>
+        </div>
+        <div id="ticketModalContent">
+          <!-- Content rendered by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" style="position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; opacity: 0; transform: translateY(1rem); pointer-events: none; transition: all 0.3s ease;">
+    <div style="background: #0f1d3a; color: white; padding: 1rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); display: flex; align-items: center; gap: 0.75rem; min-width: 320px;">
+      <i id="toastIcon" class="fas fa-check-circle" style="color: #22c55e; font-size: 1.125rem;"></i>
+      <span id="toastMessage" style="font-size: 0.875rem; font-weight: 500; flex: 1;"></span>
+      <button onclick="hideToast()" style="color: rgba(255,255,255,0.5); margin-left: 0.5rem; cursor: pointer; background: none; border: none;">
+        <i class="fas fa-times" style="font-size: 0.75rem;"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ─── Sample Tickets Data ──────────────────────────
+    const tickets = [
+      {
+        id: 'TKT-001',
+        subject: 'Flight cancellation refund request',
+        category: 'Flight Issues',
+        priority: 'high',
+        status: 'open',
+        date: 'Jul 10, 2026',
+        message: 'My flight to Maldives was cancelled by the airline. I need help with getting a full refund as per the travel protection plan.',
+        responses: [
+          { sender: 'Agent', message: 'We are looking into this. Please provide your booking reference and flight details.', time: 'Jul 10, 2026 2:30 PM' }
+        ]
+      },
+      {
+        id: 'TKT-002',
+        subject: 'Hotel room upgrade inquiry',
+        category: 'Hotel Reservations',
+        priority: 'medium',
+        status: 'progress',
+        date: 'Jul 8, 2026',
+        message: 'I would like to upgrade my room at the Maldives resort to a water villa. Is this possible and what would be the additional cost?',
+        responses: [
+          { sender: 'Agent', message: 'Let me check availability for water villa upgrades. I will get back to you shortly.', time: 'Jul 8, 2026 4:15 PM' }
+        ]
+      },
+      {
+        id: 'TKT-003',
+        subject: 'Visa documentation help',
+        category: 'Visa Services',
+        priority: 'low',
+        status: 'resolved',
+        date: 'Jul 5, 2026',
+        message: 'I need help understanding the visa requirements for my upcoming trip to Japan.',
+        responses: [
+          { sender: 'Agent', message: 'I have sent you an email with all the required documents and step-by-step instructions for the Japan visa application.', time: 'Jul 6, 2026 10:00 AM' },
+          { sender: 'User', message: 'Thank you! Got the email and everything looks clear now.', time: 'Jul 6, 2026 11:30 AM' }
+        ]
+      }
+    ];
+
+    let selectedFiles = [];
+
+    // ─── FAQ Toggle ───────────────────────────────────
+    function toggleFAQ(button) {
+      const item = button.closest('.faq-item');
+      item.classList.toggle('active');
+    }
+
+    function expandAllFAQs() {
+      const items = document.querySelectorAll('.faq-item');
+      const allExpanded = Array.from(items).every(item => item.classList.contains('active'));
+
+      items.forEach(item => {
+        if (allExpanded) {
+          item.classList.remove('active');
+        } else {
+          item.classList.add('active');
+        }
+      });
+    }
+
+    // ─── Filter FAQs ──────────────────────────────────
+    function filterFAQs() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const items = document.querySelectorAll('.faq-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchTerm) || searchTerm === '') {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // ─── Filter by Category ───────────────────────────
+    function filterByCategory(category) {
+      document.getElementById('searchInput').value = '';
+      const items = document.querySelectorAll('.faq-item');
+
+      items.forEach(item => {
+        if (item.dataset.category === category || category === 'all') {
+          item.style.display = 'block';
+          item.classList.add('active');
+        } else {
+          item.style.display = 'none';
+          item.classList.remove('active');
+        }
+      });
+
+      // Scroll to FAQ section
+      document.getElementById('faqContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ─── Live Chat ────────────────────────────────────
+    function openLiveChat() {
+      const modal = document.getElementById('chatModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeChatModal() {
+      const modal = document.getElementById('chatModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+
+      if (message) {
+        const chatContainer = document.querySelector('#chatModal .space-y-4');
+
+        // Add user message
+        chatContainer.innerHTML += `
+          <div class="flex items-start gap-2 justify-end">
+            <div class="bg-accent p-3 rounded-xl rounded-tr-none max-w-[80%]">
+              <p class="text-sm text-white">${message}</p>
+              <p class="text-[10px] text-white/60 mt-1">Just now</p>
+            </div>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="User" class="w-8 h-8 rounded-lg" />
+          </div>
+        `;
+
+        input.value = '';
+
+        // Simulate agent response
+        setTimeout(() => {
+          chatContainer.innerHTML += `
+            <div class="flex items-start gap-2">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Agent" alt="Agent" class="w-8 h-8 rounded-lg" />
+              <div class="bg-white p-3 rounded-xl rounded-tl-none shadow-sm max-w-[80%]">
+                <p class="text-sm text-navy">Thank you for your message. A support agent will assist you shortly. Is there anything specific I can help you with?</p>
+                <p class="text-[10px] text-navy/40 mt-1">Just now</p>
+              </div>
+            </div>
+          `;
+        }, 1500);
+      }
+    }
+
+    function handleChatKeypress(event) {
+      if (event.key === 'Enter') {
+        sendChatMessage();
+      }
+    }
+
+    // ─── File Upload ──────────────────────────────────
+    function handleFileSelect(event) {
+      const files = Array.from(event.target.files);
+      const fileList = document.getElementById('fileList');
+
+      files.forEach(file => {
+        if (file.size <= 10 * 1024 * 1024) { // 10MB limit
+          selectedFiles.push(file);
+
+          const fileItem = document.createElement('div');
+          fileItem.className = 'flex items-center justify-between p-2 bg-gray-50 rounded-lg';
+          fileItem.innerHTML = `
+            <div class="flex items-center gap-2">
+              <i class="fas fa-file text-navy/40"></i>
+              <span class="text-xs text-navy">${file.name}</span>
+              <span class="text-[10px] text-navy/40">(${(file.size / 1024).toFixed(1)} KB)</span>
+            </div>
+            <button onclick="removeFile(this, '${file.name}')" class="text-red-500 hover:text-red-600">
+              <i class="fas fa-times text-xs"></i>
+            </button>
+          `;
+          fileList.appendChild(fileItem);
+        } else {
+          showToast('File size must be less than 10MB', 'error');
+        }
+      });
+    }
+
+    function removeFile(button, fileName) {
+      selectedFiles = selectedFiles.filter(f => f.name !== fileName);
+      button.parentElement.remove();
+    }
+
+    // ─── Submit Ticket ────────────────────────────────
+    function submitTicket(event) {
+      event.preventDefault();
+
+      const submitBtn = document.getElementById('submitBtn');
+      const submitText = document.getElementById('submitText');
+      const submitLoading = document.getElementById('submitLoading');
+
+      // Show loading
+      submitBtn.disabled = true;
+      submitText.classList.add('hidden');
+      submitLoading.classList.remove('hidden');
+
+      // Simulate API call
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitText.classList.remove('hidden');
+        submitLoading.classList.add('hidden');
+
+        // Reset form
+        document.getElementById('ticketForm').reset();
+        document.getElementById('fileList').innerHTML = '';
+        selectedFiles = [];
+
+        showToast('Support ticket submitted successfully!', 'success');
+      }, 2000);
+    }
+
+    // ─── View Ticket ──────────────────────────────────
+    function viewTicket(ticketId) {
+      const ticket = tickets.find(t => t.id === ticketId);
+      if (!ticket) return;
+
+      const modal = document.getElementById('ticketModal');
+      const content = document.getElementById('ticketModalContent');
+
+      const statusClass = ticket.status === 'open' ? 'status-open' :
+                          ticket.status === 'progress' ? 'status-progress' : 'status-resolved';
+      const priorityClass = ticket.priority === 'high' ? 'priority-high' :
+                           ticket.priority === 'medium' ? 'priority-medium' : 'priority-low';
+
+      content.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-sm text-navy/50">#${ticket.id}</span>
+            <span class="${statusClass} text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">${ticket.status === 'progress' ? 'In Progress' : ticket.status}</span>
+            <span class="${priorityClass} text-[10px] font-bold px-2 py-0.5 rounded-full">${ticket.priority} priority</span>
+          </div>
+
+          <h4 class="font-bold text-lg text-navy">${ticket.subject}</h4>
+
+          <div class="flex items-center gap-4 text-xs text-navy/50">
+            <span><i class="fas fa-calendar mr-1"></i> ${ticket.date}</span>
+            <span><i class="fas fa-tag mr-1"></i> ${ticket.category}</span>
+          </div>
+
+          <div class="p-4 bg-gray-50 rounded-xl">
+            <p class="text-sm text-navy/70">${ticket.message}</p>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4">
+            <h5 class="font-bold text-sm mb-3">Conversation</h5>
+            <div class="space-y-3">
+              ${ticket.responses.map(r => `
+                <div class="flex items-start gap-3 ${r.sender === 'User' ? 'justify-end' : ''}">
+                  <div class="${r.sender === 'User' ? 'bg-accent text-white' : 'bg-white border border-gray-100'} p-3 rounded-xl max-w-[80%] shadow-sm">
+                    <p class="text-sm ${r.sender === 'User' ? 'text-white' : 'text-navy'}">${r.message}</p>
+                    <p class="text-[10px] ${r.sender === 'User' ? 'text-white/60' : 'text-navy/40'} mt-1">${r.time}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+            <input type="text" placeholder="Reply to ticket..." class="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent" />
+            <button onclick="showToast('Reply sent!', 'success')" class="px-4 py-2.5 bg-accent text-white text-sm font-medium rounded-xl hover:bg-accent-dark transition-colors">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeTicketModal() {
+      const modal = document.getElementById('ticketModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // ─── Toast Notification ───────────────────────────
+    let toastTimeout;
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      // Clear any existing timeout
+      if (toastTimeout) {
+        clearTimeout(toastTimeout);
+      }
+
+      toastMessage.textContent = message;
+
+      // Set icon color based on type
+      if (type === 'success') {
+        toastIcon.className = 'fas fa-check-circle';
+        toastIcon.style.color = '#22c55e';
+      } else if (type === 'error') {
+        toastIcon.className = 'fas fa-exclamation-circle';
+        toastIcon.style.color = '#ef4444';
+      } else {
+        toastIcon.className = 'fas fa-info-circle';
+        toastIcon.style.color = '#3b82f6';
+      }
+
+      // Show toast with animation using inline styles
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+      toast.style.pointerEvents = 'auto';
+
+      console.log('Toast shown:', message); // Debug log
+
+      // Auto hide after 4 seconds
+      toastTimeout = setTimeout(() => {
+        hideToast();
+      }, 4000);
+    }
+
+    function hideToast() {
+      const toast = document.getElementById('toast');
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(1rem)';
+      toast.style.pointerEvents = 'none';
+    }
+
+    // ─── Active Nav Item ──────────────────────────────
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // ─── Initialize ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.innerWidth >= 1024) {
+        document.getElementById('sidebar').classList.remove('-translate-x-full');
+      } else {
+        document.getElementById('sidebar').classList.add('-translate-x-full');
+      }
+    });
+
+    // ─── Close modals on escape key ──────────────────
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeChatModal();
+        closeTicketModal();
+        hideToast();
+      }
+    });
+
+    // Debug: Log when page loads
+    console.log('Support page loaded. showToast function available:', typeof showToast);
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

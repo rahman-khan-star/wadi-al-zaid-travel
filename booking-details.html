@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Details - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== SIDEBAR ========== -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <img src="logo.svg" alt="Logo" class="w-9 h-9 shrink-0" />
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-navy tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav class="space-y-1" role="navigation" aria-label="Main navigation">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium" aria-current="page"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Contact Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports & Analytics</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Website Settings</span></a>
+        <hr class="my-3 border-gray-100" />
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div id="mainContent" role="main" class="lg:ml-64 transition-all duration-300">
+
+    <!-- ========== TOP NAVBAR ========== -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="hidden md:flex items-center bg-gray-100 rounded-xl px-4 py-2 gap-2 w-64">
+            <i class="fas fa-search text-gray-400 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-sm outline-none w-full" />
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleDarkMode()" id="darkModeBtn" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-moon"></i></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-envelope"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" class="w-9 h-9 rounded-xl" />
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold leading-tight">Admin User</p>
+              <p class="text-[10px] text-gray-400">Super Admin</p>
+            </div>
+            <i class="fas fa-chevron-down text-gray-400 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== PAGE CONTENT ========== -->
+    <div class="p-4 sm:p-6">
+
+      <!-- Header -->
+      <div class="flex flex-col gap-4 mb-6 fade-up">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 class="text-2xl font-black text-navy">Booking Details</h1>
+            <div class="flex items-center gap-2 text-sm text-gray-400 mt-1">
+              <a href="admin.html" class="hover:text-accent transition-colors">Dashboard</a>
+              <i class="fas fa-chevron-right text-[10px]"></i>
+              <a href="manage-bookings.html" class="hover:text-accent transition-colors">Bookings</a>
+              <i class="fas fa-chevron-right text-[10px]"></i>
+              <span class="text-navy font-medium">WAZ-001</span>
+            </div>
+          </div>
+          <a href="manage-bookings.html" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors self-start">
+            <i class="fas fa-arrow-left text-sm"></i> Back to Bookings
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="px-3 py-1.5 bg-navy/5 rounded-lg text-sm font-mono font-bold text-navy">#WAZ-001</span>
+          <span class="status-badge status-confirmed"><i class="fas fa-check-circle"></i> Confirmed</span>
+          <span class="status-badge status-paid"><i class="fas fa-credit-card"></i> Paid</span>
+          <div class="flex-1"></div>
+          <button onclick="printInvoice()" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+            <i class="fas fa-print text-sm"></i> <span class="hidden sm:inline">Print</span>
+          </button>
+          <button onclick="downloadPDF()" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+            <i class="fas fa-file-pdf text-sm"></i> <span class="hidden sm:inline">Download PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+
+        <!-- ========== MAIN COLUMN ========== -->
+        <div class="lg:col-span-2 space-y-6">
+
+          <!-- Booking Summary Cards -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-receipt text-accent"></i> Booking Summary
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div class="p-3 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Booking ID</p>
+                <p class="text-sm font-bold text-navy font-mono">#WAZ-001</p>
+              </div>
+              <div class="p-3 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Customer</p>
+                <p class="text-sm font-bold text-navy">John Doe</p>
+              </div>
+              <div class="p-3 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Package</p>
+                <p class="text-sm font-bold text-navy">Maldives Paradise</p>
+              </div>
+              <div class="p-3 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Booking Date</p>
+                <p class="text-sm font-bold text-navy">Jun 15, 2026</p>
+              </div>
+              <div class="p-3 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Travel Date</p>
+                <p class="text-sm font-bold text-accent">Jul 25, 2026</p>
+              </div>
+              <div class="p-3 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Return Date</p>
+                <p class="text-sm font-bold text-navy">Jul 31, 2026</p>
+              </div>
+              <div class="p-3 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Travelers</p>
+                <p class="text-sm font-bold text-navy">2 Adults</p>
+              </div>
+              <div class="p-3 bg-accent/5 border border-accent/10 rounded-xl">
+                <p class="text-xs text-accent mb-1">Total Amount</p>
+                <p class="text-lg font-black text-accent">$3,044</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Information -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-user text-accent"></i> Customer Information
+            </h3>
+            <div class="flex items-start gap-5">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" class="w-20 h-20 rounded-2xl shrink-0" />
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Full Name</p>
+                  <p class="text-sm font-semibold text-navy">John Doe</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Email</p>
+                  <p class="text-sm font-semibold text-navy">john.doe@email.com</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Phone Number</p>
+                  <p class="text-sm font-semibold text-navy">+1 (555) 123-4567</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Country</p>
+                  <p class="text-sm font-semibold text-navy">United States</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Passport Number</p>
+                  <p class="text-sm font-semibold text-navy">US12345678</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Emergency Contact</p>
+                  <p class="text-sm font-semibold text-navy">+1 (555) 987-6543</p>
+                </div>
+                <div class="sm:col-span-2">
+                  <p class="text-xs text-gray-400 mb-1">Customer Notes</p>
+                  <p class="text-sm text-gray-600">Celebrating 5th wedding anniversary. Prefers ocean-view room. Dietary restriction: vegetarian.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package Information -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-map text-accent"></i> Package Information
+            </h3>
+            <div class="flex flex-col sm:flex-row gap-5">
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=300&h=200&fit=crop" class="w-full sm:w-48 h-32 object-cover rounded-xl shrink-0" />
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Package Name</p>
+                  <p class="text-sm font-bold text-navy">Maldives Paradise Escape</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Duration</p>
+                  <p class="text-sm font-semibold text-navy">7 Days / 6 Nights</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Tour Type</p>
+                  <p class="text-sm font-semibold text-navy">Couple Tour</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Hotel</p>
+                  <p class="text-sm font-semibold text-navy">Overwater Villa Resort</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Transport</p>
+                  <p class="text-sm font-semibold text-navy">Speedboat Transfer</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 mb-1">Tour Guide</p>
+                  <p class="text-sm font-semibold text-navy">Ahmed Rasheed</p>
+                </div>
+                <div class="sm:col-span-2">
+                  <p class="text-xs text-gray-400 mb-1">Meeting Point</p>
+                  <p class="text-sm font-semibold text-navy">Velana International Airport, Terminal 1, Arrivals</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Traveler Details Table -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-users text-accent"></i> Traveler Details
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">#</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Traveler Name</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Age</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Gender</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Passport No.</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Nationality</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                  <tr class="table-row">
+                    <td class="py-3 text-sm text-gray-500">1</td>
+                    <td class="py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" class="w-8 h-8 rounded-lg" /><span class="text-sm font-medium">John Doe</span></div></td>
+                    <td class="py-3 text-sm text-gray-600">32</td>
+                    <td class="py-3 text-sm text-gray-600">Male</td>
+                    <td class="py-3 text-sm font-mono text-gray-600">US12345678</td>
+                    <td class="py-3 text-sm text-gray-600">American</td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm text-gray-500">2</td>
+                    <td class="py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane" class="w-8 h-8 rounded-lg" /><span class="text-sm font-medium">Jane Doe</span></div></td>
+                    <td class="py-3 text-sm text-gray-600">30</td>
+                    <td class="py-3 text-sm text-gray-600">Female</td>
+                    <td class="py-3 text-sm font-mono text-gray-600">US87654321</td>
+                    <td class="py-3 text-sm text-gray-600">American</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Travel Itinerary -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-route text-accent"></i> Travel Itinerary
+            </h3>
+            <div class="space-y-0">
+              <div class="timeline-item">
+                <div class="timeline-dot completed"></div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-bold text-navy">Day 1 - Arrival in Maldives</h4>
+                    <span class="text-xs text-gray-400">Jul 25</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">Welcome to paradise! Arrive at Velana International Airport and transfer to your luxury overwater villa via speedboat.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-medium"><i class="fas fa-utensils"></i> All Meals</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium"><i class="fas fa-bed"></i> Overwater Villa</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-50 text-purple-600 rounded text-[10px] font-medium"><i class="fas fa-ship"></i> Speedboat</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot completed"></div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-bold text-navy">Day 2 - Snorkeling & Island Hopping</h4>
+                    <span class="text-xs text-gray-400">Jul 26</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">Morning snorkeling excursion to explore vibrant coral reefs. Afternoon island hopping tour with lunch on a deserted island.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-medium"><i class="fas fa-utensils"></i> All Meals</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium"><i class="fas fa-bed"></i> Overwater Villa</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="bg-accent/5 border border-accent/10 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-bold text-navy">Day 3 - Dolphin Cruise & Beach Dinner</h4>
+                    <span class="text-xs text-accent font-medium">Today</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">Morning at leisure. Afternoon sunset dolphin cruise. Evening private beach dinner under the stars with a personal chef.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-medium"><i class="fas fa-utensils"></i> All Meals</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-accent/10 text-accent rounded text-[10px] font-medium"><i class="fas fa-star"></i> Highlight</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot pending"></div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-bold text-navy">Day 4 - Spa & Relaxation</h4>
+                    <span class="text-xs text-gray-400">Jul 28</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">Full day spa treatment and wellness activities. Couples massage, yoga session, and meditation by the ocean.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-medium"><i class="fas fa-utensils"></i> All Meals</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-medium"><i class="fas fa-bed"></i> Overwater Villa</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot pending"></div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-bold text-navy">Day 5 - Water Sports</h4>
+                    <span class="text-xs text-gray-400">Jul 29</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">Exciting water sports day including jet skiing, parasailing, and kayaking. Evening fishing trip.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-medium"><i class="fas fa-utensils"></i> All Meals</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot pending"></div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-bold text-navy">Day 6 - Cultural Experience</h4>
+                    <span class="text-xs text-gray-400">Jul 30</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">Visit local Maldivian village, traditional cooking class, and sunset photography session.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-medium"><i class="fas fa-utensils"></i> All Meals</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot pending"></div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-bold text-navy">Day 7 - Departure</h4>
+                    <span class="text-xs text-gray-400">Jul 31</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mb-2">Leisurely breakfast, last-minute shopping, and transfer to airport for departure.</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-50 text-green-600 rounded text-[10px] font-medium"><i class="fas fa-utensils"></i> Breakfast</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-50 text-purple-600 rounded text-[10px] font-medium"><i class="fas fa-ship"></i> Speedboat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Information -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <div class="flex items-center justify-between mb-5">
+              <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                <i class="fas fa-credit-card text-accent"></i> Payment Information
+              </h3>
+              <button onclick="downloadInvoice()" class="flex items-center gap-2 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg text-xs font-medium text-gray-600 transition-colors">
+                <i class="fas fa-download"></i> Invoice
+              </button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Payment Method</p>
+                <div class="flex items-center gap-2">
+                  <i class="fab fa-cc-visa text-blue-600 text-xl"></i>
+                  <div>
+                    <p class="text-sm font-semibold text-navy">Credit Card</p>
+                    <p class="text-xs text-gray-400">**** **** **** 4242</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Transaction ID</p>
+                <p class="text-sm font-mono font-semibold text-navy">TXN-2026-0615-001</p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Payment Date</p>
+                <p class="text-sm font-semibold text-navy">Jun 15, 2026 at 2:34 PM</p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Payment Status</p>
+                <span class="status-badge status-paid"><i class="fas fa-check-circle"></i> Paid in Full</span>
+              </div>
+              <div class="p-4 bg-green-50 rounded-xl">
+                <p class="text-xs text-green-600 mb-1">Amount Paid</p>
+                <p class="text-lg font-black text-green-600">$3,044.00</p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-xl">
+                <p class="text-xs text-gray-400 mb-1">Remaining Balance</p>
+                <p class="text-lg font-black text-navy">$0.00</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Timeline -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-clock text-accent"></i> Booking Timeline
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-check text-green-600 text-sm"></i></div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-medium text-navy">Booking Created</p>
+                    <span class="text-xs text-gray-400">Jun 15, 2026</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-0.5">Customer created booking #WAZ-001 for Maldives Paradise Escape</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-check text-green-600 text-sm"></i></div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-medium text-navy">Payment Received</p>
+                    <span class="text-xs text-gray-400">Jun 15, 2026</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-0.5">Payment of $3,044.00 received via Credit Card (****4242)</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-check text-green-600 text-sm"></i></div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-medium text-navy">Booking Confirmed</p>
+                    <span class="text-xs text-gray-400">Jun 16, 2026</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-0.5">Booking confirmed by admin. Confirmation email sent to customer.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-file text-blue-500 text-sm"></i></div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-medium text-navy">Documents Uploaded</p>
+                    <span class="text-xs text-gray-400">Jun 20, 2026</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-0.5">Customer uploaded passport copy and travel insurance</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 opacity-40">
+                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-plane text-gray-400 text-sm"></i></div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-medium text-navy">Tour Completed</p>
+                    <span class="text-xs text-gray-400">Jul 31, 2026 (Upcoming)</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-0.5">Tour completion and review request</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Internal Notes -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-sticky-note text-accent"></i> Internal Notes
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <textarea id="newNote" rows="3" placeholder="Add a note about this booking..." class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent resize-none"></textarea>
+                <button onclick="addNote()" class="mt-2 flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-dark rounded-xl text-sm font-medium text-white transition-colors">
+                  <i class="fas fa-plus"></i> Add Note
+                </button>
+              </div>
+              <div id="notesList" class="space-y-3">
+                <div class="p-4 bg-gray-50 rounded-xl">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" />
+                      <span class="text-sm font-medium text-navy">Admin User</span>
+                    </div>
+                    <span class="text-xs text-gray-400">Jun 18, 2026 at 10:30 AM</span>
+                  </div>
+                  <p class="text-sm text-gray-600">Customer called to confirm anniversary celebration. Arranged complimentary champagne and flower decoration in the villa.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-xl">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" />
+                      <span class="text-sm font-medium text-navy">Admin User</span>
+                    </div>
+                    <span class="text-xs text-gray-400">Jun 16, 2026 at 3:15 PM</span>
+                  </div>
+                  <p class="text-sm text-gray-600">Booking confirmed. All arrangements finalized with the resort. Speedboat transfer scheduled for 2:00 PM on arrival day.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documents -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-folder text-accent"></i> Documents
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center cursor-pointer">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-passport text-blue-500 text-lg"></i>
+                </div>
+                <p class="text-xs font-medium text-navy mb-1">Passport Copy</p>
+                <p class="text-[10px] text-gray-400 mb-2">Uploaded</p>
+                <button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center cursor-pointer">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-file-alt text-green-500 text-lg"></i>
+                </div>
+                <p class="text-xs font-medium text-navy mb-1">Visa Copy</p>
+                <p class="text-[10px] text-gray-400 mb-2">Not Required</p>
+                <span class="text-[10px] text-gray-400">N/A</span>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center cursor-pointer">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-plane text-purple-500 text-lg"></i>
+                </div>
+                <p class="text-xs font-medium text-navy mb-1">Flight Ticket</p>
+                <p class="text-[10px] text-gray-400 mb-2">Pending</p>
+                <button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-upload mr-1"></i>Upload</button>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center cursor-pointer">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-hotel text-accent text-lg"></i>
+                </div>
+                <p class="text-xs font-medium text-navy mb-1">Hotel Voucher</p>
+                <p class="text-[10px] text-gray-400 mb-2">Uploaded</p>
+                <button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center cursor-pointer">
+                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-shield-alt text-red-500 text-lg"></i>
+                </div>
+                <p class="text-xs font-medium text-navy mb-1">Travel Insurance</p>
+                <p class="text-[10px] text-gray-400 mb-2">Uploaded</p>
+                <button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 text-center cursor-pointer hover:border-accent transition-colors">
+                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                  <i class="fas fa-cloud-upload-alt text-gray-400 text-lg"></i>
+                </div>
+                <p class="text-xs font-medium text-gray-500 mb-1">Upload New</p>
+                <p class="text-[10px] text-gray-400">Click to browse</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Log -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-history text-accent"></i> Activity Log
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Date & Time</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Admin</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                  <tr class="table-row">
+                    <td class="py-3 text-sm text-gray-500">Jul 12, 2026 10:30 AM</td>
+                    <td class="py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" /><span class="text-sm">Admin User</span></div></td>
+                    <td class="py-3 text-sm text-gray-600">Added internal note about anniversary arrangement</td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm text-gray-500">Jun 20, 2026 2:15 PM</td>
+                    <td class="py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=System" class="w-6 h-6 rounded" /><span class="text-sm">System</span></div></td>
+                    <td class="py-3 text-sm text-gray-600">Customer uploaded passport copy and travel insurance</td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm text-gray-500">Jun 16, 2026 3:15 PM</td>
+                    <td class="py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" /><span class="text-sm">Admin User</span></div></td>
+                    <td class="py-3 text-sm text-gray-600">Booking confirmed. Confirmation email sent.</td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm text-gray-500">Jun 15, 2026 2:34 PM</td>
+                    <td class="py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=System" class="w-6 h-6 rounded" /><span class="text-sm">System</span></div></td>
+                    <td class="py-3 text-sm text-gray-600">Payment of $3,044.00 received via Credit Card</td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm text-gray-500">Jun 15, 2026 2:30 PM</td>
+                    <td class="py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" class="w-6 h-6 rounded" /><span class="text-sm">Customer</span></div></td>
+                    <td class="py-3 text-sm text-gray-600">Booking #WAZ-001 created for Maldives Paradise Escape</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ========== RIGHT SIDEBAR ========== -->
+        <div class="lg:col-span-1 space-y-6">
+
+          <!-- Admin Actions -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-20 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5">Admin Actions</h3>
+            <div class="space-y-3">
+              <button onclick="confirmBooking()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-xl text-sm font-medium text-green-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-check text-green-600"></i></div>
+                Confirm Booking
+              </button>
+              <button onclick="markCompleted()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-xl text-sm font-medium text-blue-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-flag-checkered text-blue-600"></i></div>
+                Mark as Completed
+              </button>
+              <button onclick="sendEmail()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-xl text-sm font-medium text-purple-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-purple-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-envelope text-purple-600"></i></div>
+                Send Email
+              </button>
+              <button onclick="sendWhatsApp()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-xl text-sm font-medium text-green-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center shrink-0"><i class="fab fa-whatsapp text-green-600"></i></div>
+                Send WhatsApp
+              </button>
+              <button onclick="generateInvoice()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-accent/10 hover:bg-accent/20 rounded-xl text-sm font-medium text-accent transition-colors text-left">
+                <div class="w-9 h-9 bg-accent/20 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-file-invoice text-accent"></i></div>
+                Generate Invoice
+              </button>
+              <button onclick="printInvoice()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-sm font-medium text-gray-600 transition-colors text-left">
+                <div class="w-9 h-9 bg-gray-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-print text-gray-500"></i></div>
+                Print Booking
+              </button>
+              <hr class="border-gray-100" />
+              <button onclick="openRefundModal()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-yellow-50 hover:bg-yellow-100 rounded-xl text-sm font-medium text-yellow-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-yellow-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-undo text-yellow-600"></i></div>
+                Refund Booking
+              </button>
+              <button onclick="openCancelModal()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-red-50 hover:bg-red-100 rounded-xl text-sm font-medium text-red-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-ban text-red-600"></i></div>
+                Cancel Booking
+              </button>
+              <button onclick="openDeleteModal()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-red-50 hover:bg-red-100 rounded-xl text-sm font-medium text-red-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-trash text-red-600"></i></div>
+                Delete Booking
+              </button>
+            </div>
+          </div>
+
+          <!-- Booking Status Card -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Booking Status</h4>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">Status</span>
+                <span class="status-badge status-confirmed">Confirmed</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">Payment</span>
+                <span class="status-badge status-paid">Paid</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-500">Days until travel</span>
+                <span class="text-sm font-bold text-accent">13 days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Summary -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Payment Summary</h4>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-500">Package Price</span>
+                <span class="text-navy">$3,044.00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-500">Discount</span>
+                <span class="text-green-600">-$0.00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-500">Tax</span>
+                <span class="text-navy">$0.00</span>
+              </div>
+              <hr class="border-gray-100" />
+              <div class="flex justify-between text-sm font-bold">
+                <span class="text-navy">Total</span>
+                <span class="text-navy">$3,044.00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-500">Paid</span>
+                <span class="text-green-600 font-bold">$3,044.00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span class="text-gray-500">Balance</span>
+                <span class="text-navy font-bold">$0.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Assigned Consultant -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Travel Consultant</h4>
+            <div class="flex items-center gap-3">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed" class="w-12 h-12 rounded-xl" />
+              <div>
+                <p class="text-sm font-semibold text-navy">Ahmed Rasheed</p>
+                <p class="text-xs text-gray-400">Senior Travel Consultant</p>
+                <p class="text-xs text-accent">+960 777 1234</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming Reminder -->
+          <div class="bg-accent/5 border border-accent/10 rounded-2xl p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-3 flex items-center gap-2">
+              <i class="fas fa-bell text-accent"></i> Upcoming Reminder
+            </h4>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-600">Send pre-travel checklist to customer</p>
+              <p class="text-xs text-accent font-medium">Due: Jul 18, 2026</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SIDEBAR OVERLAY (Mobile) ========== -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- ========== CANCEL MODAL ========== -->
+  <div id="cancelModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-ban text-2xl text-yellow-500"></i>
+        </div>
+        <h3 class="text-lg font-bold text-navy mb-2">Cancel Booking</h3>
+        <p class="text-sm text-gray-500 mb-4">Are you sure you want to cancel this booking? The customer will be notified via email.</p>
+        <textarea id="cancelReason" rows="2" placeholder="Reason for cancellation..." class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none resize-none mb-4"></textarea>
+        <div class="flex items-center gap-3 justify-center">
+          <button onclick="closeCancelModal()" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-600 transition-colors">Go Back</button>
+          <button onclick="confirmCancel()" class="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 rounded-xl text-sm font-medium text-white transition-colors">Cancel Booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== REFUND MODAL ========== -->
+  <div id="refundModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-undo text-2xl text-purple-500"></i>
+        </div>
+        <h3 class="text-lg font-bold text-navy mb-2">Refund Booking</h3>
+        <p class="text-sm text-gray-500 mb-4">Process a refund of $3,044.00 to the customer's credit card (****4242).</p>
+        <div class="flex items-center gap-3 justify-center">
+          <button onclick="closeRefundModal()" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-600 transition-colors">Go Back</button>
+          <button onclick="confirmRefund()" class="px-5 py-2.5 bg-purple-500 hover:bg-purple-600 rounded-xl text-sm font-medium text-white transition-colors">Process Refund</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== DELETE MODAL ========== -->
+  <div id="deleteModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
+        </div>
+        <h3 class="text-lg font-bold text-navy mb-2">Delete Booking</h3>
+        <p class="text-sm text-gray-500 mb-6">Are you sure you want to permanently delete booking #WAZ-001? This action cannot be undone.</p>
+        <div class="flex items-center gap-3 justify-center">
+          <button onclick="closeDeleteModal()" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-600 transition-colors">Go Back</button>
+          <button onclick="confirmDelete()" class="px-5 py-2.5 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-medium text-white transition-colors">Delete Permanently</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ========== DARK MODE ==========
+    function toggleDarkMode() {
+      const icon = document.querySelector('#darkModeBtn i');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    }
+
+    // ========== ACTIONS ==========
+    function confirmBooking() { showToast('Booking confirmed successfully'); }
+    function markCompleted() { showToast('Booking marked as completed'); }
+    function sendEmail() { alert('Sending email to john.doe@email.com\n\nSubject: Booking Update - #WAZ-001'); }
+    function sendWhatsApp() { alert('Opening WhatsApp to +1 (555) 123-4567'); }
+    function generateInvoice() { showToast('Invoice generated and ready for download'); }
+    function printInvoice() { window.print(); }
+    function downloadPDF() { showToast('PDF download started'); }
+    function downloadInvoice() { showToast('Invoice downloaded'); }
+
+    // ========== NOTES ==========
+    function addNote() {
+      const note = document.getElementById('newNote').value.trim();
+      if (!note) return;
+      const list = document.getElementById('notesList');
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      const div = document.createElement('div');
+      div.className = 'p-4 bg-gray-50 rounded-xl';
+      div.innerHTML = `
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" />
+            <span class="text-sm font-medium text-navy">Admin User</span>
+          </div>
+          <span class="text-xs text-gray-400">${dateStr}</span>
+        </div>
+        <p class="text-sm text-gray-600">${note}</p>
+      `;
+      list.insertBefore(div, list.firstChild);
+      document.getElementById('newNote').value = '';
+      showToast('Note added successfully');
+    }
+
+    // ========== MODALS ==========
+    function openCancelModal() { document.getElementById('cancelModal').classList.add('show'); }
+    function closeCancelModal() { document.getElementById('cancelModal').classList.remove('show'); }
+    function confirmCancel() { closeCancelModal(); showToast('Booking cancelled'); }
+
+    function openRefundModal() { document.getElementById('refundModal').classList.add('show'); }
+    function closeRefundModal() { document.getElementById('refundModal').classList.remove('show'); }
+    function confirmRefund() { closeRefundModal(); showToast('Refund of $3,044.00 processed'); }
+
+    function openDeleteModal() { document.getElementById('deleteModal').classList.add('show'); }
+    function closeDeleteModal() { document.getElementById('deleteModal').classList.remove('show'); }
+    function confirmDelete() { closeDeleteModal(); showToast('Booking deleted permanently'); }
+
+    // ========== TOAST ==========
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 right-6 bg-navy text-white px-5 py-3 rounded-xl shadow-lg z-50 flex items-center gap-3 text-sm font-medium';
+      toast.innerHTML = `<i class="fas fa-check-circle text-green-400"></i> ${message}`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

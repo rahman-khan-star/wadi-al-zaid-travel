@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Details - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== SIDEBAR ========== -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <img src="logo.svg" alt="Logo" class="w-9 h-9 shrink-0" />
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-navy tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav role="navigation" aria-label="Main navigation" class="space-y-1">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" aria-current="page" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Contact Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports & Analytics</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Website Settings</span></a>
+        <hr class="my-3 border-gray-100" />
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div role="main" id="mainContent" class="lg:ml-64 transition-all duration-300">
+
+    <!-- ========== TOP NAVBAR ========== -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="hidden md:flex items-center bg-gray-100 rounded-xl px-4 py-2 gap-2 w-64">
+            <i class="fas fa-search text-gray-400 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-sm outline-none w-full" />
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleDarkMode()" id="darkModeBtn" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-moon"></i></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-envelope"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" class="w-9 h-9 rounded-xl" />
+            <div class="hidden sm:block"><p class="text-sm font-bold leading-tight">Admin User</p><p class="text-[10px] text-gray-400">Super Admin</p></div>
+            <i class="fas fa-chevron-down text-gray-400 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== PAGE CONTENT ========== -->
+    <div class="p-4 sm:p-6">
+
+      <!-- Header -->
+      <div class="flex flex-col gap-4 mb-6 fade-up">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 class="text-2xl font-black text-navy">Customer Details</h1>
+            <div class="flex items-center gap-2 text-sm text-gray-400 mt-1">
+              <a href="admin.html" class="hover:text-accent transition-colors">Dashboard</a>
+              <i class="fas fa-chevron-right text-[10px]"></i>
+              <a href="manage-customers.html" class="hover:text-accent transition-colors">Customers</a>
+              <i class="fas fa-chevron-right text-[10px]"></i>
+              <span class="text-navy font-medium">John Doe</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="manage-customers.html" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+              <i class="fas fa-arrow-left text-sm"></i> Back
+            </a>
+            <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+              <i class="fas fa-print text-sm"></i> <span class="hidden sm:inline">Print</span>
+            </button>
+            <button onclick="openEditModal()" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+              <i class="fas fa-edit text-sm"></i> <span class="hidden sm:inline">Edit</span>
+            </button>
+            <button onclick="openDeleteModal()" class="flex items-center gap-2 px-4 py-2.5 bg-red-50 border border-red-200 rounded-xl text-sm font-medium text-red-600 hover:bg-red-100 transition-colors">
+              <i class="fas fa-trash text-sm"></i> <span class="hidden sm:inline">Delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+
+        <!-- ========== MAIN COLUMN ========== -->
+        <div class="lg:col-span-2 space-y-6">
+
+          <!-- Customer Profile Card -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <div class="flex flex-col sm:flex-row items-start gap-5">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" class="w-24 h-24 rounded-2xl shrink-0" />
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-3 mb-2">
+                  <h2 class="text-xl font-black text-navy">John Doe</h2>
+                  <span class="membership-badge membership-gold">Gold</span>
+                  <span class="status-badge status-active">Active</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-3">CUST-001</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div><p class="text-xs text-gray-400">Email</p><p class="text-sm font-medium text-navy">john.doe@email.com</p></div>
+                  <div><p class="text-xs text-gray-400">Phone</p><p class="text-sm font-medium text-navy">+1 (555) 123-4567</p></div>
+                  <div><p class="text-xs text-gray-400">Joined</p><p class="text-sm font-medium text-navy">Mar 15, 2025</p></div>
+                  <div><p class="text-xs text-gray-400">Last Login</p><p class="text-sm font-medium text-navy">2 hours ago</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Personal Information -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-user text-accent"></i> Personal Information
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Full Name</p><p class="text-sm font-semibold text-navy">John Michael Doe</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Email Address</p><p class="text-sm font-semibold text-navy">john.doe@email.com</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Phone Number</p><p class="text-sm font-semibold text-navy">+1 (555) 123-4567</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Date of Birth</p><p class="text-sm font-semibold text-navy">Jun 15, 1994</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Gender</p><p class="text-sm font-semibold text-navy">Male</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Nationality</p><p class="text-sm font-semibold text-navy">American</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Passport Number</p><p class="text-sm font-semibold text-navy font-mono">US12345678</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">CNIC / National ID</p><p class="text-sm font-semibold text-navy font-mono">123-45-6789</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Occupation</p><p class="text-sm font-semibold text-navy">Software Engineer</p></div>
+            </div>
+          </div>
+
+          <!-- Address Information -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-map-marker-alt text-accent"></i> Address Information
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Country</p><p class="text-sm font-semibold text-navy">United States</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">City</p><p class="text-sm font-semibold text-navy">New York</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-400 mb-1">Postal Code</p><p class="text-sm font-semibold text-navy">10001</p></div>
+              <div class="p-3 bg-gray-50 rounded-xl sm:col-span-2"><p class="text-xs text-gray-400 mb-1">Complete Address</p><p class="text-sm font-semibold text-navy">123 Broadway, Apt 4B, New York, NY 10001, United States</p></div>
+            </div>
+          </div>
+
+          <!-- Booking Summary -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-suitcase text-accent"></i> Booking Summary
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+              <div class="text-center p-4 bg-gray-50 rounded-xl">
+                <p class="text-2xl font-black text-navy">8</p>
+                <p class="text-xs text-gray-400 mt-1">Total Bookings</p>
+              </div>
+              <div class="text-center p-4 bg-blue-50 rounded-xl">
+                <p class="text-2xl font-black text-blue-600">2</p>
+                <p class="text-xs text-gray-400 mt-1">Upcoming</p>
+              </div>
+              <div class="text-center p-4 bg-green-50 rounded-xl">
+                <p class="text-2xl font-black text-green-600">5</p>
+                <p class="text-xs text-gray-400 mt-1">Completed</p>
+              </div>
+              <div class="text-center p-4 bg-red-50 rounded-xl">
+                <p class="text-2xl font-black text-red-600">1</p>
+                <p class="text-xs text-gray-400 mt-1">Cancelled</p>
+              </div>
+              <div class="text-center p-4 bg-accent/5 rounded-xl">
+                <p class="text-2xl font-black text-accent">$24,500</p>
+                <p class="text-xs text-gray-400 mt-1">Total Spent</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Bookings Table -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <div class="flex items-center justify-between mb-5">
+              <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                <i class="fas fa-list text-accent"></i> Recent Bookings
+              </h3>
+              <a href="manage-bookings.html" class="text-xs text-accent hover:text-accent-dark font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Booking ID</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3 hidden sm:table-cell">Destination</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3 hidden md:table-cell">Travel Date</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3 hidden lg:table-cell">Travelers</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Status</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Payment</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Amount</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                  <tr class="table-row">
+                    <td class="py-3 text-sm font-mono text-gray-500">#WAZ-001</td>
+                    <td class="py-3 text-sm hidden sm:table-cell">Maldives Paradise</td>
+                    <td class="py-3 text-sm text-gray-500 hidden md:table-cell">Jul 25, 2026</td>
+                    <td class="py-3 text-sm hidden lg:table-cell">2</td>
+                    <td class="py-3"><span class="status-badge status-confirmed">Confirmed</span></td>
+                    <td class="py-3"><span class="status-badge status-paid">Paid</span></td>
+                    <td class="py-3 text-sm font-bold">$3,044</td>
+                    <td class="py-3"><a href="booking-details.html" class="text-xs text-accent hover:text-accent-dark font-medium">View</a></td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm font-mono text-gray-500">#WAZ-015</td>
+                    <td class="py-3 text-sm hidden sm:table-cell">Paris Romance</td>
+                    <td class="py-3 text-sm text-gray-500 hidden md:table-cell">Mar 10, 2026</td>
+                    <td class="py-3 text-sm hidden lg:table-cell">2</td>
+                    <td class="py-3"><span class="status-badge status-completed">Completed</span></td>
+                    <td class="py-3"><span class="status-badge status-paid">Paid</span></td>
+                    <td class="py-3 text-sm font-bold">$4,250</td>
+                    <td class="py-3"><a href="booking-details.html" class="text-xs text-accent hover:text-accent-dark font-medium">View</a></td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm font-mono text-gray-500">#WAZ-028</td>
+                    <td class="py-3 text-sm hidden sm:table-cell">Bali Adventure</td>
+                    <td class="py-3 text-sm text-gray-500 hidden md:table-cell">Nov 20, 2025</td>
+                    <td class="py-3 text-sm hidden lg:table-cell">4</td>
+                    <td class="py-3"><span class="status-badge status-completed">Completed</span></td>
+                    <td class="py-3"><span class="status-badge status-paid">Paid</span></td>
+                    <td class="py-3 text-sm font-bold">$1,899</td>
+                    <td class="py-3"><a href="booking-details.html" class="text-xs text-accent hover:text-accent-dark font-medium">View</a></td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm font-mono text-gray-500">#WAZ-042</td>
+                    <td class="py-3 text-sm hidden sm:table-cell">Santorini Escape</td>
+                    <td class="py-3 text-sm text-gray-500 hidden md:table-cell">Sep 15, 2025</td>
+                    <td class="py-3 text-sm hidden lg:table-cell">2</td>
+                    <td class="py-3"><span class="status-badge status-cancelled">Cancelled</span></td>
+                    <td class="py-3"><span class="status-badge status-paid">Refunded</span></td>
+                    <td class="py-3 text-sm font-bold text-red-500">$3,890</td>
+                    <td class="py-3"><a href="booking-details.html" class="text-xs text-accent hover:text-accent-dark font-medium">View</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Payment History -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <div class="flex items-center justify-between mb-5">
+              <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                <i class="fas fa-credit-card text-accent"></i> Payment History
+              </h3>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Invoice</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3 hidden sm:table-cell">Method</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Amount</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3 hidden md:table-cell">Date</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Status</th>
+                    <th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wider pb-3">Invoice</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                  <tr class="table-row">
+                    <td class="py-3 text-sm font-mono text-gray-500">INV-2026-001</td>
+                    <td class="py-3 text-sm hidden sm:table-cell"><div class="flex items-center gap-2"><i class="fab fa-cc-visa text-blue-600"></i> Visa ****4242</div></td>
+                    <td class="py-3 text-sm font-bold">$3,044</td>
+                    <td class="py-3 text-sm text-gray-500 hidden md:table-cell">Jun 15, 2026</td>
+                    <td class="py-3"><span class="status-badge status-paid">Paid</span></td>
+                    <td class="py-3"><button class="text-xs text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>PDF</button></td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm font-mono text-gray-500">INV-2026-002</td>
+                    <td class="py-3 text-sm hidden sm:table-cell"><div class="flex items-center gap-2"><i class="fab fa-cc-visa text-blue-600"></i> Visa ****4242</div></td>
+                    <td class="py-3 text-sm font-bold">$4,250</td>
+                    <td class="py-3 text-sm text-gray-500 hidden md:table-cell">Jan 05, 2026</td>
+                    <td class="py-3"><span class="status-badge status-paid">Paid</span></td>
+                    <td class="py-3"><button class="text-xs text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>PDF</button></td>
+                  </tr>
+                  <tr class="table-row">
+                    <td class="py-3 text-sm font-mono text-gray-500">INV-2025-008</td>
+                    <td class="py-3 text-sm hidden sm:table-cell"><div class="flex items-center gap-2"><i class="fab fa-cc-mastercard text-red-500"></i> MC ****8888</div></td>
+                    <td class="py-3 text-sm font-bold">$1,899</td>
+                    <td class="py-3 text-sm text-gray-500 hidden md:table-cell">Oct 01, 2025</td>
+                    <td class="py-3"><span class="status-badge status-paid">Paid</span></td>
+                    <td class="py-3"><button class="text-xs text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>PDF</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Uploaded Documents -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-folder text-accent"></i> Uploaded Documents
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2"><i class="fas fa-passport text-blue-500 text-lg"></i></div>
+                <p class="text-xs font-medium text-navy mb-1">Passport</p>
+                <p class="text-[10px] text-green-500 mb-2">Uploaded</p>
+                <div class="flex items-center justify-center gap-2"><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-eye mr-1"></i>View</button><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button></div>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-2"><i class="fas fa-file-alt text-green-500 text-lg"></i></div>
+                <p class="text-xs font-medium text-navy mb-1">CNIC / ID</p>
+                <p class="text-[10px] text-green-500 mb-2">Uploaded</p>
+                <div class="flex items-center justify-center gap-2"><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-eye mr-1"></i>View</button><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button></div>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-2"><i class="fas fa-plane text-purple-500 text-lg"></i></div>
+                <p class="text-xs font-medium text-navy mb-1">Flight Ticket</p>
+                <p class="text-[10px] text-green-500 mb-2">Uploaded</p>
+                <div class="flex items-center justify-center gap-2"><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-eye mr-1"></i>View</button><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button></div>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-2"><i class="fas fa-hotel text-accent text-lg"></i></div>
+                <p class="text-xs font-medium text-navy mb-1">Hotel Voucher</p>
+                <p class="text-[10px] text-green-500 mb-2">Uploaded</p>
+                <div class="flex items-center justify-center gap-2"><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-eye mr-1"></i>View</button><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button></div>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-gray-100 text-center">
+                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-2"><i class="fas fa-shield-alt text-red-500 text-lg"></i></div>
+                <p class="text-xs font-medium text-navy mb-1">Travel Insurance</p>
+                <p class="text-[10px] text-green-500 mb-2">Uploaded</p>
+                <div class="flex items-center justify-center gap-2"><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-eye mr-1"></i>View</button><button class="text-[10px] text-accent hover:text-accent-dark font-medium"><i class="fas fa-download mr-1"></i>Download</button></div>
+              </div>
+              <div class="doc-card p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 text-center cursor-pointer hover:border-accent transition-colors">
+                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-2"><i class="fas fa-cloud-upload-alt text-gray-400 text-lg"></i></div>
+                <p class="text-xs font-medium text-gray-500">Upload New</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Notes -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-sticky-note text-accent"></i> Customer Notes
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <textarea id="newNote" rows="3" placeholder="Add a note about this customer..." class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent resize-none"></textarea>
+                <button onclick="addNote()" class="mt-2 flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-dark rounded-xl text-sm font-medium text-white transition-colors"><i class="fas fa-plus"></i> Add Note</button>
+              </div>
+              <div id="notesList" class="space-y-3">
+                <div class="p-4 bg-gray-50 rounded-xl">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" /><span class="text-sm font-medium text-navy">Admin User</span></div>
+                    <span class="text-xs text-gray-400">Jul 10, 2026</span>
+                  </div>
+                  <p class="text-sm text-gray-600">VIP customer. Always books premium packages. Prefers ocean-view rooms. Anniversary trip every March.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-xl">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" /><span class="text-sm font-medium text-navy">Admin User</span></div>
+                    <span class="text-xs text-gray-400">Jun 15, 2026</span>
+                  </div>
+                  <p class="text-sm text-gray-600">Upgraded to Gold membership after 8th booking. Sent welcome gift and personalized thank you email.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Timeline -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+              <i class="fas fa-history text-accent"></i> Activity Timeline
+            </h3>
+            <div class="space-y-0">
+              <div class="timeline-item">
+                <div class="timeline-dot green"></div>
+                <div class="bg-gray-50 rounded-xl p-3">
+                  <div class="flex items-center justify-between"><p class="text-sm font-medium text-navy">Booking Confirmed</p><span class="text-xs text-gray-400">2 hours ago</span></div>
+                  <p class="text-xs text-gray-500 mt-0.5">Booking #WAZ-001 confirmed for Maldives Paradise Escape</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot blue"></div>
+                <div class="bg-gray-50 rounded-xl p-3">
+                  <div class="flex items-center justify-between"><p class="text-sm font-medium text-navy">Payment Received</p><span class="text-xs text-gray-400">2 hours ago</span></div>
+                  <p class="text-xs text-gray-500 mt-0.5">Payment of $3,044 received via Visa ****4242</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot orange"></div>
+                <div class="bg-gray-50 rounded-xl p-3">
+                  <div class="flex items-center justify-between"><p class="text-sm font-medium text-navy">Documents Uploaded</p><span class="text-xs text-gray-400">1 day ago</span></div>
+                  <p class="text-xs text-gray-500 mt-0.5">Customer uploaded passport copy and travel insurance</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot green"></div>
+                <div class="bg-gray-50 rounded-xl p-3">
+                  <div class="flex items-center justify-between"><p class="text-sm font-medium text-navy">Profile Updated</p><span class="text-xs text-gray-400">3 days ago</span></div>
+                  <p class="text-xs text-gray-500 mt-0.5">Customer updated phone number and emergency contact</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot gray"></div>
+                <div class="bg-gray-50 rounded-xl p-3">
+                  <div class="flex items-center justify-between"><p class="text-sm font-medium text-navy">Account Created</p><span class="text-xs text-gray-400">Mar 15, 2025</span></div>
+                  <p class="text-xs text-gray-500 mt-0.5">Customer registered with email john.doe@email.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ========== RIGHT SIDEBAR ========== -->
+        <div class="lg:col-span-1 space-y-6">
+
+          <!-- Quick Actions -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-20 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-4">Quick Actions</h3>
+            <div class="space-y-3">
+              <button class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-accent/10 hover:bg-accent/20 rounded-xl text-sm font-medium text-accent transition-colors text-left">
+                <div class="w-9 h-9 bg-accent/20 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-plus text-accent"></i></div> Create Booking
+              </button>
+              <button class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-xl text-sm font-medium text-blue-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-envelope text-blue-500"></i></div> Send Email
+              </button>
+              <button class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-xl text-sm font-medium text-green-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center shrink-0"><i class="fab fa-whatsapp text-green-500"></i></div> Send WhatsApp
+              </button>
+              <button class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-purple-50 hover:bg-purple-100 rounded-xl text-sm font-medium text-purple-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-purple-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-download text-purple-500"></i></div> Download Report
+              </button>
+              <hr class="border-gray-100" />
+              <button class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-yellow-50 hover:bg-yellow-100 rounded-xl text-sm font-medium text-yellow-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-yellow-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-ban text-yellow-500"></i></div> Suspend Customer
+              </button>
+              <button onclick="openDeleteModal()" class="action-btn w-full flex items-center gap-3 px-4 py-3 bg-red-50 hover:bg-red-100 rounded-xl text-sm font-medium text-red-700 transition-colors text-left">
+                <div class="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center shrink-0"><i class="fas fa-trash text-red-500"></i></div> Delete Customer
+              </button>
+            </div>
+          </div>
+
+          <!-- Customer Statistics -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Customer Statistics</h4>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center"><span class="text-xs text-gray-500">Total Bookings</span><span class="text-sm font-bold text-navy">8</span></div>
+              <div class="flex justify-between items-center"><span class="text-xs text-gray-500">Avg. Booking Value</span><span class="text-sm font-bold text-navy">$3,063</span></div>
+              <div class="flex justify-between items-center"><span class="text-xs text-gray-500">Favorite Destination</span><span class="text-sm font-medium text-accent">Maldives</span></div>
+              <div class="flex justify-between items-center"><span class="text-xs text-gray-500">Cancellation Rate</span><span class="text-sm font-bold text-navy">12.5%</span></div>
+            </div>
+          </div>
+
+          <!-- Loyalty Points -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Loyalty Points</h4>
+            <div class="text-center mb-4">
+              <p class="text-3xl font-black text-accent">2,450</p>
+              <p class="text-xs text-gray-400">points earned</p>
+            </div>
+            <div class="loyalty-bar mb-2"><div class="loyalty-fill" style="width: 75%"></div></div>
+            <div class="flex justify-between text-[10px] text-gray-400">
+              <span>Gold</span>
+              <span>750 pts to Platinum</span>
+              <span>Platinum</span>
+            </div>
+          </div>
+
+          <!-- Preferred Destinations -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Preferred Destinations</h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover" />
+                <div class="flex-1"><p class="text-sm font-medium text-navy">Maldives</p><p class="text-xs text-gray-400">3 trips</p></div>
+                <i class="fas fa-heart text-red-400 text-xs"></i>
+              </div>
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover" />
+                <div class="flex-1"><p class="text-sm font-medium text-navy">Paris</p><p class="text-xs text-gray-400">2 trips</p></div>
+                <i class="fas fa-heart text-red-400 text-xs"></i>
+              </div>
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover" />
+                <div class="flex-1"><p class="text-sm font-medium text-navy">Bali</p><p class="text-xs text-gray-400">2 trips</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Assigned Consultant -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Travel Consultant</h4>
+            <div class="flex items-center gap-3">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed" class="w-12 h-12 rounded-xl" />
+              <div>
+                <p class="text-sm font-semibold text-navy">Ahmed Rasheed</p>
+                <p class="text-xs text-gray-400">Senior Consultant</p>
+                <p class="text-xs text-accent">+960 777 1234</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 fade-up">
+            <h4 class="text-sm font-bold text-navy mb-4">Recent Activity</h4>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-check text-green-600 text-xs"></i></div>
+                <div><p class="text-xs font-medium text-navy">Booking confirmed</p><p class="text-[10px] text-gray-400">2 hours ago</p></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-file text-blue-500 text-xs"></i></div>
+                <div><p class="text-xs font-medium text-navy">Documents uploaded</p><p class="text-[10px] text-gray-400">1 day ago</p></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center shrink-0"><i class="fas fa-user-edit text-accent text-xs"></i></div>
+                <div><p class="text-xs font-medium text-navy">Profile updated</p><p class="text-[10px] text-gray-400">3 days ago</p></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SIDEBAR OVERLAY (Mobile) ========== -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- ========== EDIT MODAL ========== -->
+  <div id="editModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+      <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+        <h3 class="text-lg font-bold text-navy">Edit Customer</h3>
+        <button onclick="closeEditModal()" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100"><i class="fas fa-times text-gray-400"></i></button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-gray-600 mb-1.5">First Name</label><input type="text" id="editFirstName" value="John" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent" /></div>
+          <div><label class="block text-sm font-medium text-gray-600 mb-1.5">Last Name</label><input type="text" id="editLastName" value="Doe" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent" /></div>
+        </div>
+        <div><label class="block text-sm font-medium text-gray-600 mb-1.5">Email</label><input type="email" id="editEmail" value="john.doe@email.com" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent" /></div>
+        <div><label class="block text-sm font-medium text-gray-600 mb-1.5">Phone</label><input type="text" id="editPhone" value="+1 (555) 123-4567" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent" /></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-sm font-medium text-gray-600 mb-1.5">Country</label><select id="editCountry" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none cursor-pointer"><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option><option>Germany</option></select></div>
+          <div><label class="block text-sm font-medium text-gray-600 mb-1.5">Membership</label><select id="editMembership" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none cursor-pointer"><option>Bronze</option><option>Silver</option><option>Gold</option><option>Platinum</option><option>VIP</option></select></div>
+        </div>
+      </div>
+      <div class="p-6 border-t border-gray-100 flex items-center justify-end gap-3">
+        <button onclick="closeEditModal()" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-600">Cancel</button>
+        <button onclick="saveEdit()" class="px-5 py-2.5 bg-accent hover:bg-accent-dark rounded-xl text-sm font-medium text-white">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== DELETE MODAL ========== -->
+  <div id="deleteModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-exclamation-triangle text-2xl text-red-500"></i></div>
+        <h3 class="text-lg font-bold text-navy mb-2">Delete Customer</h3>
+        <p class="text-sm text-gray-500 mb-6">Are you sure you want to delete <span class="font-semibold text-navy">John Doe</span>? All associated data will be permanently removed.</p>
+        <div class="flex items-center gap-3 justify-center">
+          <button onclick="closeDeleteModal()" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-600">Cancel</button>
+          <button onclick="confirmDelete()" class="px-5 py-2.5 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-medium text-white">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    function toggleDarkMode() { const icon = document.querySelector('#darkModeBtn i'); icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun'); }
+
+    // ========== NOTES ==========
+    function addNote() {
+      const note = document.getElementById('newNote').value.trim();
+      if (!note) return;
+      const list = document.getElementById('notesList');
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const div = document.createElement('div');
+      div.className = 'p-4 bg-gray-50 rounded-xl';
+      div.innerHTML = `<div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded" /><span class="text-sm font-medium text-navy">Admin User</span></div><span class="text-xs text-gray-400">${dateStr}</span></div><p class="text-sm text-gray-600">${note}</p>`;
+      list.insertBefore(div, list.firstChild);
+      document.getElementById('newNote').value = '';
+      showToast('Note added successfully');
+    }
+
+    // ========== MODALS ==========
+    function openEditModal() { document.getElementById('editModal').classList.add('show'); }
+    function closeEditModal() { document.getElementById('editModal').classList.remove('show'); }
+    function saveEdit() { closeEditModal(); showToast('Customer updated successfully'); }
+
+    function openDeleteModal() { document.getElementById('deleteModal').classList.add('show'); }
+    function closeDeleteModal() { document.getElementById('deleteModal').classList.remove('show'); }
+    function confirmDelete() { closeDeleteModal(); showToast('Customer deleted'); setTimeout(() => window.location.href = 'manage-customers.html', 1500); }
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 right-6 bg-navy text-white px-5 py-3 rounded-xl shadow-lg z-50 flex items-center gap-3 text-sm font-medium';
+      toast.innerHTML = `<i class="fas fa-check-circle text-green-400"></i> ${message}`;
+      document.body.appendChild(toast); setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

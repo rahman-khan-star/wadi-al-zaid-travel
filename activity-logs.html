@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Logs - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <div class="w-9 h-9 rounded-lg bg-accent-500 flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-mountain text-white text-sm"></i>
+        </div>
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-gray-900 tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent-500 font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav role="navigation" aria-label="Main navigation" class="space-y-1">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent-100 text-accent-600 text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Settings</span></a>
+        <hr class="my-3 border-gray-100">
+        <a href="admin-profile.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600" aria-current="page"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div id="mainContent" role="main" class="lg:ml-64 transition-all duration-300">
+    <!-- Top Navbar -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="text-sm text-gray-400">
+            <span class="cursor-pointer hover:text-accent-500 transition-colors" onclick="location.href='admin.html'">Dashboard</span>
+            <i class="fas fa-chevron-right mx-2 text-[10px]"></i>
+            <span class="text-gray-900 font-semibold">Activity Logs</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="exportLogs()" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-all border border-gray-200">
+            <i class="fas fa-download text-xs"></i> Export Logs
+          </button>
+          <button onclick="openModal('clearModal')" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-sm font-medium transition-all border border-red-200">
+            <i class="fas fa-trash text-xs"></i> Clear Logs
+          </button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Admin" class="w-9 h-9 rounded-xl object-cover">
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold leading-tight">Admin User</p>
+              <p class="text-[10px] text-gray-400">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
+
+      <!-- Dashboard Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 fade-up">
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center"><i class="fas fa-list text-blue-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">2,847</p><p class="text-xs text-gray-500">Total Activities</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"><i class="fas fa-calendar-day text-green-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">156</p><p class="text-xs text-gray-500">Today's Activities</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center"><i class="fas fa-users text-purple-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">8</p><p class="text-xs text-gray-500">Active Admins</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center"><i class="fas fa-exclamation-circle text-red-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">23</p><p class="text-xs text-gray-500">Failed Actions</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><i class="fas fa-shield-alt text-orange-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">12</p><p class="text-xs text-gray-500">Security Events</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center"><i class="fas fa-cog text-teal-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">45</p><p class="text-xs text-gray-500">System Events</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex items-center gap-1 bg-white rounded-xl p-1 border border-gray-200 fade-up w-fit shadow-sm overflow-x-auto">
+        <button onclick="switchTab('logs')" class="tab-btn active px-4 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap" data-tab="logs">
+          <i class="fas fa-list mr-1.5"></i> Logs
+        </button>
+        <button onclick="switchTab('analytics')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="analytics">
+          <i class="fas fa-chart-line mr-1.5"></i> Analytics
+        </button>
+        <button onclick="switchTab('timeline')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="timeline">
+          <i class="fas fa-stream mr-1.5"></i> Timeline
+        </button>
+      </div>
+
+      <!-- Logs Tab -->
+      <div id="tab-logs" class="tab-content fade-up">
+        <!-- Search & Filters -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 mb-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="relative lg:col-span-2">
+              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+              <input type="text" id="searchInput" placeholder="Search by user, activity, or IP..." oninput="filterLogs()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+            </div>
+            <select id="filterModule" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All Modules</option>
+              <option value="Dashboard">Dashboard</option>
+              <option value="Destinations">Destinations</option>
+              <option value="Bookings">Bookings</option>
+              <option value="Customers">Customers</option>
+              <option value="Payments">Payments</option>
+              <option value="Refunds">Refunds</option>
+              <option value="Reviews">Reviews</option>
+              <option value="Blog">Blog</option>
+              <option value="Team">Team</option>
+              <option value="CMS">CMS</option>
+              <option value="Settings">Settings</option>
+              <option value="Security">Security</option>
+            </select>
+            <select id="filterStatus" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All Status</option>
+              <option value="success">Success</option>
+              <option value="warning">Warning</option>
+              <option value="failed">Failed</option>
+              <option value="critical">Critical</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
+            <select id="filterType" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All Activity Types</option>
+              <option value="Login">Login</option>
+              <option value="Logout">Logout</option>
+              <option value="Create">Create</option>
+              <option value="Update">Update</option>
+              <option value="Delete">Delete</option>
+              <option value="Export">Export</option>
+              <option value="Approve">Approve</option>
+              <option value="Reject">Reject</option>
+            </select>
+            <select id="filterRole" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All Roles</option>
+              <option value="Super Admin">Super Admin</option>
+              <option value="Administrator">Administrator</option>
+              <option value="Manager">Manager</option>
+              <option value="Staff">Staff</option>
+            </select>
+            <select id="filterSort" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="latest">Latest First</option>
+              <option value="oldest">Oldest First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Bulk Actions -->
+        <div id="bulkBar" class="hidden bg-accent-50 border border-accent-200 rounded-xl p-3 flex items-center justify-between mb-4">
+          <span class="text-sm font-medium text-accent-600"><span id="selectedCount">0</span> selected</span>
+          <div class="flex items-center gap-2">
+            <button onclick="bulkExport()" class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs font-semibold transition-all">Export</button>
+            <button onclick="bulkArchive()" class="px-3 py-1.5 bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-xs font-semibold transition-all">Archive</button>
+            <button onclick="bulkDelete()" class="px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg text-xs font-semibold transition-all">Delete</button>
+            <button onclick="clearSelection()" class="px-3 py-1.5 bg-white hover:bg-gray-100 text-gray-700 rounded-lg text-xs font-semibold transition-all border border-gray-200">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[1200px]">
+              <thead class="bg-gray-50 sticky top-0">
+                <tr>
+                  <th class="px-4 py-3 text-left w-10"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()" class="rounded border-gray-300 text-accent-500 focus:ring-accent-500"></th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">User</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Module</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Description</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">IP Address</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date & Time</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="logsTableBody" class="divide-y divide-gray-100">
+              </tbody>
+            </table>
+          </div>
+          <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+            <p id="tableInfo" class="text-xs text-gray-500"></p>
+            <div id="pagination" class="flex items-center gap-1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics Tab -->
+      <div id="tab-analytics" class="tab-content hidden fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Most Active Users -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-trophy text-accent-500 mr-2"></i>Most Active Users</h3>
+            <div class="space-y-3" id="activeUsers">
+            </div>
+          </div>
+
+          <!-- Module Usage -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-chart-pie text-accent-500 mr-2"></i>Module Usage</h3>
+            <div class="space-y-3" id="moduleUsage">
+            </div>
+          </div>
+
+          <!-- Security Events -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-shield-alt text-accent-500 mr-2"></i>Security Events</h3>
+            <div class="space-y-3" id="securityEvents">
+            </div>
+          </div>
+
+          <!-- Failed Login Attempts -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-exclamation-triangle text-accent-500 mr-2"></i>Failed Login Attempts</h3>
+            <div class="space-y-3" id="failedLogins">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Tab -->
+      <div id="tab-timeline" class="tab-content hidden fade-up">
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+          <h3 class="text-sm font-bold text-gray-900 mb-6"><i class="fas fa-stream text-accent-500 mr-2"></i>Activity Timeline</h3>
+          <div class="relative space-y-6" id="timelineContent">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Details Drawer -->
+  <div id="detailDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-white shadow-2xl z-50 drawer overflow-y-auto">
+    <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+      <h2 class="text-lg font-bold text-gray-900">Activity Details</h2>
+      <button onclick="closeDrawer()" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="p-6" id="drawerContent">
+    </div>
+  </div>
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="closeDrawer()"></div>
+
+  <!-- Clear Logs Modal -->
+  <div id="clearModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('clearModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+      <div class="p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-trash-alt text-red-500 text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Clear All Logs</h3>
+        <p class="text-sm text-gray-500">This action cannot be undone. All activity logs will be permanently deleted.</p>
+      </div>
+      <div class="flex items-center justify-center gap-3 p-6 border-t border-gray-200">
+        <button onclick="closeModal('clearModal')" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+        <button onclick="closeModal('clearModal');showToast('Logs cleared','success')" class="px-4 py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-xl text-sm font-semibold transition-all">Clear All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-x-full transition-transform duration-300">
+    <div class="flex items-center gap-3 px-5 py-3 rounded-xl shadow-2xl bg-white border border-gray-200">
+      <i id="toastIcon" class="fas fa-check-circle text-green-500 text-lg"></i>
+      <span id="toastMsg" class="text-sm font-medium text-gray-800"></span>
+    </div>
+  </div>
+
+  <script src="components.js"></script>
+  <script>
+    // Data
+    const logs = [
+      { id: 'LOG-001', user: 'Khalid Al-Rashidi', role: 'Super Admin', module: 'Bookings', action: 'Create', desc: 'Created new booking #BK-2024-1234 for Santorini Explorer package', ip: '192.168.1.100', device: 'MacBook Pro', browser: 'Chrome 120', date: '2025-01-15 10:30:25', status: 'success', prev: null, curr: 'BK-2024-1234' },
+      { id: 'LOG-002', user: 'Ahmed Al-Balushi', role: 'Administrator', module: 'Payments', action: 'Approve', desc: 'Approved payment of $4,500 for booking #BK-2024-1230', ip: '192.168.1.101', device: 'iPhone 15', browser: 'Safari 17', date: '2025-01-15 10:25:18', status: 'success', prev: 'Pending', curr: 'Approved' },
+      { id: 'LOG-003', user: 'Sara Al-Mansoori', role: 'Manager', module: 'Customers', action: 'Update', desc: 'Updated customer profile for John Smith - changed phone number', ip: '192.168.1.102', device: 'Windows PC', browser: 'Firefox 121', date: '2025-01-15 10:20:42', status: 'success', prev: '+1 555-0123', curr: '+1 555-0456' },
+      { id: 'LOG-004', user: 'System', role: 'System', module: 'Security', action: 'Login', desc: 'Failed login attempt from unknown user - 3 consecutive failures', ip: '192.168.1.200', device: 'Unknown', browser: 'Unknown', date: '2025-01-15 10:15:33', status: 'critical', prev: null, curr: 'Failed' },
+      { id: 'LOG-005', user: 'Fatima Al-Zahra', role: 'Manager', module: 'Blog', action: 'Create', desc: 'Published new blog post: "Top 10 Travel Destinations for 2025"', ip: '192.168.1.103', device: 'MacBook Air', browser: 'Chrome 120', date: '2025-01-15 10:10:15', status: 'success', prev: null, curr: 'Published' },
+      { id: 'LOG-006', user: 'Omar Al-Harbi', role: 'Staff', module: 'Refunds', action: 'Create', desc: 'Initiated refund of $1,200 for cancelled booking #BK-2024-1220', ip: '192.168.1.104', device: 'Android Phone', browser: 'Chrome Mobile', date: '2025-01-15 10:05:48', status: 'warning', prev: null, curr: 'Pending Review' },
+      { id: 'LOG-007', user: 'Layla Nasser', role: 'Staff', module: 'Reviews', action: 'Approve', desc: 'Approved 5-star review from Maria Garcia for Kyoto Adventure', ip: '192.168.1.105', device: 'iPad', browser: 'Safari 17', date: '2025-01-15 09:55:22', status: 'success', prev: 'Pending', curr: 'Approved' },
+      { id: 'LOG-008', user: 'Khalid Al-Rashidi', role: 'Super Admin', module: 'Settings', action: 'Update', desc: 'Updated system settings - changed session timeout to 60 minutes', ip: '192.168.1.100', device: 'MacBook Pro', browser: 'Chrome 120', date: '2025-01-15 09:45:10', status: 'success', prev: '30 min', curr: '60 min' },
+      { id: 'LOG-009', user: 'System', role: 'System', module: 'Security', action: 'Login', desc: 'Suspicious login detected from new location - Dubai, UAE', ip: '10.0.0.50', device: 'Unknown', browser: 'Unknown', date: '2025-01-15 09:30:55', status: 'warning', prev: null, curr: 'Flagged' },
+      { id: 'LOG-010', user: 'Ahmed Al-Balushi', role: 'Administrator', module: 'Destinations', action: 'Delete', desc: 'Deleted inactive destination: "Old Cairo Tour"', ip: '192.168.1.101', device: 'iPhone 15', browser: 'Safari 17', date: '2025-01-15 09:20:33', status: 'success', prev: 'Active', curr: 'Deleted' },
+      { id: 'LOG-011', user: 'Sara Al-Mansoori', role: 'Manager', module: 'Team', action: 'Update', desc: 'Updated team member role - Omar Al-Harbi promoted to Senior Staff', ip: '192.168.1.102', device: 'Windows PC', browser: 'Firefox 121', date: '2025-01-15 09:10:18', status: 'success', prev: 'Staff', curr: 'Senior Staff' },
+      { id: 'LOG-012', user: 'Khalid Al-Rashidi', role: 'Super Admin', module: 'Security', action: 'Update', desc: 'Updated password for admin account - security rotation', ip: '192.168.1.100', device: 'MacBook Pro', browser: 'Chrome 120', date: '2025-01-15 08:45:00', status: 'success', prev: null, curr: 'Updated' },
+      { id: 'LOG-013', user: 'System', role: 'System', module: 'Dashboard', action: 'Export', desc: 'Automated daily report generated and exported', ip: '127.0.0.1', device: 'Server', browser: 'System', date: '2025-01-15 08:00:00', status: 'success', prev: null, curr: 'Generated' },
+      { id: 'LOG-014', user: 'Fatima Al-Zahra', role: 'Manager', module: 'CMS', action: 'Update', desc: 'Updated homepage hero section content and images', ip: '192.168.1.103', device: 'MacBook Air', browser: 'Chrome 120', date: '2025-01-14 17:30:45', status: 'success', prev: 'Old Content', curr: 'New Content' },
+      { id: 'LOG-015', user: 'Omar Al-Harbi', role: 'Staff', module: 'Bookings', action: 'Update', desc: 'Updated booking #BK-2024-1225 status from Pending to Confirmed', ip: '192.168.1.104', device: 'Android Phone', browser: 'Chrome Mobile', date: '2025-01-14 17:15:22', status: 'success', prev: 'Pending', curr: 'Confirmed' }
+    ];
+
+    const activeUsersData = [
+      { name: 'Khalid Al-Rashidi', count: 245, avatar: 'KR', color: 'accent' },
+      { name: 'Ahmed Al-Balushi', count: 189, avatar: 'AB', color: 'blue' },
+      { name: 'Sara Al-Mansoori', count: 156, avatar: 'SM', color: 'green' },
+      { name: 'Fatima Al-Zahra', count: 134, avatar: 'FZ', color: 'purple' },
+      { name: 'Omar Al-Harbi', count: 98, avatar: 'OH', color: 'orange' }
+    ];
+
+    const moduleUsageData = [
+      { name: 'Bookings', count: 456, color: 'blue' },
+      { name: 'Customers', count: 312, color: 'green' },
+      { name: 'Payments', count: 278, color: 'purple' },
+      { name: 'Destinations', count: 198, color: 'teal' },
+      { name: 'Blog', count: 156, color: 'orange' }
+    ];
+
+    const securityEventsData = [
+      { type: 'Failed Login', count: 12, severity: 'high' },
+      { type: 'Suspicious IP', count: 5, severity: 'critical' },
+      { type: 'Password Change', count: 8, severity: 'low' },
+      { type: 'Permission Update', count: 15, severity: 'medium' }
+    ];
+
+    const failedLoginsData = [
+      { ip: '192.168.1.200', attempts: 5, lastAttempt: '10 min ago', status: 'Blocked' },
+      { ip: '10.0.0.50', attempts: 3, lastAttempt: '2 hours ago', status: 'Monitoring' },
+      { ip: '172.16.0.100', attempts: 2, lastAttempt: 'Yesterday', status: 'Cleared' }
+    ];
+
+    let currentPage = 1;
+    const perPage = 8;
+    let selectedIds = new Set();
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLogs();
+      renderAnalytics();
+      renderTimeline();
+    });
+
+    // Toast
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const m = document.getElementById('toastMsg');
+      m.textContent = msg;
+      icon.className = type === 'success' ? 'fas fa-check-circle text-green-500 text-lg' : type === 'error' ? 'fas fa-exclamation-circle text-red-500 text-lg' : 'fas fa-info-circle text-blue-500 text-lg';
+      t.classList.remove('translate-x-full');
+      setTimeout(() => t.classList.add('translate-x-full'), 3000);
+    }
+
+    // Modal
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Tab Switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active');
+        el.classList.add('text-gray-500');
+      });
+      document.getElementById('tab-' + tab).classList.remove('hidden');
+      document.getElementById('tab-' + tab).classList.add('block');
+      const btn = document.querySelector(`[data-tab="${tab}"]`);
+      if (btn) {
+        btn.classList.add('active');
+        btn.classList.remove('text-gray-500');
+      }
+    }
+
+    // Drawer
+    function openDrawer(log) {
+      document.getElementById('drawerContent').innerHTML = `
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-${getStatusColor(log.status)}-100 flex items-center justify-center flex-shrink-0">
+              <i class="fas ${getActionIcon(log.action)} text-${getStatusColor(log.status)}-600"></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-gray-900">${log.action} - ${log.module}</h3>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="px-2 py-0.5 ${getStatusClass(log.status)} rounded text-xs font-semibold">${log.status}</span>
+                <span class="text-xs text-gray-500">${log.date}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 rounded-xl p-4">
+            <p class="text-xs text-gray-500 mb-1">Description</p>
+            <p class="text-sm text-gray-700">${log.desc}</p>
+          </div>
+
+          ${log.prev ? `
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-red-50 rounded-xl border border-red-100">
+              <p class="text-xs text-red-500 mb-1">Previous Value</p>
+              <p class="text-sm font-semibold text-red-700">${log.prev}</p>
+            </div>
+            <div class="p-3 bg-green-50 rounded-xl border border-green-100">
+              <p class="text-xs text-green-500 mb-1">Updated Value</p>
+              <p class="text-sm font-semibold text-green-700">${log.curr}</p>
+            </div>
+          </div>
+          ` : ''}
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">User</p>
+              <p class="text-sm font-semibold text-gray-900">${log.user}</p>
+              <p class="text-xs text-gray-500">${log.role}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Log ID</p>
+              <p class="text-sm font-semibold text-gray-900">${log.id}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">IP Address</p>
+              <p class="text-sm font-semibold text-gray-900">${log.ip}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Session ID</p>
+              <p class="text-sm font-semibold text-gray-900">SES-${Math.random().toString(36).substr(2, 8)}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Device</p>
+              <p class="text-sm font-semibold text-gray-900">${log.device}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Browser</p>
+              <p class="text-sm font-semibold text-gray-900">${log.browser}</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button onclick="downloadLog(${log.id})" class="flex-1 px-4 py-2.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all"><i class="fas fa-download mr-2"></i>Download</button>
+            <button onclick="copyLog(${log.id})" class="flex-1 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all"><i class="fas fa-copy mr-2"></i>Copy</button>
+            <button onclick="reportLog(${log.id})" class="px-4 py-2.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-sm font-semibold transition-all"><i class="fas fa-flag"></i></button>
+          </div>
+        </div>
+      `;
+      document.getElementById('detailDrawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.remove('hidden');
+    }
+
+    function closeDrawer() {
+      document.getElementById('detailDrawer').classList.remove('open');
+      document.getElementById('drawerOverlay').classList.add('hidden');
+    }
+
+    // Logs Table
+    function renderLogs() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const module = document.getElementById('filterModule').value;
+      const status = document.getElementById('filterStatus').value;
+      const type = document.getElementById('filterType').value;
+      const role = document.getElementById('filterRole').value;
+      const sort = document.getElementById('filterSort').value;
+
+      let list = [...logs];
+      if (search) list = list.filter(l => l.user.toLowerCase().includes(search) || l.desc.toLowerCase().includes(search) || l.ip.includes(search));
+      if (module) list = list.filter(l => l.module === module);
+      if (status) list = list.filter(l => l.status === status);
+      if (type) list = list.filter(l => l.action === type);
+      if (role) list = list.filter(l => l.role === role);
+      if (sort === 'oldest') list.reverse();
+
+      const total = list.length;
+      const totalPages = Math.ceil(total / perPage);
+      if (currentPage > totalPages) currentPage = 1;
+      const start = (currentPage - 1) * perPage;
+      const pageList = list.slice(start, start + perPage);
+
+      document.getElementById('logsTableBody').innerHTML = pageList.map(l => `
+        <tr class="log-row hover:bg-gray-50 transition-colors">
+          <td class="px-4 py-3"><input type="checkbox" ${selectedIds.has(l.id) ? 'checked' : ''} onchange="toggleSelect('${l.id}')" class="rounded border-gray-300 text-accent-500 focus:ring-accent-500"></td>
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-accent-100 flex items-center justify-center text-accent-700 text-xs font-bold">${l.user.split(' ').map(n=>n[0]).join('').substring(0,2)}</div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">${l.user}</p>
+                <p class="text-[10px] text-gray-500">${l.role}</p>
+              </div>
+            </div>
+          </td>
+          <td class="px-4 py-3"><span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium">${l.module}</span></td>
+          <td class="px-4 py-3"><span class="text-sm font-medium text-gray-900">${l.action}</span></td>
+          <td class="px-4 py-3 max-w-[250px]"><p class="text-xs text-gray-600 truncate">${l.desc}</p></td>
+          <td class="px-4 py-3"><span class="text-xs text-gray-500 font-mono">${l.ip}</span></td>
+          <td class="px-4 py-3"><span class="text-xs text-gray-500">${l.date}</span></td>
+          <td class="px-4 py-3"><span class="px-2 py-1 ${getStatusClass(l.status)} rounded text-xs font-semibold capitalize">${l.status}</span></td>
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-1">
+              <button onclick="openDrawer(logs.find(x=>x.id==='${l.id}'))" class="p-1.5 hover:bg-blue-50 rounded-lg text-blue-500 transition-all" title="View"><i class="fas fa-eye text-xs"></i></button>
+              <button onclick="downloadLog('${l.id}')" class="p-1.5 hover:bg-green-50 rounded-lg text-green-500 transition-all" title="Download"><i class="fas fa-download text-xs"></i></button>
+              <button onclick="copyLog('${l.id}')" class="p-1.5 hover:bg-purple-50 rounded-lg text-purple-500 transition-all" title="Copy"><i class="fas fa-copy text-xs"></i></button>
+              <button onclick="reportLog('${l.id}')" class="p-1.5 hover:bg-red-50 rounded-lg text-red-500 transition-all" title="Report"><i class="fas fa-flag text-xs"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+
+      document.getElementById('tableInfo').textContent = `Showing ${start + 1}-${Math.min(start + perPage, total)} of ${total} logs`;
+      renderPagination(totalPages);
+      updateBulkBar();
+    }
+
+    function getStatusClass(status) {
+      const classes = { success: 'bg-green-100 text-green-700', warning: 'bg-yellow-100 text-yellow-700', failed: 'bg-red-100 text-red-700', critical: 'bg-red-200 text-red-800' };
+      return classes[status] || classes.success;
+    }
+
+    function getStatusColor(status) {
+      const colors = { success: 'green', warning: 'yellow', failed: 'red', critical: 'red' };
+      return colors[status] || 'green';
+    }
+
+    function getActionIcon(action) {
+      const icons = { Login: 'fa-sign-in-alt', Logout: 'fa-sign-out-alt', Create: 'fa-plus', Update: 'fa-edit', Delete: 'fa-trash', Export: 'fa-download', Approve: 'fa-check', Reject: 'fa-times' };
+      return icons[action] || 'fa-circle';
+    }
+
+    function renderPagination(totalPages) {
+      const pg = document.getElementById('pagination');
+      let html = `<button onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-left"></i></button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button onclick="goPage(${i})" class="w-8 h-8 rounded-lg text-xs font-semibold ${i === currentPage ? 'bg-accent-500 text-white shadow' : 'text-gray-600 hover:bg-gray-100'} transition-all">${i}</button>`;
+      }
+      html += `<button onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-right"></i></button>`;
+      pg.innerHTML = html;
+    }
+
+    function goPage(p) { currentPage = p; renderLogs(); }
+    function filterLogs() { currentPage = 1; renderLogs(); }
+
+    // Selection
+    function toggleSelect(id) {
+      if (selectedIds.has(id)) selectedIds.delete(id);
+      else selectedIds.add(id);
+      updateBulkBar();
+    }
+
+    function toggleSelectAll() {
+      const cb = document.getElementById('selectAll');
+      if (cb.checked) logs.forEach(l => selectedIds.add(l.id));
+      else selectedIds.clear();
+      renderLogs();
+    }
+
+    function clearSelection() {
+      selectedIds.clear();
+      document.getElementById('selectAll').checked = false;
+      renderLogs();
+    }
+
+    function updateBulkBar() {
+      const bar = document.getElementById('bulkBar');
+      const cnt = document.getElementById('selectedCount');
+      if (selectedIds.size > 0) {
+        bar.classList.remove('hidden');
+        bar.classList.add('flex');
+        cnt.textContent = selectedIds.size;
+      } else {
+        bar.classList.add('hidden');
+        bar.classList.remove('flex');
+      }
+    }
+
+    // Actions
+    function downloadLog(id) { showToast('Log downloaded', 'success'); }
+    function copyLog(id) { showToast('Log copied to clipboard', 'success'); }
+    function reportLog(id) { showToast('Activity reported', 'info'); }
+    function exportLogs() { showToast('Logs exported successfully', 'success'); }
+
+    // Bulk Actions
+    function bulkExport() { showToast(`${selectedIds.size} logs exported`, 'success'); selectedIds.clear(); renderLogs(); }
+    function bulkArchive() { showToast(`${selectedIds.size} logs archived`, 'success'); selectedIds.clear(); renderLogs(); }
+    function bulkDelete() { showToast(`${selectedIds.size} logs deleted`, 'success'); selectedIds.clear(); renderLogs(); }
+
+    // Analytics
+    function renderAnalytics() {
+      document.getElementById('activeUsers').innerHTML = activeUsersData.map((u, i) => `
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+          <span class="text-xs font-bold ${i === 0 ? 'text-accent-500' : 'text-gray-400'} w-4">${i + 1}</span>
+          <div class="w-8 h-8 rounded-full bg-${u.color}-100 flex items-center justify-center text-${u.color}-700 text-xs font-bold">${u.avatar}</div>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-900">${u.name}</p>
+          </div>
+          <span class="text-sm font-semibold text-gray-900">${u.count}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('moduleUsage').innerHTML = moduleUsageData.map(m => `
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+          <div class="w-8 h-8 rounded-lg bg-${m.color}-100 flex items-center justify-center"><i class="fas fa-cube text-${m.color}-600 text-xs"></i></div>
+          <div class="flex-1">
+            <p class="text-sm font-medium text-gray-900">${m.name}</p>
+            <div class="w-full h-1.5 bg-gray-200 rounded-full mt-1">
+              <div class="h-full bg-${m.color}-500 rounded-full" style="width: ${(m.count / 500) * 100}%"></div>
+            </div>
+          </div>
+          <span class="text-sm font-semibold text-gray-900">${m.count}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('securityEvents').innerHTML = securityEventsData.map(s => `
+        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-${s.severity === 'critical' ? 'red' : s.severity === 'high' ? 'orange' : s.severity === 'medium' ? 'yellow' : 'green'}-100 flex items-center justify-center"><i class="fas fa-shield-alt text-${s.severity === 'critical' ? 'red' : s.severity === 'high' ? 'orange' : s.severity === 'medium' ? 'yellow' : 'green'}-600 text-xs"></i></div>
+            <span class="text-sm font-medium text-gray-900">${s.type}</span>
+          </div>
+          <span class="text-sm font-semibold text-gray-900">${s.count}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('failedLogins').innerHTML = failedLoginsData.map(f => `
+        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+          <div>
+            <p class="text-sm font-medium text-gray-900 font-mono">${f.ip}</p>
+            <p class="text-xs text-gray-500">${f.attempts} attempts • ${f.lastAttempt}</p>
+          </div>
+          <span class="px-2 py-1 ${f.status === 'Blocked' ? 'bg-red-100 text-red-700' : f.status === 'Monitoring' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'} rounded text-xs font-semibold">${f.status}</span>
+        </div>
+      `).join('');
+    }
+
+    // Timeline
+    function renderTimeline() {
+      const timelineData = [
+        { time: '10:30 AM', title: 'Booking Created', desc: 'Khalid created booking #BK-2024-1234', icon: 'fa-suitcase', color: 'blue' },
+        { time: '10:25 AM', title: 'Payment Approved', desc: 'Ahmed approved $4,500 payment', icon: 'fa-credit-card', color: 'green' },
+        { time: '10:20 AM', title: 'Customer Updated', desc: 'Sara updated John Smith profile', icon: 'fa-user', color: 'purple' },
+        { time: '10:15 AM', title: 'Security Alert', desc: 'Failed login attempt detected', icon: 'fa-shield-alt', color: 'red' },
+        { time: '10:10 AM', title: 'Blog Published', desc: 'Fatima published new article', icon: 'fa-blog', color: 'orange' },
+        { time: '10:05 AM', title: 'Refund Initiated', desc: 'Omar initiated $1,200 refund', icon: 'fa-undo', color: 'yellow' },
+        { time: '09:55 AM', title: 'Review Approved', desc: 'Layla approved 5-star review', icon: 'fa-star', color: 'teal' },
+        { time: '09:45 AM', title: 'Settings Updated', desc: 'Khalid changed session timeout', icon: 'fa-cog', color: 'gray' }
+      ];
+
+      document.getElementById('timelineContent').innerHTML = timelineData.map((t, i) => `
+        <div class="flex gap-4 relative">
+          <div class="w-8 h-8 rounded-full bg-${t.color}-100 flex items-center justify-center flex-shrink-0 z-10">
+            <i class="fas ${t.icon} text-${t.color}-600 text-xs"></i>
+          </div>
+          ${i < timelineData.length - 1 ? '<div class="absolute left-4 top-8 bottom-0 w-0.5 bg-gray-200"></div>' : ''}
+          <div class="flex-1 pb-6">
+            <div class="flex items-center gap-2">
+              <p class="text-sm font-semibold text-gray-900">${t.title}</p>
+              <span class="text-xs text-gray-500">${t.time}</span>
+            </div>
+            <p class="text-xs text-gray-600 mt-1">${t.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

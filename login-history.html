@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login History - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <div class="w-9 h-9 rounded-lg bg-accent-500 flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-mountain text-white text-sm"></i>
+        </div>
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-gray-900 tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent-500 font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav role="navigation" aria-label="Main navigation" class="space-y-1">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent-100 text-accent-600 text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Settings</span></a>
+        <hr class="my-3 border-gray-100">
+        <a href="admin-profile.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600" aria-current="page"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="roles-permissions.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-shield w-5 text-center"></i><span class="sidebar-text">Roles & Permissions</span></a>
+        <a href="index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div role="main" id="mainContent" class="lg:ml-64 transition-all duration-300">
+    <!-- Top Navbar -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="text-sm text-gray-400">
+            <span class="cursor-pointer hover:text-accent-500 transition-colors" onclick="location.href='admin.html'">Dashboard</span>
+            <i class="fas fa-chevron-right mx-2 text-[10px]"></i>
+            <span class="text-gray-900 font-semibold">Login History</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="exportLoginHistory()" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-all border border-gray-200">
+            <i class="fas fa-download text-xs"></i> Export Login History
+          </button>
+          <button onclick="openSecurityReport()" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-dark text-white rounded-xl text-sm font-medium transition-all">
+            <i class="fas fa-shield-alt text-xs"></i> Security Report
+          </button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" class="w-9 h-9 rounded-xl">
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold leading-tight">Admin User</p>
+              <p class="text-[10px] text-gray-400">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
+
+      <!-- Dashboard Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 fade-up">
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center"><i class="fas fa-sign-in-alt text-blue-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">12,847</p><p class="text-xs text-gray-500">Total Logins</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"><i class="fas fa-calendar-day text-green-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">284</p><p class="text-xs text-gray-500">Today's Logins</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center"><i class="fas fa-times-circle text-red-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">47</p><p class="text-xs text-gray-500">Failed Attempts</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center"><i class="fas fa-desktop text-purple-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">156</p><p class="text-xs text-gray-500">Active Sessions</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><i class="fas fa-exclamation-triangle text-orange-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">12</p><p class="text-xs text-gray-500">Suspicious</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center"><i class="fas fa-mobile-alt text-teal-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">89</p><p class="text-xs text-gray-500">Unique Devices</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex items-center gap-1 bg-white rounded-xl p-1 border border-gray-200 fade-up w-fit shadow-sm overflow-x-auto">
+        <button onclick="switchTab('history')" class="tab-btn active px-4 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap" data-tab="history">
+          <i class="fas fa-list mr-1.5"></i> Login History
+        </button>
+        <button onclick="switchTab('sessions')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="sessions">
+          <i class="fas fa-desktop mr-1.5"></i> Active Sessions
+        </button>
+        <button onclick="switchTab('analytics')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="analytics">
+          <i class="fas fa-chart-line mr-1.5"></i> Security Analytics
+        </button>
+        <button onclick="switchTab('alerts')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="alerts">
+          <i class="fas fa-bell mr-1.5"></i> Alerts
+        </button>
+      </div>
+
+      <!-- Login History Tab -->
+      <div id="tab-history" class="tab-content fade-up">
+        <!-- Search & Filters -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 mb-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="relative lg:col-span-2">
+              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+              <input type="text" id="searchInput" placeholder="Search by user, email, or IP..." oninput="filterLogs()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+            </div>
+            <select id="filterStatus" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All Status</option>
+              <option value="success">Success</option>
+              <option value="failed">Failed</option>
+              <option value="blocked">Blocked</option>
+              <option value="suspicious">Suspicious</option>
+            </select>
+            <select id="filterDevice" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All Devices</option>
+              <option value="Desktop">Desktop</option>
+              <option value="Mobile">Mobile</option>
+              <option value="Tablet">Tablet</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mt-3">
+            <select id="filterBrowser" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All Browsers</option>
+              <option value="Chrome">Chrome</option>
+              <option value="Firefox">Firefox</option>
+              <option value="Safari">Safari</option>
+              <option value="Edge">Edge</option>
+            </select>
+            <select id="filterOS" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+              <option value="">All OS</option>
+              <option value="Windows">Windows</option>
+              <option value="macOS">macOS</option>
+              <option value="Linux">Linux</option>
+              <option value="iOS">iOS</option>
+              <option value="Android">Android</option>
+            </select>
+            <input type="date" id="filterDateFrom" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <input type="date" id="filterDateTo" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+          </div>
+        </div>
+
+        <!-- Login History Table -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[1400px]">
+              <thead class="bg-gray-50 sticky top-0">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Login ID</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">User</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Role</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Login Time</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden xl:table-cell">Logout Time</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden xl:table-cell">Duration</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">IP Address</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Country</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden xl:table-cell">Device</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden xl:table-cell">Browser</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider hidden 2xl:table-cell">OS</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="loginTableBody" class="divide-y divide-gray-100">
+              </tbody>
+            </table>
+          </div>
+          <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+            <p id="tableInfo" class="text-xs text-gray-500"></p>
+            <div id="pagination" class="flex items-center gap-1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Sessions Tab -->
+      <div id="tab-sessions" class="tab-content hidden fade-up">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-bold text-gray-900">Active Sessions</h3>
+          <button onclick="openEndAllSessionsModal()" class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-sm font-medium transition-all border border-red-200">
+            <i class="fas fa-power-off text-xs"></i> End All Sessions
+          </button>
+        </div>
+        <div id="sessionsList" class="space-y-4"></div>
+      </div>
+
+      <!-- Security Analytics Tab -->
+      <div id="tab-analytics" class="tab-content hidden fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <!-- Login Trend Chart -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+            <h3 class="font-bold text-gray-900 mb-4"><i class="fas fa-chart-line text-accent-500 mr-2"></i>Login Trend</h3>
+            <div class="h-64"><canvas id="loginTrendChart"></canvas></div>
+          </div>
+          <!-- Failed Login Chart -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+            <h3 class="font-bold text-gray-900 mb-4"><i class="fas fa-chart-bar text-red-500 mr-2"></i>Failed Logins</h3>
+            <div class="h-64"><canvas id="failedLoginChart"></canvas></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <!-- Browser Usage -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+            <h3 class="font-bold text-gray-900 mb-4"><i class="fas fa-globe text-blue-500 mr-2"></i>Browser Usage</h3>
+            <div class="h-56"><canvas id="browserChart"></canvas></div>
+          </div>
+          <!-- Device Usage -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+            <h3 class="font-bold text-gray-900 mb-4"><i class="fas fa-laptop text-purple-500 mr-2"></i>Device Usage</h3>
+            <div class="h-56"><canvas id="deviceChart"></canvas></div>
+          </div>
+          <!-- Country Distribution -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+            <h3 class="font-bold text-gray-900 mb-4"><i class="fas fa-map-marker-alt text-green-500 mr-2"></i>Country Distribution</h3>
+            <div class="space-y-3" id="countryList"></div>
+          </div>
+        </div>
+        <!-- Login Time Heatmap -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
+          <h3 class="font-bold text-gray-900 mb-4"><i class="fas fa-fire text-orange-500 mr-2"></i>Login Time Heatmap</h3>
+          <div id="heatmapContainer" class="overflow-x-auto"></div>
+        </div>
+      </div>
+
+      <!-- Alerts Tab -->
+      <div id="tab-alerts" class="tab-content hidden fade-up">
+        <div id="alertsList" class="space-y-4"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Details Drawer -->
+  <div id="detailDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-white shadow-2xl z-50 drawer overflow-y-auto">
+    <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+      <h2 class="text-lg font-bold text-gray-900">Session Details</h2>
+      <button onclick="closeDrawer()" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="p-6" id="drawerContent"></div>
+  </div>
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="closeDrawer()"></div>
+
+  <!-- End Session Modal -->
+  <div id="endSessionModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('endSessionModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+      <div class="p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-power-off text-red-500 text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">End Session</h3>
+        <p class="text-sm text-gray-500">Are you sure you want to end this session? The user will be logged out immediately.</p>
+      </div>
+      <div class="flex items-center justify-center gap-3 p-6 border-t border-gray-200">
+        <button onclick="closeModal('endSessionModal')" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+        <button onclick="confirmEndSession()" class="px-4 py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-xl text-sm font-semibold transition-all">End Session</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block Device Modal -->
+  <div id="blockDeviceModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('blockDeviceModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+      <div class="p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-ban text-orange-500 text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Block Device</h3>
+        <p class="text-sm text-gray-500">Are you sure you want to block this device? All sessions from this device will be terminated.</p>
+      </div>
+      <div class="flex items-center justify-center gap-3 p-6 border-t border-gray-200">
+        <button onclick="closeModal('blockDeviceModal')" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+        <button onclick="confirmBlockDevice()" class="px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl text-sm font-semibold transition-all">Block Device</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block IP Modal -->
+  <div id="blockIPModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('blockIPModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+      <div class="p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-shield-alt text-red-500 text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Block IP Address</h3>
+        <p class="text-sm text-gray-500">Are you sure you want to block this IP address? All connections from this IP will be rejected.</p>
+      </div>
+      <div class="flex items-center justify-center gap-3 p-6 border-t border-gray-200">
+        <button onclick="closeModal('blockIPModal')" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+        <button onclick="confirmBlockIP()" class="px-4 py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-xl text-sm font-semibold transition-all">Block IP</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- End All Sessions Modal -->
+  <div id="endAllSessionsModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('endAllSessionsModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+      <div class="p-6 text-center">
+        <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-power-off text-red-500 text-2xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">End All Sessions</h3>
+        <p class="text-sm text-gray-500">This will terminate all active sessions. Users will need to log in again.</p>
+      </div>
+      <div class="flex items-center justify-center gap-3 p-6 border-t border-gray-200">
+        <button onclick="closeModal('endAllSessionsModal')" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+        <button onclick="confirmEndAllSessions()" class="px-4 py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-xl text-sm font-semibold transition-all">End All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-x-full transition-transform duration-300">
+    <div class="flex items-center gap-3 px-5 py-3 rounded-xl shadow-2xl bg-white border border-gray-200">
+      <i id="toastIcon" class="fas fa-check-circle text-green-500 text-lg"></i>
+      <span id="toastMsg" class="text-sm font-medium text-gray-800"></span>
+    </div>
+  </div>
+
+  <script src="components.js"></script>
+  <script>
+    // Login History Data
+    const loginHistory = [
+      { id: 'LH-001', user: 'Khalid Al-Rashidi', email: 'khalid@wadialzaid.com', role: 'Super Admin', loginTime: '2025-01-15 10:30:25', logoutTime: '2025-01-15 14:45:10', duration: '4h 14m', ip: '192.168.1.100', country: 'UAE', device: 'Desktop', browser: 'Chrome', os: 'Windows', status: 'success', auth: 'Password + 2FA', twoFactor: true, location: 'Dubai, UAE' },
+      { id: 'LH-002', user: 'Ahmed Al-Balushi', email: 'ahmed@wadialzaid.com', role: 'Administrator', loginTime: '2025-01-15 09:15:18', logoutTime: '2025-01-15 13:30:45', duration: '4h 15m', ip: '192.168.1.101', country: 'Oman', device: 'Mobile', browser: 'Safari', os: 'iOS', status: 'success', auth: 'Biometric', twoFactor: true, location: 'Muscat, Oman' },
+      { id: 'LH-003', user: 'Sara Al-Mansoori', email: 'sara@wadialzaid.com', role: 'Manager', loginTime: '2025-01-15 08:45:42', logoutTime: '2025-01-15 17:20:33', duration: '8h 34m', ip: '192.168.1.102', country: 'UAE', device: 'Desktop', browser: 'Firefox', os: 'macOS', status: 'success', auth: 'Password', twoFactor: false, location: 'Abu Dhabi, UAE' },
+      { id: 'LH-004', user: 'Unknown', email: 'unknown@email.com', role: 'N/A', loginTime: '2025-01-15 10:15:33', logoutTime: '-', duration: '-', ip: '192.168.1.200', country: 'Russia', device: 'Desktop', browser: 'Chrome', os: 'Linux', status: 'failed', auth: 'Password', twoFactor: false, location: 'Moscow, Russia' },
+      { id: 'LH-005', user: 'Fatima Al-Zahra', email: 'fatima@wadialzaid.com', role: 'Manager', loginTime: '2025-01-15 10:10:15', logoutTime: '2025-01-15 16:45:22', duration: '6h 35m', ip: '192.168.1.103', country: 'UAE', device: 'Desktop', browser: 'Chrome', os: 'macOS', status: 'success', auth: 'Password + 2FA', twoFactor: true, location: 'Sharjah, UAE' },
+      { id: 'LH-006', user: 'Omar Al-Harbi', email: 'omar@wadialzaid.com', role: 'Staff', loginTime: '2025-01-15 10:05:48', logoutTime: '2025-01-15 12:30:15', duration: '2h 24m', ip: '192.168.1.104', country: 'Saudi Arabia', device: 'Mobile', browser: 'Chrome', os: 'Android', status: 'success', auth: 'Password', twoFactor: false, location: 'Riyadh, Saudi Arabia' },
+      { id: 'LH-007', user: 'Layla Nasser', email: 'layla@wadialzaid.com', role: 'Staff', loginTime: '2025-01-15 09:55:22', logoutTime: '2025-01-15 18:10:45', duration: '8h 15m', ip: '192.168.1.105', country: 'UAE', device: 'Tablet', browser: 'Safari', os: 'iOS', status: 'success', auth: 'Biometric', twoFactor: true, location: 'Dubai, UAE' },
+      { id: 'LH-008', user: 'Unknown', email: 'hacker@malicious.com', role: 'N/A', loginTime: '2025-01-15 09:30:55', logoutTime: '-', duration: '-', ip: '10.0.0.50', country: 'China', device: 'Desktop', browser: 'Chrome', os: 'Windows', status: 'blocked', auth: 'Password', twoFactor: false, location: 'Beijing, China' },
+      { id: 'LH-009', user: 'Youssef Al-Mansouri', email: 'youssef@wadialzaid.com', role: 'Staff', loginTime: '2025-01-15 09:20:33', logoutTime: '2025-01-15 15:45:10', duration: '6h 24m', ip: '192.168.1.106', country: 'UAE', device: 'Desktop', browser: 'Edge', os: 'Windows', status: 'success', auth: 'Password + 2FA', twoFactor: true, location: 'Dubai, UAE' },
+      { id: 'LH-010', user: 'Mariam Al-Hashimi', email: 'mariam@wadialzaid.com', role: 'Administrator', loginTime: '2025-01-15 08:10:18', logoutTime: '2025-01-15 17:55:30', duration: '9h 45m', ip: '192.168.1.107', country: 'UAE', device: 'Desktop', browser: 'Chrome', os: 'Windows', status: 'success', auth: 'Password + 2FA', twoFactor: true, location: 'Dubai, UAE' },
+      { id: 'LH-011', user: 'Unknown', email: 'bot@suspicious.net', role: 'N/A', loginTime: '2025-01-15 08:45:00', logoutTime: '-', duration: '-', ip: '172.16.0.100', country: 'Nigeria', device: 'Desktop', browser: 'Firefox', os: 'Linux', status: 'suspicious', auth: 'Password', twoFactor: false, location: 'Lagos, Nigeria' },
+      { id: 'LH-012', user: 'Hassan Al-Ketbi', email: 'hassan@wadialzaid.com', role: 'Staff', loginTime: '2025-01-15 07:30:00', logoutTime: '2025-01-15 16:20:15', duration: '8h 50m', ip: '192.168.1.108', country: 'UAE', device: 'Mobile', browser: 'Safari', os: 'iOS', status: 'success', auth: 'Biometric', twoFactor: true, location: 'Ajman, UAE' },
+      { id: 'LH-013', user: 'Nadia Al-Shamsi', email: 'nadia@wadialzaid.com', role: 'Manager', loginTime: '2025-01-14 17:30:45', logoutTime: '2025-01-14 19:15:22', duration: '1h 44m', ip: '192.168.1.109', country: 'UAE', device: 'Desktop', browser: 'Chrome', os: 'macOS', status: 'success', auth: 'Password', twoFactor: false, location: 'Dubai, UAE' },
+      { id: 'LH-014', user: 'Tariq Al-Mazrouei', email: 'tariq@wadialzaid.com', role: 'Staff', loginTime: '2025-01-14 16:15:22', logoutTime: '2025-01-14 18:45:30', duration: '2h 30m', ip: '192.168.1.110', country: 'UAE', device: 'Desktop', browser: 'Chrome', os: 'Windows', status: 'success', auth: 'Password + 2FA', twoFactor: true, location: 'Dubai, UAE' },
+      { id: 'LH-015', user: 'Unknown', email: 'brute@attack.com', role: 'N/A', loginTime: '2025-01-14 15:00:10', logoutTime: '-', duration: '-', ip: '203.0.113.50', country: 'Vietnam', device: 'Desktop', browser: 'Chrome', os: 'Windows', status: 'failed', auth: 'Password', twoFactor: false, location: 'Ho Chi Minh, Vietnam' },
+      { id: 'LH-016', user: 'Khalid Al-Rashidi', email: 'khalid@wadialzaid.com', role: 'Super Admin', loginTime: '2025-01-14 08:00:00', logoutTime: '2025-01-14 18:30:15', duration: '10h 30m', ip: '192.168.1.100', country: 'UAE', device: 'Desktop', browser: 'Chrome', os: 'Windows', status: 'success', auth: 'Password + 2FA', twoFactor: true, location: 'Dubai, UAE' },
+      { id: 'LH-017', user: 'Aisha Al-Nuaimi', email: 'aisha@wadialzaid.com', role: 'Staff', loginTime: '2025-01-14 09:45:30', logoutTime: '2025-01-14 14:20:45', duration: '4h 35m', ip: '192.168.1.111', country: 'UAE', device: 'Tablet', browser: 'Safari', os: 'iOS', status: 'success', auth: 'Biometric', twoFactor: true, location: 'Dubai, UAE' },
+      { id: 'LH-018', user: 'Unknown', email: 'test@test.com', role: 'N/A', loginTime: '2025-01-14 07:15:00', logoutTime: '-', duration: '-', ip: '198.51.100.25', country: 'Unknown', device: 'Desktop', browser: 'Chrome', os: 'Windows', status: 'suspicious', auth: 'Password', twoFactor: false, location: 'Unknown' },
+      { id: 'LH-019', user: 'Saeed Al-Dhaheri', email: 'saeed@wadialzaid.com', role: 'Administrator', loginTime: '2025-01-13 10:30:25', logoutTime: '2025-01-13 16:45:10', duration: '6h 14m', ip: '192.168.1.112', country: 'UAE', device: 'Desktop', browser: 'Edge', os: 'Windows', status: 'success', auth: 'Password + 2FA', twoFactor: true, location: 'Al Ain, UAE' },
+      { id: 'LH-020', user: 'Reem Al-Kaabi', email: 'reem@wadialzaid.com', role: 'Staff', loginTime: '2025-01-13 09:20:18', logoutTime: '2025-01-13 17:30:45', duration: '8h 10m', ip: '192.168.1.113', country: 'UAE', device: 'Mobile', browser: 'Chrome', os: 'Android', status: 'success', auth: 'Password', twoFactor: false, location: 'Dubai, UAE' }
+    ];
+
+    // Active Sessions Data
+    const activeSessions = [
+      { id: 'S-001', user: 'Khalid Al-Rashidi', role: 'Super Admin', ip: '192.168.1.100', country: 'UAE', device: 'Desktop', browser: 'Chrome 120', os: 'Windows 11', loginTime: '2025-01-15 10:30:25', duration: '4h 14m', current: true, auth: 'Password + 2FA' },
+      { id: 'S-002', user: 'Ahmed Al-Balushi', role: 'Administrator', ip: '192.168.1.101', country: 'Oman', device: 'Mobile', browser: 'Safari 17', os: 'iOS 17', loginTime: '2025-01-15 09:15:18', duration: '5h 29m', current: false, auth: 'Biometric' },
+      { id: 'S-003', user: 'Sara Al-Mansoori', role: 'Manager', ip: '192.168.1.102', country: 'UAE', device: 'Desktop', browser: 'Firefox 121', os: 'macOS', loginTime: '2025-01-15 08:45:42', duration: '5h 59m', current: false, auth: 'Password' },
+      { id: 'S-004', user: 'Fatima Al-Zahra', role: 'Manager', ip: '192.168.1.103', country: 'UAE', device: 'Desktop', browser: 'Chrome 120', os: 'macOS', loginTime: '2025-01-15 10:10:15', duration: '4h 34m', current: false, auth: 'Password + 2FA' },
+      { id: 'S-005', user: 'Layla Nasser', role: 'Staff', ip: '192.168.1.105', country: 'UAE', device: 'Tablet', browser: 'Safari 17', os: 'iPadOS 17', loginTime: '2025-01-15 09:55:22', duration: '4h 49m', current: false, auth: 'Biometric' }
+    ];
+
+    // Alerts Data
+    const alertsData = [
+      { id: 'ALT-001', type: 'failed', title: 'Multiple Failed Login Attempts', desc: '5 failed attempts from IP 192.168.1.200 in the last 10 minutes', time: '5 min ago', severity: 'high', icon: 'fa-times-circle', color: 'red' },
+      { id: 'ALT-002', type: 'new_device', title: 'Login From New Device', desc: 'Ahmed Al-Balushi logged in from a new iPhone 15 Pro', time: '15 min ago', severity: 'medium', icon: 'fa-mobile-alt', color: 'orange' },
+      { id: 'ALT-003', type: 'new_country', title: 'Login From New Country', desc: 'Omar Al-Harbi logged in from Saudi Arabia for the first time', time: '1 hour ago', severity: 'medium', icon: 'fa-map-marker-alt', color: 'yellow' },
+      { id: 'ALT-004', type: 'concurrent', title: 'Concurrent Sessions Detected', desc: 'Khalid Al-Rashidi has 2 active sessions from different locations', time: '2 hours ago', severity: 'low', icon: 'fa-layer-group', color: 'blue' },
+      { id: 'ALT-005', type: 'blocked', title: 'Blocked IP Attempt', desc: 'Login attempt from blocked IP 10.0.0.50 was rejected', time: '3 hours ago', severity: 'critical', icon: 'fa-shield-alt', color: 'red' },
+      { id: 'ALT-006', type: 'suspicious', title: 'Suspicious Activity Detected', desc: 'Unusual login pattern detected from IP 172.16.0.100', time: '4 hours ago', severity: 'high', icon: 'fa-exclamation-triangle', color: 'red' }
+    ];
+
+    // Country Data
+    const countryData = [
+      { name: 'UAE', count: 1245, percentage: 78, flag: '🇦🇪' },
+      { name: 'Saudi Arabia', count: 156, percentage: 10, flag: '🇸🇦' },
+      { name: 'Oman', count: 98, percentage: 6, flag: '🇴🇲' },
+      { name: 'Qatar', count: 45, percentage: 3, flag: '🇶🇦' },
+      { name: 'Bahrain', count: 25, percentage: 2, flag: '🇧🇭' },
+      { name: 'Kuwait', count: 15, percentage: 1, flag: '🇰🇼' }
+    ];
+
+    let currentPage = 1;
+    const perPage = 8;
+    let currentActionId = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLoginHistory();
+      renderSessions();
+      renderAlerts();
+      renderAnalytics();
+    });
+
+    // Toast
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const m = document.getElementById('toastMsg');
+      m.textContent = msg;
+      icon.className = type === 'success' ? 'fas fa-check-circle text-green-500 text-lg' : type === 'error' ? 'fas fa-exclamation-circle text-red-500 text-lg' : 'fas fa-info-circle text-blue-500 text-lg';
+      t.classList.remove('translate-x-full');
+      setTimeout(() => t.classList.add('translate-x-full'), 3000);
+    }
+
+    // Modal
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Tab Switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active');
+        el.classList.add('text-gray-500');
+      });
+      document.getElementById('tab-' + tab).classList.remove('hidden');
+      document.getElementById('tab-' + tab).classList.add('block');
+      const btn = document.querySelector(`[data-tab="${tab}"]`);
+      if (btn) {
+        btn.classList.add('active');
+        btn.classList.remove('text-gray-500');
+      }
+    }
+
+    // Drawer
+    function openDrawer(log) {
+      document.getElementById('drawerContent').innerHTML = `
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl ${getStatusBg(log.status)} flex items-center justify-center flex-shrink-0">
+              <i class="fas ${getStatusIcon(log.status)} text-${getStatusColor(log.status)}-600"></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-gray-900">${log.user}</h3>
+              <p class="text-sm text-gray-500">${log.email}</p>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="px-2 py-0.5 ${getStatusClass(log.status)} rounded text-xs font-semibold">${log.status}</span>
+                <span class="text-xs text-gray-500">${log.loginTime}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Login ID</p>
+              <p class="text-sm font-semibold text-gray-900">${log.id}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Role</p>
+              <p class="text-sm font-semibold text-gray-900">${log.role}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Login Time</p>
+              <p class="text-sm font-semibold text-gray-900">${log.loginTime}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Logout Time</p>
+              <p class="text-sm font-semibold text-gray-900">${log.logoutTime}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Session Duration</p>
+              <p class="text-sm font-semibold text-gray-900">${log.duration}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">IP Address</p>
+              <p class="text-sm font-semibold text-gray-900 font-mono">${log.ip}</p>
+            </div>
+          </div>
+
+          <div class="p-3 bg-gray-50 rounded-xl">
+            <p class="text-xs text-gray-500 mb-1">Approximate Location</p>
+            <p class="text-sm font-semibold text-gray-900">${log.location}</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Browser</p>
+              <p class="text-sm font-semibold text-gray-900">${log.browser}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Operating System</p>
+              <p class="text-sm font-semibold text-gray-900">${log.os}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Device Type</p>
+              <p class="text-sm font-semibold text-gray-900">${log.device}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Authentication</p>
+              <p class="text-sm font-semibold text-gray-900">${log.auth}</p>
+            </div>
+          </div>
+
+          <div class="p-3 ${log.twoFactor ? 'bg-green-50 border border-green-200' : 'bg-yellow-50 border border-yellow-200'} rounded-xl">
+            <div class="flex items-center gap-2">
+              <i class="fas ${log.twoFactor ? 'fa-shield-alt text-green-600' : 'fa-exclamation-triangle text-yellow-600'}"></i>
+              <p class="text-sm font-semibold ${log.twoFactor ? 'text-green-700' : 'text-yellow-700'}">Two-Factor Authentication: ${log.twoFactor ? 'Enabled' : 'Disabled'}</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button onclick="closeDrawer();showToast('Record downloaded','success')" class="flex-1 px-4 py-2.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all"><i class="fas fa-download mr-2"></i>Download</button>
+            <button onclick="closeDrawer();openBlockDeviceModal('${log.id}')" class="flex-1 px-4 py-2.5 bg-orange-50 hover:bg-orange-100 text-orange-600 rounded-xl text-sm font-semibold transition-all border border-orange-200"><i class="fas fa-ban mr-2"></i>Block Device</button>
+            <button onclick="closeDrawer();openBlockIPModal('${log.id}')" class="px-4 py-2.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-sm font-semibold transition-all border border-red-200"><i class="fas fa-shield-alt"></i></button>
+          </div>
+        </div>
+      `;
+      document.getElementById('detailDrawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.remove('hidden');
+    }
+
+    function closeDrawer() {
+      document.getElementById('detailDrawer').classList.remove('open');
+      document.getElementById('drawerOverlay').classList.add('hidden');
+    }
+
+    // Login History Table
+    function renderLoginHistory() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const status = document.getElementById('filterStatus').value;
+      const device = document.getElementById('filterDevice').value;
+      const browser = document.getElementById('filterBrowser').value;
+      const os = document.getElementById('filterOS').value;
+      const dateFrom = document.getElementById('filterDateFrom').value;
+      const dateTo = document.getElementById('filterDateTo').value;
+
+      let list = [...loginHistory];
+      if (search) list = list.filter(l => l.user.toLowerCase().includes(search) || l.email.toLowerCase().includes(search) || l.ip.includes(search));
+      if (status) list = list.filter(l => l.status === status);
+      if (device) list = list.filter(l => l.device === device);
+      if (browser) list = list.filter(l => l.browser === browser);
+      if (os) list = list.filter(l => l.os === os);
+      if (dateFrom) list = list.filter(l => l.loginTime >= dateFrom);
+      if (dateTo) list = list.filter(l => l.loginTime <= dateTo + ' 23:59:59');
+
+      const total = list.length;
+      const totalPages = Math.ceil(total / perPage);
+      if (currentPage > totalPages) currentPage = 1;
+      const start = (currentPage - 1) * perPage;
+      const pageList = list.slice(start, start + perPage);
+
+      document.getElementById('loginTableBody').innerHTML = pageList.map(l => `
+        <tr class="log-row hover:bg-gray-50 transition-colors">
+          <td class="px-4 py-3"><span class="text-xs font-mono text-gray-500">${l.id}</span></td>
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-accent-100 flex items-center justify-center text-accent-700 text-xs font-bold">${l.user.split(' ').map(n=>n[0]).join('').substring(0,2)}</div>
+              <div>
+                <p class="text-sm font-medium text-gray-900">${l.user}</p>
+                <p class="text-[10px] text-gray-500">${l.email}</p>
+              </div>
+            </div>
+          </td>
+          <td class="px-4 py-3 hidden lg:table-cell"><span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium">${l.role}</span></td>
+          <td class="px-4 py-3"><span class="text-xs text-gray-600">${l.loginTime}</span></td>
+          <td class="px-4 py-3 hidden xl:table-cell"><span class="text-xs text-gray-600">${l.logoutTime}</span></td>
+          <td class="px-4 py-3 hidden xl:table-cell"><span class="text-xs text-gray-600">${l.duration}</span></td>
+          <td class="px-4 py-3"><span class="text-xs text-gray-500 font-mono">${l.ip}</span></td>
+          <td class="px-4 py-3 hidden lg:table-cell"><span class="text-xs text-gray-600">${l.country}</span></td>
+          <td class="px-4 py-3 hidden xl:table-cell"><span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium">${l.device}</span></td>
+          <td class="px-4 py-3 hidden xl:table-cell"><span class="text-xs text-gray-600">${l.browser}</span></td>
+          <td class="px-4 py-3 hidden 2xl:table-cell"><span class="text-xs text-gray-600">${l.os}</span></td>
+          <td class="px-4 py-3"><span class="px-2 py-1 ${getStatusClass(l.status)} rounded text-xs font-semibold capitalize">${l.status}</span></td>
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-1">
+              <button onclick="openDrawer(loginHistory.find(x=>x.id==='${l.id}'))" class="p-1.5 hover:bg-blue-50 rounded-lg text-blue-500 transition-all" title="View Details"><i class="fas fa-eye text-xs"></i></button>
+              <button onclick="openEndSessionModal('${l.id}')" class="p-1.5 hover:bg-orange-50 rounded-lg text-orange-500 transition-all" title="End Session"><i class="fas fa-power-off text-xs"></i></button>
+              <button onclick="openBlockDeviceModal('${l.id}')" class="p-1.5 hover:bg-red-50 rounded-lg text-red-500 transition-all" title="Block Device"><i class="fas fa-ban text-xs"></i></button>
+              <button onclick="openBlockIPModal('${l.id}')" class="p-1.5 hover:bg-purple-50 rounded-lg text-purple-500 transition-all" title="Block IP"><i class="fas fa-shield-alt text-xs"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+
+      document.getElementById('tableInfo').textContent = `Showing ${start + 1}-${Math.min(start + perPage, total)} of ${total} logins`;
+      renderPagination(totalPages);
+    }
+
+    function getStatusClass(status) {
+      const classes = { success: 'bg-green-100 text-green-700', failed: 'bg-red-100 text-red-700', blocked: 'bg-gray-200 text-gray-700', suspicious: 'bg-orange-100 text-orange-700' };
+      return classes[status] || classes.success;
+    }
+
+    function getStatusColor(status) {
+      const colors = { success: 'green', failed: 'red', blocked: 'gray', suspicious: 'orange' };
+      return colors[status] || 'green';
+    }
+
+    function getStatusBg(status) {
+      const bgs = { success: 'bg-green-100', failed: 'bg-red-100', blocked: 'bg-gray-200', suspicious: 'bg-orange-100' };
+      return bgs[status] || bgs.success;
+    }
+
+    function getStatusIcon(status) {
+      const icons = { success: 'fa-check-circle', failed: 'fa-times-circle', blocked: 'fa-ban', suspicious: 'fa-exclamation-triangle' };
+      return icons[status] || 'fa-circle';
+    }
+
+    function renderPagination(totalPages) {
+      const pg = document.getElementById('pagination');
+      let html = `<button onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-left"></i></button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button onclick="goPage(${i})" class="w-8 h-8 rounded-lg text-xs font-semibold ${i === currentPage ? 'bg-accent-500 text-white shadow' : 'text-gray-600 hover:bg-gray-100'} transition-all">${i}</button>`;
+      }
+      html += `<button onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-right"></i></button>`;
+      pg.innerHTML = html;
+    }
+
+    function goPage(p) { currentPage = p; renderLoginHistory(); }
+    function filterLogs() { currentPage = 1; renderLoginHistory(); }
+
+    // Sessions
+    function renderSessions() {
+      document.getElementById('sessionsList').innerHTML = activeSessions.map(s => `
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5 ${s.current ? 'ring-2 ring-accent-500' : ''}">
+          <div class="flex items-start justify-between">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-accent-100 flex items-center justify-center flex-shrink-0">
+                <i class="fas ${s.device === 'Desktop' ? 'fa-desktop' : s.device === 'Mobile' ? 'fa-mobile-alt' : 'fa-tablet-alt'} text-accent-600"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h4 class="text-sm font-bold text-gray-900">${s.user}</h4>
+                  ${s.current ? '<span class="px-2 py-0.5 bg-accent-100 text-accent-600 rounded text-[10px] font-bold">Current Device</span>' : ''}
+                </div>
+                <p class="text-xs text-gray-500 mt-0.5">${s.role} • ${s.auth}</p>
+                <div class="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                  <span><i class="fas fa-globe mr-1"></i>${s.country}</span>
+                  <span><i class="fas fa-map-marker-alt mr-1"></i>${s.ip}</span>
+                  <span><i class="fas fa-clock mr-1"></i>${s.loginTime}</span>
+                </div>
+                <div class="flex items-center gap-4 mt-1 text-xs text-gray-500">
+                  <span><i class="fas fa-laptop mr-1"></i>${s.browser}</span>
+                  <span><i class="fas fa-cog mr-1"></i>${s.os}</span>
+                  <span><i class="fas fa-hourglass-half mr-1"></i>${s.duration}</span>
+                </div>
+              </div>
+            </div>
+            <button onclick="openEndSessionModal('${s.id}')" class="p-2 hover:bg-red-50 rounded-lg text-red-500 transition-all" title="End Session">
+              <i class="fas fa-power-off text-sm"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Alerts
+    function renderAlerts() {
+      document.getElementById('alertsList').innerHTML = alertsData.map(a => `
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5 ${a.severity === 'critical' ? 'border-l-4 border-l-red-500' : a.severity === 'high' ? 'border-l-4 border-l-orange-500' : a.severity === 'medium' ? 'border-l-4 border-l-yellow-500' : 'border-l-4 border-l-blue-500'}">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-${a.color}-100 flex items-center justify-center flex-shrink-0">
+              <i class="fas ${a.icon} text-${a.color}-600"></i>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <h4 class="text-sm font-bold text-gray-900">${a.title}</h4>
+                <span class="px-2 py-0.5 ${a.severity === 'critical' ? 'bg-red-100 text-red-700' : a.severity === 'high' ? 'bg-orange-100 text-orange-700' : a.severity === 'medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-blue-100 text-blue-700'} rounded text-[10px] font-bold uppercase">${a.severity}</span>
+              </div>
+              <p class="text-xs text-gray-500 mt-1">${a.desc}</p>
+              <p class="text-[10px] text-gray-400 mt-2">${a.time}</p>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Analytics
+    function renderAnalytics() {
+      // Login Trend Chart
+      const loginTrendCtx = document.getElementById('loginTrendChart').getContext('2d');
+      new Chart(loginTrendCtx, {
+        type: 'line',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'Successful Logins',
+            data: [245, 268, 289, 275, 302, 156, 124],
+            borderColor: '#22c55e',
+            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#22c55e'
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } } }
+      });
+
+      // Failed Login Chart
+      const failedCtx = document.getElementById('failedLoginChart').getContext('2d');
+      new Chart(failedCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'Failed Logins',
+            data: [12, 8, 15, 6, 9, 3, 2],
+            backgroundColor: 'rgba(239, 68, 68, 0.8)',
+            borderRadius: 8
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } } }
+      });
+
+      // Browser Chart
+      const browserCtx = document.getElementById('browserChart').getContext('2d');
+      new Chart(browserCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Chrome', 'Safari', 'Firefox', 'Edge'],
+          datasets: [{ data: [58, 24, 12, 6], backgroundColor: ['#3b82f6', '#8b5cf6', '#f97316', '#06b6d4'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 11 } } } }, cutout: '65%' }
+      });
+
+      // Device Chart
+      const deviceCtx = document.getElementById('deviceChart').getContext('2d');
+      new Chart(deviceCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Desktop', 'Mobile', 'Tablet'],
+          datasets: [{ data: [65, 28, 7], backgroundColor: ['#0f1d3a', '#e8952f', '#22c55e'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 11 } } } }, cutout: '65%' }
+      });
+
+      // Country List
+      document.getElementById('countryList').innerHTML = countryData.map(c => `
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">${c.flag}</span>
+            <span class="text-sm font-medium text-gray-900">${c.name}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="h-full bg-accent-500 rounded-full" style="width: ${c.percentage}%"></div>
+            </div>
+            <span class="text-xs text-gray-500 w-10 text-right">${c.count}</span>
+          </div>
+        </div>
+      `).join('');
+
+      // Heatmap
+      renderHeatmap();
+    }
+
+    function renderHeatmap() {
+      const hours = ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'];
+      const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      const data = [
+        [2,1,0,0,0,0,5,15,45,62,58,48,35,42,55,48,38,25,12,8,5,3,2,1],
+        [1,0,0,0,0,0,4,12,42,58,55,45,32,40,52,45,35,22,10,6,4,2,1,1],
+        [3,1,1,0,0,0,6,18,48,65,60,52,38,45,58,50,40,28,15,10,6,4,2,1],
+        [2,1,0,0,0,0,5,14,44,60,56,47,34,41,54,47,37,24,11,7,5,3,2,1],
+        [1,0,0,0,0,0,4,11,40,55,52,43,30,38,50,43,33,20,9,5,3,2,1,1],
+        [0,0,0,0,0,0,1,3,8,12,15,18,20,22,18,15,10,5,2,1,0,0,0,0],
+        [0,0,0,0,0,0,0,2,5,8,10,12,15,18,14,10,6,3,1,0,0,0,0,0]
+      ];
+
+      let html = '<div class="inline-block"><div class="flex gap-1 mb-1 pl-10">';
+      hours.forEach(h => { html += `<div class="w-8 text-[8px] text-gray-400 text-center">${h}</div>`; });
+      html += '</div>';
+
+      days.forEach((day, di) => {
+        html += `<div class="flex items-center gap-1 mb-1"><span class="w-8 text-[10px] text-gray-500 text-right pr-1">${day}</span>`;
+        data[di].forEach(val => {
+          const intensity = val === 0 ? 'bg-gray-100' : val < 10 ? 'bg-green-100' : val < 20 ? 'bg-green-200' : val < 40 ? 'bg-green-300' : val < 60 ? 'bg-green-400' : 'bg-green-500';
+          html += `<div class="w-8 h-6 ${intensity} rounded heatmap-cell cursor-pointer" title="${val} logins"></div>`;
+        });
+        html += '</div>';
+      });
+      html += '</div>';
+      document.getElementById('heatmapContainer').innerHTML = html;
+    }
+
+    // Modal Actions
+    function openEndSessionModal(id) { currentActionId = id; openModal('endSessionModal'); }
+    function openBlockDeviceModal(id) { currentActionId = id; openModal('blockDeviceModal'); }
+    function openBlockIPModal(id) { currentActionId = id; openModal('blockIPModal'); }
+    function openEndAllSessionsModal() { openModal('endAllSessionsModal'); }
+
+    function confirmEndSession() { closeModal('endSessionModal'); showToast('Session ended successfully', 'success'); }
+    function confirmBlockDevice() { closeModal('blockDeviceModal'); showToast('Device blocked successfully', 'success'); }
+    function confirmBlockIP() { closeModal('blockIPModal'); showToast('IP address blocked successfully', 'success'); }
+    function confirmEndAllSessions() { closeModal('endAllSessionsModal'); showToast('All sessions ended', 'success'); }
+
+    // Export
+    function exportLoginHistory() { showToast('Login history exported successfully', 'success'); }
+    function openSecurityReport() { showToast('Security report generated', 'info'); }
+  </script>
+</body>
+</html>

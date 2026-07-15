@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Wadi Al Zaid Tours & Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-white text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+          <div class="leading-tight">
+            <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours & Travel</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="index.html#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="about.html" class="px-4 py-2 text-sm font-medium text-accent transition-colors rounded-lg hover:bg-white/5">About</a>
+          <a href="contact.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="login.html" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25">
+            <span>Login</span>
+          </a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="index.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="index.html#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="about.html" class="mobile-link px-4 py-3 text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">About</a>
+          <a href="contact.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="login.html" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white">
+            <span>Login</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <main id="mainContent" role="main">
+    <!-- ========== HERO ========== -->
+    <section class="hero-bg min-h-[50vh] flex items-center relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+        <div class="max-w-2xl">
+          <nav class="flex items-center gap-2 text-sm text-white/60 mb-6">
+            <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+            <i class="fas fa-chevron-right text-xs"></i>
+            <span class="text-accent">About Us</span>
+          </nav>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+            About <span class="text-accent">Wadi Al Zaid</span><br/>Tours & Travel
+          </h1>
+          <p class="text-lg text-white/70 max-w-lg">Crafting unforgettable travel experiences since 2010. Your journey, our passion.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== OUR STORY ========== -->
+    <section class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="fade-in">
+            <div class="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-4">
+              <span class="w-2 h-2 bg-accent rounded-full"></span>
+              <span class="text-sm text-accent font-medium">Our Story</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-navy mb-6">A Decade of Turning Dreams Into Journeys</h2>
+            <p class="text-navy/60 leading-relaxed mb-6">
+              Founded in 2010 by Ahmed Al Zaid, Wadi Al Zaid Tours & Travel began as a small travel agency in Dubai with a big vision: to make world-class travel experiences accessible to everyone. What started with a team of 3 passionate travelers has grown into one of the most trusted names in the travel industry.
+            </p>
+            <p class="text-navy/60 leading-relaxed mb-8">
+              Over the years, we've helped thousands of travelers explore over 50 countries across 6 continents. Our commitment to exceptional service, attention to detail, and genuine love for travel has earned us a loyal customer base and numerous industry awards.
+            </p>
+            
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div class="p-4 bg-gray-50 rounded-xl">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-3">
+                  <i class="fas fa-bullseye text-accent"></i>
+                </div>
+                <h4 class="font-bold text-navy mb-2">Our Mission</h4>
+                <p class="text-sm text-navy/60">To inspire and enable meaningful travel experiences that enrich lives and create lasting memories.</p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-xl">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-3">
+                  <i class="fas fa-eye text-accent"></i>
+                </div>
+                <h4 class="font-bold text-navy mb-2">Our Vision</h4>
+                <p class="text-sm text-navy/60">To be the world's most trusted travel partner, known for excellence and innovation.</p>
+              </div>
+            </div>
+          </div>
+          <div class="relative fade-in">
+            <div class="rounded-2xl overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Our Team" class="w-full h-auto" />
+            </div>
+            <div class="absolute -bottom-6 -left-6 bg-accent text-white p-6 rounded-2xl shadow-xl hidden sm:block">
+              <p class="text-3xl font-black">15+</p>
+              <p class="text-sm font-medium">Years of Excellence</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Values -->
+        <div class="mt-20 fade-in">
+          <div class="text-center mb-12">
+            <h3 class="text-2xl sm:text-3xl font-black text-navy mb-3">Our Core Values</h3>
+            <p class="text-navy/50">The principles that guide everything we do</p>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="text-center p-6 bg-gray-50 rounded-2xl">
+              <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-heart text-accent text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-navy mb-2">Passion</h4>
+              <p class="text-sm text-navy/60">We're passionate about travel and it shows in everything we do.</p>
+            </div>
+            <div class="text-center p-6 bg-gray-50 rounded-2xl">
+              <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-handshake text-accent text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-navy mb-2">Integrity</h4>
+              <p class="text-sm text-navy/60">Honest and transparent in all our dealings with clients and partners.</p>
+            </div>
+            <div class="text-center p-6 bg-gray-50 rounded-2xl">
+              <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-star text-accent text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-navy mb-2">Excellence</h4>
+              <p class="text-sm text-navy/60">We strive for excellence in every trip we plan and every service we provide.</p>
+            </div>
+            <div class="text-center p-6 bg-gray-50 rounded-2xl">
+              <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-users text-accent text-2xl"></i>
+              </div>
+              <h4 class="font-bold text-navy mb-2">Teamwork</h4>
+              <p class="text-sm text-navy/60">Together we achieve more, collaborating to create exceptional experiences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TEAM ========== -->
+    <section class="py-16 sm:py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <div class="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-4">
+            <span class="w-2 h-2 bg-accent rounded-full"></span>
+            <span class="text-sm text-accent font-medium">Our Team</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-navy mb-3">Meet the People Behind Your Journeys</h2>
+          <p class="text-navy/50 max-w-lg mx-auto">A team of passionate travel experts dedicated to making your dream trips a reality.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- CEO -->
+          <div class="team-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-in">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed" alt="Ahmed Al Zaid" class="w-full h-full object-cover" />
+              <div class="team-social absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-navy/80 to-transparent">
+                <div class="flex gap-2">
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fab fa-twitter text-sm"></i></a>
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fas fa-envelope text-sm"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <h4 class="font-bold text-navy">Ahmed Al Zaid</h4>
+              <p class="text-sm text-accent mb-2">Founder & CEO</p>
+              <p class="text-xs text-navy/60">15+ years in travel industry. Visionary leader who turned his passion for travel into a global brand.</p>
+            </div>
+          </div>
+
+          <!-- Co-Founder -->
+          <div class="team-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-in">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sara" alt="Sara Khan" class="w-full h-full object-cover" />
+              <div class="team-social absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-navy/80 to-transparent">
+                <div class="flex gap-2">
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fab fa-instagram text-sm"></i></a>
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fas fa-envelope text-sm"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <h4 class="font-bold text-navy">Sara Khan</h4>
+              <p class="text-sm text-accent mb-2">Co-Founder & MD</p>
+              <p class="text-xs text-navy/60">Operations expert with a passion for creating seamless travel experiences.</p>
+            </div>
+          </div>
+
+          <!-- Consultant 1 -->
+          <div class="team-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-in">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=James" alt="James Wilson" class="w-full h-full object-cover" />
+              <div class="team-social absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-navy/80 to-transparent">
+                <div class="flex gap-2">
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fas fa-envelope text-sm"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <h4 class="font-bold text-navy">James Wilson</h4>
+              <p class="text-sm text-accent mb-2">Senior Travel Consultant</p>
+              <p class="text-xs text-navy/60">Europe & Americas specialist with 10 years of experience crafting luxury itineraries.</p>
+            </div>
+          </div>
+
+          <!-- Consultant 2 -->
+          <div class="team-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-in">
+            <div class="relative h-64 overflow-hidden">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Fatima" alt="Fatima Hassan" class="w-full h-full object-cover" />
+              <div class="team-social absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-navy/80 to-transparent">
+                <div class="flex gap-2">
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
+                  <a href="#" class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white hover:bg-white/30 transition-colors"><i class="fab fa-instagram text-sm"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <h4 class="font-bold text-navy">Fatima Hassan</h4>
+              <p class="text-sm text-accent mb-2">Travel Consultant</p>
+              <p class="text-xs text-navy/60">Middle East & Asia specialist. Fluent in 4 languages with a keen eye for cultural experiences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE US ========== -->
+    <section class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <div class="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-4">
+            <span class="w-2 h-2 bg-accent rounded-full"></span>
+            <span class="text-sm text-accent font-medium">Why Choose Us</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-navy mb-3">Why Thousands Trust Us With Their Journeys</h2>
+          <p class="text-navy/50 max-w-lg mx-auto">We go above and beyond to ensure every trip exceeds expectations.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card-hover bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-users text-blue-500 text-xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Experienced Team</h4>
+            <p class="text-sm text-navy/60">Our team of 50+ travel experts has collectively planned over 10,000 successful trips worldwide.</p>
+          </div>
+          <div class="card-hover bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-tag text-green-500 text-xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Best Prices</h4>
+            <p class="text-sm text-navy/60">We negotiate directly with suppliers to bring you the best deals without compromising quality.</p>
+          </div>
+          <div class="card-hover bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-headset text-accent text-xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">24/7 Customer Support</h4>
+            <p class="text-sm text-navy/60">Our support team is available around the clock to assist you before, during, and after your trip.</p>
+          </div>
+          <div class="card-hover bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-lock text-purple-500 text-xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Secure Booking</h4>
+            <p class="text-sm text-navy/60">256-bit SSL encryption and PCI-compliant payment processing for complete peace of mind.</p>
+          </div>
+          <div class="card-hover bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-star text-yellow-500 text-xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Trusted by Thousands</h4>
+            <p class="text-sm text-navy/60">Over 25,000 happy travelers have trusted us with their dream vacations since 2010.</p>
+          </div>
+          <div class="card-hover bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-4">
+              <i class="fas fa-certificate text-red-500 text-xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Licensed & Certified</h4>
+            <p class="text-sm text-navy/60">IATA certified, ASTA member, and licensed by Dubai Tourism Authority.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== STATISTICS ========== -->
+    <section class="py-16 sm:py-24 bg-gradient-to-br from-navy to-navy-light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="text-2xl sm:text-3xl font-black text-white mb-3">Our Achievements</h2>
+          <p class="text-white/60">Numbers that speak for our commitment to excellence</p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+          <div class="stat-card text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 fade-in">
+            <p class="text-3xl sm:text-4xl font-black text-accent counter" data-target="15">0</p>
+            <p class="text-sm text-white/70 mt-2">Years Experience</p>
+          </div>
+          <div class="stat-card text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 fade-in">
+            <p class="text-3xl sm:text-4xl font-black text-accent counter" data-target="25000">0</p>
+            <p class="text-sm text-white/70 mt-2">Happy Customers</p>
+          </div>
+          <div class="stat-card text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 fade-in">
+            <p class="text-3xl sm:text-4xl font-black text-accent counter" data-target="8500">0</p>
+            <p class="text-sm text-white/70 mt-2">Tours Completed</p>
+          </div>
+          <div class="stat-card text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 fade-in">
+            <p class="text-3xl sm:text-4xl font-black text-accent counter" data-target="55">0</p>
+            <p class="text-sm text-white/70 mt-2">Countries Covered</p>
+          </div>
+          <div class="stat-card text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 fade-in">
+            <p class="text-3xl sm:text-4xl font-black text-accent"><span class="counter" data-target="98">0</span>%</p>
+            <p class="text-sm text-white/70 mt-2">Satisfaction Rate</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="py-16 sm:py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <div class="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-4">
+            <span class="w-2 h-2 bg-accent rounded-full"></span>
+            <span class="text-sm text-accent font-medium">Our Services</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-navy mb-3">Comprehensive Travel Solutions</h2>
+          <p class="text-navy/50 max-w-lg mx-auto">From flights to hotels, visas to complete tour packages - we've got you covered.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="service-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div class="service-icon w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-globe text-blue-500 text-2xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">International Tours</h4>
+            <p class="text-sm text-navy/60">Explore 55+ countries with our curated international tour packages.</p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div class="service-icon w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-map text-green-500 text-2xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Domestic Tours</h4>
+            <p class="text-sm text-navy/60">Discover the beauty of your own country with our domestic packages.</p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div class="service-icon w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-passport text-purple-500 text-2xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Visa Assistance</h4>
+            <p class="text-sm text-navy/60">Expert guidance for visa applications to any destination.</p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div class="service-icon w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-plane text-accent text-2xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Flight Booking</h4>
+            <p class="text-sm text-navy/60">Best fares on flights to destinations worldwide.</p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div class="service-icon w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-hotel text-pink-500 text-2xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Hotel Reservations</h4>
+            <p class="text-sm text-navy/60">Handpicked hotels and resorts at exclusive rates.</p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div class="service-icon w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-mosque text-yellow-600 text-2xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Umrah Packages</h4>
+            <p class="text-sm text-navy/60">Sacred journey packages with complete arrangements.</p>
+          </div>
+          <div class="service-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center fade-in">
+            <div class="service-icon w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-briefcase text-navy/60 text-2xl"></i>
+            </div>
+            <h4 class="font-bold text-navy mb-2">Corporate Travel</h4>
+            <p class="text-sm text-navy/60">Tailored travel solutions for businesses and conferences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CERTIFICATIONS ========== -->
+    <section class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <h2 class="text-2xl sm:text-3xl font-black text-navy mb-3">Certifications & Awards</h2>
+          <p class="text-navy/50">Recognized for our commitment to excellence</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div class="flex flex-col items-center p-6 bg-gray-50 rounded-2xl fade-in">
+            <div class="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-award text-accent text-3xl"></i>
+            </div>
+            <p class="font-bold text-navy text-sm text-center">Best Tour Operator</p>
+            <p class="text-xs text-navy/50">2024</p>
+          </div>
+          <div class="flex flex-col items-center p-6 bg-gray-50 rounded-2xl fade-in">
+            <div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-certificate text-blue-500 text-3xl"></i>
+            </div>
+            <p class="font-bold text-navy text-sm text-center">IATA Certified</p>
+            <p class="text-xs text-navy/50">Since 2012</p>
+          </div>
+          <div class="flex flex-col items-center p-6 bg-gray-50 rounded-2xl fade-in">
+            <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-shield-alt text-green-500 text-3xl"></i>
+            </div>
+            <p class="font-bold text-navy text-sm text-center">Safe Travel Certified</p>
+            <p class="text-xs text-navy/50">2023-2026</p>
+          </div>
+          <div class="flex flex-col items-center p-6 bg-gray-50 rounded-2xl fade-in">
+            <div class="w-20 h-20 bg-purple-50 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-trophy text-purple-500 text-3xl"></i>
+            </div>
+            <p class="font-bold text-navy text-sm text-center">Excellence Award</p>
+            <p class="text-xs text-navy/50">2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GALLERY ========== -->
+    <section class="py-16 sm:py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <div class="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-4">
+            <span class="w-2 h-2 bg-accent rounded-full"></span>
+            <span class="text-sm text-accent font-medium">Gallery</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-navy mb-3">Moments We've Created</h2>
+          <p class="text-navy/50">A glimpse into the journeys we've crafted for our travelers</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80" alt="Maldives" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Maldives</p>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="Paris" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Paris</p>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Bali</p>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=600&q=80" alt="Santorini" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Santorini</p>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Tokyo" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Tokyo</p>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Dubai</p>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80" alt="Switzerland" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Switzerland</p>
+            </div>
+          </div>
+          <div class="gallery-item relative rounded-2xl overflow-hidden h-48 fade-in">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Phuket" class="w-full h-full object-cover" />
+            <div class="gallery-overlay absolute inset-0 bg-navy/60 flex items-center justify-center">
+              <p class="text-white font-bold">Phuket</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <div class="inline-flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 mb-4">
+            <span class="w-2 h-2 bg-accent rounded-full"></span>
+            <span class="text-sm text-accent font-medium">Testimonials</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-navy mb-3">What Our Travelers Say</h2>
+          <p class="text-navy/50">Real experiences from real travelers</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="testimonial-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="flex items-center gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-sm text-navy/70 mb-6">"An absolutely incredible experience! The team at Wadi Al Zaid planned every detail perfectly. Our Maldives trip was a dream come true."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Michael" alt="Michael" class="w-12 h-12 rounded-xl" />
+              <div>
+                <p class="font-bold text-sm text-navy">Michael Chen</p>
+                <p class="text-xs text-navy/50">Maldives Trip, 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="flex items-center gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+            </div>
+            <p class="text-sm text-navy/70 mb-6">"Best travel agency I've ever worked with. Professional, responsive, and they truly understand what makes a perfect vacation."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" alt="Emily" class="w-12 h-12 rounded-xl" />
+              <div>
+                <p class="font-bold text-sm text-navy">Emily Rodriguez</p>
+                <p class="text-xs text-navy/50">Paris Trip, 2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+            <div class="flex items-center gap-1 mb-4">
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star text-accent text-sm"></i>
+              <i class="fas fa-star-half-alt text-accent text-sm"></i>
+            </div>
+            <p class="text-sm text-navy/70 mb-6">"From visa assistance to hotel bookings, everything was handled flawlessly. Will definitely book with them again for our next adventure!"</p>
+            <div class="flex items-center gap-3">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=David" alt="David" class="w-12 h-12 rounded-xl" />
+              <div>
+                <p class="font-bold text-sm text-navy">David Thompson</p>
+                <p class="text-xs text-navy/50">Switzerland Trip, 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="py-16 sm:py-24 bg-gradient-to-br from-navy to-navy-light">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+        <h2 class="text-3xl sm:text-4xl font-black text-white mb-4">Start Your Journey Today</h2>
+        <p class="text-white/60 text-lg mb-8 max-w-2xl mx-auto">Let us help you create unforgettable memories. Your dream destination is just a click away.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="index.html#destinations" class="btn-accent px-8 py-4 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25">
+            <span><i class="fas fa-compass mr-2"></i> Explore Tours</span>
+          </a>
+          <a href="contact.html" class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold text-sm rounded-xl hover:bg-white/20 transition-colors">
+            <i class="fas fa-envelope mr-2"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-navy-dark pt-16 sm:pt-20 pb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-12">
+        <div>
+          <a href="index.html" class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-10 sm:h-10 transition-transform group-hover:scale-110" />
+            <div class="leading-tight">
+              <span class="text-base sm:text-lg font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+              <span class="block text-[8px] sm:text-[9px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours & Travel</span>
+            </div>
+          </a>
+          <p class="text-xs sm:text-sm text-white/50 leading-relaxed mb-4 sm:mb-5">Crafting unforgettable travel experiences since 2010. Your journey, our passion.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-instagram text-sm"></i></a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-linkedin-in text-sm"></i></a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-youtube text-sm"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Quick Links</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="index.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Home</a></li>
+            <li><a href="index.html#destinations" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Destinations</a></li>
+            <li><a href="about.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Support</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="support.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Help Center</a></li>
+            <li><a href="support.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">FAQs</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Contact Us</h4>
+          <ul class="space-y-3 sm:space-y-4">
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-phone text-accent mt-0.5 text-sm"></i>
+              <div>
+                <p class="text-xs sm:text-sm text-white/60">+1 (234) 567-890</p>
+                <p class="text-xs sm:text-sm text-white/60">+1 (234) 567-891</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-envelope text-accent mt-0.5 text-sm"></i>
+              <p class="text-xs sm:text-sm text-white/60">info@wadialzaid.com</p>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-map-marker-alt text-accent mt-0.5 text-sm"></i>
+              <p class="text-xs sm:text-sm text-white/60">123 Travel Avenue, Suite 100<br/>Dubai, UAE</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 py-4 sm:py-5">
+          <p class="text-xs sm:text-sm text-white/30">&copy; 2026 Wadi Al Zaid Tours & Travel. All rights reserved.</p>
+          <div class="flex gap-4 sm:gap-5">
+            <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Privacy Policy</a>
+            <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+
+    menuOverlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+
+    mobileLinks.forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }));
+
+    // Counter Animation
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.getAttribute('data-target'));
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let current = 0;
+
+          const updateCounter = () => {
+            current += step;
+            if (current < target) {
+              counter.textContent = Math.floor(current).toLocaleString();
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target.toLocaleString();
+            }
+          };
+
+          updateCounter();
+          counterObserver.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

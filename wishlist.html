@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+          <a href="index.html" class="flex items-center gap-2 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-8 h-8 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <span class="text-lg font-extrabold text-white tracking-tight hidden sm:block">Wadi Al Zaid</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="hidden md:flex items-center bg-white/10 rounded-xl px-4 py-2 gap-2">
+            <i class="fas fa-search text-white/40 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-white text-sm outline-none placeholder-white/40 w-48" />
+          </div>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bell text-lg"></i>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+          <div class="flex items-center gap-3 cursor-pointer" onclick="toggleProfileMenu()">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-9 h-9 rounded-xl border-2 border-accent/50" />
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold text-white leading-tight">John Doe</p>
+              <p class="text-[10px] text-white/50">Premium Member</p>
+            </div>
+            <i class="fas fa-chevron-down text-white/40 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar fixed top-16 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 transition-all duration-300 overflow-y-auto custom-scroll">
+    <div class="p-4">
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-2xl p-4 mb-6">
+        <div class="flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-12 h-12 rounded-xl border-2 border-accent/50" />
+          <div class="sidebar-text">
+            <p class="font-bold text-white text-sm">John Doe</p>
+            <p class="text-[10px] text-accent">Premium Member</p>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/10 flex justify-between sidebar-text">
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">12</p>
+            <p class="text-[9px] text-white/50">Trips</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">2,450</p>
+            <p class="text-[9px] text-white/50">Points</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">4.9</p>
+            <p class="text-[9px] text-white/50">Rating</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="dashboard.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-th-large w-5 text-center"></i>
+          <span class="sidebar-text">Dashboard</span>
+        </a>
+        <a href="bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-suitcase w-5 text-center"></i>
+          <span class="sidebar-text">My Bookings</span>
+        </a>
+        <a href="#history" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-history w-5 text-center"></i>
+          <span class="sidebar-text">Booking History</span>
+        </a>
+        <a href="wishlist.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy">
+          <i class="fas fa-heart w-5 text-center"></i>
+          <span class="sidebar-text">Wishlist</span>
+          <span class="ml-auto bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text" id="wishlistCount">8</span>
+        </a>
+        <a href="#profile" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-user w-5 text-center"></i>
+          <span class="sidebar-text">My Profile</span>
+        </a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-bell w-5 text-center"></i>
+          <span class="sidebar-text">Notifications</span>
+          <span class="ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+        </a>
+        <a href="#settings" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-cog w-5 text-center"></i>
+          <span class="sidebar-text">Settings</span>
+        </a>
+        <hr class="my-3 border-gray-100" />
+        <a href="login.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50">
+          <i class="fas fa-sign-out-alt w-5 text-center"></i>
+          <span class="sidebar-text">Logout</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- SIDEBAR OVERLAY (Mobile) -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="lg:ml-64 pt-16 min-h-screen transition-all duration-300" id="mainContent" role="main">
+    <div class="p-4 sm:p-6 lg:p-8">
+
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-black text-navy flex items-center gap-3">
+              <i class="fas fa-heart text-red-500"></i> My Wishlist
+            </h1>
+            <p class="text-navy/50 text-sm mt-1">You have <span class="font-bold text-accent" id="totalSaved">8</span> saved destinations</p>
+          </div>
+          <a href="destination.html" class="btn-accent px-6 py-3 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25 inline-flex items-center gap-2 w-fit">
+            <span><i class="fas fa-plus mr-1"></i> Explore More</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Search and Filters -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 fade-up">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+          <!-- Search Bar -->
+          <div class="flex-1 relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-navy/30"></i>
+            <input 
+              type="text" 
+              id="searchInput"
+              placeholder="Search saved destinations..." 
+              class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
+              oninput="filterWishlist()"
+            />
+          </div>
+          
+          <!-- Filter Dropdowns -->
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Country Filter -->
+            <div class="relative">
+              <select id="countryFilter" onchange="filterWishlist()" class="appearance-none bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm outline-none focus:border-accent cursor-pointer">
+                <option value="all">All Countries</option>
+                <option value="maldives">Maldives</option>
+                <option value="france">France</option>
+                <option value="indonesia">Indonesia</option>
+                <option value="greece">Greece</option>
+                <option value="japan">Japan</option>
+                <option value="switzerland">Switzerland</option>
+                <option value="uae">UAE</option>
+                <option value="thailand">Thailand</option>
+              </select>
+              <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-navy/30 text-xs pointer-events-none"></i>
+            </div>
+            
+            <!-- Price Filter -->
+            <div class="relative">
+              <select id="priceFilter" onchange="filterWishlist()" class="appearance-none bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm outline-none focus:border-accent cursor-pointer">
+                <option value="all">All Prices</option>
+                <option value="0-1000">Under $1,000</option>
+                <option value="1000-2000">$1,000 - $2,000</option>
+                <option value="2000-3000">$2,000 - $3,000</option>
+                <option value="3000-999999">$3,000+</option>
+              </select>
+              <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-navy/30 text-xs pointer-events-none"></i>
+            </div>
+            
+            <!-- Tour Type Filter -->
+            <div class="relative">
+              <select id="typeFilter" onchange="filterWishlist()" class="appearance-none bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm outline-none focus:border-accent cursor-pointer">
+                <option value="all">All Types</option>
+                <option value="beach">Beach</option>
+                <option value="adventure">Adventure</option>
+                <option value="cultural">Cultural</option>
+                <option value="luxury">Luxury</option>
+                <option value="romantic">Romantic</option>
+              </select>
+              <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-navy/30 text-xs pointer-events-none"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wishlist Grid -->
+      <div id="wishlistContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+        <!-- Wishlist items rendered by JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center fade-up">
+        <div class="w-32 h-32 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="far fa-heart text-5xl text-gray-300"></i>
+        </div>
+        <h3 class="text-xl font-bold text-navy mb-2">Your wishlist is empty</h3>
+        <p class="text-navy/50 text-sm mb-6 max-w-md mx-auto">Start exploring amazing destinations and save your favorites here for easy access later.</p>
+        <a href="destination.html" class="btn-accent px-6 py-3 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25 inline-flex items-center gap-2">
+          <span><i class="fas fa-compass mr-1"></i> Explore Destinations</span>
+        </a>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="flex items-center justify-center gap-2">
+        <button onclick="changePage('prev')" id="prevBtn" class="px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+          <i class="fas fa-chevron-left mr-1"></i> Previous
+        </button>
+        <div id="pageNumbers" class="flex items-center gap-1">
+          <!-- Page numbers rendered by JavaScript -->
+        </div>
+        <button onclick="changePage('next')" id="nextBtn" class="px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+          Next <i class="fas fa-chevron-right ml-1"></i>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Remove Confirmation Modal -->
+  <div id="removeModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-heart-broken text-red-500 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-navy mb-2">Remove from Wishlist?</h3>
+        <p class="text-navy/50 text-sm mb-6">Are you sure you want to remove <span id="removeDestinationName" class="font-bold text-navy"></span> from your wishlist?</p>
+        <div class="flex items-center gap-3">
+          <button onclick="closeRemoveModal()" class="flex-1 px-4 py-3 rounded-xl text-sm font-medium bg-gray-100 text-navy hover:bg-gray-200 transition-colors">
+            Keep It
+          </button>
+          <button onclick="confirmRemove()" class="flex-1 px-4 py-3 rounded-xl text-sm font-medium bg-red-500 text-white hover:bg-red-600 transition-colors">
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden">
+    <div class="bg-navy text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3">
+      <i id="toastIcon" class="fas fa-check-circle text-green-400"></i>
+      <span id="toastMessage" class="text-sm font-medium"></span>
+    </div>
+  </div>
+
+  <script src="components.js"></script>
+  <script>
+    // ─── Sample Wishlist Data ─────────────────────────
+    const wishlist = [
+      {
+        id: 1,
+        destination: 'Maldives Paradise Escape',
+        country: 'Maldives',
+        countrySlug: 'maldives',
+        image: 'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80',
+        duration: '5 Days / 4 Nights',
+        price: 3044,
+        rating: 4.9,
+        reviews: 128,
+        type: 'beach',
+        saveDate: '2026-07-10'
+      },
+      {
+        id: 2,
+        destination: 'Paris Romantic Getaway',
+        country: 'France',
+        countrySlug: 'france',
+        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80',
+        duration: '7 Days / 6 Nights',
+        price: 4250,
+        rating: 4.8,
+        reviews: 96,
+        type: 'romantic',
+        saveDate: '2026-07-08'
+      },
+      {
+        id: 3,
+        destination: 'Bali Adventure Tour',
+        country: 'Indonesia',
+        countrySlug: 'indonesia',
+        image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80',
+        duration: '6 Days / 5 Nights',
+        price: 1899,
+        rating: 4.7,
+        reviews: 84,
+        type: 'adventure',
+        saveDate: '2026-07-05'
+      },
+      {
+        id: 4,
+        destination: 'Santorini Island Hopping',
+        country: 'Greece',
+        countrySlug: 'greece',
+        image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=600&q=80',
+        duration: '7 Days / 6 Nights',
+        price: 3890,
+        rating: 4.9,
+        reviews: 72,
+        type: 'romantic',
+        saveDate: '2026-07-03'
+      },
+      {
+        id: 5,
+        destination: 'Tokyo Cultural Experience',
+        country: 'Japan',
+        countrySlug: 'japan',
+        image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80',
+        duration: '8 Days / 7 Nights',
+        price: 5680,
+        rating: 4.8,
+        reviews: 64,
+        type: 'cultural',
+        saveDate: '2026-07-01'
+      },
+      {
+        id: 6,
+        destination: 'Swiss Alps Ski Trip',
+        country: 'Switzerland',
+        countrySlug: 'switzerland',
+        image: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80',
+        duration: '7 Days / 6 Nights',
+        price: 4780,
+        rating: 4.9,
+        reviews: 56,
+        type: 'adventure',
+        saveDate: '2026-06-28'
+      },
+      {
+        id: 7,
+        destination: 'Dubai Luxury Experience',
+        country: 'UAE',
+        countrySlug: 'uae',
+        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80',
+        duration: '5 Days / 4 Nights',
+        price: 3299,
+        rating: 4.7,
+        reviews: 88,
+        type: 'luxury',
+        saveDate: '2026-06-25'
+      },
+      {
+        id: 8,
+        destination: 'Phuket Beach Resort',
+        country: 'Thailand',
+        countrySlug: 'thailand',
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+        duration: '6 Days / 5 Nights',
+        price: 1599,
+        rating: 4.6,
+        reviews: 76,
+        type: 'beach',
+        saveDate: '2026-06-22'
+      }
+    ];
+
+    let currentPage = 1;
+    const itemsPerPage = 8;
+    let filteredWishlist = [...wishlist];
+    let itemToRemove = null;
+
+    // ─── Format Date ──────────────────────────────────
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    // ─── Format Currency ──────────────────────────────
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(amount);
+    }
+
+    // ─── Render Wishlist Card ─────────────────────────
+    function renderWishlistCard(item) {
+      return `
+        <div class="wishlist-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-up" data-id="${item.id}">
+          <!-- Image -->
+          <div class="relative h-52 overflow-hidden">
+            <img src="${item.image}" alt="${item.destination}" class="card-image w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent"></div>
+            
+            <!-- Heart Button -->
+            <button onclick="openRemoveModal(${item.id}, '${item.destination.replace(/'/g, "\\'")}')" class="heart-btn active absolute top-3 right-3 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center hover:bg-white shadow-lg">
+              <i class="fas fa-heart text-red-500"></i>
+            </button>
+            
+            <!-- Price Badge -->
+            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+              <p class="text-lg font-black text-accent">${formatCurrency(item.price)}</p>
+              <p class="text-[10px] text-navy/50">per person</p>
+            </div>
+            
+            <!-- Duration Badge -->
+            <div class="absolute bottom-3 right-3 bg-navy/80 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1.5 rounded-lg">
+              <i class="fas fa-clock mr-1"></i> ${item.duration.split(' / ')[0]}
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="p-4">
+            <!-- Rating -->
+            <div class="flex items-center gap-1 mb-2">
+              <div class="flex items-center">
+                ${Array(5).fill().map((_, i) => `
+                  <i class="fas fa-star text-xs ${i < Math.floor(item.rating) ? 'text-accent' : 'text-gray-200'}"></i>
+                `).join('')}
+              </div>
+              <span class="text-xs font-bold text-navy">${item.rating}</span>
+              <span class="text-xs text-navy/40">(${item.reviews} reviews)</span>
+            </div>
+            
+            <!-- Destination Info -->
+            <h3 class="font-bold text-navy mb-1 truncate">${item.destination}</h3>
+            <p class="text-xs text-navy/50 mb-3">
+              <i class="fas fa-map-marker-alt mr-1 text-accent"></i> ${item.country}
+              <span class="mx-1">•</span>
+              <i class="fas fa-calendar mr-1 text-accent"></i> Saved ${formatDate(item.saveDate)}
+            </p>
+            
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+              <a href="destination.html" class="action-btn flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 bg-navy text-white text-xs font-medium rounded-lg hover:bg-navy-light">
+                <i class="fas fa-eye"></i> View
+              </a>
+              <a href="booking.html" class="action-btn flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 bg-accent text-white text-xs font-medium rounded-lg hover:bg-accent-dark">
+                <i class="fas fa-plane"></i> Book
+              </a>
+              <button onclick="openRemoveModal(${item.id}, '${item.destination.replace(/'/g, "\\'")}')" class="action-btn w-10 flex items-center justify-center px-3 py-2.5 bg-red-50 text-red-500 text-xs font-medium rounded-lg hover:bg-red-100">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ─── Render Wishlist ──────────────────────────────
+    function renderWishlist() {
+      const container = document.getElementById('wishlistContainer');
+      const emptyState = document.getElementById('emptyState');
+      const pagination = document.getElementById('pagination');
+      
+      if (filteredWishlist.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        pagination.classList.add('hidden');
+        document.getElementById('totalSaved').textContent = '0';
+        return;
+      }
+      
+      emptyState.classList.add('hidden');
+      pagination.classList.remove('hidden');
+      
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const paginatedItems = filteredWishlist.slice(startIndex, endIndex);
+      
+      container.innerHTML = paginatedItems.map(item => renderWishlistCard(item)).join('');
+      
+      // Update count
+      document.getElementById('totalSaved').textContent = filteredWishlist.length;
+      document.getElementById('wishlistCount').textContent = filteredWishlist.length;
+      
+      // Trigger animations
+      setTimeout(() => {
+        document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+      }, 100);
+      
+      renderPagination();
+    }
+
+    // ─── Render Pagination ────────────────────────────
+    function renderPagination() {
+      const totalPages = Math.ceil(filteredWishlist.length / itemsPerPage);
+      const pageNumbers = document.getElementById('pageNumbers');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+      
+      let html = '';
+      for (let i = 1; i <= totalPages; i++) {
+        html += `
+          <button onclick="goToPage(${i})" class="w-10 h-10 rounded-xl text-sm font-medium ${currentPage === i ? 'bg-accent text-white' : 'bg-white border border-gray-200 text-navy/60 hover:bg-gray-50'} transition-all">
+            ${i}
+          </button>
+        `;
+      }
+      pageNumbers.innerHTML = html;
+    }
+
+    // ─── Filter Wishlist ──────────────────────────────
+    function filterWishlist() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const countryFilter = document.getElementById('countryFilter').value;
+      const priceFilter = document.getElementById('priceFilter').value;
+      const typeFilter = document.getElementById('typeFilter').value;
+      
+      filteredWishlist = wishlist.filter(item => {
+        // Search filter
+        const matchesSearch = item.destination.toLowerCase().includes(searchTerm) || 
+                             item.country.toLowerCase().includes(searchTerm);
+        
+        // Country filter
+        const matchesCountry = countryFilter === 'all' || item.countrySlug === countryFilter;
+        
+        // Price filter
+        let matchesPrice = true;
+        if (priceFilter !== 'all') {
+          const [min, max] = priceFilter.split('-').map(Number);
+          matchesPrice = item.price >= min && item.price <= max;
+        }
+        
+        // Type filter
+        const matchesType = typeFilter === 'all' || item.type === typeFilter;
+        
+        return matchesSearch && matchesCountry && matchesPrice && matchesType;
+      });
+      
+      currentPage = 1;
+      renderWishlist();
+    }
+
+    // ─── Pagination ───────────────────────────────────
+    function changePage(direction) {
+      const totalPages = Math.ceil(filteredWishlist.length / itemsPerPage);
+      if (direction === 'prev' && currentPage > 1) {
+        currentPage--;
+      } else if (direction === 'next' && currentPage < totalPages) {
+        currentPage++;
+      }
+      renderWishlist();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderWishlist();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ─── Remove Modal ─────────────────────────────────
+    function openRemoveModal(id, name) {
+      itemToRemove = id;
+      document.getElementById('removeDestinationName').textContent = name;
+      const modal = document.getElementById('removeModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeRemoveModal() {
+      itemToRemove = null;
+      const modal = document.getElementById('removeModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function confirmRemove() {
+      if (itemToRemove) {
+        const index = wishlist.findIndex(item => item.id === itemToRemove);
+        if (index > -1) {
+          wishlist.splice(index, 1);
+        }
+        
+        // Also update filtered list
+        const filteredIndex = filteredWishlist.findIndex(item => item.id === itemToRemove);
+        if (filteredIndex > -1) {
+          filteredWishlist.splice(filteredIndex, 1);
+        }
+        
+        closeRemoveModal();
+        renderWishlist();
+        showToast('Destination removed from wishlist', 'success');
+      }
+    }
+
+    // ─── Toast Notification ───────────────────────────
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+      
+      toastMessage.textContent = message;
+      
+      if (type === 'success') {
+        toastIcon.className = 'fas fa-check-circle text-green-400';
+      } else if (type === 'error') {
+        toastIcon.className = 'fas fa-exclamation-circle text-red-400';
+      } else {
+        toastIcon.className = 'fas fa-info-circle text-blue-400';
+      }
+      
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 4000);
+    }
+
+    // ─── Active Nav Item ──────────────────────────────
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        if (window.innerWidth < 1024) {
+          toggleSidebar();
+        }
+      });
+    });
+
+    // ─── Initialize ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.innerWidth >= 1024) {
+        document.getElementById('sidebar').classList.remove('-translate-x-full');
+      } else {
+        document.getElementById('sidebar').classList.add('-translate-x-full');
+      }
+      renderWishlist();
+    });
+
+    // ─── Close modal on escape key ───────────────────
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeRemoveModal();
+      }
+    });
+  </script>
+</body>
+</html>

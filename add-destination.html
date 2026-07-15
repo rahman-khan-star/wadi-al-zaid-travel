@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add New Destination - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== SIDEBAR ========== -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <img src="logo.svg" alt="Logo" class="w-9 h-9 shrink-0" />
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-navy tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav role="navigation" aria-label="Main navigation" class="space-y-1">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium" aria-current="page"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Contact Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports & Analytics</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Website Settings</span></a>
+        <hr class="my-3 border-gray-100" />
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div role="main" id="mainContent" class="lg:ml-64 transition-all duration-300">
+
+    <!-- ========== TOP NAVBAR ========== -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="hidden md:flex items-center bg-gray-100 rounded-xl px-4 py-2 gap-2 w-64">
+            <i class="fas fa-search text-gray-400 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-sm outline-none w-full" />
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleDarkMode()" id="darkModeBtn" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-moon"></i></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-envelope"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" class="w-9 h-9 rounded-xl" />
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold leading-tight">Admin User</p>
+              <p class="text-[10px] text-gray-400">Super Admin</p>
+            </div>
+            <i class="fas fa-chevron-down text-gray-400 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== PAGE CONTENT ========== -->
+    <div class="p-4 sm:p-6">
+
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 fade-up">
+        <div>
+          <h1 class="text-2xl font-black text-navy">Add New Destination</h1>
+          <div class="flex items-center gap-2 text-sm text-gray-400 mt-1">
+            <a href="admin.html" class="hover:text-accent transition-colors">Dashboard</a>
+            <i class="fas fa-chevron-right text-[10px]"></i>
+            <a href="manage-destinations.html" class="hover:text-accent transition-colors">Destinations</a>
+            <i class="fas fa-chevron-right text-[10px]"></i>
+            <span class="text-navy font-medium">Add New</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="manage-destinations.html" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+            <i class="fas fa-arrow-left text-sm"></i>
+            <span class="hidden sm:inline">Back</span>
+          </a>
+          <button onclick="saveDraft()" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+            <i class="fas fa-save text-sm"></i>
+            <span class="hidden sm:inline">Save Draft</span>
+          </button>
+          <button onclick="publishPackage()" class="btn-primary flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium shadow-lg shadow-accent/20">
+            <i class="fas fa-paper-plane text-sm"></i>
+            <span>Publish</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 fade-up">
+        <div class="flex items-center justify-between overflow-x-auto gap-2">
+          <div class="step-indicator active flex items-center gap-2 cursor-pointer shrink-0" onclick="goToStep(1)">
+            <div class="step-circle"><span>1</span><i class="fas fa-check hidden"></i></div>
+            <div class="hidden sm:block">
+              <p class="text-xs font-semibold text-navy">Basic Info</p>
+              <p class="text-[10px] text-gray-400">Name & details</p>
+            </div>
+          </div>
+          <div class="flex-1 h-0.5 bg-gray-200 min-w-[20px] sm:min-w-[40px] step-line" data-step="1"></div>
+          <div class="step-indicator flex items-center gap-2 cursor-pointer shrink-0" onclick="goToStep(2)">
+            <div class="step-circle"><span>2</span><i class="fas fa-check hidden"></i></div>
+            <div class="hidden sm:block">
+              <p class="text-xs font-semibold text-navy">Pricing</p>
+              <p class="text-[10px] text-gray-400">Price & details</p>
+            </div>
+          </div>
+          <div class="flex-1 h-0.5 bg-gray-200 min-w-[20px] sm:min-w-[40px] step-line" data-step="2"></div>
+          <div class="step-indicator flex items-center gap-2 cursor-pointer shrink-0" onclick="goToStep(3)">
+            <div class="step-circle"><span>3</span><i class="fas fa-check hidden"></i></div>
+            <div class="hidden sm:block">
+              <p class="text-xs font-semibold text-navy">Media</p>
+              <p class="text-[10px] text-gray-400">Images & video</p>
+            </div>
+          </div>
+          <div class="flex-1 h-0.5 bg-gray-200 min-w-[20px] sm:min-w-[40px] step-line" data-step="3"></div>
+          <div class="step-indicator flex items-center gap-2 cursor-pointer shrink-0" onclick="goToStep(4)">
+            <div class="step-circle"><span>4</span><i class="fas fa-check hidden"></i></div>
+            <div class="hidden sm:block">
+              <p class="text-xs font-semibold text-navy">Itinerary</p>
+              <p class="text-[10px] text-gray-400">Day by day</p>
+            </div>
+          </div>
+          <div class="flex-1 h-0.5 bg-gray-200 min-w-[20px] sm:min-w-[40px] step-line" data-step="4"></div>
+          <div class="step-indicator flex items-center gap-2 cursor-pointer shrink-0" onclick="goToStep(5)">
+            <div class="step-circle"><span>5</span><i class="fas fa-check hidden"></i></div>
+            <div class="hidden sm:block">
+              <p class="text-xs font-semibold text-navy">Services</p>
+              <p class="text-[10px] text-gray-400">Included & excluded</p>
+            </div>
+          </div>
+          <div class="flex-1 h-0.5 bg-gray-200 min-w-[20px] sm:min-w-[40px] step-line" data-step="5"></div>
+          <div class="step-indicator flex items-center gap-2 cursor-pointer shrink-0" onclick="goToStep(6)">
+            <div class="step-circle"><span>6</span><i class="fas fa-check hidden"></i></div>
+            <div class="hidden sm:block">
+              <p class="text-xs font-semibold text-navy">SEO</p>
+              <p class="text-[10px] text-gray-400">Location & SEO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+
+        <!-- ========== FORM AREA ========== -->
+        <div class="lg:col-span-2 space-y-6">
+
+          <!-- Step 1: Basic Information -->
+          <div class="step-content active" data-step="1">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+                <i class="fas fa-info-circle text-accent"></i> Basic Information
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Destination Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="destName" placeholder="e.g. Maldives Paradise Escape" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                  <p class="error-text">Please enter a destination name</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Country <span class="text-red-500">*</span></label>
+                    <select id="destCountry" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none cursor-pointer">
+                      <option value="">Select Country</option>
+                      <option>Maldives</option><option>France</option><option>Indonesia</option><option>Greece</option><option>UAE</option><option>Japan</option><option>Italy</option><option>Thailand</option>
+                    </select>
+                    <p class="error-text">Please select a country</p>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">City <span class="text-red-500">*</span></label>
+                    <input type="text" id="destCity" placeholder="e.g. Male" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                    <p class="error-text">Please enter a city</p>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Category <span class="text-red-500">*</span></label>
+                  <select id="destCategory" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none cursor-pointer">
+                    <option value="">Select Category</option>
+                    <option>Beach</option><option>City</option><option>Adventure</option><option>Cultural</option><option>Romantic</option><option>Family</option>
+                  </select>
+                  <p class="error-text">Please select a category</p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Short Description <span class="text-red-500">*</span></label>
+                  <input type="text" id="shortDesc" placeholder="Brief tagline for the destination (max 120 chars)" maxlength="120" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                  <div class="flex justify-between mt-1">
+                    <p class="error-text">Please enter a short description</p>
+                    <p class="text-xs text-gray-400"><span id="shortDescCount">0</span>/120</p>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Full Description <span class="text-red-500">*</span></label>
+                  <textarea id="fullDesc" rows="4" placeholder="Detailed description of the destination, attractions, and experience..." class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none resize-none"></textarea>
+                  <p class="error-text">Please enter a full description</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Pricing & Tour Details -->
+          <div class="step-content" data-step="2">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+                <i class="fas fa-tag text-accent"></i> Pricing & Tour Details
+              </h3>
+              <div class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Package Price ($) <span class="text-red-500">*</span></label>
+                    <input type="number" id="packagePrice" placeholder="e.g. 2999" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                    <p class="error-text">Please enter a price</p>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Discount Price ($)</label>
+                    <input type="number" id="discountPrice" placeholder="e.g. 2499" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                    <p class="text-xs text-gray-400 mt-1">Leave empty if no discount</p>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Duration (Days) <span class="text-red-500">*</span></label>
+                    <input type="number" id="durationDays" placeholder="e.g. 7" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                    <p class="error-text">Please enter duration</p>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Nights</label>
+                    <input type="number" id="durationNights" placeholder="e.g. 6" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Maximum Travelers <span class="text-red-500">*</span></label>
+                    <input type="number" id="maxTravelers" placeholder="e.g. 20" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                    <p class="error-text">Please enter max travelers</p>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Minimum Age</label>
+                    <input type="number" id="minAge" placeholder="e.g. 12" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Tour Type <span class="text-red-500">*</span></label>
+                    <select id="tourType" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none cursor-pointer">
+                      <option value="">Select Tour Type</option>
+                      <option>Group Tour</option><option>Private Tour</option><option>Shared Tour</option><option>Couple Tour</option><option>Family Tour</option>
+                    </select>
+                    <p class="error-text">Please select tour type</p>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-600 mb-1.5">Best Season <span class="text-red-500">*</span></label>
+                    <select id="bestSeason" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none cursor-pointer">
+                      <option value="">Select Season</option>
+                      <option>Spring (Mar-May)</option><option>Summer (Jun-Aug)</option><option>Autumn (Sep-Nov)</option><option>Winter (Dec-Feb)</option><option>Year Round</option>
+                    </select>
+                    <p class="error-text">Please select best season</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Media -->
+          <div class="step-content" data-step="3">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+                <i class="fas fa-camera text-accent"></i> Media
+              </h3>
+              <div class="space-y-5">
+                <!-- Featured Image -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Featured Image <span class="text-red-500">*</span></label>
+                  <div id="featuredUpload" class="upload-zone rounded-xl p-8 text-center cursor-pointer" onclick="document.getElementById('featuredInput').click()" ondragover="event.preventDefault(); this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="event.preventDefault(); this.classList.remove('dragover'); handleFeaturedDrop(event)">
+                    <input type="file" id="featuredInput" accept="image/*" class="hidden" onchange="handleFeaturedUpload(event)" />
+                    <div id="featuredPlaceholder">
+                      <div class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-cloud-upload-alt text-2xl text-gray-400"></i>
+                      </div>
+                      <p class="text-sm font-medium text-gray-600 mb-1">Click to upload or drag and drop</p>
+                      <p class="text-xs text-gray-400">PNG, JPG, WEBP up to 5MB</p>
+                    </div>
+                    <div id="featuredPreview" class="hidden">
+                      <img id="featuredImg" class="w-40 h-28 object-cover rounded-xl mx-auto mb-3" />
+                      <button onclick="event.stopPropagation(); removeFeatured()" class="text-xs text-red-500 hover:text-red-600 font-medium">Remove</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Gallery -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Gallery Images</label>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="galleryGrid">
+                    <div class="upload-zone rounded-xl p-4 text-center cursor-pointer aspect-square flex flex-col items-center justify-center" onclick="document.getElementById('galleryInput').click()">
+                      <input type="file" id="galleryInput" accept="image/*" multiple class="hidden" onchange="handleGalleryUpload(event)" />
+                      <i class="fas fa-plus text-2xl text-gray-300 mb-1"></i>
+                      <p class="text-[10px] text-gray-400">Add Image</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video URL -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Video URL</label>
+                  <div class="flex items-center gap-3">
+                    <div class="flex-1 relative">
+                      <i class="fab fa-youtube absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                      <input type="url" id="videoUrl" placeholder="https://youtube.com/watch?v=..." class="form-input w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                    </div>
+                    <button onclick="previewVideo()" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-600 transition-colors shrink-0">
+                      <i class="fas fa-play mr-1"></i> Preview
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Itinerary -->
+          <div class="step-content" data-step="4">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <div class="flex items-center justify-between mb-5">
+                <h3 class="text-lg font-bold text-navy flex items-center gap-2">
+                  <i class="fas fa-route text-accent"></i> Itinerary
+                </h3>
+                <button onclick="addDay()" class="flex items-center gap-2 px-4 py-2 bg-accent/10 hover:bg-accent/20 rounded-xl text-sm font-medium text-accent transition-colors">
+                  <i class="fas fa-plus"></i> Add Day
+                </button>
+              </div>
+              <div id="itineraryDays" class="space-y-4">
+                <!-- Days added dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Included & Excluded -->
+          <div class="step-content" data-step="5">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+                <i class="fas fa-list-check text-accent"></i> Included & Excluded Services
+              </h3>
+              <div class="space-y-6">
+                <!-- Included -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-2">Included Services</label>
+                  <div class="flex gap-2 mb-3">
+                    <input type="text" id="includedInput" placeholder="Add service (e.g. Hotel accommodation)" class="form-input flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" onkeypress="if(event.key==='Enter'){event.preventDefault(); addService('included')}" />
+                    <button onclick="addService('included')" class="px-4 py-2.5 bg-green-500 hover:bg-green-600 rounded-xl text-sm font-medium text-white transition-colors"><i class="fas fa-plus"></i></button>
+                  </div>
+                  <div id="includedList" class="space-y-2"></div>
+                </div>
+                <!-- Excluded -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-2">Excluded Services</label>
+                  <div class="flex gap-2 mb-3">
+                    <input type="text" id="excludedInput" placeholder="Add service (e.g. Travel insurance)" class="form-input flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" onkeypress="if(event.key==='Enter'){event.preventDefault(); addService('excluded')}" />
+                    <button onclick="addService('excluded')" class="px-4 py-2.5 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-medium text-white transition-colors"><i class="fas fa-plus"></i></button>
+                  </div>
+                  <div id="excludedList" class="space-y-2"></div>
+                </div>
+                <!-- Highlights -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-2">Tour Highlights</label>
+                  <div class="flex gap-2 mb-3">
+                    <input type="text" id="highlightsInput" placeholder="Add highlight (e.g. Sunset dolphin cruise)" class="form-input flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" onkeypress="if(event.key==='Enter'){event.preventDefault(); addService('highlights')}" />
+                    <button onclick="addService('highlights')" class="px-4 py-2.5 bg-accent hover:bg-accent-dark rounded-xl text-sm font-medium text-white transition-colors"><i class="fas fa-plus"></i></button>
+                  </div>
+                  <div id="highlightsList" class="space-y-2"></div>
+                </div>
+                <!-- Travel Requirements -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-2">Travel Requirements</label>
+                  <div class="flex gap-2 mb-3">
+                    <input type="text" id="requirementsInput" placeholder="Add requirement (e.g. Valid passport)" class="form-input flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" onkeypress="if(event.key==='Enter'){event.preventDefault(); addService('requirements')}" />
+                    <button onclick="addService('requirements')" class="px-4 py-2.5 bg-blue-500 hover:bg-blue-600 rounded-xl text-sm font-medium text-white transition-colors"><i class="fas fa-plus"></i></button>
+                  </div>
+                  <div id="requirementsList" class="space-y-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 6: Location & SEO -->
+          <div class="step-content" data-step="6">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="text-lg font-bold text-navy mb-5 flex items-center gap-2">
+                <i class="fas fa-map-marked-alt text-accent"></i> Location & SEO
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Google Maps Embed URL</label>
+                  <input type="url" id="mapUrl" placeholder="https://www.google.com/maps/embed?..." class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                  <div id="mapPreview" class="mt-3 hidden">
+                    <iframe id="mapFrame" class="w-full h-48 rounded-xl border border-gray-200" src="" loading="lazy"></iframe>
+                  </div>
+                </div>
+                <hr class="border-gray-100" />
+                <h4 class="text-sm font-bold text-navy">SEO Settings</h4>
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Meta Title <span class="text-red-500">*</span></label>
+                  <input type="text" id="metaTitle" placeholder="e.g. Maldives Paradise | Wadi Al Zaid Tours" class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                  <p class="text-xs text-gray-400 mt-1"><span id="metaTitleCount">0</span>/60 characters</p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Meta Description <span class="text-red-500">*</span></label>
+                  <textarea id="metaDesc" rows="2" placeholder="Brief SEO description for search engines..." class="form-input w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none resize-none"></textarea>
+                  <p class="text-xs text-gray-400 mt-1"><span id="metaDescCount">0</span>/160 characters</p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">URL Slug</label>
+                  <div class="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5">
+                    <span class="text-sm text-gray-400 shrink-0">wadialzaid.com/tours/</span>
+                    <input type="text" id="urlSlug" placeholder="maldives-paradise" class="bg-transparent text-sm outline-none w-full" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-600 mb-1.5">Keywords</label>
+                  <div class="flex gap-2 mb-2">
+                    <input type="text" id="keywordInput" placeholder="Add keyword" class="form-input flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" onkeypress="if(event.key==='Enter'){event.preventDefault(); addKeyword()}" />
+                    <button onclick="addKeyword()" class="px-4 py-2.5 bg-accent hover:bg-accent-dark rounded-xl text-sm font-medium text-white transition-colors"><i class="fas fa-plus"></i></button>
+                  </div>
+                  <div id="keywordsList" class="flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Navigation -->
+          <div class="flex items-center justify-between">
+            <button onclick="prevStep()" id="prevStepBtn" class="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button onclick="nextStep()" id="nextStepBtn" class="btn-primary flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium">
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========== SIDEBAR SUMMARY ========== -->
+        <div class="lg:col-span-1 space-y-6">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-20 fade-up">
+            <h3 class="text-lg font-bold text-navy mb-5">Package Summary</h3>
+
+            <div class="space-y-4">
+              <!-- Status -->
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">Status</span>
+                <span id="summaryStatus" class="status-badge status-draft">Draft</span>
+              </div>
+
+              <!-- Featured -->
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">Featured</span>
+                <div id="featuredToggle" class="toggle-switch" onclick="toggleFeatured()"></div>
+              </div>
+
+              <!-- Visibility -->
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">Visibility</span>
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-globe text-gray-400 text-sm"></i>
+                  <span class="text-sm font-medium text-navy">Public</span>
+                </div>
+              </div>
+
+              <hr class="border-gray-100" />
+
+              <!-- Preview Info -->
+              <div class="space-y-3">
+                <h4 class="text-sm font-bold text-navy">Preview</h4>
+                <div id="previewCard" class="bg-gray-50 rounded-xl p-3">
+                  <div class="w-full h-28 bg-gray-200 rounded-lg mb-3 flex items-center justify-center">
+                    <i class="fas fa-image text-gray-300 text-xl"></i>
+                  </div>
+                  <p id="previewName" class="text-sm font-semibold text-navy truncate">Destination Name</p>
+                  <p id="previewLocation" class="text-xs text-gray-400 mt-0.5">Country, City</p>
+                  <div class="flex items-center justify-between mt-2">
+                    <div class="flex items-center gap-1">
+                      <i class="fas fa-star text-accent text-xs"></i>
+                      <span class="text-xs font-medium">New</span>
+                    </div>
+                    <p id="previewPrice" class="text-sm font-bold text-accent">$0</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="border-gray-100" />
+
+              <!-- Last Saved -->
+              <div class="flex items-center gap-2 text-xs text-gray-400">
+                <i class="fas fa-clock"></i>
+                <span>Last saved: <span id="lastSaved">Never</span></span>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="mt-6 space-y-3">
+              <button onclick="saveDraft()" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-600 transition-colors">
+                <i class="fas fa-save"></i> Save as Draft
+              </button>
+              <button onclick="previewPackage()" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-gray-200 hover:bg-gray-50 rounded-xl text-sm font-medium text-gray-600 transition-colors">
+                <i class="fas fa-eye"></i> Preview Package
+              </button>
+              <button onclick="publishPackage()" class="w-full btn-primary flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium">
+                <i class="fas fa-paper-plane"></i> Publish Package
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SIDEBAR OVERLAY (Mobile) ========== -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- ========== PREVIEW MODAL ========== -->
+  <div id="previewModal" class="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+        <h3 class="text-lg font-bold text-navy">Package Preview</h3>
+        <button onclick="closePreviewModal()" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"><i class="fas fa-times text-gray-400"></i></button>
+      </div>
+      <div id="previewContent" class="p-6"></div>
+    </div>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ========== STATE ==========
+    let currentStep = 1;
+    const totalSteps = 6;
+    let isFeatured = false;
+    let galleryImages = [];
+    let includedServices = [];
+    let excludedServices = [];
+    let highlights = [];
+    let requirements = [];
+    let keywords = [];
+    let dayCount = 1;
+
+    // ========== DARK MODE ==========
+    function toggleDarkMode() {
+      const btn = document.getElementById('darkModeBtn');
+      const icon = btn.querySelector('i');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+    }
+
+    // ========== STEP NAVIGATION ==========
+    function goToStep(step) {
+      if (step < 1 || step > totalSteps) return;
+      currentStep = step;
+      updateSteps();
+    }
+
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateSteps();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateSteps();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function updateSteps() {
+      document.querySelectorAll('.step-indicator').forEach((el, i) => {
+        el.classList.remove('active', 'completed');
+        if (i + 1 === currentStep) el.classList.add('active');
+        else if (i + 1 < currentStep) el.classList.add('completed');
+      });
+
+      document.querySelectorAll('.step-line').forEach(el => {
+        const step = parseInt(el.dataset.step);
+        el.style.background = step < currentStep ? '#22c55e' : '#e5e7eb';
+      });
+
+      document.querySelectorAll('.step-content').forEach(el => {
+        el.classList.remove('active');
+        if (parseInt(el.dataset.step) === currentStep) el.classList.add('active');
+      });
+
+      document.getElementById('prevStepBtn').disabled = currentStep === 1;
+      document.getElementById('nextStepBtn').innerHTML = currentStep === totalSteps
+        ? '<i class="fas fa-check"></i> Finish'
+        : 'Next <i class="fas fa-arrow-right"></i>';
+
+      if (currentStep === totalSteps) {
+        document.getElementById('nextStepBtn').onclick = publishPackage;
+      } else {
+        document.getElementById('nextStepBtn').onclick = nextStep;
+      }
+    }
+
+    // ========== SHORT DESCRIPTION COUNTER ==========
+    document.getElementById('shortDesc')?.addEventListener('input', function() {
+      document.getElementById('shortDescCount').textContent = this.value.length;
+      updatePreview();
+    });
+
+    // ========== META COUNTERS ==========
+    document.getElementById('metaTitle')?.addEventListener('input', function() {
+      document.getElementById('metaTitleCount').textContent = this.value.length;
+    });
+    document.getElementById('metaDesc')?.addEventListener('input', function() {
+      document.getElementById('metaDescCount').textContent = this.value.length;
+    });
+
+    // ========== PREVIEW UPDATE ==========
+    function updatePreview() {
+      const name = document.getElementById('destName').value || 'Destination Name';
+      const country = document.getElementById('destCountry').value || '';
+      const city = document.getElementById('destCity').value || '';
+      const price = document.getElementById('packagePrice').value || '0';
+
+      document.getElementById('previewName').textContent = name;
+      document.getElementById('previewLocation').textContent = [city, country].filter(Boolean).join(', ') || 'Country, City';
+      document.getElementById('previewPrice').textContent = '$' + parseInt(price).toLocaleString();
+    }
+
+    document.getElementById('destName')?.addEventListener('input', updatePreview);
+    document.getElementById('destCountry')?.addEventListener('change', updatePreview);
+    document.getElementById('destCity')?.addEventListener('input', updatePreview);
+    document.getElementById('packagePrice')?.addEventListener('input', updatePreview);
+
+    // ========== FEATURED TOGGLE ==========
+    function toggleFeatured() {
+      isFeatured = !isFeatured;
+      document.getElementById('featuredToggle').classList.toggle('active', isFeatured);
+    }
+
+    // ========== MEDIA UPLOAD ==========
+    function handleFeaturedUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        document.getElementById('featuredImg').src = ev.target.result;
+        document.getElementById('featuredPlaceholder').classList.add('hidden');
+        document.getElementById('featuredPreview').classList.remove('hidden');
+        document.getElementById('previewCard').querySelector('div').innerHTML = `<img src="${ev.target.result}" class="w-full h-full object-cover rounded-lg" />`;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleFeaturedDrop(e) {
+      const file = e.dataTransfer.files[0];
+      if (!file || !file.type.startsWith('image/')) return;
+      const input = document.getElementById('featuredInput');
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      input.files = dt.files;
+      handleFeaturedUpload({ target: input });
+    }
+
+    function removeFeatured() {
+      document.getElementById('featuredInput').value = '';
+      document.getElementById('featuredPlaceholder').classList.remove('hidden');
+      document.getElementById('featuredPreview').classList.add('hidden');
+      document.getElementById('previewCard').querySelector('div').innerHTML = '<i class="fas fa-image text-gray-300 text-xl"></i>';
+    }
+
+    function handleGalleryUpload(e) {
+      const files = Array.from(e.target.files);
+      const grid = document.getElementById('galleryGrid');
+      const addBtn = grid.querySelector('.upload-zone') || grid.lastElementChild;
+
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          galleryImages.push(ev.target.result);
+          const div = document.createElement('div');
+          div.className = 'relative aspect-square rounded-xl overflow-hidden group';
+          div.innerHTML = `
+            <img src="${ev.target.result}" class="w-full h-full object-cover" />
+            <button onclick="removeGalleryImage(this, ${galleryImages.length - 1})" class="absolute top-2 right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+          grid.insertBefore(div, grid.lastElementChild);
+        };
+        reader.readAsDataURL(file);
+      });
+      e.target.value = '';
+    }
+
+    function removeGalleryImage(btn, index) {
+      galleryImages.splice(index, 1);
+      btn.parentElement.remove();
+    }
+
+    function previewVideo() {
+      const url = document.getElementById('videoUrl').value;
+      if (url) alert('Video preview: ' + url);
+    }
+
+    // ========== ITINERARY ==========
+    function addDay() {
+      dayCount++;
+      const container = document.getElementById('itineraryDays');
+      const dayEl = document.createElement('div');
+      dayEl.className = 'itinerary-day bg-gray-50 rounded-xl p-4 border border-gray-200';
+      dayEl.innerHTML = `
+        <div class="flex items-center justify-between mb-3">
+          <h4 class="text-sm font-bold text-navy flex items-center gap-2">
+            <span class="w-7 h-7 bg-accent text-white rounded-lg flex items-center justify-center text-xs font-bold">${dayCount}</span>
+            Day ${dayCount}
+          </h4>
+          <button onclick="this.closest('.itinerary-day').remove()" class="text-red-400 hover:text-red-500 text-sm"><i class="fas fa-trash"></i></button>
+        </div>
+        <div class="space-y-3">
+          <input type="text" placeholder="Day Title (e.g. Arrival & Beach Day)" class="form-input w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none" />
+          <textarea placeholder="Activities for this day..." rows="2" class="form-input w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none resize-none"></textarea>
+          <div class="grid grid-cols-2 gap-3">
+            <select class="form-input px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none cursor-pointer">
+              <option>Meals: Not Included</option>
+              <option>Breakfast</option><option>Breakfast & Lunch</option><option>All Meals</option>
+            </select>
+            <input type="text" placeholder="Accommodation" class="form-input px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none" />
+          </div>
+        </div>
+      `;
+      container.appendChild(dayEl);
+    }
+
+    // Initialize Day 1
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('itineraryDays');
+      container.innerHTML = `
+        <div class="itinerary-day bg-gray-50 rounded-xl p-4 border border-gray-200">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-sm font-bold text-navy flex items-center gap-2">
+              <span class="w-7 h-7 bg-accent text-white rounded-lg flex items-center justify-center text-xs font-bold">1</span>
+              Day 1
+            </h4>
+            <button onclick="this.closest('.itinerary-day').remove()" class="text-red-400 hover:text-red-500 text-sm"><i class="fas fa-trash"></i></button>
+          </div>
+          <div class="space-y-3">
+            <input type="text" placeholder="Day Title (e.g. Arrival & Beach Day)" class="form-input w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none" />
+            <textarea placeholder="Activities for this day..." rows="2" class="form-input w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none resize-none"></textarea>
+            <div class="grid grid-cols-2 gap-3">
+              <select class="form-input px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none cursor-pointer">
+                <option>Meals: Not Included</option>
+                <option>Breakfast</option><option>Breakfast & Lunch</option><option>All Meals</option>
+              </select>
+              <input type="text" placeholder="Accommodation" class="form-input px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none" />
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    // ========== SERVICES ==========
+    function addService(type) {
+      const input = document.getElementById(type + 'Input');
+      const value = input.value.trim();
+      if (!value) return;
+
+      const list = document.getElementById(type + 'List');
+      const colors = { included: 'green', excluded: 'red', highlights: 'accent', requirements: 'blue' };
+      const color = colors[type];
+
+      const item = document.createElement('div');
+      item.className = 'service-item flex items-center justify-between p-2.5 bg-gray-50 rounded-lg';
+      item.innerHTML = `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-${type === 'excluded' ? 'times-circle text-red-400' : type === 'highlights' ? 'star text-accent' : type === 'requirements' ? 'info-circle text-blue-400' : 'check-circle text-green-400'} text-sm"></i>
+          <span class="text-sm text-gray-600">${value}</span>
+        </div>
+        <button onclick="removeService(this, '${type}')" class="remove-btn text-gray-400 hover:text-red-500 text-xs"><i class="fas fa-times"></i></button>
+      `;
+      list.appendChild(item);
+      input.value = '';
+    }
+
+    function removeService(btn, type) {
+      btn.closest('.service-item').remove();
+    }
+
+    // ========== KEYWORDS ==========
+    function addKeyword() {
+      const input = document.getElementById('keywordInput');
+      const value = input.value.trim();
+      if (!value) return;
+
+      keywords.push(value);
+      renderKeywords();
+      input.value = '';
+    }
+
+    function removeKeyword(index) {
+      keywords.splice(index, 1);
+      renderKeywords();
+    }
+
+    function renderKeywords() {
+      const list = document.getElementById('keywordsList');
+      list.innerHTML = keywords.map((kw, i) => `
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">
+          ${kw}
+          <button onclick="removeKeyword(${i})" class="hover:text-accent-dark"><i class="fas fa-times text-[10px]"></i></button>
+        </span>
+      `).join('');
+    }
+
+    // ========== MAP PREVIEW ==========
+    document.getElementById('mapUrl')?.addEventListener('input', function() {
+      const preview = document.getElementById('mapPreview');
+      const frame = document.getElementById('mapFrame');
+      if (this.value.trim()) {
+        frame.src = this.value;
+        preview.classList.remove('hidden');
+      } else {
+        preview.classList.add('hidden');
+      }
+    });
+
+    // ========== VALIDATION ==========
+    function validateStep(step) {
+      let valid = true;
+      const stepEl = document.querySelector(`.step-content[data-step="${step}"]`);
+      const inputs = stepEl.querySelectorAll('.form-input[required], input[id*="dest"], select[id*="dest"]');
+
+      stepEl.querySelectorAll('.form-input').forEach(input => {
+        input.classList.remove('error');
+      });
+
+      if (step === 1) {
+        const required = ['destName', 'destCountry', 'destCity', 'destCategory', 'shortDesc', 'fullDesc'];
+        required.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && !el.value.trim()) {
+            el.classList.add('error');
+            valid = false;
+          }
+        });
+      } else if (step === 2) {
+        const required = ['packagePrice', 'durationDays', 'maxTravelers', 'tourType', 'bestSeason'];
+        required.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && !el.value.trim()) {
+            el.classList.add('error');
+            valid = false;
+          }
+        });
+      }
+      return valid;
+    }
+
+    // ========== ACTIONS ==========
+    function saveDraft() {
+      document.getElementById('summaryStatus').className = 'status-badge status-draft';
+      document.getElementById('summaryStatus').textContent = 'Draft';
+      document.getElementById('lastSaved').textContent = new Date().toLocaleTimeString();
+      showToast('Draft saved successfully!');
+    }
+
+    function previewPackage() {
+      const name = document.getElementById('destName').value || 'Untitled Destination';
+      const country = document.getElementById('destCountry').value || 'N/A';
+      const city = document.getElementById('destCity').value || 'N/A';
+      const price = document.getElementById('packagePrice').value || '0';
+      const desc = document.getElementById('fullDesc').value || 'No description provided.';
+      const days = document.getElementById('durationDays').value || '0';
+      const nights = document.getElementById('durationNights').value || '0';
+
+      document.getElementById('previewContent').innerHTML = `
+        <div class="space-y-4">
+          <div class="w-full h-48 bg-gray-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-image text-gray-300 text-3xl"></i>
+          </div>
+          <h2 class="text-xl font-bold text-navy">${name}</h2>
+          <div class="flex items-center gap-4 text-sm text-gray-500">
+            <span><i class="fas fa-map-marker-alt mr-1"></i> ${city}, ${country}</span>
+            <span><i class="fas fa-clock mr-1"></i> ${days} Days / ${nights} Nights</span>
+          </div>
+          <p class="text-sm text-gray-600">${desc}</p>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <span class="text-2xl font-black text-accent">$${parseInt(price).toLocaleString()}</span>
+            <span class="text-sm text-gray-400">per person</span>
+          </div>
+        </div>
+      `;
+      document.getElementById('previewModal').classList.add('show');
+    }
+
+    function closePreviewModal() {
+      document.getElementById('previewModal').classList.remove('show');
+    }
+
+    function publishPackage() {
+      document.getElementById('summaryStatus').className = 'status-badge status-active';
+      document.getElementById('summaryStatus').textContent = 'Active';
+      document.getElementById('lastSaved').textContent = new Date().toLocaleTimeString();
+      showToast('Package published successfully!');
+    }
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 right-6 bg-navy text-white px-5 py-3 rounded-xl shadow-lg z-50 flex items-center gap-3 text-sm font-medium';
+      toast.innerHTML = `<i class="fas fa-check-circle text-green-400"></i> ${message}`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

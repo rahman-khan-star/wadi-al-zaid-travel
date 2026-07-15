@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTP Verification - Wadi Al Zaid Tours</title>
+  <link rel="stylesheet" href="components.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+          <div class="leading-tight">
+            <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="index.html#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="index.html#why-us" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">About</a>
+          <a href="index.html#contact" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="index.html#contact" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25"><span>Contact Agent</span></a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors"><i class="fas fa-times text-lg"></i></button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="index.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="index.html#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="index.html#why-us" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">About</a>
+          <a href="index.html#contact" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="index.html#contact" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white"><span>Contact Agent</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <!-- OTP VERIFICATION SECTION -->
+  <section role="main" id="mainContent" class="min-h-screen flex">
+    <!-- Left Side - Image & Content -->
+    <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1600&q=80" alt="Tropical Beach" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-br from-navy/80 via-navy/60 to-navy/40"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 flex flex-col justify-center px-12 xl:px-16 w-full hero-animate">
+        <div class="max-w-md">
+          <!-- Icon -->
+          <div class="w-20 h-20 bg-accent/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-8">
+            <i class="fas fa-shield-alt text-accent text-3xl"></i>
+          </div>
+
+          <!-- Welcome Text -->
+          <h1 class="text-4xl xl:text-5xl font-black text-white mb-4 leading-tight">Verify Your<br/>Identity</h1>
+          <p class="text-white/60 text-base xl:text-lg mb-8 leading-relaxed">We've sent a verification code to confirm it's really you. Enter the code below to continue.</p>
+
+          <!-- Security Tips -->
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-lightbulb text-accent"></i>
+              </div>
+              <p class="font-bold text-white text-sm">Security Tips</p>
+            </div>
+            <ul class="space-y-3 text-sm text-white/60">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                <span>Never share your OTP with anyone</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                <span>Code expires in 5 minutes</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                <span>Check spam if you don't see it</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - OTP Form -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 lg:p-12 bg-white">
+      <div class="w-full max-w-md card-animate">
+
+        <!-- Back to Login -->
+        <a href="login.html" class="flex items-center gap-2 text-sm text-navy/50 hover:text-accent transition-colors mb-6">
+          <i class="fas fa-arrow-left"></i> Back to Login
+        </a>
+
+        <!-- OTP Form -->
+        <div id="otpForm">
+          <!-- Header -->
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 lg:hidden">
+              <i class="fas fa-shield-alt text-accent text-2xl"></i>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-navy mb-2">Enter Verification Code</h2>
+            <p class="text-navy/50 text-sm">We've sent a 6-digit code to</p>
+            <p class="font-bold text-accent text-sm mt-1" id="maskedContact">j***n@example.com</p>
+          </div>
+
+          <!-- Timer -->
+          <div class="flex justify-center mb-8">
+            <div class="relative w-24 h-24">
+              <svg class="timer-ring w-full h-full" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="4"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#e8952f" stroke-width="4"
+                  stroke-dasharray="283" stroke-dashoffset="0" stroke-linecap="round" id="timerCircle"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-2xl font-black text-navy" id="timerDisplay">01:30</span>
+                <span class="text-[10px] text-navy/40 uppercase tracking-wider">remaining</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- OTP Input Boxes -->
+          <div class="flex justify-center gap-3 mb-8">
+            <input type="text" maxlength="1" class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-xl sm:text-2xl font-bold bg-gray-50 rounded-xl border-2 border-gray-200 outline-none" oninput="handleOTPInput(this, 0)" onkeydown="handleOTPKeydown(event, 0)" onfocus="this.select()" />
+            <input type="text" maxlength="1" class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-xl sm:text-2xl font-bold bg-gray-50 rounded-xl border-2 border-gray-200 outline-none" oninput="handleOTPInput(this, 1)" onkeydown="handleOTPKeydown(event, 1)" onfocus="this.select()" />
+            <input type="text" maxlength="1" class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-xl sm:text-2xl font-bold bg-gray-50 rounded-xl border-2 border-gray-200 outline-none" oninput="handleOTPInput(this, 2)" onkeydown="handleOTPKeydown(event, 2)" onfocus="this.select()" />
+            <input type="text" maxlength="1" class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-xl sm:text-2xl font-bold bg-gray-50 rounded-xl border-2 border-gray-200 outline-none" oninput="handleOTPInput(this, 3)" onkeydown="handleOTPKeydown(event, 3)" onfocus="this.select()" />
+            <input type="text" maxlength="1" class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-xl sm:text-2xl font-bold bg-gray-50 rounded-xl border-2 border-gray-200 outline-none" oninput="handleOTPInput(this, 4)" onkeydown="handleOTPKeydown(event, 4)" onfocus="this.select()" />
+            <input type="text" maxlength="1" class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-xl sm:text-2xl font-bold bg-gray-50 rounded-xl border-2 border-gray-200 outline-none" oninput="handleOTPInput(this, 5)" onkeydown="handleOTPKeydown(event, 5)" onfocus="this.select()" />
+          </div>
+
+          <!-- Error Message (Hidden) -->
+          <div id="errorMessage" class="hidden mb-4 p-3 bg-red-50 rounded-xl flex items-center gap-2">
+            <i class="fas fa-exclamation-circle text-red-500"></i>
+            <span class="text-sm text-red-600" id="errorText">Invalid verification code. Please try again.</span>
+          </div>
+
+          <!-- Verify Button -->
+          <button onclick="verifyOTP()" id="verifyBtn" class="btn-accent w-full py-4 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25 transition-all mb-6">
+            <span><i class="fas fa-check-circle mr-2"></i>Verify Code</span>
+          </button>
+
+          <!-- Resend Code -->
+          <div class="text-center mb-6">
+            <p class="text-sm text-navy/50 mb-2">Didn't receive the code?</p>
+            <button onclick="resendCode()" id="resendBtn" class="text-sm font-bold transition-colors" disabled>
+              <span id="resendText" class="text-navy/30">Resend Code (01:30)</span>
+            </button>
+          </div>
+
+          <!-- Login Link -->
+          <div class="text-center">
+            <a href="login.html" class="text-sm text-accent hover:text-accent-dark font-medium transition-colors">
+              <i class="fas fa-arrow-left mr-1.5"></i> Back to Login
+            </a>
+          </div>
+        </div>
+
+        <!-- Success Message (Hidden) -->
+        <div id="successMessage" class="hidden text-center py-8">
+          <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 success-animate">
+            <svg class="w-14 h-14" viewBox="0 0 52 52">
+              <circle cx="26" cy="26" r="25" fill="none" stroke="#22c55e" stroke-width="2" class="opacity-20"/>
+              <path d="M14 27l7 7 16-16" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-anim"/>
+            </svg>
+          </div>
+
+          <h2 class="text-2xl font-black text-navy mb-2">Verification Successful!</h2>
+          <p class="text-navy/50 text-sm mb-6">Your identity has been verified. Redirecting you now...</p>
+
+          <div class="flex items-center justify-center gap-2 text-accent">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span class="text-sm font-medium">Redirecting...</span>
+          </div>
+        </div>
+
+        <!-- Security Badges -->
+        <div class="flex items-center justify-center gap-4 mt-6 pt-6 border-t border-gray-100">
+          <div class="flex items-center gap-1.5 text-navy/30">
+            <i class="fas fa-shield-alt text-green-600 text-xs"></i>
+            <span class="text-[10px] font-medium">SSL Protected</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-navy/30">
+            <i class="fas fa-lock text-green-600 text-xs"></i>
+            <span class="text-[10px] font-medium">Secure Verification</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <div class="leading-tight">
+              <span class="text-lg sm:text-xl font-extrabold tracking-tight">Wadi Al Zaid</span>
+              <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+            </div>
+          </a>
+          <p class="text-white/50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-xs">Crafting unforgettable travel experiences since 2013.</p>
+          <div class="flex gap-2 sm:gap-3">
+            <a href="#" class="w-9 h-9 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-instagram text-sm"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/5 hover:bg-[#25D366] rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-whatsapp text-sm"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Quick Links</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="index.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Home</a></li>
+            <li><a href="index.html#destinations" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Destinations</a></li>
+            <li><a href="index.html#why-us" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">About Us</a></li>
+            <li><a href="index.html#testimonials" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Testimonials</a></li>
+            <li><a href="index.html#contact" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Destinations</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="destination.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Maldives</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Paris</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Santorini</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Bali</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Dubai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Contact</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li class="flex items-start gap-2"><i class="fas fa-phone text-accent text-sm mt-0.5"></i><p class="text-xs sm:text-sm text-white/60">+1 (234) 567-890</p></li>
+            <li class="flex items-start gap-2"><i class="fas fa-envelope text-accent text-sm mt-0.5"></i><p class="text-xs sm:text-sm text-white/60">info@wadialzaid.com</p></li>
+            <li class="flex items-start gap-2"><i class="fas fa-map-marker-alt text-accent text-sm mt-0.5"></i><p class="text-xs sm:text-sm text-white/60">123 Travel Avenue<br/>Dubai, UAE</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <p class="text-xs text-white/30">&copy; 2026 Wadi Al Zaid Tours &amp; Travel. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="text-[10px] text-white/30 hover:text-accent transition-colors">Privacy Policy</a>
+          <a href="#" class="text-[10px] text-white/30 hover:text-accent transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed top-24 right-4 z-50 hidden">
+    <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-4 flex items-center gap-3 max-w-sm">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" id="toastIcon"></div>
+      <div>
+        <p class="font-bold text-sm" id="toastTitle"></p>
+        <p class="text-xs text-navy/50" id="toastMessage"></p>
+      </div>
+      <button onclick="hideToast()" class="text-navy/30 hover:text-navy transition-colors ml-2"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <script src="components.js"></script>
+  <script>
+    // ─── Navbar ───────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+    });
+
+    // ─── Mobile Menu ──────────────────────────────────
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+    });
+    document.getElementById('closeMenu').addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+    }
+
+    // ─── Timer ────────────────────────────────────────
+    let timerInterval;
+    let timeRemaining = 90; // 1:30 in seconds
+    const totalTime = 90;
+
+    function startTimer() {
+      const timerCircle = document.getElementById('timerCircle');
+      const timerDisplay = document.getElementById('timerDisplay');
+      const resendBtn = document.getElementById('resendBtn');
+      const resendText = document.getElementById('resendText');
+
+      const circumference = 2 * Math.PI * 45; // radius = 45
+
+      timerInterval = setInterval(() => {
+        timeRemaining--;
+
+        const minutes = Math.floor(timeRemaining / 60);
+        const seconds = timeRemaining % 60;
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        // Update circle
+        const offset = circumference * (1 - timeRemaining / totalTime);
+        timerCircle.style.strokeDashoffset = offset;
+
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          timerCircle.style.stroke = '#ef4444';
+          resendBtn.disabled = false;
+          resendBtn.classList.add('text-accent', 'hover:text-accent-dark', 'cursor-pointer');
+          resendBtn.classList.remove('text-navy/30', 'cursor-not-allowed');
+          resendText.innerHTML = '<i class="fas fa-redo mr-1.5"></i>Resend Code';
+        }
+      }, 1000);
+    }
+
+    // ─── OTP Input Handling ───────────────────────────
+    function handleOTPInput(input, index) {
+      const value = input.value;
+
+      // Only allow numbers
+      input.value = value.replace(/[^0-9]/g, '');
+
+      if (input.value.length === 1) {
+        input.classList.add('filled');
+        // Move to next input
+        const inputs = document.querySelectorAll('.otp-input');
+        if (index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      } else {
+        input.classList.remove('filled');
+      }
+
+      // Clear error state
+      input.classList.remove('error');
+      document.getElementById('errorMessage').classList.add('hidden');
+    }
+
+    function handleOTPKeydown(event, index) {
+      const inputs = document.querySelectorAll('.otp-input');
+
+      if (event.key === 'Backspace' && !event.target.value && index > 0) {
+        inputs[index - 1].focus();
+        inputs[index - 1].value = '';
+        inputs[index - 1].classList.remove('filled');
+      }
+
+      // Handle paste
+      if (event.key === 'v' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault();
+        navigator.clipboard.readText().then(text => {
+          const digits = text.replace(/[^0-9]/g, '').slice(0, 6);
+          digits.split('').forEach((digit, i) => {
+            if (inputs[i]) {
+              inputs[i].value = digit;
+              inputs[i].classList.add('filled');
+            }
+          });
+          if (digits.length > 0) {
+            inputs[Math.min(digits.length, 5)].focus();
+          }
+        });
+      }
+    }
+
+    // ─── Verify OTP ───────────────────────────────────
+    function verifyOTP() {
+      const inputs = document.querySelectorAll('.otp-input');
+      let otp = '';
+      inputs.forEach(input => otp += input.value);
+
+      if (otp.length < 6) {
+        inputs.forEach(input => {
+          if (!input.value) {
+            input.classList.add('error');
+          }
+        });
+        document.getElementById('errorMessage').classList.remove('hidden');
+        document.getElementById('errorText').textContent = 'Please enter the complete 6-digit code';
+        return;
+      }
+
+      const verifyBtn = document.getElementById('verifyBtn');
+      verifyBtn.classList.add('processing');
+      verifyBtn.innerHTML = '<span>Verifying</span>';
+
+      // Simulate verification
+      setTimeout(() => {
+        verifyBtn.classList.remove('processing');
+        verifyBtn.innerHTML = '<span><i class="fas fa-check-circle mr-2"></i>Verify Code</span>';
+
+        // Show success (for demo, accept any 6-digit code)
+        if (otp === '123456') {
+          // Success
+          inputs.forEach(input => input.classList.add('success'));
+          document.getElementById('otpForm').classList.add('hidden');
+          document.getElementById('successMessage').classList.remove('hidden');
+
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 2000);
+        } else {
+          // Error
+          inputs.forEach(input => {
+            input.classList.add('error');
+            input.value = '';
+            input.classList.remove('filled');
+          });
+          document.getElementById('errorMessage').classList.remove('hidden');
+          document.getElementById('errorText').textContent = 'Invalid verification code. Please try again.';
+          inputs[0].focus();
+        }
+      }, 2000);
+    }
+
+    // ─── Resend Code ──────────────────────────────────
+    function resendCode() {
+      const resendBtn = document.getElementById('resendBtn');
+      const resendText = document.getElementById('resendText');
+
+      resendBtn.disabled = true;
+      resendText.innerHTML = '<i class="fas fa-spinner fa-spin mr-1.5"></i>Sending...';
+
+      setTimeout(() => {
+        // Reset timer
+        timeRemaining = totalTime;
+        const timerCircle = document.getElementById('timerCircle');
+        timerCircle.style.strokeDashoffset = 0;
+        timerCircle.style.stroke = '#e8952f';
+        startTimer();
+
+        resendText.innerHTML = `Resend Code (${Math.floor(timeRemaining / 60).toString().padStart(2, '0')}:${(timeRemaining % 60).toString().padStart(2, '0')})`;
+
+        showToast('success', 'Code Sent', 'A new verification code has been sent');
+      }, 1500);
+    }
+
+    // ─── Toast Notification ───────────────────────────
+    function showToast(type, title, message) {
+      const toast = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const titleEl = document.getElementById('toastTitle');
+      const messageEl = document.getElementById('toastMessage');
+
+      if (type === 'success') {
+        icon.className = 'w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0';
+        icon.innerHTML = '<i class="fas fa-check text-green-600"></i>';
+      } else {
+        icon.className = 'w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0';
+        icon.innerHTML = '<i class="fas fa-times text-red-600"></i>';
+      }
+
+      titleEl.textContent = title;
+      messageEl.textContent = message;
+      toast.classList.remove('hidden');
+
+      setTimeout(() => hideToast(), 4000);
+    }
+
+    function hideToast() {
+      document.getElementById('toast').classList.add('hidden');
+    }
+
+    // ─── Initialize ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      startTimer();
+      document.querySelector('.otp-input').focus();
+    });
+  </script>
+</body>
+</html>

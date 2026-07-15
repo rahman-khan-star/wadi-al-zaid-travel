@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maldives Paradise Escape - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-white text-navy font-sans antialiased">
+
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+          <div class="leading-tight">
+            <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="index.html#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="index.html#why-us" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">About</a>
+          <a href="index.html#contact" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="index.html#contact" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25">
+            <span>Contact Agent</span>
+          </a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="index.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="index.html#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="index.html#why-us" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">About</a>
+          <a href="index.html#contact" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="index.html#contact" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white">
+            <span>Contact Agent</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <!-- ========== HERO BANNER ========== -->
+  <section class="relative h-[50vh] sm:h-[70vh] flex items-end">
+    <div class="absolute inset-0">
+      <img id="heroImage" src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=1600&q=80" alt="Maldives" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-16 w-full">
+      <a href="index.html#destinations" class="inline-flex items-center gap-2 text-white/70 hover:text-accent text-xs sm:text-sm mb-2 sm:mb-4 transition-colors">
+        <i class="fas fa-arrow-left"></i> Back to Destinations
+      </a>
+      <div class="flex flex-wrap items-end justify-between gap-3 sm:gap-4">
+        <div>
+          <h1 class="text-xl sm:text-5xl lg:text-6xl font-black text-white mb-1 sm:mb-2 leading-tight">Maldives Paradise Escape</h1>
+          <p class="text-white/70 text-[11px] sm:text-lg flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-0">
+            <i class="fas fa-map-marker-alt text-accent"></i> South Malé Atoll, Maldives
+          </p>
+          <div class="flex items-center gap-1.5 sm:gap-2 sm:mt-3">
+            <span class="bg-accent text-white text-[9px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">Popular</span>
+            <span class="bg-white/20 backdrop-blur-sm text-white text-[9px] sm:text-xs font-medium px-2 sm:px-3 py-0.5 sm:py-1 rounded-full"><i class="fas fa-star text-accent mr-0.5 sm:mr-1"></i> 4.9 (324)</span>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-white/50 text-[10px] sm:text-sm">Starting from</p>
+          <p class="text-2xl sm:text-5xl font-black text-accent">$1,299</p>
+          <p class="text-white/50 text-[9px] sm:text-xs mb-3 sm:mb-4">per person</p>
+          <a href="booking.html" class="btn-accent inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-white font-bold text-sm sm:text-base shadow-lg shadow-accent/30 transition-all hover:scale-105">
+            <span><i class="fas fa-plane-departure mr-1.5"></i> Book Now</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <section role="main" id="mainContent" class="py-8 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+
+        <!-- LEFT COLUMN -->
+        <div class="lg:col-span-2 space-y-8 sm:space-y-12">
+
+          <!-- Image Gallery -->
+          <div class="fade-in">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Photo Gallery</h2>
+            <div class="relative rounded-2xl overflow-hidden mb-3">
+              <img id="mainGalleryImage" src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=1200&q=80" alt="Gallery" class="w-full h-64 sm:h-96 object-cover transition-all duration-500" />
+            </div>
+            <div class="flex gap-2 overflow-x-auto pb-2" id="thumbnailContainer">
+              <button onclick="changeImage(0)" class="gallery-thumb flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden ring-2 ring-accent"><img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=200&q=80" alt="" class="w-full h-full object-cover" /></button>
+              <button onclick="changeImage(1)" class="gallery-thumb flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden ring-2 ring-transparent hover:ring-accent"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=200&q=80" alt="" class="w-full h-full object-cover" /></button>
+              <button onclick="changeImage(2)" class="gallery-thumb flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden ring-2 ring-transparent hover:ring-accent"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=200&q=80" alt="" class="w-full h-full object-cover" /></button>
+              <button onclick="changeImage(3)" class="gallery-thumb flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden ring-2 ring-transparent hover:ring-accent"><img src="https://images.unsplash.com/photo-1540202404-a2f29016b523?w=200&q=80" alt="" class="w-full h-full object-cover" /></button>
+              <button onclick="changeImage(4)" class="gallery-thumb flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden ring-2 ring-transparent hover:ring-accent"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=80" alt="" class="w-full h-full object-cover" /></button>
+            </div>
+          </div>
+
+          <!-- Quick Info - 4 in one row -->
+          <div class="fade-in grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+            <div class="bg-gray-50 rounded-xl p-3 sm:p-4 text-center">
+              <i class="fas fa-clock text-accent text-lg sm:text-xl mb-1 sm:mb-2"></i>
+              <p class="text-[9px] sm:text-[10px] text-navy/50 uppercase tracking-wide">Duration</p>
+              <p class="font-bold text-xs sm:text-sm">5D / 4N</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3 sm:p-4 text-center">
+              <i class="fas fa-map-pin text-accent text-lg sm:text-xl mb-1 sm:mb-2"></i>
+              <p class="text-[9px] sm:text-[10px] text-navy/50 uppercase tracking-wide">Location</p>
+              <p class="font-bold text-xs sm:text-sm">South Malé</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3 sm:p-4 text-center">
+              <i class="fas fa-sun text-accent text-lg sm:text-xl mb-1 sm:mb-2"></i>
+              <p class="text-[9px] sm:text-[10px] text-navy/50 uppercase tracking-wide">Best Season</p>
+              <p class="font-bold text-xs sm:text-sm">Nov - Apr</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-3 sm:p-4 text-center">
+              <i class="fas fa-users text-accent text-lg sm:text-xl mb-1 sm:mb-2"></i>
+              <p class="text-[9px] sm:text-[10px] text-navy/50 uppercase tracking-wide">Group</p>
+              <p class="font-bold text-xs sm:text-sm">2-12 People</p>
+            </div>
+          </div>
+          </div>
+
+          <!-- Overview -->
+          <div class="fade-in">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Overview</h2>
+            <div class="text-navy/70 leading-relaxed space-y-4 text-sm sm:text-base">
+              <p>Escape to the pristine paradise of the Maldives, where crystal-clear turquoise waters meet powder-white sandy beaches. This exclusive 5-day package takes you to a luxurious overwater villa in the South Malé Atoll, offering unparalleled privacy and breathtaking ocean views.</p>
+              <p>Experience world-class snorkeling in vibrant coral reefs, indulge in spa treatments with the sound of waves as your soundtrack, and dine under the stars on a private sandbank. Every moment is crafted to create memories that last a lifetime.</p>
+              <p>Whether you're seeking a romantic getaway, an adventurous dive trip, or simply a place to unwind and reconnect with nature, the Maldives delivers an experience unlike any other on Earth.</p>
+            </div>
+          </div>
+
+          <!-- Highlights -->
+          <div class="fade-in">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Tour Highlights</h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="flex items-start gap-3 bg-accent/5 rounded-xl p-4">
+                <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-home text-accent text-sm"></i></div>
+                <div><p class="font-semibold text-sm">Overwater Villa Stay</p><p class="text-xs text-navy/50">4 nights in a premium water villa with glass floor</p></div>
+              </div>
+              <div class="flex items-start gap-3 bg-accent/5 rounded-xl p-4">
+                <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-swimmer text-accent text-sm"></i></div>
+                <div><p class="font-semibold text-sm">Snorkeling Safari</p><p class="text-xs text-navy/50">Guided tours to best coral reefs and manta points</p></div>
+              </div>
+              <div class="flex items-start gap-3 bg-accent/5 rounded-xl p-4">
+                <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-utensils text-accent text-sm"></i></div>
+                <div><p class="font-semibold text-sm">Private Sandbank Dinner</p><p class="text-xs text-navy/50">Romantic dinner on a secluded sandbank</p></div>
+              </div>
+              <div class="flex items-start gap-3 bg-accent/5 rounded-xl p-4">
+                <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-spa text-accent text-sm"></i></div>
+                <div><p class="font-semibold text-sm">Spa & Wellness</p><p class="text-xs text-navy/50">Complimentary 60-minute couples massage</p></div>
+              </div>
+              <div class="flex items-start gap-3 bg-accent/5 rounded-xl p-4">
+                <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-ship text-accent text-sm"></i></div>
+                <div><p class="font-semibold text-sm">Sunset Dolphin Cruise</p><p class="text-xs text-navy/50">Watch dolphins play in the golden hour</p></div>
+              </div>
+              <div class="flex items-start gap-3 bg-accent/5 rounded-xl p-4">
+                <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-plane-arrival text-accent text-sm"></i></div>
+                <div><p class="font-semibold text-sm">Speedboat Transfer</p><p class="text-xs text-navy/50">Direct transfer from Malé airport to resort</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Itinerary -->
+          <div class="fade-in">
+            <h2 class="text-xl sm:text-2xl font-bold mb-6">Day-by-Day Itinerary</h2>
+            <div class="space-y-0">
+              <div class="relative pl-10 pb-8">
+                <div class="timeline-line"></div>
+                <div class="absolute left-0 top-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-xs font-bold z-10">1</div>
+                <div class="bg-gray-50 rounded-xl p-5">
+                  <p class="text-xs text-accent font-semibold uppercase tracking-wide mb-1">Day 1 — Arrival</p>
+                  <h3 class="font-bold mb-2">Welcome to Paradise</h3>
+                  <p class="text-sm text-navy/60">Arrive at Malé International Airport where our representative will greet you. Enjoy a scenic speedboat transfer to your overwater villa. Settle in and spend the afternoon exploring the resort or relaxing on your private deck. Evening welcome dinner at the overwater restaurant.</p>
+                </div>
+              </div>
+              <div class="relative pl-10 pb-8">
+                <div class="timeline-line"></div>
+                <div class="absolute left-0 top-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-xs font-bold z-10">2</div>
+                <div class="bg-gray-50 rounded-xl p-5">
+                  <p class="text-xs text-accent font-semibold uppercase tracking-wide mb-1">Day 2 — Adventure</p>
+                  <h3 class="font-bold mb-2">Ocean Explorer</h3>
+                  <p class="text-sm text-navy/60">Morning guided snorkeling safari to discover vibrant coral reefs and swim alongside tropical fish, rays, and if lucky, gentle whale sharks. Afternoon at leisure — choose from diving, kayaking, or simply lounging by the infinity pool. Evening sunset dolphin cruise.</p>
+                </div>
+              </div>
+              <div class="relative pl-10 pb-8">
+                <div class="timeline-line"></div>
+                <div class="absolute left-0 top-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-xs font-bold z-10">3</div>
+                <div class="bg-gray-50 rounded-xl p-5">
+                  <p class="text-xs text-accent font-semibold uppercase tracking-wide mb-1">Day 3 — Relaxation</p>
+                  <h3 class="font-bold mb-2">Wellness & Romance</h3>
+                  <p class="text-sm text-navy/60">Begin with a sunrise yoga session on the beach. Enjoy a complimentary 60-minute couples spa treatment. Afternoon free to explore the island or take a local fishing trip. Evening private sandbank dinner under the stars — a truly magical experience.</p>
+                </div>
+              </div>
+              <div class="relative pl-10 pb-8">
+                <div class="timeline-line"></div>
+                <div class="absolute left-0 top-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-xs font-bold z-10">4</div>
+                <div class="bg-gray-50 rounded-xl p-5">
+                  <p class="text-xs text-accent font-semibold uppercase tracking-wide mb-1">Day 4 — Exploration</p>
+                  <h3 class="font-bold mb-2">Island Hopping</h3>
+                  <p class="text-sm text-navy/60">Full-day island hopping tour visiting local villages, a floating restaurant, and a stunning sandbank for picnic lunch. Experience the local culture, taste traditional Maldivian cuisine, and shop for handmade souvenirs. Return to resort for a farewell cocktail party.</p>
+                </div>
+              </div>
+              <div class="relative pl-10">
+                <div class="absolute left-0 top-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-xs font-bold z-10">5</div>
+                <div class="bg-gray-50 rounded-xl p-5">
+                  <p class="text-xs text-accent font-semibold uppercase tracking-wide mb-1">Day 5 — Departure</p>
+                  <h3 class="font-bold mb-2">Farewell Maldives</h3>
+                  <p class="text-sm text-navy/60">Enjoy a leisurely breakfast with ocean views. Last chance for a morning swim or spa treatment. Check out and transfer to the airport with unforgettable memories of your Maldivian paradise escape.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Included / Excluded -->
+          <div class="fade-in grid sm:grid-cols-2 gap-4">
+            <div class="bg-green-50 rounded-2xl p-6">
+              <h3 class="font-bold text-green-700 mb-4 flex items-center gap-2"><i class="fas fa-check-circle"></i> What's Included</h3>
+              <ul class="space-y-2.5">
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> 4 nights overwater villa accommodation</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> Daily breakfast, lunch & dinner</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> Speedboat airport transfers</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> Guided snorkeling safari</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> Sunset dolphin cruise</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> Private sandbank dinner</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> 60-min couples spa treatment</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> Island hopping day trip</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-check text-green-500 mt-0.5 text-xs"></i> All taxes and service charges</li>
+              </ul>
+            </div>
+            <div class="bg-red-50 rounded-2xl p-6">
+              <h3 class="font-bold text-red-700 mb-4 flex items-center gap-2"><i class="fas fa-times-circle"></i> What's Excluded</h3>
+              <ul class="space-y-2.5">
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> International flights</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> Travel insurance</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> Visa fees (if applicable)</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> Additional spa treatments</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> Scuba diving courses</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> Personal expenses & tips</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> Mini-bar & premium beverages</li>
+                <li class="flex items-start gap-2 text-sm text-navy/70"><i class="fas fa-times text-red-400 mt-0.5 text-xs"></i> Optional excursions not listed</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Reviews -->
+          <div class="fade-in">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-xl sm:text-2xl font-bold">Guest Reviews</h2>
+              <div class="flex items-center gap-1">
+                <i class="fas fa-star text-accent"></i>
+                <span class="font-bold">4.9</span>
+                <span class="text-sm text-navy/50">(324 reviews)</span>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-gray-50 rounded-xl p-5">
+                <div class="flex items-center gap-3 mb-3">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" class="w-10 h-10 rounded-full object-cover" />
+                  <div><p class="font-bold text-sm">Sarah Mitchell</p><p class="text-xs text-navy/40">Traveled Oct 2025</p></div>
+                  <div class="ml-auto flex gap-0.5"><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i></div>
+                </div>
+                <p class="text-sm text-navy/70">Absolutely breathtaking! The overwater villa was beyond our expectations. The private sandbank dinner was the highlight of our honeymoon. Every detail was perfectly arranged.</p>
+              </div>
+              <div class="bg-gray-50 rounded-xl p-5">
+                <div class="flex items-center gap-3 mb-3">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="w-10 h-10 rounded-full object-cover" />
+                  <div><p class="font-bold text-sm">Ahmed Khan</p><p class="text-xs text-navy/40">Traveled Dec 2025</p></div>
+                  <div class="ml-auto flex gap-0.5"><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i></div>
+                </div>
+                <p class="text-sm text-navy/70">The snorkeling was incredible — we saw manta rays and sea turtles! The resort staff were amazing and the food was exceptional. Highly recommend this package.</p>
+              </div>
+              <div class="bg-gray-50 rounded-xl p-5">
+                <div class="flex items-center gap-3 mb-3">
+                  <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="" class="w-10 h-10 rounded-full object-cover" />
+                  <div><p class="font-bold text-sm">Fatima Al-Rashid</p><p class="text-xs text-navy/40">Traveled Mar 2026</p></div>
+                  <div class="ml-auto flex gap-0.5"><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star text-accent text-xs"></i><i class="fas fa-star-half-alt text-accent text-xs"></i></div>
+                </div>
+                <p class="text-sm text-navy/70">Perfect honeymoon destination! The villa, the views, the food — everything was top-notch. Only minor issue was the speedboat transfer was a bit long, but the scenery made up for it.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN - Sticky Booking Sidebar -->
+        <div class="lg:col-span-1 mt-8 lg:mt-0">
+          <div class="lg:sticky lg:top-24 space-y-4">
+            <div class="bg-white rounded-2xl shadow-lg shadow-navy/10 border border-gray-100 overflow-hidden">
+              <div class="bg-navy p-5">
+                <div class="flex items-end justify-between">
+                  <div>
+                    <p class="text-white/50 text-xs uppercase tracking-wide">Price</p>
+                    <p class="text-3xl font-black text-accent">$1,299</p>
+                    <p class="text-white/50 text-xs">per person</p>
+                  </div>
+                  <span class="bg-accent/20 text-accent text-xs font-bold px-2 py-1 rounded-lg">20% OFF</span>
+                </div>
+              </div>
+              <div class="p-5 space-y-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-widest text-navy/40 mb-1.5">Travel Date</label>
+                  <input type="date" class="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm text-navy outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-widest text-navy/40 mb-1.5">Travelers</label>
+                  <select class="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 text-sm text-navy outline-none focus:border-accent cursor-pointer">
+                    <option>1 Person</option>
+                    <option>2 People</option>
+                    <option>3 People</option>
+                    <option>4 People</option>
+                  </select>
+                </div>
+                <button class="btn-accent w-full py-3.5 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25">
+                  <span><i class="fas fa-paper-plane mr-2"></i>Book Now</span>
+                </button>
+                <p class="text-center text-xs text-navy/40">Free cancellation up to 48 hours before</p>
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <h4 class="font-bold text-sm mb-3">Need Help Booking?</h4>
+              <p class="text-xs text-navy/50 mb-4">Our travel experts are ready to help you plan the perfect trip.</p>
+              <div class="space-y-2">
+                <a href="tel:+1234567890" class="flex items-center gap-3 text-sm text-navy/70 hover:text-accent transition-colors"><i class="fas fa-phone text-accent"></i> +1 (234) 567-890</a>
+                <a href="https://wa.me/1234567890" target="_blank" class="flex items-center gap-3 text-sm text-navy/70 hover:text-accent transition-colors"><i class="fab fa-whatsapp text-accent"></i> WhatsApp Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SIMILAR DESTINATIONS ========== -->
+  <section class="py-12 sm:py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-8">Similar Destinations</h2>
+      <div class="flex gap-4 overflow-x-auto pb-4 scroll-smooth snap-x" id="similarScroll">
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <a href="destination.html" class="block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+            <div class="relative h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=600&q=80" alt="Santorini" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /></div>
+            <div class="p-5">
+              <h3 class="font-bold mb-1">Santorini, Greece</h3>
+              <p class="text-xs text-navy/50 mb-3">Blue domes, golden sunsets, and the Aegean Sea.</p>
+              <div class="flex items-center justify-between"><p class="text-lg font-black text-accent">$1,099</p><span class="text-xs bg-navy/5 px-3 py-1 rounded-full"><i class="fas fa-star text-accent mr-1"></i>4.9</span></div>
+            </div>
+          </a>
+        </div>
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <a href="destination.html" class="block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+            <div class="relative h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80" alt="Bali" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /></div>
+            <div class="p-5">
+              <h3 class="font-bold mb-1">Bali, Indonesia</h3>
+              <p class="text-xs text-navy/50 mb-3">Lush rice terraces, sacred temples, and coral reefs.</p>
+              <div class="flex items-center justify-between"><p class="text-lg font-black text-accent">$799</p><span class="text-xs bg-navy/5 px-3 py-1 rounded-full"><i class="fas fa-star text-accent mr-1"></i>4.7</span></div>
+            </div>
+          </a>
+        </div>
+        <div class="flex-shrink-0 w-72 sm:w-80 snap-start">
+          <a href="destination.html" class="block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+            <div class="relative h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80" alt="Dubai" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" /></div>
+            <div class="p-5">
+              <h3 class="font-bold mb-1">Dubai, UAE</h3>
+              <p class="text-xs text-navy/50 mb-3">Futuristic skyline, luxury shopping, and desert adventures.</p>
+              <div class="flex items-center justify-between"><p class="text-lg font-black text-accent">$999</p><span class="text-xs bg-navy/5 px-3 py-1 rounded-full"><i class="fas fa-star text-accent mr-1"></i>4.8</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <div class="leading-tight">
+              <span class="text-lg sm:text-xl font-extrabold tracking-tight">Wadi Al Zaid</span>
+              <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+            </div>
+          </a>
+          <p class="text-white/50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-xs">Crafting unforgettable travel experiences since 2013.</p>
+          <div class="flex gap-2 sm:gap-3">
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-instagram text-sm"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 bg-white/5 hover:bg-[#25D366] rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-whatsapp text-sm"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Quick Links</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="index.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Home</a></li>
+            <li><a href="index.html#destinations" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Destinations</a></li>
+            <li><a href="index.html#why-us" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">About Us</a></li>
+            <li><a href="index.html#contact" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Destinations</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Maldives</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Santorini, Greece</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Bali, Indonesia</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Dubai, UAE</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Contact Us</h4>
+          <ul class="space-y-3 sm:space-y-4">
+            <li class="flex items-start gap-2 sm:gap-3"><i class="fas fa-phone text-accent mt-0.5 text-sm"></i><p class="text-xs sm:text-sm text-white/60">+1 (234) 567-890</p></li>
+            <li class="flex items-start gap-2 sm:gap-3"><i class="fas fa-envelope text-accent mt-0.5 text-sm"></i><p class="text-xs sm:text-sm text-white/60">info@wadialzaid.com</p></li>
+            <li class="flex items-start gap-2 sm:gap-3"><i class="fas fa-map-marker-alt text-accent mt-0.5 text-sm"></i><p class="text-xs sm:text-sm text-white/60">123 Travel Avenue, Dubai, UAE</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3">
+        <p class="text-xs sm:text-sm text-white/30">&copy; 2026 Wadi Al Zaid Tours &amp; Travel. All rights reserved.</p>
+        <div class="flex gap-4 sm:gap-5">
+          <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Privacy Policy</a>
+          <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Contact -->
+  <div id="contactBar" class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
+    <a href="https://wa.me/1234567890" target="_blank" class="flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg transition-all hover:scale-105"><i class="fab fa-whatsapp text-lg"></i><span class="text-sm font-semibold">WhatsApp</span></a>
+    <a href="tel:+1234567890" class="flex items-center gap-2 bg-accent hover:bg-accent-dark text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg transition-all hover:scale-105"><i class="fas fa-phone text-lg"></i><span class="text-sm font-semibold">Call Us</span></a>
+    <a href="mailto:info@wadialzaid.com" class="flex items-center gap-2 bg-navy hover:bg-navy-light text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg transition-all hover:scale-105"><i class="fas fa-envelope text-lg"></i><span class="text-sm font-semibold">Email</span></a>
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('nav-scrolled', window.scrollY > 50); });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    menuBtn.addEventListener('click', () => { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); });
+    closeMenu.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); });
+    menuOverlay.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); });
+
+    const galleryImages = [
+      'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=1200&q=80',
+      'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1200&q=80',
+      'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80',
+      'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=1200&q=80',
+      'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&q=80'
+    ];
+    const mainImage = document.getElementById('mainGalleryImage');
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    function changeImage(index) {
+      mainImage.src = galleryImages[index];
+      thumbs.forEach((t, i) => { t.classList.toggle('ring-accent', i === index); t.classList.toggle('ring-transparent', i !== index); });
+    }
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

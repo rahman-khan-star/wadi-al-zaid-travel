@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Mode - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <div class="w-9 h-9 rounded-lg bg-accent-500 flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-mountain text-white text-sm"></i>
+        </div>
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-gray-900 tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent-500 font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav class="space-y-1" role="navigation" aria-label="Main navigation">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent-100 text-accent-600 text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Settings</span></a>
+        <hr class="my-3 border-gray-100">
+        <a href="admin-profile.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600" aria-current="page"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="roles-permissions.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-shield w-5 text-center"></i><span class="sidebar-text">Roles & Permissions</span></a>
+        <a href="index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div id="mainContent" role="main" class="lg:ml-64 transition-all duration-300">
+    <!-- Top Navbar -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="text-sm text-gray-400">
+            <span class="cursor-pointer hover:text-accent-500 transition-colors" onclick="location.href='admin.html'">Dashboard</span>
+            <i class="fas fa-chevron-right mx-2 text-[10px]"></i>
+            <span class="text-gray-900 font-semibold">Maintenance Mode</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleMaintenanceMode()" id="topToggleBtn" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 text-green-600 rounded-xl text-sm font-medium transition-all border border-green-200">
+            <i class="fas fa-power-off text-xs"></i> <span id="topToggleText">Enable</span>
+          </button>
+          <button onclick="openPreviewModal()" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-dark text-white rounded-xl text-sm font-medium transition-all">
+            <i class="fas fa-eye text-xs"></i> Preview
+          </button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" class="w-9 h-9 rounded-xl">
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold leading-tight">Admin User</p>
+              <p class="text-[10px] text-gray-400">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
+
+      <!-- Dashboard Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 fade-up">
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div id="statusIconCard" class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"><i class="fas fa-check-circle text-green-600"></i></div>
+            <div><p id="statusTextCard" class="text-2xl font-bold text-gray-900">Active</p><p class="text-xs text-gray-500">Maintenance Status</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center"><i class="fas fa-clock text-blue-600"></i></div>
+            <div><p id="estimatedDowntime" class="text-2xl font-bold text-gray-900">2h 30m</p><p class="text-xs text-gray-500">Est. Downtime</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center"><i class="fas fa-users-cog text-purple-600"></i></div>
+            <div><p id="allowedUsersCount" class="text-2xl font-bold text-gray-900">6</p><p class="text-xs text-gray-500">Allowed Users</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><i class="fas fa-calendar-alt text-orange-600"></i></div>
+            <div><p id="lastMaintenance" class="text-2xl font-bold text-gray-900">Jul 10</p><p class="text-xs text-gray-500">Last Maintenance</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex items-center gap-1 bg-white rounded-xl p-1 border border-gray-200 fade-up w-fit shadow-sm overflow-x-auto">
+        <button onclick="switchTab('settings')" class="tab-btn active px-4 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap" data-tab="settings">
+          <i class="fas fa-cog mr-1.5"></i> Settings
+        </button>
+        <button onclick="switchTab('message')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="message">
+          <i class="fas fa-comment-dots mr-1.5"></i> Message
+        </button>
+        <button onclick="switchTab('users')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="users">
+          <i class="fas fa-user-lock mr-1.5"></i> Users
+        </button>
+        <button onclick="switchTab('history')" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-700 transition-all whitespace-nowrap" data-tab="history">
+          <i class="fas fa-history mr-1.5"></i> History
+        </button>
+      </div>
+
+      <!-- Settings Tab -->
+      <div id="tab-settings" class="tab-content fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Maintenance Status Card -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Maintenance Status</h3>
+            <p class="text-sm text-gray-500 mb-5">Control the global maintenance mode for your website</p>
+            <div id="statusDisplay" class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+              <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-3">
+                  <div id="statusIndicator" class="w-3 h-3 rounded-full bg-gray-400"></div>
+                  <span id="statusLabel" class="text-sm font-semibold text-gray-600">Inactive</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="mainToggle" onchange="handleMainToggle()">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white rounded-xl p-4 border border-gray-200">
+                  <p class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Start Time</p>
+                  <p id="displayStartTime" class="text-sm font-bold text-gray-900">--:-- --</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-gray-200">
+                  <p class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">End Time</p>
+                  <p id="displayEndTime" class="text-sm font-bold text-gray-900">--:-- --</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enable/Disable Maintenance Toggle Section -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">Maintenance Settings</h3>
+            <p class="text-sm text-gray-500 mb-5">Configure when and how maintenance mode is activated</p>
+            <div class="space-y-5">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Activation Mode</label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="relative cursor-pointer">
+                    <input type="radio" name="scheduleMode" value="immediate" checked class="peer sr-only" onchange="handleScheduleMode()">
+                    <div class="border-2 border-gray-200 peer-checked:border-accent-500 peer-checked:bg-accent-50 rounded-xl p-4 text-center transition-all hover:border-gray-300">
+                      <i class="fas fa-bolt text-lg mb-1 text-gray-400 peer-checked:text-accent-500"></i>
+                      <p class="text-sm font-semibold text-gray-700">Immediate</p>
+                      <p class="text-[10px] text-gray-400 mt-0.5">Enable now</p>
+                    </div>
+                  </label>
+                  <label class="relative cursor-pointer">
+                    <input type="radio" name="scheduleMode" value="scheduled" class="peer sr-only" onchange="handleScheduleMode()">
+                    <div class="border-2 border-gray-200 peer-checked:border-accent-500 peer-checked:bg-accent-50 rounded-xl p-4 text-center transition-all hover:border-gray-300">
+                      <i class="fas fa-clock text-lg mb-1 text-gray-400 peer-checked:text-accent-500"></i>
+                      <p class="text-sm font-semibold text-gray-700">Scheduled</p>
+                      <p class="text-[10px] text-gray-400 mt-0.5">Set a time</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div id="scheduledFields" class="hidden space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Start Time</label>
+                    <input type="datetime-local" id="startTime" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">End Time</label>
+                    <input type="datetime-local" id="endTime" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Maintenance Reason</label>
+                <select id="maintenanceReason" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+                  <option value="server-upgrade">Server Upgrade</option>
+                  <option value="database-migration">Database Migration</option>
+                  <option value="security-patch">Security Patch</option>
+                  <option value="feature-deployment">Feature Deployment</option>
+                  <option value="performance-optimization">Performance Optimization</option>
+                  <option value="bug-fix">Critical Bug Fix</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <button onclick="saveMaintenanceSettings()" class="w-full bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all shadow-sm">
+                <i class="fas fa-save mr-2"></i>Save Settings
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Countdown Timer Preview -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mt-6 fade-up">
+          <h3 class="text-lg font-bold text-gray-900 mb-1">Countdown Timer Preview</h3>
+          <p class="text-sm text-gray-500 mb-5">What users will see during maintenance</p>
+          <div class="maintenance-preview-bg rounded-2xl p-8">
+            <div class="text-center relative z-10">
+              <div class="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-5">
+                <i class="fas fa-wrench text-accent text-3xl"></i>
+              </div>
+              <h4 id="previewTitle" class="text-2xl font-bold text-white mb-2">We'll Be Back Soon!</h4>
+              <p id="previewDesc" class="text-gray-400 text-sm mb-8 max-w-md mx-auto">We're currently performing scheduled maintenance to improve your experience. We'll be back shortly.</p>
+              <div id="countdownContainer" class="flex items-center justify-center gap-4 mb-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+                  <p id="countDays" class="text-3xl font-bold text-white countdown-pulse">00</p>
+                  <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Days</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+                  <p id="countHours" class="text-3xl font-bold text-white countdown-pulse">02</p>
+                  <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Hours</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+                  <p id="countMinutes" class="text-3xl font-bold text-white countdown-pulse">30</p>
+                  <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Minutes</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+                  <p id="countSeconds" class="text-3xl font-bold text-white countdown-pulse">00</p>
+                  <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Seconds</p>
+                </div>
+              </div>
+              <div id="previewContact" class="flex items-center justify-center gap-4 text-sm text-gray-400">
+                <span><i class="fas fa-envelope mr-1.5"></i>support@wadialzaid.com</span>
+                <span><i class="fas fa-phone mr-1.5"></i>+971 4 123 4567</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Tab -->
+      <div id="tab-message" class="tab-content hidden fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2">
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-1">Maintenance Message</h3>
+              <p class="text-sm text-gray-500 mb-5">Customize the message shown to users during maintenance</p>
+              <div class="space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Page Title</label>
+                  <input type="text" id="msgTitle" value="We'll Be Back Soon!" oninput="updatePreview()" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                  <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <div class="rich-toolbar flex items-center gap-1 px-3 py-2 bg-gray-50 border-b border-gray-200">
+                      <button onclick="execRichCmd('bold')" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 text-sm" title="Bold"><i class="fas fa-bold"></i></button>
+                      <button onclick="execRichCmd('italic')" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 text-sm" title="Italic"><i class="fas fa-italic"></i></button>
+                      <button onclick="execRichCmd('underline')" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 text-sm" title="Underline"><i class="fas fa-underline"></i></button>
+                      <div class="w-px h-5 bg-gray-300 mx-1"></div>
+                      <button onclick="execRichCmd('insertUnorderedList')" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 text-sm" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                      <button onclick="execRichCmd('insertOrderedList')" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 text-sm" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                      <div class="w-px h-5 bg-gray-300 mx-1"></div>
+                      <button onclick="insertLink()" class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 text-sm" title="Insert Link"><i class="fas fa-link"></i></button>
+                    </div>
+                    <div id="msgDescription" contenteditable="true" oninput="updateCharCount();updatePreview()" class="min-h-[160px] px-4 py-3 text-sm text-gray-700 focus:outline-none" style="line-height:1.7;">We're currently performing scheduled maintenance to improve your experience. We'll be back shortly.</div>
+                    <div class="flex items-center justify-between px-4 py-2 bg-gray-50 border-t border-gray-200">
+                      <span class="text-[10px] text-gray-400">Rich text editor</span>
+                      <span id="charCount" class="text-[10px] text-gray-400 char-count">112 characters</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Custom CSS <span class="text-gray-400 font-normal">(optional)</span></label>
+                  <textarea id="customCSS" rows="4" placeholder=".maintenance-title { color: #e8952f; }" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 font-mono focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all resize-none"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-1">Display Options</h3>
+              <p class="text-sm text-gray-500 mb-5">Configure what users see</p>
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-semibold text-gray-700">Show Countdown</p>
+                    <p class="text-[10px] text-gray-400">Display timer to visitors</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="showCountdown" checked onchange="updatePreview()">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-semibold text-gray-700">Show Contact Email</p>
+                    <p class="text-[10px] text-gray-400">Display support email</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="showEmail" checked onchange="updatePreview()">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-semibold text-gray-700">Show Phone</p>
+                    <p class="text-[10px] text-gray-400">Display contact number</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="showPhone" checked onchange="updatePreview()">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-semibold text-gray-700">Show Logo</p>
+                    <p class="text-[10px] text-gray-400">Display company logo</p>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="showLogo" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <hr class="border-gray-100">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Contact Email</label>
+                  <input type="email" id="contactEmail" value="support@wadialzaid.com" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Contact Phone</label>
+                  <input type="tel" id="contactPhone" value="+971 4 123 4567" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+                </div>
+              </div>
+              <button onclick="saveMessageSettings()" class="w-full mt-5 bg-accent hover:bg-accent-dark text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all shadow-sm">
+                <i class="fas fa-save mr-2"></i>Save Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Tab -->
+      <div id="tab-users" class="tab-content hidden fade-up">
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="flex items-center justify-between p-5 border-b border-gray-100">
+            <div>
+              <h3 class="text-lg font-bold text-gray-900">Allowed Users</h3>
+              <p class="text-sm text-gray-500">Users who can access the site during maintenance</p>
+            </div>
+            <button onclick="openAddUserModal()" class="flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-dark text-white rounded-xl text-sm font-medium transition-all">
+              <i class="fas fa-plus text-xs"></i> Add User
+            </button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[900px]">
+              <thead class="bg-gray-50 sticky top-0">
+                <tr>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">User</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Role</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Added Date</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody" class="divide-y divide-gray-100"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- History Tab -->
+      <div id="tab-history" class="tab-content hidden fade-up">
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+          <div class="flex items-center justify-between p-5 border-b border-gray-100">
+            <div>
+              <h3 class="text-lg font-bold text-gray-900">Maintenance History</h3>
+              <p class="text-sm text-gray-500">Log of all maintenance mode activities</p>
+            </div>
+            <button onclick="exportHistory()" class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-all border border-gray-200">
+              <i class="fas fa-download text-xs"></i> Export
+            </button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[1000px]">
+              <thead class="bg-gray-50 sticky top-0">
+                <tr>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Duration</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Reason</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Performed By</th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody" class="divide-y divide-gray-100"></tbody>
+            </table>
+          </div>
+          <div class="flex items-center justify-between px-5 py-3 border-t border-gray-100">
+            <p id="historyTableInfo" class="text-xs text-gray-500"></p>
+            <div id="historyPagination" class="flex items-center gap-1"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div id="addUserModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 modal-overlay-light" onclick="closeModal('addUserModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md border border-gray-200">
+      <div class="flex items-center justify-between p-6 border-b border-gray-200">
+        <h3 class="text-lg font-bold text-gray-900">Add Allowed User</h3>
+        <button onclick="closeModal('addUserModal')" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+          <input type="email" id="newUserEmail" placeholder="user@example.com" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Role *</label>
+          <select id="newUserRole" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+            <option value="Admin">Admin</option>
+            <option value="Manager">Manager</option>
+            <option value="Staff">Staff</option>
+            <option value="Developer">Developer</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+          <input type="text" id="newUserName" placeholder="John Doe" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+        </div>
+      </div>
+      <div class="flex items-center justify-end gap-3 p-6 border-t border-gray-200">
+        <button onclick="closeModal('addUserModal')" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+        <button onclick="addAllowedUser()" class="px-5 py-2.5 bg-accent hover:bg-accent-dark text-white rounded-xl text-sm font-semibold transition-all">Add User</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preview Modal -->
+  <div id="previewModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 modal-overlay-light" onclick="closeModal('previewModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden border border-gray-200 flex flex-col">
+      <div class="flex items-center justify-between p-5 border-b border-gray-200 bg-white">
+        <h3 class="text-lg font-bold text-gray-900">Maintenance Page Preview</h3>
+        <button onclick="closeModal('previewModal')" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <div id="previewContent" class="maintenance-preview-bg min-h-[500px] flex items-center justify-center p-8">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-x-full transition-transform duration-300">
+    <div class="flex items-center gap-3 px-5 py-3 rounded-xl shadow-2xl bg-white border border-gray-200">
+      <i id="toastIcon" class="fas fa-check-circle text-green-500 text-lg"></i>
+      <span id="toastMsg" class="text-sm font-medium text-gray-800"></span>
+    </div>
+  </div>
+
+  <script src="components.js"></script>
+  <script>
+    // State
+    let maintenanceActive = false;
+    let historyCurrentPage = 1;
+    const historyPerPage = 8;
+
+    // Allowed Users Data
+    let allowedUsers = [
+      { id: 1, name: 'Khalid Al-Rashidi', email: 'khalid@wadialzaid.com', role: 'Super Admin', avatar: 'KR', addedDate: '2025-07-10', status: 'active', color: 'bg-blue-100 text-blue-700' },
+      { id: 2, name: 'Ahmed Al-Balushi', email: 'ahmed@wadialzaid.com', role: 'Admin', avatar: 'AB', addedDate: '2025-07-10', status: 'active', color: 'bg-green-100 text-green-700' },
+      { id: 3, name: 'Sara Al-Mansoori', email: 'sara@wadialzaid.com', role: 'Manager', avatar: 'SA', addedDate: '2025-07-10', status: 'active', color: 'bg-purple-100 text-purple-700' },
+      { id: 4, name: 'Fatima Al-Zahra', email: 'fatima@wadialzaid.com', role: 'Manager', avatar: 'FZ', addedDate: '2025-07-11', status: 'active', color: 'bg-pink-100 text-pink-700' },
+      { id: 5, name: 'Omar Al-Harbi', email: 'omar@wadialzaid.com', role: 'Developer', avatar: 'OH', addedDate: '2025-07-11', status: 'active', color: 'bg-orange-100 text-orange-700' },
+      { id: 6, name: 'Layla Nasser', email: 'layla@wadialzaid.com', role: 'Staff', avatar: 'LN', addedDate: '2025-07-12', status: 'active', color: 'bg-teal-100 text-teal-700' }
+    ];
+
+    // History Data
+    const maintenanceHistory = [
+      { id: 1, date: '2025-07-10 14:30', action: 'Enabled', duration: '2h 15m', reason: 'Server Upgrade', status: 'completed', performedBy: 'Khalid Al-Rashidi' },
+      { id: 2, date: '2025-07-10 16:45', action: 'Disabled', duration: '-', reason: 'Server Upgrade', status: 'completed', performedBy: 'Khalid Al-Rashidi' },
+      { id: 3, date: '2025-07-05 02:00', action: 'Enabled', duration: '4h 00m', reason: 'Database Migration', status: 'completed', performedBy: 'Ahmed Al-Balushi' },
+      { id: 4, date: '2025-07-05 06:00', action: 'Disabled', duration: '-', reason: 'Database Migration', status: 'completed', performedBy: 'Ahmed Al-Balushi' },
+      { id: 5, date: '2025-06-28 03:00', action: 'Enabled', duration: '1h 30m', reason: 'Security Patch', status: 'completed', performedBy: 'Sara Al-Mansoori' },
+      { id: 6, date: '2025-06-28 04:30', action: 'Disabled', duration: '-', reason: 'Security Patch', status: 'completed', performedBy: 'Sara Al-Mansoori' },
+      { id: 7, date: '2025-06-20 01:00', action: 'Enabled', duration: '6h 00m', reason: 'Feature Deployment', status: 'completed', performedBy: 'Khalid Al-Rashidi' },
+      { id: 8, date: '2025-06-20 07:00', action: 'Disabled', duration: '-', reason: 'Feature Deployment', status: 'completed', performedBy: 'Khalid Al-Rashidi' },
+      { id: 9, date: '2025-06-15 22:00', action: 'Enabled', duration: '3h 45m', reason: 'Performance Optimization', status: 'completed', performedBy: 'Ahmed Al-Balushi' },
+      { id: 10, date: '2025-06-16 01:45', action: 'Disabled', duration: '-', reason: 'Performance Optimization', status: 'completed', performedBy: 'Ahmed Al-Balushi' }
+    ];
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderUsers();
+      renderHistory();
+      startCountdown();
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+      updateCharCount();
+    });
+
+    // Toast
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const m = document.getElementById('toastMsg');
+      m.textContent = msg;
+      icon.className = type === 'success' ? 'fas fa-check-circle text-green-500 text-lg' : type === 'error' ? 'fas fa-exclamation-circle text-red-500 text-lg' : 'fas fa-info-circle text-blue-500 text-lg';
+      t.classList.remove('translate-x-full');
+      setTimeout(() => t.classList.add('translate-x-full'), 3000);
+    }
+
+    // Modal
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Tab Switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('block');
+      });
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active');
+        el.classList.add('text-gray-500');
+      });
+      const content = document.getElementById('tab-' + tab);
+      if (content) {
+        content.classList.remove('hidden');
+        content.classList.add('block');
+      }
+      const btn = document.querySelector(`[data-tab="${tab}"]`);
+      if (btn) {
+        btn.classList.add('active');
+        btn.classList.remove('text-gray-500');
+      }
+    }
+
+    // Toggle Maintenance Mode
+    function handleMainToggle() {
+      const toggle = document.getElementById('mainToggle');
+      maintenanceActive = toggle.checked;
+      updateStatusDisplay();
+      updateTopToggleBtn();
+      if (maintenanceActive) {
+        showToast('Maintenance mode enabled', 'success');
+      } else {
+        showToast('Maintenance mode disabled', 'success');
+      }
+    }
+
+    function toggleMaintenanceMode() {
+      const toggle = document.getElementById('mainToggle');
+      toggle.checked = !toggle.checked;
+      handleMainToggle();
+    }
+
+    function updateStatusDisplay() {
+      const indicator = document.getElementById('statusIndicator');
+      const label = document.getElementById('statusLabel');
+      const statusCard = document.getElementById('statusIconCard');
+      const statusText = document.getElementById('statusTextCard');
+      const startTime = document.getElementById('displayStartTime');
+      const endTime = document.getElementById('displayEndTime');
+
+      if (maintenanceActive) {
+        indicator.className = 'w-3 h-3 rounded-full bg-green-500 pulse';
+        label.textContent = 'Active';
+        label.className = 'text-sm font-semibold text-green-600';
+        statusCard.className = 'w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center';
+        statusCard.innerHTML = '<i class="fas fa-check-circle text-green-600"></i>';
+        statusText.textContent = 'Active';
+        const now = new Date();
+        startTime.textContent = formatTime(now);
+        const end = new Date(now.getTime() + 2.5 * 60 * 60 * 1000);
+        endTime.textContent = formatTime(end);
+      } else {
+        indicator.className = 'w-3 h-3 rounded-full bg-gray-400';
+        label.textContent = 'Inactive';
+        label.className = 'text-sm font-semibold text-gray-600';
+        statusCard.className = 'w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center';
+        statusCard.innerHTML = '<i class="fas fa-times-circle text-gray-400"></i>';
+        statusText.textContent = 'Inactive';
+        startTime.textContent = '--:-- --';
+        endTime.textContent = '--:-- --';
+      }
+    }
+
+    function updateTopToggleBtn() {
+      const btn = document.getElementById('topToggleBtn');
+      const text = document.getElementById('topToggleText');
+      if (maintenanceActive) {
+        btn.className = 'hidden sm:flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-sm font-medium transition-all border border-red-200';
+        text.textContent = 'Disable';
+      } else {
+        btn.className = 'hidden sm:flex items-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 text-green-600 rounded-xl text-sm font-medium transition-all border border-green-200';
+        text.textContent = 'Enable';
+      }
+    }
+
+    function formatTime(date) {
+      let h = date.getHours();
+      const m = String(date.getMinutes()).padStart(2, '0');
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      return `${h}:${m} ${ampm}`;
+    }
+
+    // Schedule Mode
+    function handleScheduleMode() {
+      const mode = document.querySelector('input[name="scheduleMode"]:checked').value;
+      const fields = document.getElementById('scheduledFields');
+      if (mode === 'scheduled') {
+        fields.classList.remove('hidden');
+      } else {
+        fields.classList.add('hidden');
+      }
+    }
+
+    // Save Settings
+    function saveMaintenanceSettings() {
+      showToast('Maintenance settings saved successfully', 'success');
+    }
+
+    // Message Editor
+    function execRichCmd(cmd) {
+      document.execCommand(cmd, false, null);
+      document.getElementById('msgDescription').focus();
+    }
+
+    function insertLink() {
+      const url = prompt('Enter URL:');
+      if (url) {
+        document.execCommand('createLink', false, url);
+      }
+    }
+
+    function updateCharCount() {
+      const desc = document.getElementById('msgDescription');
+      const count = document.getElementById('charCount');
+      const len = desc.innerText.length;
+      count.textContent = len + ' characters';
+      if (len > 450) {
+        count.className = 'text-[10px] text-red-500 char-count';
+      } else if (len > 350) {
+        count.className = 'text-[10px] text-orange-500 char-count';
+      } else {
+        count.className = 'text-[10px] text-gray-400 char-count';
+      }
+    }
+
+    function updatePreview() {
+      const title = document.getElementById('msgTitle').value;
+      const desc = document.getElementById('msgDescription').innerText;
+      document.getElementById('previewTitle').textContent = title || "We'll Be Back Soon!";
+      document.getElementById('previewDesc').textContent = desc || 'We are currently performing scheduled maintenance.';
+    }
+
+    function saveMessageSettings() {
+      showToast('Message settings saved successfully', 'success');
+    }
+
+    // Countdown Timer
+    function startCountdown() {
+      const now = new Date();
+      const target = new Date(now.getTime() + 2.5 * 60 * 60 * 1000);
+      target.setSeconds(0);
+      target.setMilliseconds(0);
+
+      function update() {
+        const now = new Date();
+        let diff = target - now;
+        if (diff < 0) diff = 0;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('countDays').textContent = String(days).padStart(2, '0');
+        document.getElementById('countHours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('countMinutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('countSeconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    // Users
+    function renderUsers() {
+      const tbody = document.getElementById('usersTableBody');
+      const roleColors = {
+        'Super Admin': 'bg-red-100 text-red-700',
+        'Admin': 'bg-blue-100 text-blue-700',
+        'Manager': 'bg-purple-100 text-purple-700',
+        'Staff': 'bg-green-100 text-green-700',
+        'Developer': 'bg-orange-100 text-orange-700'
+      };
+      tbody.innerHTML = allowedUsers.map(u => `
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="px-5 py-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full ${u.color} flex items-center justify-center text-xs font-bold">${u.avatar}</div>
+              <span class="text-sm font-semibold text-gray-900">${u.name}</span>
+            </div>
+          </td>
+          <td class="px-5 py-4"><span class="text-sm text-gray-600">${u.email}</span></td>
+          <td class="px-5 py-4"><span class="px-2.5 py-1 ${roleColors[u.role] || 'bg-gray-100 text-gray-700'} rounded-full text-xs font-semibold">${u.role}</span></td>
+          <td class="px-5 py-4"><span class="text-sm text-gray-500">${u.addedDate}</span></td>
+          <td class="px-5 py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold">${u.status}</span></td>
+          <td class="px-5 py-4">
+            <button onclick="removeUser(${u.id})" class="p-1.5 hover:bg-red-50 rounded-lg text-red-500 transition-all" title="Remove"><i class="fas fa-trash text-xs"></i></button>
+          </td>
+        </tr>
+      `).join('');
+      document.getElementById('allowedUsersCount').textContent = allowedUsers.length;
+    }
+
+    function openAddUserModal() {
+      document.getElementById('newUserEmail').value = '';
+      document.getElementById('newUserName').value = '';
+      document.getElementById('newUserRole').value = 'Admin';
+      openModal('addUserModal');
+    }
+
+    function addAllowedUser() {
+      const email = document.getElementById('newUserEmail').value.trim();
+      const name = document.getElementById('newUserName').value.trim();
+      const role = document.getElementById('newUserRole').value;
+      if (!email || !name) {
+        showToast('Please fill in all required fields', 'error');
+        return;
+      }
+      const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      const colors = ['bg-blue-100 text-blue-700', 'bg-green-100 text-green-700', 'bg-purple-100 text-purple-700', 'bg-pink-100 text-pink-700', 'bg-orange-100 text-orange-700', 'bg-teal-100 text-teal-700'];
+      allowedUsers.push({
+        id: Date.now(),
+        name: name,
+        email: email,
+        role: role,
+        avatar: initials,
+        addedDate: new Date().toISOString().slice(0, 10),
+        status: 'active',
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+      renderUsers();
+      closeModal('addUserModal');
+      showToast('User added to allowed list', 'success');
+    }
+
+    function removeUser(id) {
+      allowedUsers = allowedUsers.filter(u => u.id !== id);
+      renderUsers();
+      showToast('User removed from allowed list', 'success');
+    }
+
+    // History
+    function renderHistory() {
+      const total = maintenanceHistory.length;
+      const totalPages = Math.ceil(total / historyPerPage);
+      if (historyCurrentPage > totalPages) historyCurrentPage = 1;
+      const start = (historyCurrentPage - 1) * historyPerPage;
+      const pageList = maintenanceHistory.slice(start, start + historyPerPage);
+
+      const actionColors = {
+        'Enabled': 'bg-orange-100 text-orange-700',
+        'Disabled': 'bg-green-100 text-green-700'
+      };
+      const statusColors = {
+        'completed': 'bg-green-100 text-green-700',
+        'failed': 'bg-red-100 text-red-700',
+        'in-progress': 'bg-blue-100 text-blue-700'
+      };
+
+      document.getElementById('historyTableBody').innerHTML = pageList.map(h => `
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="px-5 py-4"><span class="text-sm text-gray-600">${h.date}</span></td>
+          <td class="px-5 py-4"><span class="px-2.5 py-1 ${actionColors[h.action] || 'bg-gray-100 text-gray-700'} rounded-full text-xs font-semibold">${h.action}</span></td>
+          <td class="px-5 py-4"><span class="text-sm text-gray-600">${h.duration}</span></td>
+          <td class="px-5 py-4"><span class="text-sm text-gray-600">${h.reason}</span></td>
+          <td class="px-5 py-4"><span class="px-2 py-1 ${statusColors[h.status] || 'bg-gray-100 text-gray-700'} rounded text-xs font-semibold capitalize">${h.status}</span></td>
+          <td class="px-5 py-4">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-accent-100 flex items-center justify-center text-accent-700 text-[10px] font-bold">${h.performedBy.split(' ').map(n => n[0]).join('').substring(0, 2)}</div>
+              <span class="text-sm text-gray-700">${h.performedBy}</span>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+
+      document.getElementById('historyTableInfo').textContent = `Showing ${start + 1}-${Math.min(start + historyPerPage, total)} of ${total} records`;
+
+      const pg = document.getElementById('historyPagination');
+      let html = `<button onclick="goHistoryPage(${historyCurrentPage - 1})" ${historyCurrentPage === 1 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${historyCurrentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-left"></i></button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button onclick="goHistoryPage(${i})" class="w-8 h-8 rounded-lg text-xs font-semibold ${i === historyCurrentPage ? 'bg-accent-500 text-white shadow' : 'text-gray-600 hover:bg-gray-100'} transition-all">${i}</button>`;
+      }
+      html += `<button onclick="goHistoryPage(${historyCurrentPage + 1})" ${historyCurrentPage === totalPages ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${historyCurrentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-right"></i></button>`;
+      pg.innerHTML = html;
+    }
+
+    function goHistoryPage(p) {
+      historyCurrentPage = p;
+      renderHistory();
+    }
+
+    function exportHistory() {
+      showToast('Maintenance history exported successfully', 'success');
+    }
+
+    // Preview Modal
+    function openPreviewModal() {
+      const title = document.getElementById('msgTitle').value || "We'll Be Back Soon!";
+      const desc = document.getElementById('msgDescription').innerText || 'We are currently performing scheduled maintenance.';
+      const showCountdown = document.getElementById('showCountdown').checked;
+      const showEmail = document.getElementById('showEmail').checked;
+      const showPhone = document.getElementById('showPhone').checked;
+      const email = document.getElementById('contactEmail').value;
+      const phone = document.getElementById('contactPhone').value;
+
+      let contactHtml = '';
+      if (showEmail || showPhone) {
+        contactHtml = '<div class="flex items-center justify-center gap-4 text-sm text-gray-400">';
+        if (showEmail) contactHtml += `<span><i class="fas fa-envelope mr-1.5"></i>${email}</span>`;
+        if (showPhone) contactHtml += `<span><i class="fas fa-phone mr-1.5"></i>${phone}</span>`;
+        contactHtml += '</div>';
+      }
+
+      let countdownHtml = '';
+      if (showCountdown) {
+        countdownHtml = `
+          <div class="flex items-center justify-center gap-4 mb-8">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+              <p id="modalCountDays" class="text-3xl font-bold text-white">00</p>
+              <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Days</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+              <p id="modalCountHours" class="text-3xl font-bold text-white">02</p>
+              <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Hours</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+              <p id="modalCountMinutes" class="text-3xl font-bold text-white">30</p>
+              <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Minutes</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-4 min-w-[80px] border border-white/10">
+              <p id="modalCountSeconds" class="text-3xl font-bold text-white">00</p>
+              <p class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">Seconds</p>
+            </div>
+          </div>
+        `;
+      }
+
+      document.getElementById('previewContent').innerHTML = `
+        <div class="text-center relative z-10">
+          <div class="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-5">
+            <i class="fas fa-wrench text-accent text-3xl"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-white mb-3">${title}</h2>
+          <p class="text-gray-400 text-sm mb-8 max-w-lg mx-auto leading-relaxed">${desc}</p>
+          ${countdownHtml}
+          ${contactHtml}
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <p class="text-xs text-gray-500">Wadi Al Zaid Tours & Travel &copy; ${new Date().getFullYear()}</p>
+          </div>
+        </div>
+      `;
+
+      openModal('previewModal');
+
+      if (showCountdown) {
+        const now = new Date();
+        const target = new Date(now.getTime() + 2.5 * 60 * 60 * 1000);
+        function updateModalCountdown() {
+          const n = new Date();
+          let diff = target - n;
+          if (diff < 0) diff = 0;
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const secs = Math.floor((diff % (1000 * 60)) / 1000);
+          const dEl = document.getElementById('modalCountDays');
+          const hEl = document.getElementById('modalCountHours');
+          const mEl = document.getElementById('modalCountMinutes');
+          const sEl = document.getElementById('modalCountSeconds');
+          if (dEl) dEl.textContent = String(days).padStart(2, '0');
+          if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+          if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+          if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+        }
+        updateModalCountdown();
+        const modalInterval = setInterval(updateModalCountdown, 1000);
+        const observer = new MutationObserver(() => {
+          if (document.getElementById('previewModal').classList.contains('hidden')) {
+            clearInterval(modalInterval);
+            observer.disconnect();
+          }
+        });
+        observer.observe(document.getElementById('previewModal'), { attributes: true, attributeFilter: ['class'] });
+      }
+    }
+  </script>
+</body>
+</html>

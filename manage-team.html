@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members | Wadi Al Zaid Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        navy: { 50:'#e8ecf4', 100:'#c5cde3', 200:'#9eafd0', 300:'#7791bd', 400:'#5979af', 500:'#3b61a1', 600:'#355999', 700:'#2d4e8f', 800:'#264485', 900:'#0f1d3a' },
+                        accent: { 50:'#fdf3e5', 100:'#f9e0c0', 200:'#f5cc99', 300:'#f0b672', 400:'#eca654', 500:'#e8952f', 600:'#e68b27', 700:'#e27d1d', 800:'#de7014', 900:'#d45700' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-950 text-gray-200">
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar fixed top-0 left-0 h-full bg-navy-900 border-r border-navy-700/50 flex flex-col z-50">
+        <div class="p-5 border-b border-navy-700/50 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.svg" alt="Wadi Al Zaid" class="h-10 w-10 rounded-xl shadow-lg object-contain">
+                <span class="sidebar-text font-bold text-lg text-white tracking-tight">Wadi Al Zaid</span>
+            </div>
+            <button onclick="toggleSidebar()" class="sidebar-text text-gray-400 hover:text-white transition hidden lg:block"><i class="fas fa-chevron-left" id="collapseIcon"></i></button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4 px-3" role="navigation" aria-label="Main navigation">
+            <a href="admin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text text-sm">Dashboard</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Tours & Bookings</p>
+            <a href="manage-destinations.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text text-sm">Destinations</span>
+            </a>
+            <a href="manage-bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-calendar-check w-5 text-center"></i><span class="sidebar-text text-sm">Bookings</span>
+            </a>
+            <a href="manage-payments.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text text-sm">Payments</span>
+            </a>
+            <a href="manage-refunds.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-undo w-5 text-center"></i><span class="sidebar-text text-sm">Refunds</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Users</p>
+            <a href="manage-customers.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-users w-5 text-center"></i><span class="sidebar-text text-sm">Customers</span>
+            </a>
+            <a href="manage-reviews.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-star w-5 text-center"></i><span class="sidebar-text text-sm">Reviews</span>
+            </a>
+            <a href="manage-team.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white bg-accent-500/10 border border-accent-500/20 transition mb-1" aria-current="page">
+                <i class="fas fa-user-tie w-5 text-center text-accent-400"></i><span class="sidebar-text text-sm font-medium">Team</span>
+                <span class="badge ml-auto bg-accent-500/20 text-accent-400 text-[10px] font-bold px-2 py-0.5 rounded-full">24</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Insights</p>
+            <a href="reports-analytics.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-chart-line w-5 text-center"></i><span class="sidebar-text text-sm">Reports</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Content</p>
+            <a href="manage-blog.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text text-sm">Blog</span>
+            </a>
+            <a href="manage-messages.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text text-sm">Messages</span>
+            </a>
+            <a href="notifications.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text text-sm">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Settings</p>
+            <a href="website-cms.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text text-sm">Settings</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Security</p>
+            <a href="activity-logs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-history w-5 text-center"></i><span class="sidebar-text text-sm">Activity Logs</span>
+            </a>
+            <a href="login-history.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text text-sm">Login History</span>
+            </a>
+            <a href="backup-restore.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text text-sm">Backup & Restore</span>
+            </a>
+            <a href="maintenance-mode.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text text-sm">Maintenance Mode</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-navy-700/50">
+            <div class="flex items-center gap-3">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=e8952f&color=fff&rounded=true&size=36" class="w-9 h-9 rounded-xl">
+                <div class="sidebar-text">
+                    <p class="text-sm font-semibold text-white">Admin</p>
+                    <p class="text-[11px] text-gray-400">Super Admin</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+    <!-- Main Content -->
+    <div class="main-content min-h-screen" role="main" id="mainContent">
+        <header class="topbar sticky top-0 z-30 bg-navy-900/80 border-b border-navy-700/50 px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="lg:hidden text-gray-400 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
+                    <div class="relative hidden md:block">
+                        <input type="text" placeholder="Search team..." class="bg-navy-800/60 border border-navy-700/50 rounded-xl pl-10 pr-4 py-2 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 w-72 transition">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-xl bg-navy-800/60 border border-navy-700/50 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-500/50 transition">
+                        <i class="fas fa-moon text-sm" id="darkModeIcon"></i>
+                    </button>
+                    <button class="relative w-9 h-9 rounded-xl bg-navy-800/60 border border-navy-700/50 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-500/50 transition">
+                        <i class="fas fa-bell text-sm"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center">5</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <!-- Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 fade-up">
+                <div>
+                    <nav class="flex items-center gap-2 text-sm text-gray-500 mb-1">
+                        <a href="admin.html" class="hover:text-accent-400 transition">Dashboard</a>
+                        <i class="fas fa-chevron-right text-[10px]"></i>
+                        <span class="text-gray-300">Team Members</span>
+                    </nav>
+                    <h1 class="text-2xl font-bold text-white">Team Members</h1>
+                    <p class="text-sm text-gray-500 mt-1">Manage your team and organization structure</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-2 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 hover:text-white transition"><i class="fas fa-download mr-2"></i>Export</button>
+                    <button onclick="openAddModal()" class="px-4 py-2 bg-accent-500 hover:bg-accent-600 rounded-xl text-sm font-semibold text-white transition shadow-lg shadow-accent-500/20"><i class="fas fa-plus mr-2"></i>Add Member</button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                <div class="fade-up glass rounded-2xl p-4 hover:border-accent-500/30 transition group">
+                    <div class="flex items-center gap-2 mb-2"><div class="w-9 h-9 rounded-lg bg-accent-500/10 flex items-center justify-center group-hover:bg-accent-500/20 transition"><i class="fas fa-users text-accent-400 text-sm"></i></div></div>
+                    <p class="text-xl font-bold text-white">24</p><p class="text-[11px] text-gray-500 mt-1">Total Employees</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.05s">
+                    <div class="flex items-center gap-2 mb-2"><div class="w-9 h-9 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition"><i class="fas fa-check-circle text-green-400 text-sm"></i></div></div>
+                    <p class="text-xl font-bold text-white">20</p><p class="text-[11px] text-gray-500 mt-1">Active</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.1s">
+                    <div class="flex items-center gap-2 mb-2"><div class="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500/20 transition"><i class="fas fa-plane-departure text-orange-400 text-sm"></i></div></div>
+                    <p class="text-xl font-bold text-white">2</p><p class="text-[11px] text-gray-500 mt-1">On Leave</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.15s">
+                    <div class="flex items-center gap-2 mb-2"><div class="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition"><i class="fas fa-map text-blue-400 text-sm"></i></div></div>
+                    <p class="text-xl font-bold text-white">8</p><p class="text-[11px] text-gray-500 mt-1">Tour Guides</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.2s">
+                    <div class="flex items-center gap-2 mb-2"><div class="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition"><i class="fas fa-user-shield text-purple-400 text-sm"></i></div></div>
+                    <p class="text-xl font-bold text-white">3</p><p class="text-[11px] text-gray-500 mt-1">Admins</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.25s">
+                    <div class="flex items-center gap-2 mb-2"><div class="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition"><i class="fas fa-building text-cyan-400 text-sm"></i></div></div>
+                    <p class="text-xl font-bold text-white">8</p><p class="text-[11px] text-gray-500 mt-1">Departments</p>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6 fade-up" style="transition-delay:0.15s">
+                <button onclick="switchTab('team')" class="tab-btn tab-active px-4 py-2 rounded-xl text-sm font-semibold border border-transparent transition" data-tab="team"><i class="fas fa-users mr-2"></i>All Members</button>
+                <button onclick="switchTab('analytics')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-gray-400 bg-navy-800/40 border border-navy-700/30 hover:text-white transition" data-tab="analytics"><i class="fas fa-chart-bar mr-2"></i>Analytics</button>
+            </div>
+
+            <!-- Team Tab -->
+            <div id="tab-team" class="tab-content">
+                <!-- Filters -->
+                <div class="fade-up glass rounded-2xl p-5 mb-6" style="transition-delay:0.18s">
+                    <div class="flex flex-wrap items-end gap-4">
+                        <div class="flex-1 min-w-[180px]">
+                            <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Search</label>
+                            <div class="relative">
+                                <input type="text" id="filterSearch" placeholder="Search by name, ID, email..." class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-[140px]">
+                            <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Department</label>
+                            <select id="filterDept" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                                <option value="">All Departments</option>
+                                <option value="management">Management</option><option value="sales">Sales</option><option value="support">Customer Support</option><option value="guides">Tour Guides</option><option value="marketing">Marketing</option><option value="finance">Finance</option><option value="hr">HR</option><option value="it">IT</option>
+                            </select>
+                        </div>
+                        <div class="min-w-[130px]">
+                            <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Role</label>
+                            <select id="filterRole" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                                <option value="">All Roles</option>
+                                <option value="admin">Admin</option><option value="manager">Manager</option><option value="guide">Tour Guide</option><option value="staff">Staff</option>
+                            </select>
+                        </div>
+                        <div class="min-w-[130px]">
+                            <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Status</label>
+                            <select id="filterStatus" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option><option value="on-leave">On Leave</option><option value="inactive">Inactive</option><option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+                        <div class="min-w-[130px]">
+                            <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Sort By</label>
+                            <select id="filterSort" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                                <option value="name">Name</option><option value="join">Join Date</option><option value="dept">Department</option>
+                            </select>
+                        </div>
+                        <button onclick="resetFilters()" class="px-4 py-2.5 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition"><i class="fas fa-redo mr-1"></i>Reset</button>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="fade-up glass rounded-2xl overflow-hidden mb-6" style="transition-delay:0.2s">
+                    <div class="p-5 border-b border-navy-700/50 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <h2 class="text-lg font-bold text-white">Team Members</h2>
+                            <span class="bg-accent-500/20 text-accent-400 text-xs font-bold px-2.5 py-1 rounded-lg" id="memberCount">24</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="bulkActivateBtn" onclick="bulkAction('activate')" class="hidden px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded-lg text-xs font-semibold text-green-400 hover:bg-green-500/20 transition"><i class="fas fa-check mr-1"></i>Activate</button>
+                            <button id="bulkSuspendBtn" onclick="bulkAction('suspend')" class="hidden px-3 py-1.5 bg-orange-500/10 border border-orange-500/30 rounded-lg text-xs font-semibold text-orange-400 hover:bg-orange-500/20 transition"><i class="fas fa-ban mr-1"></i>Suspend</button>
+                            <button id="bulkDeleteBtn" onclick="bulkAction('delete')" class="hidden px-3 py-1.5 bg-red-500/10 border border-red-500/30 rounded-lg text-xs font-semibold text-red-400 hover:bg-red-500/20 transition"><i class="fas fa-trash mr-1"></i>Delete</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[1000px]">
+                            <thead><tr class="border-b border-navy-700/50">
+                                <th class="text-left px-5 py-3 sticky top-0 bg-navy-900/95"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()" class="rounded border-navy-600 bg-navy-800 text-accent-500 focus:ring-accent-500/50"></th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase sticky top-0 bg-navy-900/95">Employee</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase sticky top-0 bg-navy-900/95">Position</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase sticky top-0 bg-navy-900/95">Department</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase sticky top-0 bg-navy-900/95">Contact</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase sticky top-0 bg-navy-900/95">Joined</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase sticky top-0 bg-navy-900/95">Status</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase sticky top-0 bg-navy-900/95">Actions</th>
+                            </tr></thead>
+                            <tbody id="teamTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="p-5 border-t border-navy-700/50 flex items-center justify-between">
+                        <p class="text-sm text-gray-500" id="paginationInfo">Showing 1-10 of 24</p>
+                        <div class="flex items-center gap-2">
+                            <button onclick="prevPage()" class="px-3 py-1.5 bg-navy-800/60 border border-navy-700/50 rounded-lg text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition"><i class="fas fa-chevron-left"></i></button>
+                            <div id="pageNumbers" class="flex items-center gap-1"></div>
+                            <button onclick="nextPage()" class="px-3 py-1.5 bg-navy-800/60 border border-navy-700/50 rounded-lg text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="tab-analytics" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="fade-up glass rounded-2xl p-5"><h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-chart-bar text-accent-400"></i>Department Distribution</h3><div class="h-64"><canvas id="deptChart"></canvas></div></div>
+                    <div class="fade-up glass rounded-2xl p-5"><h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-chart-line text-accent-400"></i>Monthly New Hires</h3><div class="h-64"><canvas id="hiresChart"></canvas></div></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="fade-up glass rounded-2xl p-5"><h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-chart-pie text-accent-400"></i>Employment Status</h3><div class="h-56"><canvas id="statusChart"></canvas></div></div>
+                    <div class="fade-up glass rounded-2xl p-5"><h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-star text-accent-400"></i>Top Performers</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 p-3 bg-navy-800/40 rounded-xl"><img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=e8952f&color=fff&rounded=true&size=40" class="w-10 h-10 rounded-xl"><div class="flex-1"><p class="text-sm font-semibold text-white">Sarah Johnson</p><p class="text-xs text-gray-500">Tour Guide</p></div><div class="text-right"><p class="text-sm font-bold text-accent-400">4.9</p><p class="text-[10px] text-gray-500">Rating</p></div></div>
+                            <div class="flex items-center gap-3 p-3 bg-navy-800/40 rounded-xl"><img src="https://ui-avatars.com/api/?name=Marco+Rossi&background=3b61a1&color=fff&rounded=true&size=40" class="w-10 h-10 rounded-xl"><div class="flex-1"><p class="text-sm font-semibold text-white">Marco Rossi</p><p class="text-xs text-gray-500">Tour Guide</p></div><div class="text-right"><p class="text-sm font-bold text-accent-400">4.8</p><p class="text-[10px] text-gray-500">Rating</p></div></div>
+                            <div class="flex items-center gap-3 p-3 bg-navy-800/40 rounded-xl"><img src="https://ui-avatars.com/api/?name=Fatima+Al+Nuaimi&background=10b981&color=fff&rounded=true&size=40" class="w-10 h-10 rounded-xl"><div class="flex-1"><p class="text-sm font-semibold text-white">Fatima Al Nuaimi</p><p class="text-xs text-gray-500">Sales Manager</p></div><div class="text-right"><p class="text-sm font-bold text-accent-400">4.7</p><p class="text-[10px] text-gray-500">Rating</p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Drawer -->
+    <div id="drawerOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="closeDrawer()"></div>
+    <div id="memberDrawer" class="drawer fixed top-0 right-0 h-full w-full max-w-lg bg-navy-900 border-l border-navy-700/50 z-50 flex flex-col">
+        <div class="p-5 border-b border-navy-700/50 flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white">Employee Profile</h3>
+            <button onclick="closeDrawer()" class="w-8 h-8 rounded-lg bg-navy-800/60 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-5" id="drawerContent"></div>
+    </div>
+
+    <!-- Add Member Modal -->
+    <div id="addModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 modal-overlay" onclick="closeModal('addModal')"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-navy-900 border border-navy-700/50 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-navy-700/50 flex items-center justify-between">
+                <h3 class="text-lg font-bold text-white">Add Team Member</h3>
+                <button onclick="closeModal('addModal')" class="w-8 h-8 rounded-lg bg-navy-800/60 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">First Name</label><input type="text" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition" placeholder="First name"></div>
+                    <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">Last Name</label><input type="text" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition" placeholder="Last name"></div>
+                </div>
+                <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">Email</label><input type="email" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition" placeholder="email@company.com"></div>
+                <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">Phone</label><input type="tel" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition" placeholder="+971 50 XXX XXXX"></div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">Department</label><select class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition"><option>Management</option><option>Sales</option><option>Customer Support</option><option>Tour Guides</option><option>Marketing</option><option>Finance</option><option>HR</option><option>IT</option></select></div>
+                    <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">Position</label><input type="text" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition" placeholder="Job title"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">Role</label><select class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition"><option>Staff</option><option>Manager</option><option>Admin</option></select></div>
+                    <div><label class="text-xs font-semibold text-gray-400 mb-1.5 block">Join Date</label><input type="date" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition"></div>
+                </div>
+            </div>
+            <div class="p-6 border-t border-navy-700/50 flex items-center justify-end gap-3">
+                <button onclick="closeModal('addModal')" class="px-4 py-2 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300">Cancel</button>
+                <button onclick="addMember()" class="px-4 py-2 bg-accent-500 hover:bg-accent-600 rounded-xl text-sm font-semibold text-white transition"><i class="fas fa-plus mr-2"></i>Add Member</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 modal-overlay" onclick="closeModal('deleteModal')"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm bg-navy-900 border border-navy-700/50 rounded-2xl shadow-2xl">
+            <div class="p-6 text-center">
+                <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4"><i class="fas fa-trash-alt text-red-400 text-2xl"></i></div>
+                <h3 class="text-lg font-bold text-white mb-2">Delete Employee</h3>
+                <p class="text-sm text-gray-400 mb-6">This action cannot be undone.</p>
+                <div class="flex items-center gap-3">
+                    <button onclick="closeModal('deleteModal')" class="flex-1 px-4 py-2.5 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300">Cancel</button>
+                    <button onclick="confirmDelete()" class="flex-1 px-4 py-2.5 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-semibold text-white transition">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
+        <div class="bg-navy-800 border border-navy-700/50 rounded-xl px-5 py-3 shadow-xl flex items-center gap-3">
+            <i class="fas fa-check-circle text-green-400" id="toastIcon"></i>
+            <span class="text-sm text-white" id="toastMessage">Action completed</span>
+        </div>
+    </div>
+
+    <script>
+        let team = [
+            { id:'EMP-001', firstName:'Khalid', lastName:'Al-Balushi', avatar:'Khalid+Al-Balushi', email:'khalid@wadialzaid.com', phone:'+971 50 111 2233', position:'General Manager', department:'management', role:'admin', joinDate:'2020-03-15', status:'active', performance:4.9, tours:0 },
+            { id:'EMP-002', firstName:'Sarah', lastName:'Johnson', avatar:'Sarah+Johnson', email:'sarah@wadialzaid.com', phone:'+971 50 222 3344', position:'Senior Tour Guide', department:'guides', role:'staff', joinDate:'2021-06-01', status:'active', performance:4.9, tours:45 },
+            { id:'EMP-003', firstName:'Marco', lastName:'Rossi', avatar:'Marco+Rossi', email:'marco@wadialzaid.com', phone:'+971 50 333 4455', position:'Tour Guide', department:'guides', role:'staff', joinDate:'2022-01-10', status:'active', performance:4.8, tours:32 },
+            { id:'EMP-004', firstName:'Fatima', lastName:'Al-Nuaimi', avatar:'Fatima+Al-Nuaimi', email:'fatima@wadialzaid.com', phone:'+971 50 444 5566', position:'Sales Manager', department:'sales', role:'manager', joinDate:'2021-03-20', status:'active', performance:4.7, tours:0 },
+            { id:'EMP-005', firstName:'Yuki', lastName:'Tanaka', avatar:'Yuki+Tanaka', email:'yuki@wadialzaid.com', phone:'+971 50 555 6677', position:'Tour Guide', department:'guides', role:'staff', joinDate:'2022-05-15', status:'active', performance:4.7, tours:28 },
+            { id:'EMP-006', firstName:'Ahmed', lastName:'Hassan', avatar:'Ahmed+Hassan', email:'ahmed.h@wadialzaid.com', phone:'+971 50 666 7788', position:'Customer Support Lead', department:'support', role:'manager', joinDate:'2021-08-01', status:'active', performance:4.5, tours:0 },
+            { id:'EMP-007', firstName:'Maria', lastName:'Garcia', avatar:'Maria+Garcia', email:'maria@wadialzaid.com', phone:'+971 50 777 8899', position:'Marketing Specialist', department:'marketing', role:'staff', joinDate:'2022-09-01', status:'active', performance:4.4, tours:0 },
+            { id:'EMP-008', firstName:'Omar', lastName:'Al-Rashidi', avatar:'Omar+Al-Rashidi', email:'omar@wadialzaid.com', phone:'+971 50 888 9900', position:'Finance Manager', department:'finance', role:'manager', joinDate:'2020-11-15', status:'active', performance:4.6, tours:0 },
+            { id:'EMP-009', firstName:'Layla', lastName:'Said', avatar:'Layla+Said', email:'layla@wadialzaid.com', phone:'+971 50 999 0011', position:'HR Manager', department:'hr', role:'manager', joinDate:'2021-01-10', status:'on-leave', performance:4.3, tours:0 },
+            { id:'EMP-010', firstName:'Hassan', lastName:'Al-Farsi', avatar:'Hassan+Al-Farsi', email:'hassan@wadialzaid.com', phone:'+971 50 101 2023', position:'IT Manager', department:'it', role:'manager', joinDate:'2020-07-20', status:'active', performance:4.5, tours:0 },
+            { id:'EMP-011', firstName:'Noura', lastName:'Al-Hashmi', avatar:'Noura+Al-Hashmi', email:'noura@wadialzaid.com', phone:'+971 50 212 3243', position:'Tour Guide', department:'guides', role:'staff', joinDate:'2023-02-01', status:'active', performance:4.6, tours:18 },
+            { id:'EMP-012', firstName:'David', lastName:'Wilson', avatar:'David+Wilson', email:'david@wadialzaid.com', phone:'+971 50 323 4354', position:'Sales Executive', department:'sales', role:'staff', joinDate:'2023-04-15', status:'active', performance:4.2, tours:0 },
+            { id:'EMP-013', firstName:'Mona', lastName:'Al-Maamari', avatar:'Mona+Al-Maamari', email:'mona@wadialzaid.com', phone:'+971 50 434 5465', position:'Tour Guide', department:'guides', role:'staff', joinDate:'2022-11-01', status:'on-leave', performance:4.4, tours:22 },
+            { id:'EMP-014', firstName:'James', lastName:'Brown', avatar:'James+Brown', email:'james@wadialzaid.com', phone:'+971 50 545 6576', position:'Customer Support', department:'support', role:'staff', joinDate:'2023-06-01', status:'active', performance:4.1, tours:0 },
+            { id:'EMP-015', firstName:'Sara', lastName:'Al-Harthy', avatar:'Sara+Al-Harthy', email:'sara@wadialzaid.com', phone:'+971 50 656 7687', position:'Marketing Coordinator', department:'marketing', role:'staff', joinDate:'2023-08-15', status:'active', performance:4.3, tours:0 },
+        ];
+
+        let currentPage = 1;
+        const perPage = 10;
+        let selectedIds = new Set();
+        let deleteTarget = null;
+
+        document.addEventListener('DOMContentLoaded', () => { renderTable(); setupFilters(); });
+
+        function toggleDarkMode() { const icon = document.getElementById('darkModeIcon'); icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun'); }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => { el.classList.remove('tab-active'); el.classList.add('text-gray-400','bg-navy-800/40','border-navy-700/30'); });
+            document.getElementById('tab-'+tab).classList.remove('hidden');
+            const btn = document.querySelector(`[data-tab="${tab}"]`);
+            btn.classList.add('tab-active'); btn.classList.remove('text-gray-400','bg-navy-800/40','border-navy-700/30');
+            if (tab === 'analytics') initCharts();
+        }
+
+        function setupFilters() {
+            ['filterSearch','filterDept','filterRole','filterStatus','filterSort'].forEach(id => {
+                document.getElementById(id).addEventListener('input', () => { currentPage = 1; renderTable(); });
+            });
+        }
+
+        function getFiltered() {
+            let f = [...team];
+            const s = document.getElementById('filterSearch').value.toLowerCase();
+            const dept = document.getElementById('filterDept').value;
+            const role = document.getElementById('filterRole').value;
+            const status = document.getElementById('filterStatus').value;
+            const sort = document.getElementById('filterSort').value;
+            if (s) f = f.filter(r => (r.firstName+' '+r.lastName).toLowerCase().includes(s) || r.id.toLowerCase().includes(s) || r.email.toLowerCase().includes(s));
+            if (dept) f = f.filter(r => r.department === dept);
+            if (role) f = f.filter(r => r.role === role);
+            if (status) f = f.filter(r => r.status === status);
+            if (sort === 'join') f.sort((a,b) => new Date(b.joinDate) - new Date(a.joinDate));
+            else if (sort === 'dept') f.sort((a,b) => a.department.localeCompare(b.department));
+            else f.sort((a,b) => (a.firstName+' '+a.lastName).localeCompare(b.firstName+' '+b.lastName));
+            return f;
+        }
+
+        function resetFilters() {
+            document.getElementById('filterSearch').value = '';
+            document.getElementById('filterDept').value = '';
+            document.getElementById('filterRole').value = '';
+            document.getElementById('filterStatus').value = '';
+            document.getElementById('filterSort').value = 'name';
+            currentPage = 1; renderTable();
+        }
+
+        const deptLabels = { management:'Management', sales:'Sales', support:'Customer Support', guides:'Tour Guides', marketing:'Marketing', finance:'Finance', hr:'HR', it:'IT' };
+        const deptColors = { management:'accent', sales:'blue', support:'green', guides:'purple', marketing:'pink', finance:'yellow', hr:'cyan', it:'gray' };
+
+        function renderTable() {
+            const filtered = getFiltered();
+            const start = (currentPage - 1) * perPage;
+            const pageData = filtered.slice(start, start + perPage);
+            const tbody = document.getElementById('teamTableBody');
+            document.getElementById('memberCount').textContent = filtered.length;
+
+            if (pageData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="px-5 py-12 text-center"><div class="flex flex-col items-center"><i class="fas fa-users text-gray-600 text-4xl mb-3"></i><p class="text-gray-400 font-medium">No team members found</p></div></td></tr>`;
+            } else {
+                tbody.innerHTML = pageData.map(r => {
+                    const c = deptColors[r.department];
+                    return `<tr class="border-b border-navy-700/30 hover:bg-navy-800/30 transition ${selectedIds.has(r.id)?'bg-accent-500/5':''}">
+                        <td class="px-5 py-4"><input type="checkbox" class="rounded border-navy-600 bg-navy-800 text-accent-500 focus:ring-accent-500/50" ${selectedIds.has(r.id)?'checked':''} onchange="toggleSelect('${r.id}')"></td>
+                        <td class="px-5 py-4"><div class="flex items-center gap-3"><img src="https://ui-avatars.com/api/?name=${r.avatar}&background=e8952f&color=fff&rounded=true&size=36" class="w-9 h-9 rounded-xl"><div><p class="text-sm font-semibold text-white">${r.firstName} ${r.lastName}</p><p class="text-[10px] text-gray-500">${r.id}</p></div></div></td>
+                        <td class="px-5 py-4"><span class="text-sm text-gray-300">${r.position}</span></td>
+                        <td class="px-5 py-4"><span class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-${c}-500/10 text-${c}-400 border border-${c}-500/20">${deptLabels[r.department]}</span></td>
+                        <td class="px-5 py-4"><div><p class="text-xs text-gray-400">${r.email}</p><p class="text-[10px] text-gray-500">${r.phone}</p></div></td>
+                        <td class="px-5 py-4"><span class="text-sm text-gray-500">${formatDate(r.joinDate)}</span></td>
+                        <td class="px-5 py-4">${statusBadge(r.status)}</td>
+                        <td class="px-5 py-4"><div class="flex items-center gap-1">
+                            <button onclick="viewMember('${r.id}')" class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition" title="View"><i class="fas fa-eye text-xs"></i></button>
+                            <button onclick="openDeleteModal('${r.id}')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition" title="Delete"><i class="fas fa-trash text-xs"></i></button>
+                        </div></td>
+                    </tr>`;
+                }).join('');
+            }
+            const totalPages = Math.ceil(filtered.length / perPage);
+            document.getElementById('paginationInfo').textContent = `Showing ${start+1}-${Math.min(start+perPage, filtered.length)} of ${filtered.length}`;
+            renderPageNumbers(totalPages); updateBulkButtons();
+        }
+
+        function statusBadge(status) {
+            const map = { active:'bg-green-500/10 text-green-400 border-green-500/20', 'on-leave':'bg-orange-500/10 text-orange-400 border-orange-500/20', inactive:'bg-gray-500/10 text-gray-400 border-gray-500/20', suspended:'bg-red-500/10 text-red-400 border-red-500/20' };
+            const labels = { active:'Active', 'on-leave':'On Leave', inactive:'Inactive', suspended:'Suspended' };
+            return `<span class="px-2.5 py-1 rounded-lg text-xs font-semibold border ${map[status]}">${labels[status]}</span>`;
+        }
+
+        function formatDate(d) { return new Date(d).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }); }
+
+        function renderPageNumbers(total) {
+            const container = document.getElementById('pageNumbers');
+            let html = '';
+            for (let i = 1; i <= Math.min(total, 3); i++) {
+                html += `<button onclick="goToPage(${i})" class="px-3 py-1.5 ${i===currentPage?'bg-accent-500/20 border border-accent-500/30 rounded-lg text-sm font-semibold text-accent-400':'bg-navy-800/60 border border-navy-700/50 rounded-lg text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition'}">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function toggleSelectAll() {
+            const checked = document.getElementById('selectAll').checked;
+            const filtered = getFiltered(); const start = (currentPage-1)*perPage; const pageData = filtered.slice(start, start+perPage);
+            if (checked) pageData.forEach(r => selectedIds.add(r.id)); else pageData.forEach(r => selectedIds.delete(r.id));
+            renderTable();
+        }
+
+        function toggleSelect(id) { if (selectedIds.has(id)) selectedIds.delete(id); else selectedIds.add(id); renderTable(); }
+
+        function updateBulkButtons() {
+            const h = selectedIds.size > 0;
+            document.getElementById('bulkActivateBtn').classList.toggle('hidden', !h);
+            document.getElementById('bulkSuspendBtn').classList.toggle('hidden', !h);
+            document.getElementById('bulkDeleteBtn').classList.toggle('hidden', !h);
+        }
+
+        function viewMember(id) {
+            const r = team.find(x => x.id === id);
+            document.getElementById('drawerContent').innerHTML = `
+                <div class="space-y-5">
+                    <div class="flex items-center gap-4">
+                        <img src="https://ui-avatars.com/api/?name=${r.avatar}&background=e8952f&color=fff&rounded=true&size=72" class="w-18 h-18 rounded-2xl">
+                        <div><p class="text-xl font-bold text-white">${r.firstName} ${r.lastName}</p><p class="text-sm text-accent-400">${r.position}</p><p class="text-xs text-gray-500 mt-1">${r.id}</p></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 bg-navy-800/40 rounded-xl"><p class="text-[10px] text-gray-500 mb-1">Department</p><p class="text-sm font-semibold text-white">${deptLabels[r.department]}</p></div>
+                        <div class="p-3 bg-navy-800/40 rounded-xl"><p class="text-[10px] text-gray-500 mb-1">Role</p><p class="text-sm font-semibold text-white capitalize">${r.role}</p></div>
+                        <div class="p-3 bg-navy-800/40 rounded-xl"><p class="text-[10px] text-gray-500 mb-1">Status</p>${statusBadge(r.status)}</div>
+                        <div class="p-3 bg-navy-800/40 rounded-xl"><p class="text-[10px] text-gray-500 mb-1">Joined</p><p class="text-sm font-semibold text-white">${formatDate(r.joinDate)}</p></div>
+                    </div>
+                    <div class="p-4 bg-navy-800/40 rounded-xl"><h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Contact Details</h4>
+                        <div class="space-y-2 text-sm"><div class="flex items-center gap-2"><i class="fas fa-envelope text-gray-500 w-5 text-center text-xs"></i><span class="text-gray-300">${r.email}</span></div><div class="flex items-center gap-2"><i class="fas fa-phone text-gray-500 w-5 text-center text-xs"></i><span class="text-gray-300">${r.phone}</span></div></div>
+                    </div>
+                    <div class="p-4 bg-navy-800/40 rounded-xl"><h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Emergency Contact</h4>
+                        <div class="space-y-2 text-sm"><div class="flex justify-between"><span class="text-gray-500">Name</span><span class="text-gray-300">Family Member</span></div><div class="flex justify-between"><span class="text-gray-500">Phone</span><span class="text-gray-300">+971 50 000 0000</span></div></div>
+                    </div>
+                    ${r.tours > 0 ? `<div class="p-4 bg-navy-800/40 rounded-xl"><h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Assigned Tours</h4><p class="text-2xl font-bold text-white">${r.tours} tours</p><p class="text-xs text-gray-500 mt-1">This month</p></div>` : ''}
+                    <div class="p-4 bg-navy-800/40 rounded-xl"><h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Performance</h4>
+                        <div class="flex items-center gap-2"><div class="flex items-center gap-0.5">${Array(5).fill(0).map((_,i) => `<i class="fas fa-star ${i < Math.floor(r.performance) ? 'text-yellow-400' : 'text-gray-600'} text-sm"></i>`).join('')}</div><span class="text-lg font-bold text-white">${r.performance}</span></div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="closeDrawer()" class="flex-1 px-4 py-2.5 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 transition">Close</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('drawerOverlay').classList.remove('hidden');
+            document.getElementById('memberDrawer').classList.add('open');
+        }
+
+        function closeDrawer() { document.getElementById('drawerOverlay').classList.add('hidden'); document.getElementById('memberDrawer').classList.remove('open'); }
+
+        function openAddModal() { openModal('addModal'); }
+        function addMember() { closeModal('addModal'); showToast('Member added successfully'); }
+        function openDeleteModal(id) { deleteTarget = id; openModal('deleteModal'); }
+        function confirmDelete() { if (deleteTarget) { team = team.filter(r => r.id !== deleteTarget); deleteTarget = null; closeModal('deleteModal'); renderTable(); showToast('Employee deleted'); } }
+
+        function bulkAction(action) {
+            if (action === 'activate') selectedIds.forEach(id => { const r = team.find(x => x.id === id); if (r) r.status = 'active'; });
+            else if (action === 'suspend') selectedIds.forEach(id => { const r = team.find(x => x.id === id); if (r) r.status = 'suspended'; });
+            else if (action === 'delete') team = team.filter(r => !selectedIds.has(r.id));
+            selectedIds.clear(); renderTable(); showToast('Action completed');
+        }
+
+        function goToPage(p) { currentPage = p; renderTable(); }
+        function prevPage() { if (currentPage > 1) { currentPage--; renderTable(); } }
+        function nextPage() { const max = Math.ceil(getFiltered().length / perPage); if (currentPage < max) { currentPage++; renderTable(); } }
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.body.style.overflow = ''; }
+        function showToast(msg) { document.getElementById('toastMessage').textContent = msg; document.getElementById('toast').classList.remove('hidden'); setTimeout(() => document.getElementById('toast').classList.add('hidden'), 3000); }
+
+        let chartsInit = false;
+        function initCharts() {
+            if (chartsInit) return; chartsInit = true;
+            const opts = { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ labels:{ color:'#9ca3af', font:{size:11}}}}, scales:{ x:{ grid:{color:'rgba(45,78,143,0.15)'}, ticks:{color:'#6b7280',font:{size:10}}}, y:{ grid:{color:'rgba(45,78,143,0.15)'}, ticks:{color:'#6b7280',font:{size:10}}}}};
+            new Chart(document.getElementById('deptChart'), { type:'bar', data:{ labels:['Management','Sales','Support','Guides','Marketing','Finance','HR','IT'], datasets:[{data:[2,3,3,8,2,2,2,2],backgroundColor:['#e8952f','#3b61a1','#10b981','#8b5cf6','#ec4899','#f59e0b','#06b6d4','#6b7280'],borderRadius:6}]}, options:opts });
+            new Chart(document.getElementById('hiresChart'), { type:'line', data:{ labels:['Jul','Aug','Sep','Oct','Nov','Dec','Jan'], datasets:[{label:'New Hires',data:[2,1,3,2,1,2,1],borderColor:'#e8952f',backgroundColor:'rgba(232,149,47,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#e8952f'}]}, options:opts });
+            new Chart(document.getElementById('statusChart'), { type:'doughnut', data:{ labels:['Active','On Leave','Inactive','Suspended'], datasets:[{data:[20,2,1,1],backgroundColor:['#10b981','#f59e0b','#6b7280','#ef4444'],borderWidth:0}]}, options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#9ca3af',font:{size:10}}}}} });
+        }
+    </script>
+    <script src="components.js"></script>
+</body>
+</html>

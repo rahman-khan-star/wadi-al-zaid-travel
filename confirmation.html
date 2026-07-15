@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Confirmed - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+          <div class="leading-tight">
+            <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="index.html#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="index.html#why-us" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">About</a>
+          <a href="index.html#contact" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="index.html#contact" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25"><span>Contact Agent</span></a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors"><i class="fas fa-times text-lg"></i></button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="index.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="index.html#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="index.html#why-us" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">About</a>
+          <a href="index.html#contact" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="index.html#contact" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white"><span>Contact Agent</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <!-- HEADER -->
+  <section class="bg-navy pt-28 pb-8 sm:pt-32 sm:pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-2 text-xs sm:text-sm text-white/50 mb-3">
+        <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+        <i class="fas fa-chevron-right text-[8px]"></i>
+        <a href="booking.html" class="hover:text-accent transition-colors">Booking</a>
+        <i class="fas fa-chevron-right text-[8px]"></i>
+        <a href="payment.html" class="hover:text-accent transition-colors">Payment</a>
+        <i class="fas fa-chevron-right text-[8px]"></i>
+        <span class="text-accent">Confirmation</span>
+      </nav>
+      <h1 class="text-2xl sm:text-3xl font-black text-white">Booking Confirmed</h1>
+      <p class="text-white/50 text-sm mt-1">Your trip is all set - get ready for an amazing adventure!</p>
+
+      <!-- Progress Steps -->
+      <div class="flex items-center gap-0 mt-6 max-w-md">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold shrink-0"><i class="fas fa-check text-[10px]"></i></div>
+          <span class="text-xs font-semibold text-green-400 hidden sm:inline">Booking</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-green-500 mx-2"></div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold shrink-0"><i class="fas fa-check text-[10px]"></i></div>
+          <span class="text-xs font-semibold text-green-400 hidden sm:inline">Payment</span>
+        </div>
+        <div class="flex-1 h-0.5 bg-green-500 mx-2"></div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold shrink-0"><i class="fas fa-check text-[10px]"></i></div>
+          <span class="text-xs font-semibold text-green-400 hidden sm:inline">Confirm</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section role="main" id="mainContent" class="py-8 sm:py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Success Banner -->
+      <div class="relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6 fade-up" id="successBanner">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100/50"></div>
+        <div class="relative p-6 sm:p-8 text-center">
+          <!-- Confetti Container -->
+          <div id="confettiContainer" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+          <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5 relative">
+            <svg class="w-14 h-14" viewBox="0 0 52 52">
+              <circle cx="26" cy="26" r="25" fill="none" stroke="#22c55e" stroke-width="2" class="opacity-20"/>
+              <path d="M14 27l7 7 16-16" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="check-anim"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-navy mb-2">Booking Confirmed!</h2>
+          <p class="text-navy/50 text-sm sm:text-base mb-4">Thank you for booking with Wadi Al Zaid Tours &amp; Travel.</p>
+          <p class="text-navy/40 text-xs">A confirmation email has been sent to your email address.</p>
+        </div>
+      </div>
+
+      <!-- Booking Reference Card -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-6 fade-up">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-center sm:text-left">
+            <p class="text-xs text-navy/40 uppercase tracking-widest font-bold mb-1">Booking Reference</p>
+            <p class="text-3xl font-black text-accent" id="bookingRef">WAZ-000000</p>
+          </div>
+          <button onclick="copyBookingRef()" class="px-5 py-2.5 rounded-xl border-2 border-accent text-accent font-bold text-sm hover:bg-accent hover:text-white transition-all flex items-center gap-2">
+            <i class="fas fa-copy"></i> Copy Reference
+          </button>
+        </div>
+      </div>
+
+      <!-- Booking Details Grid -->
+      <div class="grid sm:grid-cols-2 gap-6 mb-6">
+
+        <!-- Trip Details -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-up">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80" alt="Maldives" class="w-full h-40 object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent"></div>
+            <div class="absolute bottom-3 left-4 right-4">
+              <h3 class="font-bold text-lg text-white leading-tight">Maldives Paradise Escape</h3>
+              <p class="text-white/70 text-xs"><i class="fas fa-map-marker-alt mr-1"></i> South Male Atoll, Maldives</p>
+            </div>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0"><i class="fas fa-clock text-accent text-sm"></i></div>
+              <div class="flex-1"><p class="text-[10px] text-navy/40 uppercase tracking-widest">Duration</p><p class="font-bold text-sm">5 Days / 4 Nights</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0"><i class="fas fa-calendar text-accent text-sm"></i></div>
+              <div class="flex-1"><p class="text-[10px] text-navy/40 uppercase tracking-widest">Travel Date</p><p class="font-bold text-sm" id="tripDate">Jul 25, 2026</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0"><i class="fas fa-users text-accent text-sm"></i></div>
+              <div class="flex-1"><p class="text-[10px] text-navy/40 uppercase tracking-widest">Travelers</p><p class="font-bold text-sm" id="tripGuests">2 People</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0"><i class="fas fa-user text-accent text-sm"></i></div>
+              <div class="flex-1"><p class="text-[10px] text-navy/40 uppercase tracking-widest">Primary Traveler</p><p class="font-bold text-sm" id="tripTraveler">John Doe</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Details -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+          <h3 class="font-bold text-base mb-4 flex items-center gap-2">
+            <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center"><i class="fas fa-receipt text-accent text-sm"></i></div>
+            Payment Summary
+          </h3>
+          <div class="space-y-2.5 text-sm">
+            <div class="flex justify-between"><span class="text-navy/50">Base Price</span><span class="font-medium">$2,598</span></div>
+            <div class="flex justify-between"><span class="text-navy/50">Add-ons</span><span class="font-medium">$120</span></div>
+            <div class="flex justify-between" id="confirmDiscountRow" style="display:none;"><span class="text-green-600">Discount</span><span class="text-green-600 font-medium" id="confirmDiscount">-$0</span></div>
+            <div class="flex justify-between"><span class="text-navy/50">Taxes &amp; Fees</span><span class="font-medium">$326</span></div>
+            <hr class="border-gray-100" />
+            <div class="flex justify-between items-center">
+              <span class="font-bold">Total Paid</span>
+              <span class="font-black text-xl text-accent" id="confirmTotal">$3,044</span>
+            </div>
+          </div>
+          <div class="mt-4 p-3 bg-green-50 rounded-xl flex items-center gap-2">
+            <i class="fas fa-check-circle text-green-600"></i>
+            <span class="text-sm font-medium text-green-700">Payment Confirmed</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Add-ons & Extras -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-6 fade-up">
+        <h3 class="font-bold text-base mb-4 flex items-center gap-2">
+          <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center"><i class="fas fa-plus-circle text-accent text-sm"></i></div>
+          Included Add-ons
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0"><i class="fas fa-car text-accent"></i></div>
+            <div class="flex-1"><p class="font-semibold text-sm">Airport Pickup</p><p class="text-[11px] text-navy/50">Private transfer from airport</p></div>
+            <span class="text-accent font-bold text-sm">+$75</span>
+          </div>
+          <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0"><i class="fas fa-shield-alt text-accent"></i></div>
+            <div class="flex-1"><p class="font-semibold text-sm">Travel Insurance</p><p class="text-[11px] text-navy/50">Full coverage protection</p></div>
+            <span class="text-accent font-bold text-sm">+$45</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Information -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 mb-6 fade-up">
+        <h3 class="font-bold text-base mb-4 flex items-center gap-2">
+          <div class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center"><i class="fas fa-info-circle text-accent text-sm"></i></div>
+          Important Information
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="space-y-3">
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-passport text-accent mt-0.5 text-sm"></i>
+              <div>
+                <p class="font-semibold text-sm">Passport</p>
+                <p class="text-xs text-navy/50">Ensure your passport is valid for at least 6 months from travel date.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-suitcase text-accent mt-0.5 text-sm"></i>
+              <div>
+                <p class="font-semibold text-sm">Luggage</p>
+                <p class="text-xs text-navy/50">20kg check-in + 7kg cabin baggage included per person.</p>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-clock text-accent mt-0.5 text-sm"></i>
+              <div>
+                <p class="font-semibold text-sm">Check-in Time</p>
+                <p class="text-xs text-navy/50">Hotel check-in from 2:00 PM. Early check-in subject to availability.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fas fa-phone text-accent mt-0.5 text-sm"></i>
+              <div>
+                <p class="font-semibold text-sm">24/7 Support</p>
+                <p class="text-xs text-navy/50">Contact us anytime at +1 (234) 567-890 or WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-6 fade-up">
+        <a href="index.html" class="flex-1 btn-accent px-6 py-4 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25 text-center">
+          <span><i class="fas fa-home mr-2"></i>Back to Home</span>
+        </a>
+        <button onclick="window.print()" class="flex-1 px-6 py-4 rounded-xl font-bold text-sm border-2 border-gray-200 text-navy/70 hover:border-accent hover:text-accent transition-all text-center">
+          <i class="fas fa-print mr-2"></i>Print Confirmation
+        </button>
+        <a href="https://wa.me/1234567890" target="_blank" class="flex-1 px-6 py-4 rounded-xl font-bold text-sm bg-[#25D366] text-white text-center hover:bg-[#20b858] transition-all">
+          <i class="fab fa-whatsapp mr-2"></i>Contact via WhatsApp
+        </a>
+      </div>
+
+      <!-- What's Next -->
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-2xl p-6 sm:p-8 text-center fade-up">
+        <h3 class="text-xl font-black text-white mb-2">What Happens Next?</h3>
+        <p class="text-white/50 text-sm mb-6">Here's what to expect before your trip</p>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="bg-white/10 rounded-xl p-4">
+            <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-3"><i class="fas fa-envelope text-white text-lg"></i></div>
+            <p class="font-bold text-sm text-white mb-1">Check Your Email</p>
+            <p class="text-white/50 text-xs">Full itinerary and e-tickets sent to your inbox</p>
+          </div>
+          <div class="bg-white/10 rounded-xl p-4">
+            <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-3"><i class="fas fa-plane text-white text-lg"></i></div>
+            <p class="font-bold text-sm text-white mb-1">Prepare for Trip</p>
+            <p class="text-white/50 text-xs">Pack your bags and get ready for adventure</p>
+          </div>
+          <div class="bg-white/10 rounded-xl p-4">
+            <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mx-auto mb-3"><i class="fas fa-palm-tree text-white text-lg"></i></div>
+            <p class="font-bold text-sm text-white mb-1">Enjoy Paradise</p>
+            <p class="text-white/50 text-xs">Have an amazing time in the Maldives</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy text-white mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <div class="leading-tight">
+              <span class="text-lg sm:text-xl font-extrabold tracking-tight">Wadi Al Zaid</span>
+              <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+            </div>
+          </a>
+          <p class="text-white/50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-xs">Crafting unforgettable travel experiences since 2013.</p>
+          <div class="flex gap-2 sm:gap-3">
+            <a href="#" class="w-9 h-9 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/5 hover:bg-accent rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-instagram text-sm"></i></a>
+            <a href="#" class="w-9 h-9 bg-white/5 hover:bg-[#25D366] rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-all"><i class="fab fa-whatsapp text-sm"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Quick Links</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="index.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Home</a></li>
+            <li><a href="index.html#destinations" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Destinations</a></li>
+            <li><a href="index.html#why-us" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">About Us</a></li>
+            <li><a href="index.html#testimonials" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Testimonials</a></li>
+            <li><a href="index.html#contact" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Destinations</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="destination.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Maldives</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Paris</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Santorini</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Bali</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Dubai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Contact</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li class="flex items-start gap-2"><i class="fas fa-phone text-accent text-sm mt-0.5"></i><p class="text-xs sm:text-sm text-white/60">+1 (234) 567-890</p></li>
+            <li class="flex items-start gap-2"><i class="fas fa-envelope text-accent text-sm mt-0.5"></i><p class="text-xs sm:text-sm text-white/60">info@wadialzaid.com</p></li>
+            <li class="flex items-start gap-2"><i class="fas fa-map-marker-alt text-accent text-sm mt-0.5"></i><p class="text-xs sm:text-sm text-white/60">123 Travel Avenue<br/>Dubai, UAE</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <p class="text-xs text-white/30">&copy; 2026 Wadi Al Zaid Tours &amp; Travel. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="text-[10px] text-white/30 hover:text-accent transition-colors">Privacy Policy</a>
+          <a href="#" class="text-[10px] text-white/30 hover:text-accent transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Navbar ───────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+    });
+
+    // ─── Mobile Menu ──────────────────────────────────
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+    });
+    document.getElementById('closeMenu').addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+    }
+
+    // ─── Confetti Animation ───────────────────────────
+    function createConfetti() {
+      const container = document.getElementById('confettiContainer');
+      const colors = ['#e8952f', '#22c55e', '#3b82f6', '#f59e0b', '#ec4899'];
+
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        container.appendChild(confetti);
+      }
+    }
+
+    // ─── Copy Booking Reference ───────────────────────
+    function copyBookingRef() {
+      const ref = document.getElementById('bookingRef').textContent;
+      navigator.clipboard.writeText(ref).then(() => {
+        const btn = event.target.closest('button');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+        btn.classList.add('bg-green-500', 'text-white', 'border-green-500');
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.classList.remove('bg-green-500', 'text-white', 'border-green-500');
+        }, 2000);
+      });
+    }
+
+    // ─── Generate Booking Reference ──────────────────
+    const ref = 'WAZ-' + Date.now().toString(36).toUpperCase().slice(-6) + Math.random().toString(36).toUpperCase().slice(1, 3);
+    document.getElementById('bookingRef').textContent = ref;
+
+    // ─── Initialize ──────────────────────────────────
+    createConfetti();
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

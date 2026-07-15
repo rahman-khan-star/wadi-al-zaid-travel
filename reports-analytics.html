@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics | Wadi Al Zaid Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        navy: { 50:'#e8ecf4', 100:'#c5cde3', 200:'#9eafd0', 300:'#7791bd', 400:'#5979af', 500:'#3b61a1', 600:'#355999', 700:'#2d4e8f', 800:'#264485', 900:'#0f1d3a' },
+                        accent: { 50:'#fdf3e5', 100:'#f9e0c0', 200:'#f5cc99', 300:'#f0b672', 400:'#eca654', 500:'#e8952f', 600:'#e68b27', 700:'#e27d1d', 800:'#de7014', 900:'#d45700' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar fixed top-0 left-0 h-full bg-white border-r border-gray-200 flex flex-col z-50">
+        <div class="p-5 border-b border-gray-200 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.svg" alt="Wadi Al Zaid" class="h-10 w-10 rounded-xl shadow-lg object-contain">
+                <span class="sidebar-text font-bold text-lg text-gray-900 tracking-tight">Wadi Al Zaid</span>
+            </div>
+            <button onclick="toggleSidebar()" class="sidebar-text text-gray-500 hover:text-gray-700 transition hidden lg:block"><i class="fas fa-chevron-left" id="collapseIcon"></i></button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4 px-3" role="navigation" aria-label="Main navigation">
+            <a href="admin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text text-sm">Dashboard</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Tours & Bookings</p>
+            <a href="manage-destinations.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text text-sm">Destinations</span>
+            </a>
+            <a href="manage-bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-calendar-check w-5 text-center"></i><span class="sidebar-text text-sm">Bookings</span>
+            </a>
+            <a href="manage-payments.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text text-sm">Payments</span>
+            </a>
+            <a href="manage-refunds.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-undo w-5 text-center"></i><span class="sidebar-text text-sm">Refunds</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Users</p>
+            <a href="manage-customers.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-users w-5 text-center"></i><span class="sidebar-text text-sm">Customers</span>
+            </a>
+            <a href="manage-reviews.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-star w-5 text-center"></i><span class="sidebar-text text-sm">Reviews</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Insights</p>
+            <a href="reports-analytics.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-accent-500 bg-accent-50 border border-accent-200 transition mb-1" aria-current="page">
+                <i class="fas fa-chart-line w-5 text-center text-accent-400"></i><span class="sidebar-text text-sm font-medium">Reports</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Content</p>
+            <a href="manage-blog.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text text-sm">Blog</span>
+            </a>
+            <a href="manage-messages.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text text-sm">Messages</span>
+            </a>
+            <a href="notifications.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text text-sm">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Settings</p>
+            <a href="website-cms.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text text-sm">Settings</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Security</p>
+            <a href="activity-logs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-history w-5 text-center"></i><span class="sidebar-text text-sm">Activity Logs</span>
+            </a>
+            <a href="login-history.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text text-sm">Login History</span>
+            </a>
+            <a href="backup-restore.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text text-sm">Backup & Restore</span>
+            </a>
+            <a href="maintenance-mode.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:text-accent-500 hover:bg-accent-50 transition mb-1">
+                <i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text text-sm">Maintenance Mode</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-gray-200">
+            <div class="flex items-center gap-3">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=e8952f&color=fff&rounded=true&size=36" class="w-9 h-9 rounded-xl">
+                <div class="sidebar-text">
+                    <p class="text-sm font-semibold text-gray-900">Admin</p>
+                    <p class="text-[11px] text-gray-500">Super Admin</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+    <!-- Main Content -->
+    <div class="main-content min-h-screen" role="main" id="mainContent">
+        <!-- Top Navbar -->
+        <header class="topbar sticky top-0 z-30 bg-white border-b border-gray-200 px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="lg:hidden text-gray-500 hover:text-gray-700"><i class="fas fa-bars text-xl"></i></button>
+                    <div class="relative hidden md:block">
+                        <input type="text" placeholder="Search reports..." class="bg-gray-100 border border-gray-200 rounded-xl pl-10 pr-4 py-2 text-sm text-gray-600 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 w-72 transition">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:border-accent-500/50 transition">
+                        <i class="fas fa-moon text-sm" id="darkModeIcon"></i>
+                    </button>
+                    <button class="relative w-9 h-9 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:border-accent-500/50 transition">
+                        <i class="fas fa-bell text-sm"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[9px] font-bold text-gray-900 flex items-center justify-center">5</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <!-- Header -->
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 fade-up">
+                <div>
+                    <nav class="flex items-center gap-2 text-sm text-gray-500 mb-1">
+                        <a href="admin.html" class="hover:text-accent-400 transition">Dashboard</a>
+                        <i class="fas fa-chevron-right text-[10px]"></i>
+                        <span class="text-gray-600">Reports & Analytics</span>
+                    </nav>
+                    <h1 class="text-2xl font-bold text-gray-900">Reports & Analytics</h1>
+                    <p class="text-sm text-gray-500 mt-1">Comprehensive business intelligence and performance metrics</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex items-center gap-2 bg-gray-100 border border-gray-200 rounded-xl px-4 py-2">
+                        <i class="fas fa-calendar text-gray-500 text-sm"></i>
+                        <input type="date" value="2025-01-01" class="bg-transparent text-sm text-gray-600 focus:outline-none w-32">
+                        <span class="text-gray-500">to</span>
+                        <input type="date" value="2025-01-14" class="bg-transparent text-sm text-gray-600 focus:outline-none w-32">
+                    </div>
+                    <button class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-accent-500/50 hover:text-gray-900 transition"><i class="fas fa-file-pdf mr-2 text-red-400"></i>PDF</button>
+                    <button class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-xl text-sm text-gray-600 hover:border-accent-500/50 hover:text-gray-900 transition"><i class="fas fa-file-excel mr-2 text-green-400"></i>Excel</button>
+                    <button onclick="window.print()" class="px-4 py-2 bg-accent-500 hover:bg-accent-600 rounded-xl text-sm font-semibold text-gray-900 transition shadow-lg shadow-accent-500/20"><i class="fas fa-print mr-2"></i>Print</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-accent-500/10 flex items-center justify-center group-hover:bg-accent-500/20 transition"><i class="fas fa-dollar-sign text-accent-400"></i></div>
+                        <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-up mr-1"></i>18.2%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">$284.5K</h3>
+                    <p class="text-sm text-gray-500 mt-1">Total Revenue</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group" style="transition-delay:0.05s">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition"><i class="fas fa-chart-line text-green-400"></i></div>
+                        <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-up mr-1"></i>12.5%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">$142.8K</h3>
+                    <p class="text-sm text-gray-500 mt-1">Net Profit</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group" style="transition-delay:0.1s">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition"><i class="fas fa-calendar-check text-blue-400"></i></div>
+                        <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-up mr-1"></i>8.4%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">1,247</h3>
+                    <p class="text-sm text-gray-500 mt-1">Total Bookings</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group" style="transition-delay:0.15s">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition"><i class="fas fa-users text-purple-400"></i></div>
+                        <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-up mr-1"></i>15.3%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">3,892</h3>
+                    <p class="text-sm text-gray-500 mt-1">Active Customers</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group" style="transition-delay:0.2s">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition"><i class="fas fa-bullseye text-cyan-400"></i></div>
+                        <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-up mr-1"></i>3.2%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">24.8%</h3>
+                    <p class="text-sm text-gray-500 mt-1">Conversion Rate</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group" style="transition-delay:0.25s">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition"><i class="fas fa-undo text-red-400"></i></div>
+                        <span class="text-xs font-semibold text-red-400 bg-red-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-down mr-1"></i>1.8%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">3.8%</h3>
+                    <p class="text-sm text-gray-500 mt-1">Refund Rate</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group" style="transition-delay:0.3s">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500/20 transition"><i class="fas fa-receipt text-amber-400"></i></div>
+                        <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-up mr-1"></i>5.6%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">$2,281</h3>
+                    <p class="text-sm text-gray-500 mt-1">Avg Booking Value</p>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5 hover:border-accent-500/30 transition group" style="transition-delay:0.35s">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-11 h-11 rounded-xl bg-pink-500/10 flex items-center justify-center group-hover:bg-pink-500/20 transition"><i class="fas fa-smile text-pink-400"></i></div>
+                        <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded-lg"><i class="fas fa-arrow-up mr-1"></i>0.2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">4.7<span class="text-sm text-gray-500">/5</span></h3>
+                    <p class="text-sm text-gray-500 mt-1">Customer Satisfaction</p>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6 fade-up" style="transition-delay:0.15s">
+                <button onclick="switchTab('revenue')" class="tab-btn tab-active px-4 py-2 rounded-xl text-sm font-semibold border border-transparent transition" data-tab="revenue"><i class="fas fa-dollar-sign mr-2"></i>Revenue</button>
+                <button onclick="switchTab('bookings')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-gray-500 bg-gray-50 border border-gray-200 hover:text-gray-900 transition" data-tab="bookings"><i class="fas fa-calendar mr-2"></i>Bookings</button>
+                <button onclick="switchTab('customers')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-gray-500 bg-gray-50 border border-gray-200 hover:text-gray-900 transition" data-tab="customers"><i class="fas fa-users mr-2"></i>Customers</button>
+                <button onclick="switchTab('destinations')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-gray-500 bg-gray-50 border border-gray-200 hover:text-gray-900 transition" data-tab="destinations"><i class="fas fa-map-marker-alt mr-2"></i>Destinations</button>
+                <button onclick="switchTab('payments')" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold text-gray-500 bg-gray-50 border border-gray-200 hover:text-gray-900 transition" data-tab="payments"><i class="fas fa-credit-card mr-2"></i>Payments</button>
+            </div>
+
+            <!-- Revenue Tab -->
+            <div id="tab-revenue" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <div class="lg:col-span-2 fade-up glass rounded-2xl p-5" style="transition-delay:0.2s">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-area text-accent-400"></i>Monthly Revenue Trend</h3>
+                        <div class="h-72"><canvas id="revenueTrendChart"></canvas></div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5" style="transition-delay:0.22s">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-pie text-accent-400"></i>Revenue by Destination</h3>
+                        <div class="h-56"><canvas id="revenueDestChart"></canvas></div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex items-center justify-between text-xs"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-accent-500"></span><span class="text-gray-500">Santorini</span></div><span class="text-gray-900 font-semibold">$68.2K</span></div>
+                            <div class="flex items-center justify-between text-xs"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span><span class="text-gray-500">Kyoto</span></div><span class="text-gray-900 font-semibold">$52.8K</span></div>
+                            <div class="flex items-center justify-between text-xs"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-green-500"></span><span class="text-gray-500">Swiss Alps</span></div><span class="text-gray-900 font-semibold">$45.3K</span></div>
+                            <div class="flex items-center justify-between text-xs"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span><span class="text-gray-500">Bali</span></div><span class="text-gray-900 font-semibold">$38.9K</span></div>
+                            <div class="flex items-center justify-between text-xs"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span><span class="text-gray-500">Others</span></div><span class="text-gray-900 font-semibold">$79.3K</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="fade-up glass rounded-2xl p-5" style="transition-delay:0.24s">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-bar text-accent-400"></i>Yearly Comparison</h3>
+                        <div class="h-64"><canvas id="yearlyCompareChart"></canvas></div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5" style="transition-delay:0.26s">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-credit-card text-accent-400"></i>Revenue by Payment Method</h3>
+                        <div class="h-64"><canvas id="revenueMethodChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookings Tab -->
+            <div id="tab-bookings" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <div class="lg:col-span-2 fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-bar text-accent-400"></i>Daily Bookings</h3>
+                        <div class="h-72"><canvas id="dailyBookingsChart"></canvas></div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-doughnut text-accent-400"></i>Booking Status</h3>
+                        <div class="h-56"><canvas id="bookingStatusChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-line text-accent-400"></i>Monthly Bookings</h3>
+                        <div class="h-64"><canvas id="monthlyBookingsChart"></canvas></div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-calendar text-accent-400"></i>Peak Booking Days</h3>
+                        <div class="h-64"><canvas id="peakDaysChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Tab -->
+            <div id="tab-customers" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <div class="lg:col-span-2 fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-users text-accent-400"></i>Customer Growth</h3>
+                        <div class="h-72"><canvas id="customerGrowthChart"></canvas></div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-user-check text-accent-400"></i>New vs Returning</h3>
+                        <div class="h-56"><canvas id="customerTypeChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5">
+                    <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-trophy text-accent-400"></i>Top Spending Customers</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead><tr class="border-b border-gray-200">
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Customer</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Total Spent</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Bookings</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Avg Value</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Last Booking</th>
+                            </tr></thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition"><td class="px-4 py-3"><div class="flex items-center gap-3"><img src="https://ui-avatars.com/api/?name=Ahmed+Ali&background=e8952f&color=fff&rounded=true&size=32" class="w-8 h-8 rounded-lg"><span class="text-sm font-semibold text-gray-900">Ahmed Ali Mohammed</span></div></td><td class="px-4 py-3 text-sm font-bold text-accent-400">$48,750</td><td class="px-4 py-3 text-sm text-gray-600">12</td><td class="px-4 py-3 text-sm text-gray-600">$4,063</td><td class="px-4 py-3 text-sm text-gray-500">Jan 10, 2025</td></tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition"><td class="px-4 py-3"><div class="flex items-center gap-3"><img src="https://ui-avatars.com/api/?name=Sara+Mohammed&background=3b61a1&color=fff&rounded=true&size=32" class="w-8 h-8 rounded-lg"><span class="text-sm font-semibold text-gray-900">Sara Mohammed</span></div></td><td class="px-4 py-3 text-sm font-bold text-accent-400">$35,200</td><td class="px-4 py-3 text-sm text-gray-600">8</td><td class="px-4 py-3 text-sm text-gray-600">$4,400</td><td class="px-4 py-3 text-sm text-gray-500">Jan 9, 2025</td></tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition"><td class="px-4 py-3"><div class="flex items-center gap-3"><img src="https://ui-avatars.com/api/?name=Khalid+Said&background=10b981&color=fff&rounded=true&size=32" class="w-8 h-8 rounded-lg"><span class="text-sm font-semibold text-gray-900">Khalid bin Said</span></div></td><td class="px-4 py-3 text-sm font-bold text-accent-400">$29,800</td><td class="px-4 py-3 text-sm text-gray-600">6</td><td class="px-4 py-3 text-sm text-gray-600">$4,967</td><td class="px-4 py-3 text-sm text-gray-500">Jan 6, 2025</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destinations Tab -->
+            <div id="tab-destinations" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-bar text-accent-400"></i>Most Popular Destinations</h3>
+                        <div class="h-72"><canvas id="popularDestChart"></canvas></div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-dollar-sign text-accent-400"></i>Destination Revenue</h3>
+                        <div class="h-72"><canvas id="destRevenueChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="fade-up glass rounded-2xl p-5">
+                    <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-star text-accent-400"></i>Destination Ratings</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="p-4 bg-gray-50 rounded-xl"><div class="flex items-center gap-3 mb-2"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover"><div><p class="text-sm font-semibold text-gray-900">Santorini</p><p class="text-xs text-gray-500">64 reviews</p></div></div><div class="flex items-center gap-1"><i class="fas fa-star text-yellow-400 text-sm"></i><span class="text-sm font-bold text-gray-900">4.9</span><span class="text-xs text-gray-500 ml-2">Excellent</span></div></div>
+                        <div class="p-4 bg-gray-50 rounded-xl"><div class="flex items-center gap-3 mb-2"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover"><div><p class="text-sm font-semibold text-gray-900">Kyoto</p><p class="text-xs text-gray-500">52 reviews</p></div></div><div class="flex items-center gap-1"><i class="fas fa-star text-yellow-400 text-sm"></i><span class="text-sm font-bold text-gray-900">4.8</span><span class="text-xs text-gray-500 ml-2">Excellent</span></div></div>
+                        <div class="p-4 bg-gray-50 rounded-xl"><div class="flex items-center gap-3 mb-2"><img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover"><div><p class="text-sm font-semibold text-gray-900">Swiss Alps</p><p class="text-xs text-gray-500">48 reviews</p></div></div><div class="flex items-center gap-1"><i class="fas fa-star text-yellow-400 text-sm"></i><span class="text-sm font-bold text-gray-900">4.7</span><span class="text-xs text-gray-500 ml-2">Very Good</span></div></div>
+                        <div class="p-4 bg-gray-50 rounded-xl"><div class="flex items-center gap-3 mb-2"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover"><div><p class="text-sm font-semibold text-gray-900">Bali</p><p class="text-xs text-gray-500">41 reviews</p></div></div><div class="flex items-center gap-1"><i class="fas fa-star text-yellow-400 text-sm"></i><span class="text-sm font-bold text-gray-900">4.6</span><span class="text-xs text-gray-500 ml-2">Very Good</span></div></div>
+                        <div class="p-4 bg-gray-50 rounded-xl"><div class="flex items-center gap-3 mb-2"><img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover"><div><p class="text-sm font-semibold text-gray-900">Maldives</p><p class="text-xs text-gray-500">35 reviews</p></div></div><div class="flex items-center gap-1"><i class="fas fa-star text-yellow-400 text-sm"></i><span class="text-sm font-bold text-gray-900">4.5</span><span class="text-xs text-gray-500 ml-2">Very Good</span></div></div>
+                        <div class="p-4 bg-gray-50 rounded-xl"><div class="flex items-center gap-3 mb-2"><img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=60&h=60&fit=crop" class="w-10 h-10 rounded-lg object-cover"><div><p class="text-sm font-semibold text-gray-900">Iceland</p><p class="text-xs text-gray-500">28 reviews</p></div></div><div class="flex items-center gap-1"><i class="fas fa-star text-yellow-400 text-sm"></i><span class="text-sm font-bold text-gray-900">4.4</span><span class="text-xs text-gray-500 ml-2">Very Good</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payments Tab -->
+            <div id="tab-payments" class="tab-content hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <div class="lg:col-span-2 fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-area text-accent-400"></i>Payment Trends</h3>
+                        <div class="h-72"><canvas id="paymentTrendChart"></canvas></div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-chart-pie text-accent-400"></i>Payment Methods</h3>
+                        <div class="h-56"><canvas id="paymentMethodPieChart"></canvas></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-check-circle text-accent-400"></i>Payment Success Rate</h3>
+                        <div class="flex items-center justify-center py-8">
+                            <div class="relative">
+                                <svg class="progress-ring" width="160" height="160">
+                                    <circle cx="80" cy="80" r="70" fill="none" stroke="#1a2a4a" stroke-width="12"/>
+                                    <circle cx="80" cy="80" r="70" fill="none" stroke="#10b981" stroke-width="12" stroke-linecap="round" stroke-dasharray="440" stroke-dashoffset="40"/>
+                                </svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                    <span class="text-3xl font-bold text-gray-900">96.2%</span>
+                                    <span class="text-xs text-gray-500">Success Rate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="p-3 bg-gray-50 rounded-xl text-center"><p class="text-lg font-bold text-green-400">1,199</p><p class="text-xs text-gray-500">Successful</p></div>
+                            <div class="p-3 bg-gray-50 rounded-xl text-center"><p class="text-lg font-bold text-red-400">48</p><p class="text-xs text-gray-500">Failed</p></div>
+                        </div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-undo text-accent-400"></i>Refund Trends</h3>
+                        <div class="h-64"><canvas id="refundTrendChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Reports & Quick Reports -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Recent Reports -->
+                <div class="lg:col-span-2 fade-up glass rounded-2xl p-5" style="transition-delay:0.3s">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-gray-900 flex items-center gap-2"><i class="fas fa-file-alt text-accent-400"></i>Recent Reports</h3>
+                        <button class="text-xs text-accent-400 hover:text-accent-300 transition">View All</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead><tr class="border-b border-gray-200">
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Report</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Category</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">By</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Date</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Type</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Status</th>
+                                <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Actions</th>
+                            </tr></thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition"><td class="px-4 py-3 text-sm font-semibold text-gray-900">Monthly Sales Report</td><td class="px-4 py-3 text-xs text-gray-500">Sales</td><td class="px-4 py-3 text-xs text-gray-500">Admin</td><td class="px-4 py-3 text-xs text-gray-500">Jan 10, 2025</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/10 text-red-400">PDF</span></td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400">Ready</span></td><td class="px-4 py-3"><div class="flex items-center gap-1"><button class="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition"><i class="fas fa-eye text-[10px]"></i></button><button class="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 hover:bg-green-500/20 transition"><i class="fas fa-download text-[10px]"></i></button></div></td></tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition"><td class="px-4 py-3 text-sm font-semibold text-gray-900">Booking Summary Q4</td><td class="px-4 py-3 text-xs text-gray-500">Bookings</td><td class="px-4 py-3 text-xs text-gray-500">Sarah</td><td class="px-4 py-3 text-xs text-gray-500">Jan 8, 2025</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400">XLS</span></td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400">Ready</span></td><td class="px-4 py-3"><div class="flex items-center gap-1"><button class="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition"><i class="fas fa-eye text-[10px]"></i></button><button class="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 hover:bg-green-500/20 transition"><i class="fas fa-download text-[10px]"></i></button></div></td></tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition"><td class="px-4 py-3 text-sm font-semibold text-gray-900">Customer Analytics Jan</td><td class="px-4 py-3 text-xs text-gray-500">Customers</td><td class="px-4 py-3 text-xs text-gray-500">Admin</td><td class="px-4 py-3 text-xs text-gray-500">Jan 5, 2025</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/10 text-red-400">PDF</span></td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400">Ready</span></td><td class="px-4 py-3"><div class="flex items-center gap-1"><button class="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition"><i class="fas fa-eye text-[10px]"></i></button><button class="w-7 h-7 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 hover:bg-green-500/20 transition"><i class="fas fa-download text-[10px]"></i></button></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Reports -->
+                <div class="fade-up glass rounded-2xl p-5" style="transition-delay:0.32s">
+                    <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-bolt text-accent-400"></i>Quick Reports</h3>
+                    <div class="space-y-2">
+                        <button class="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition group">
+                            <div class="w-9 h-9 rounded-lg bg-accent-500/10 flex items-center justify-center group-hover:bg-accent-500/20 transition"><i class="fas fa-dollar-sign text-accent-400 text-sm"></i></div>
+                            <span>Sales Report</span>
+                            <i class="fas fa-chevron-right text-[10px] text-gray-500 ml-auto"></i>
+                        </button>
+                        <button class="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition group">
+                            <div class="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition"><i class="fas fa-calendar text-blue-400 text-sm"></i></div>
+                            <span>Booking Report</span>
+                            <i class="fas fa-chevron-right text-[10px] text-gray-500 ml-auto"></i>
+                        </button>
+                        <button class="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition group">
+                            <div class="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition"><i class="fas fa-users text-purple-400 text-sm"></i></div>
+                            <span>Customer Report</span>
+                            <i class="fas fa-chevron-right text-[10px] text-gray-500 ml-auto"></i>
+                        </button>
+                        <button class="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition group">
+                            <div class="w-9 h-9 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition"><i class="fas fa-credit-card text-green-400 text-sm"></i></div>
+                            <span>Payment Report</span>
+                            <i class="fas fa-chevron-right text-[10px] text-gray-500 ml-auto"></i>
+                        </button>
+                        <button class="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition group">
+                            <div class="w-9 h-9 rounded-lg bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition"><i class="fas fa-undo text-red-400 text-sm"></i></div>
+                            <span>Refund Report</span>
+                            <i class="fas fa-chevron-right text-[10px] text-gray-500 ml-auto"></i>
+                        </button>
+                        <button class="w-full flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition group">
+                            <div class="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition"><i class="fas fa-map-marker-alt text-cyan-400 text-sm"></i></div>
+                            <span>Destination Report</span>
+                            <i class="fas fa-chevron-right text-[10px] text-gray-500 ml-auto"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Performers & Sidebar Widgets -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Top Performers -->
+                <div class="lg:col-span-2 fade-up glass rounded-2xl p-5" style="transition-delay:0.34s">
+                    <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-trophy text-accent-400"></i>Top Performers</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-50 rounded-xl">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase mb-3"><i class="fas fa-map-marker-alt mr-1 text-accent-400"></i>Top Destinations</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-accent-400 w-4">1</span><span class="text-sm text-gray-900 flex-1">Santorini, Greece</span><span class="text-xs text-gray-500">$68.2K</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">2</span><span class="text-sm text-gray-900 flex-1">Kyoto, Japan</span><span class="text-xs text-gray-500">$52.8K</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">3</span><span class="text-sm text-gray-900 flex-1">Swiss Alps</span><span class="text-xs text-gray-500">$45.3K</span></div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase mb-3"><i class="fas fa-user-tie mr-1 text-accent-400"></i>Top Tour Guides</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-accent-400 w-4">1</span><span class="text-sm text-gray-900 flex-1">Sarah Johnson</span><span class="text-xs text-gray-500">4.9 ★</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">2</span><span class="text-sm text-gray-900 flex-1">Marco Rossi</span><span class="text-xs text-gray-500">4.8 ★</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">3</span><span class="text-sm text-gray-900 flex-1">Yuki Tanaka</span><span class="text-xs text-gray-500">4.7 ★</span></div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase mb-3"><i class="fas fa-users mr-1 text-accent-400"></i>Top Customers</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-accent-400 w-4">1</span><span class="text-sm text-gray-900 flex-1">Ahmed Ali</span><span class="text-xs text-gray-500">$48.7K</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">2</span><span class="text-sm text-gray-900 flex-1">Sara Mohammed</span><span class="text-xs text-gray-500">$35.2K</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">3</span><span class="text-sm text-gray-900 flex-1">Khalid Said</span><span class="text-xs text-gray-500">$29.8K</span></div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl">
+                            <h4 class="text-xs font-bold text-gray-500 uppercase mb-3"><i class="fas fa-gem mr-1 text-accent-400"></i>Highest Revenue Packages</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-accent-400 w-4">1</span><span class="text-sm text-gray-900 flex-1">Premium Honeymoon</span><span class="text-xs text-gray-500">$82.5K</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">2</span><span class="text-sm text-gray-900 flex-1">Luxury Explorer</span><span class="text-xs text-gray-500">$64.3K</span></div>
+                                <div class="flex items-center gap-2"><span class="text-xs font-bold text-gray-500 w-4">3</span><span class="text-sm text-gray-900 flex-1">Adventure Pack</span><span class="text-xs text-gray-500">$51.8K</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widgets -->
+                <div class="space-y-6">
+                    <div class="fade-up glass rounded-2xl p-5" style="transition-delay:0.36s">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-heartbeat text-accent-400"></i>Business Health</h3>
+                        <div class="flex items-center justify-center py-4">
+                            <div class="relative">
+                                <svg class="progress-ring" width="120" height="120">
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="#1a2a4a" stroke-width="10"/>
+                                    <circle cx="60" cy="60" r="50" fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="38"/>
+                                </svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                    <span class="text-2xl font-bold text-gray-900">88</span>
+                                    <span class="text-[10px] text-gray-500">Score</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-gray-500">Revenue Growth</span><span class="text-green-400 font-semibold">+18.2%</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Customer Retention</span><span class="text-green-400 font-semibold">78%</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Satisfaction</span><span class="text-green-400 font-semibold">4.7/5</span></div>
+                        </div>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5" style="transition-delay:0.38s">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-bullseye text-accent-400"></i>Revenue Goal</h3>
+                        <div class="mb-3">
+                            <div class="flex justify-between mb-1"><span class="text-xs text-gray-500">$284.5K / $350K</span><span class="text-xs font-semibold text-accent-400">81.3%</span></div>
+                            <div class="w-full h-3 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-accent-500 to-accent-400 rounded-full transition-all" style="width:81.3%"></div></div>
+                        </div>
+                        <p class="text-xs text-gray-500">$65.5K remaining to reach goal</p>
+                    </div>
+                    <div class="fade-up glass rounded-2xl p-5" style="transition-delay:0.4s">
+                        <h3 class="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-calendar-check text-accent-400"></i>Monthly Target</h3>
+                        <div class="mb-3">
+                            <div class="flex justify-between mb-1"><span class="text-xs text-gray-500">Bookings: 89 / 120</span><span class="text-xs font-semibold text-blue-400">74.2%</span></div>
+                            <div class="w-full h-3 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width:74.2%"></div></div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="flex justify-between mb-1"><span class="text-xs text-gray-500">Revenue: $42.8K / $50K</span><span class="text-xs font-semibold text-green-400">85.6%</span></div>
+                            <div class="w-full h-3 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style="width:85.6%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="text-xs text-gray-500">Customers: 156 / 200</span><span class="text-xs font-semibold text-purple-400">78%</span></div>
+                            <div class="w-full h-3 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style="width:78%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDarkMode() { const icon = document.getElementById('darkModeIcon'); icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun'); }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+        });
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => { el.classList.remove('tab-active'); el.classList.add('text-gray-500', 'bg-gray-50', 'border-gray-200'); });
+            document.getElementById('tab-' + tab).classList.remove('hidden');
+            const btn = document.querySelector(`[data-tab="${tab}"]`);
+            btn.classList.add('tab-active');
+            btn.classList.remove('text-gray-500', 'bg-gray-50', 'border-gray-200');
+        }
+
+        const chartDefaults = { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ labels:{ color:'#9ca3af', font:{size:11} }}}, scales:{ x:{ grid:{color:'rgba(45,78,143,0.15)'}, ticks:{color:'#6b7280',font:{size:10}}}, y:{ grid:{color:'rgba(45,78,143,0.15)'}, ticks:{color:'#6b7280',font:{size:10}}}}};
+
+        function initCharts() {
+            const months = ['Jul','Aug','Sep','Oct','Nov','Dec','Jan'];
+            new Chart(document.getElementById('revenueTrendChart'), { type:'line', data:{ labels:months, datasets:[{label:'Revenue',data:[42,48,45,52,58,55,62],borderColor:'#e8952f',backgroundColor:'rgba(232,149,47,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#e8952f'},{label:'Profit',data:[22,26,24,28,32,30,35],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#10b981'}]}, options:chartDefaults });
+            new Chart(document.getElementById('revenueDestChart'), { type:'doughnut', data:{ labels:['Santorini','Kyoto','Swiss Alps','Bali','Others'], datasets:[{data:[68.2,52.8,45.3,38.9,79.3],backgroundColor:['#e8952f','#3b61a1','#10b981','#8b5cf6','#06b6d4'],borderWidth:0}]}, options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:false}}} });
+            new Chart(document.getElementById('yearlyCompareChart'), { type:'bar', data:{ labels:months, datasets:[{label:'2024',data:[35,38,42,45,48,52,55],backgroundColor:'rgba(59,97,161,0.6)',borderRadius:6},{label:'2025',data:[42,48,45,52,58,55,62],backgroundColor:'rgba(232,149,47,0.6)',borderRadius:6}]}, options:chartDefaults });
+            new Chart(document.getElementById('revenueMethodChart'), { type:'bar', data:{ labels:['Credit Card','PayPal','Bank Transfer','Other'], datasets:[{data:[142,58,45,39.5],backgroundColor:['#3b61a1','#f59e0b','#10b981','#8b5cf6'],borderRadius:6}]}, options:{...chartDefaults,indexAxis:'y'} });
+            new Chart(document.getElementById('dailyBookingsChart'), { type:'bar', data:{ labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets:[{label:'Bookings',data:[18,22,15,28,35,42,38],backgroundColor:'rgba(232,149,47,0.6)',borderRadius:6}]}, options:chartDefaults });
+            new Chart(document.getElementById('bookingStatusChart'), { type:'doughnut', data:{ labels:['Confirmed','Pending','Cancelled','Completed'], datasets:[{data:[45,12,8,35],backgroundColor:['#10b981','#f59e0b','#ef4444','#3b61a1'],borderWidth:0}]}, options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#9ca3af',padding:10,font:{size:10}}}}} });
+            new Chart(document.getElementById('monthlyBookingsChart'), { type:'line', data:{ labels:months, datasets:[{label:'Bookings',data:[145,162,158,178,195,188,210],borderColor:'#3b61a1',backgroundColor:'rgba(59,97,161,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#3b61a1'}]}, options:chartDefaults });
+            new Chart(document.getElementById('peakDaysChart'), { type:'bar', data:{ labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets:[{label:'Avg Bookings',data:[12,15,10,18,24,32,28],backgroundColor:['#6b7280','#6b7280','#6b7280','#6b7280','#3b61a1','#e8952f','#e8952f'],borderRadius:6}]}, options:chartDefaults });
+            new Chart(document.getElementById('customerGrowthChart'), { type:'line', data:{ labels:months, datasets:[{label:'Total Customers',data:[2800,2950,3100,3280,3450,3620,3892],borderColor:'#8b5cf6',backgroundColor:'rgba(139,92,246,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#8b5cf6'}]}, options:chartDefaults });
+            new Chart(document.getElementById('customerTypeChart'), { type:'doughnut', data:{ labels:['New','Returning'], datasets:[{data:[62,38],backgroundColor:['#e8952f','#3b61a1'],borderWidth:0}]}, options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#9ca3af',font:{size:10}}}}} });
+            new Chart(document.getElementById('popularDestChart'), { type:'bar', data:{ labels:['Santorini','Kyoto','Swiss Alps','Bali','Maldives','Iceland'], datasets:[{label:'Bookings',data:[186,152,128,115,98,72],backgroundColor:['#e8952f','#3b61a1','#10b981','#8b5cf6','#06b6d4','#f59e0b'],borderRadius:6}]}, options:chartDefaults });
+            new Chart(document.getElementById('destRevenueChart'), { type:'line', data:{ labels:months, datasets:[{label:'Santorini',data:[8,10,9,12,14,12,15],borderColor:'#e8952f',tension:0.4,pointBackgroundColor:'#e8952f'},{label:'Kyoto',data:[6,7,8,9,10,9,11],borderColor:'#3b61a1',tension:0.4,pointBackgroundColor:'#3b61a1'},{label:'Swiss Alps',data:[5,6,7,8,9,8,10],borderColor:'#10b981',tension:0.4,pointBackgroundColor:'#10b981'}]}, options:chartDefaults });
+            new Chart(document.getElementById('paymentTrendChart'), { type:'line', data:{ labels:months, datasets:[{label:'Successful',data:[40,45,42,50,55,52,60],borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#10b981'},{label:'Failed',data:[2,3,2,1.5,2,1,1.5],borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#ef4444'}]}, options:chartDefaults });
+            new Chart(document.getElementById('paymentMethodPieChart'), { type:'doughnut', data:{ labels:['Credit Card','PayPal','Bank Transfer'], datasets:[{data:[58,24,18],backgroundColor:['#3b61a1','#f59e0b','#10b981'],borderWidth:0}]}, options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#9ca3af',font:{size:10}}}}} });
+            new Chart(document.getElementById('refundTrendChart'), { type:'bar', data:{ labels:months, datasets:[{label:'Refund Amount ($K)',data:[8,5,7,4,6,3,5],backgroundColor:'rgba(239,68,68,0.5)',borderRadius:6}]}, options:chartDefaults });
+        }
+    </script>
+    <script src="components.js"></script>
+</body>
+</html>

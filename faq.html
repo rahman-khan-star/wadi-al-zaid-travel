@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Wadi Al Zaid Tours & Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+
+<a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+          <div class="leading-tight">
+            <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours & Travel</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="index.html#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="blog.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Blog</a>
+          <a href="faq.html" class="px-4 py-2 text-sm font-medium text-accent transition-colors rounded-lg hover:bg-white/5">FAQ</a>
+          <a href="contact.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="login.html" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25"><span>Login</span></a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors"><i class="fas fa-bars text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors"><i class="fas fa-times text-lg"></i></button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="index.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="index.html#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="blog.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Blog</a>
+          <a href="faq.html" class="mobile-link px-4 py-3 text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">FAQ</a>
+          <a href="contact.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="login.html" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white"><span>Login</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-bg min-h-[50vh] flex items-center relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+      <div class="max-w-2xl">
+        <nav class="flex items-center gap-2 text-sm text-white/60 mb-6">
+          <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <span class="text-accent">FAQ</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">Frequently Asked <span class="text-accent">Questions</span></h1>
+        <p class="text-lg text-white/70 max-w-lg mb-8">Find quick answers to common questions about our services, bookings, and more.</p>
+        <div class="bg-white/95 backdrop-blur-xl rounded-2xl p-2 shadow-2xl max-w-2xl">
+          <div class="relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-navy/40"></i>
+            <input type="text" id="searchInput" placeholder="Search for answers..." class="w-full pl-12 pr-4 py-4 rounded-xl text-sm outline-none" oninput="filterFAQs()" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== QUICK STATS ========== -->
+  <section class="relative -mt-12 z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-3 gap-4">
+      <div class="bg-white rounded-2xl shadow-lg p-5 text-center fade-in">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3"><i class="fas fa-clock text-blue-500"></i></div>
+        <p class="text-2xl font-black text-navy">< 2 min</p>
+        <p class="text-xs text-navy/50">Avg Response Time</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-5 text-center fade-in">
+        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mx-auto mb-3"><i class="fas fa-smile text-green-500"></i></div>
+        <p class="text-2xl font-black text-navy">98%</p>
+        <p class="text-xs text-navy/50">Customer Satisfaction</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-5 text-center fade-in">
+        <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-3"><i class="fas fa-headset text-accent"></i></div>
+        <p class="text-2xl font-black text-navy">24/7</p>
+        <p class="text-xs text-navy/50">Support Available</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POPULAR QUESTIONS ========== -->
+  <main role="main" id="mainContent" class="py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 fade-in">
+        <h2 class="text-2xl sm:text-3xl font-black text-navy mb-3">Popular Questions</h2>
+        <p class="text-navy/50">The most frequently asked questions by our travelers</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        <div class="popular-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="openFAQ('general', 0)">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-suitcase text-accent"></i></div>
+          <h4 class="font-bold text-sm text-navy mb-2">How do I book a trip?</h4>
+          <p class="text-xs text-navy/50 line-clamp-2">Learn about our simple 3-step booking process.</p>
+        </div>
+        <div class="popular-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="openFAQ('payments', 1)">
+          <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-credit-card text-green-500"></i></div>
+          <h4 class="font-bold text-sm text-navy mb-2">What payment methods are accepted?</h4>
+          <p class="text-xs text-navy/50 line-clamp-2">We accept credit cards, PayPal, and bank transfers.</p>
+        </div>
+        <div class="popular-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="openFAQ('cancellation', 0)">
+          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-times-circle text-red-500"></i></div>
+          <h4 class="font-bold text-sm text-navy mb-2">Can I cancel my booking?</h4>
+          <p class="text-xs text-navy/50 line-clamp-2">Learn about our cancellation and refund policies.</p>
+        </div>
+        <div class="popular-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5 cursor-pointer" onclick="openFAQ('visa', 0)">
+          <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-3"><i class="fas fa-passport text-purple-500"></i></div>
+          <h4 class="font-bold text-sm text-navy mb-2">Do you provide visa assistance?</h4>
+          <p class="text-xs text-navy/50 line-clamp-2">Yes, we offer comprehensive visa support services.</p>
+        </div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap items-center gap-2 mb-8 fade-in">
+        <button onclick="filterCategory('general')" class="category-btn active px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="general">General</button>
+        <button onclick="filterCategory('tours')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="tours">Tour Packages</button>
+        <button onclick="filterCategory('booking')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="booking">Booking</button>
+        <button onclick="filterCategory('payments')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="payments">Payments</button>
+        <button onclick="filterCategory('visa')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="visa">Visa Services</button>
+        <button onclick="filterCategory('flights')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="flights">Flights</button>
+        <button onclick="filterCategory('hotels')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="hotels">Hotels</button>
+        <button onclick="filterCategory('cancellation')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60" data-cat="cancellation">Cancellations</button>
+      </div>
+
+      <!-- FAQ List -->
+      <div id="faqContainer" class="space-y-3 mb-16">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Still Need Help -->
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-3xl p-8 sm:p-12 fade-in">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl sm:text-3xl font-black text-white mb-3">Still Need Help?</h2>
+          <p class="text-white/60">Our support team is available 24/7 to assist you.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="support.html" class="help-card flex items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+            <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-comments text-white"></i></div>
+            <div><p class="font-bold text-white text-sm">Live Chat</p><p class="text-xs text-white/60">Chat with us</p></div>
+          </a>
+          <a href="https://wa.me/1234567890" target="_blank" class="help-card flex items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+            <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center shrink-0"><i class="fab fa-whatsapp text-white text-lg"></i></div>
+            <div><p class="font-bold text-white text-sm">WhatsApp</p><p class="text-xs text-white/60">+1 234 567 890</p></div>
+          </a>
+          <a href="mailto:support@wadialzaid.com" class="help-card flex items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+            <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-envelope text-white"></i></div>
+            <div><p class="font-bold text-white text-sm">Email Us</p><p class="text-xs text-white/60">support@wadialzaid.com</p></div>
+          </a>
+          <a href="tel:+1234567890" class="help-card flex items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+            <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center shrink-0"><i class="fas fa-phone-alt text-white"></i></div>
+            <div><p class="font-bold text-white text-sm">Call Us</p><p class="text-xs text-white/60">+1 234 567 890</p></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-16 fade-in">
+        <h3 class="text-xl font-black text-navy mb-3">Can't find your answer?</h3>
+        <p class="text-navy/50 mb-6">We're here to help. Reach out to our support team or create a support ticket.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="contact.html" class="btn-accent px-8 py-3.5 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25"><span><i class="fas fa-envelope mr-2"></i> Contact Us</span></a>
+          <a href="support.html" class="px-8 py-3.5 bg-white border border-gray-200 text-navy font-bold text-sm rounded-xl hover:bg-gray-50 transition-colors"><i class="fas fa-ticket-alt mr-2"></i> Create Support Ticket</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-navy-dark pt-16 pb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <a href="index.html" class="flex items-center gap-3 mb-5 group"><img src="logo.svg" alt="Wadi Al Zaid" class="w-10 h-10 transition-transform group-hover:scale-110" /><div class="leading-tight"><span class="text-lg font-extrabold text-white tracking-tight">Wadi Al Zaid</span><span class="block text-[9px] uppercase tracking-[3px] text-accent font-medium">Tours & Travel</span></div></a>
+          <p class="text-sm text-white/50 mb-5">Crafting unforgettable travel experiences since 2010.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div><h4 class="font-bold text-sm uppercase tracking-widest text-white/30 mb-5">Quick Links</h4><ul class="space-y-3"><li><a href="index.html" class="text-sm text-white/60 hover:text-accent transition-colors">Home</a></li><li><a href="index.html#destinations" class="text-sm text-white/60 hover:text-accent transition-colors">Destinations</a></li><li><a href="blog.html" class="text-sm text-white/60 hover:text-accent transition-colors">Blog</a></li><li><a href="contact.html" class="text-sm text-white/60 hover:text-accent transition-colors">Contact</a></li></ul></div>
+        <div><h4 class="font-bold text-sm uppercase tracking-widest text-white/30 mb-5">Support</h4><ul class="space-y-3"><li><a href="support.html" class="text-sm text-white/60 hover:text-accent transition-colors">Help Center</a></li><li><a href="faq.html" class="text-sm text-white/60 hover:text-accent transition-colors">FAQs</a></li><li><a href="#" class="text-sm text-white/60 hover:text-accent transition-colors">Privacy Policy</a></li></ul></div>
+        <div><h4 class="font-bold text-sm uppercase tracking-widest text-white/30 mb-5">Contact</h4><ul class="space-y-4"><li class="flex items-start gap-3"><i class="fas fa-phone text-accent mt-0.5"></i><p class="text-sm text-white/60">+1 (234) 567-890</p></li><li class="flex items-start gap-3"><i class="fas fa-envelope text-accent mt-0.5"></i><p class="text-sm text-white/60">info@wadialzaid.com</p></li><li class="flex items-start gap-3"><i class="fas fa-map-marker-alt text-accent mt-0.5"></i><p class="text-sm text-white/60">123 Travel Avenue, Dubai, UAE</p></li></ul></div>
+      </div>
+      <div class="border-t border-white/5 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-sm text-white/30">&copy; 2026 Wadi Al Zaid Tours & Travel. All rights reserved.</p>
+        <div class="flex gap-5"><a href="#" class="text-xs text-white/30 hover:text-accent transition-colors">Privacy Policy</a><a href="#" class="text-xs text-white/30 hover:text-accent transition-colors">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    const faqs = [
+      // General
+      { cat: 'general', q: 'What is Wadi Al Zaid Tours & Travel?', a: 'We are a premium travel agency based in Dubai, offering curated tour packages, flight bookings, hotel reservations, visa assistance, and more since 2010.' },
+      { cat: 'general', q: 'How long has the company been operating?', a: 'Wadi Al Zaid Tours & Travel has been operating since 2010, with over 15 years of experience in the travel industry.' },
+      { cat: 'general', q: 'What destinations do you cover?', a: 'We cover over 55 countries across 6 continents, including popular destinations like Maldives, Paris, Bali, Dubai, Santorini, Tokyo, and many more.' },
+      { cat: 'general', q: 'Do you offer customized tour packages?', a: 'Yes! We specialize in creating personalized itineraries tailored to your preferences, budget, and travel dates. Contact our team for a custom quote.' },
+      { cat: 'general', q: 'Are your tour packages inclusive of flights?', a: 'Most of our packages include flights, but this varies by package. Check the package details or contact us for specific inclusions.' },
+      // Tours
+      { cat: 'tours', q: 'What types of tour packages do you offer?', a: 'We offer International Tours, Domestic Tours, Honeymoon Packages, Family Tours, Adventure Tours, Luxury Tours, Group Tours, and Umrah Packages.' },
+      { cat: 'tours', q: 'Can I modify my tour package after booking?', a: 'Yes, modifications can be made subject to availability and may incur additional charges. Please contact us at least 7 days before your travel date.' },
+      { cat: 'tours', q: 'Are group discounts available?', a: 'Yes, we offer attractive discounts for group bookings of 5 or more travelers. Contact us for a personalized group quote.' },
+      { cat: 'tours', q: 'Do you offer honeymoon packages?', a: 'Absolutely! We have specially curated honeymoon packages for romantic destinations like Maldives, Santorini, Bali, and Paris.' },
+      { cat: 'tours', q: 'What is included in your tour packages?', a: 'Packages typically include accommodation, flights, airport transfers, sightseeing, and meals as specified. Check individual package details for exact inclusions.' },
+      // Booking
+      { cat: 'booking', q: 'How do I book a trip?', a: 'You can book directly through our website, call our support team, or visit our office. Select your destination, choose dates, and complete the booking form.' },
+      { cat: 'booking', q: 'Can I book over the phone?', a: 'Yes, you can call our support team at +1 (234) 567-890 to book your trip over the phone with the assistance of our travel experts.' },
+      { cat: 'booking', q: 'How far in advance should I book?', a: 'We recommend booking at least 4-6 weeks in advance for domestic trips and 8-12 weeks for international trips to get the best rates and availability.' },
+      { cat: 'booking', q: 'Can I add extra services to my booking?', a: 'Yes, you can add airport transfers, spa treatments, excursions, special meals, and other services through your dashboard or by contacting support.' },
+      { cat: 'booking', q: 'Do I receive a confirmation after booking?', a: 'Yes, you will receive an instant booking confirmation via email with your booking details, itinerary, and payment receipt.' },
+      // Payments
+      { cat: 'payments', q: 'What payment methods do you accept?', a: 'We accept Visa, Mastercard, American Express, PayPal, bank transfers, and cash on arrival for select destinations.' },
+      { cat: 'payments', q: 'Is my payment secure?', a: 'Absolutely. We use 256-bit SSL encryption and PCI-compliant payment processing to ensure your transactions are completely secure.' },
+      { cat: 'payments', q: 'Can I pay in installments?', a: 'Yes, we offer flexible payment plans for bookings over $1,000. You can split your payment into 3-4 easy installments.' },
+      { cat: 'payments', q: 'Do you offer early bird discounts?', a: 'Yes, we offer early bird discounts of up to 15% for bookings made 3+ months in advance on select packages.' },
+      { cat: 'payments', q: 'Are there any hidden fees?', a: 'No, we believe in transparent pricing. All costs are clearly mentioned in the package details. No hidden charges.' },
+      // Visa
+      { cat: 'visa', q: 'Do you provide visa assistance?', a: 'Yes, we provide comprehensive visa assistance for most destinations, including document preparation, application submission, and tracking.' },
+      { cat: 'visa', q: 'How long does visa processing take?', a: 'Visa processing times vary by destination, typically ranging from 3-15 business days. We recommend applying at least 4 weeks before travel.' },
+      { cat: 'visa', q: 'What documents are required for visa application?', a: 'Common documents include passport, photos, bank statements, employment letter, and travel itinerary. Specific requirements vary by destination.' },
+      { cat: 'visa', q: 'Can you guarantee visa approval?', a: 'While we have a high success rate, final approval rests with the embassy/consulate. We ensure your application is complete and meets all requirements.' },
+      { cat: 'visa', q: 'What is the visa success rate?', a: 'Our visa success rate is over 95% due to our thorough document review and experienced visa team.' },
+      // Flights
+      { cat: 'flights', q: 'Can you book international flights?', a: 'Yes, we book flights to destinations worldwide with major airlines. We offer competitive fares and flexible booking options.' },
+      { cat: 'flights', q: 'Can I choose my preferred airline?', a: 'Yes, you can specify your airline preference during booking and we will do our best to accommodate it.' },
+      { cat: 'flights', q: 'What is the baggage allowance?', a: 'Baggage allowance varies by airline and ticket class. We provide this information during booking and in your travel documents.' },
+      { cat: 'flights', q: 'Can I request seat selection?', a: 'Yes, seat selection is available for most airlines. You can request specific seats during booking or through your dashboard.' },
+      { cat: 'flights', q: 'Do you offer flight + hotel combos?', a: 'Yes, our package deals often include both flights and hotels at discounted rates compared to booking separately.' },
+      // Hotels
+      { cat: 'hotels', q: 'What types of hotels do you work with?', a: 'We partner with 3-star to 5-star luxury hotels and resorts worldwide, carefully selected for quality, location, and service.' },
+      { cat: 'hotels', q: 'Can I request a specific room type?', a: 'Yes, you can request room types like single, double, suite, or connecting rooms. Subject to availability at the time of booking.' },
+      { cat: 'hotels', q: 'Is breakfast included in hotel stays?', a: 'This depends on the package. Many of our packages include breakfast. Check package details for meal inclusions.' },
+      { cat: 'hotels', q: 'Can I get early check-in or late check-out?', a: 'Early check-in and late check-out are subject to hotel availability. We can request this on your behalf, though it may incur extra charges.' },
+      { cat: 'hotels', q: 'Do you offer all-inclusive resort packages?', a: 'Yes, we offer all-inclusive packages at select resorts in destinations like Maldives, Bali, and Caribbean.' },
+      // Cancellation
+      { cat: 'cancellation', q: 'Can I cancel my booking?', a: 'Yes, you can cancel your booking through your dashboard or by contacting support. Cancellation charges depend on timing and package terms.' },
+      { cat: 'cancellation', q: 'What is the cancellation policy?', a: 'Cancellations 30+ days before travel: full refund minus admin fee. 15-29 days: 50% refund. Less than 15 days: no refund. Terms may vary by package.' },
+      { cat: 'cancellation', q: 'How long does a refund take?', a: 'Refunds are processed within 5-7 business days to the original payment method. Credit card refunds may take an additional 3-5 days to appear.' },
+      { cat: 'cancellation', q: 'Can I reschedule instead of cancelling?', a: 'Yes, rescheduling is often possible with minimal fees. Contact us to discuss your options based on your specific booking.' },
+      { cat: 'cancellation', q: 'Do you offer travel insurance?', a: 'Yes, we strongly recommend travel insurance which covers trip cancellation, medical emergencies, lost luggage, and flight delays.' },
+    ];
+
+    let currentCategory = 'general';
+
+    function renderFAQs() {
+      const container = document.getElementById('faqContainer');
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+      const filtered = faqs.filter(faq => {
+        const matchesCategory = currentCategory === 'all' || faq.cat === currentCategory;
+        const matchesSearch = faq.q.toLowerCase().includes(searchTerm) || faq.a.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+      });
+
+      container.innerHTML = filtered.map((faq, i) => `
+        <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden fade-in" data-index="${i}">
+          <button onclick="toggleFAQ(this)" class="faq-question w-full flex items-center justify-between p-5 text-left">
+            <span class="font-bold text-sm text-navy pr-4">${faq.q}</span>
+            <i class="fas fa-chevron-down faq-icon text-navy/40 text-xs shrink-0"></i>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-sm text-navy/60 leading-relaxed">${faq.a}</p>
+          </div>
+        </div>
+      `).join('');
+
+      setTimeout(() => document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible')), 50);
+    }
+
+    function toggleFAQ(btn) {
+      const item = btn.closest('.faq-item');
+      const wasActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
+    }
+
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.cat === cat) btn.classList.add('active');
+      });
+      renderFAQs();
+    }
+
+    function filterFAQs() { renderFAQs(); }
+
+    function openFAQ(cat, index) {
+      currentCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.cat === cat) btn.classList.add('active');
+      });
+      renderFAQs();
+      setTimeout(() => {
+        const items = document.querySelectorAll('.faq-item');
+        if (items[index]) {
+          items[index].classList.add('active');
+          items[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
+
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('nav-scrolled', window.scrollY > 50));
+
+    // Mobile Menu
+    document.getElementById('menuBtn').addEventListener('click', () => { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('menuOverlay').classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+    document.getElementById('closeMenu').addEventListener('click', () => { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuOverlay').classList.add('hidden'); document.body.style.overflow = ''; });
+    document.getElementById('menuOverlay').addEventListener('click', () => { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuOverlay').classList.add('hidden'); document.body.style.overflow = ''; });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuOverlay').classList.add('hidden'); document.body.style.overflow = ''; }));
+
+    // Init
+    renderFAQs();
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

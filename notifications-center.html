@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications Center - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <div class="w-9 h-9 rounded-lg bg-accent-500 flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-mountain text-white text-sm"></i>
+        </div>
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-gray-900 tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent-500 font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav class="space-y-1" role="navigation" aria-label="Main navigation">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent-100 text-accent-600 text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Settings</span></a>
+        <hr class="my-3 border-gray-100">
+        <a href="admin-profile.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="notifications-center.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600" aria-current="page"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">12</span></a>
+        <a href="index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div id="mainContent" class="lg:ml-64 transition-all duration-300" role="main">
+    <!-- Top Navbar -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="text-sm text-gray-400">
+            <span class="cursor-pointer hover:text-accent-500 transition-colors" onclick="location.href='admin.html'">Dashboard</span>
+            <i class="fas fa-chevron-right mx-2 text-[10px]"></i>
+            <span class="text-gray-900 font-semibold">Notifications Center</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="markAllRead()" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-accent-500/25">
+            <i class="fas fa-check-double text-xs"></i> Mark All Read
+          </button>
+          <button onclick="openSettings()" class="hidden sm:flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-medium transition-all border border-gray-200">
+            <i class="fas fa-cog text-xs"></i> Settings
+          </button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Admin" class="w-9 h-9 rounded-xl object-cover">
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold leading-tight">Admin User</p>
+              <p class="text-[10px] text-gray-400">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
+
+      <!-- Dashboard Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 fade-up">
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center"><i class="fas fa-bell text-blue-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">156</p><p class="text-xs text-gray-500">Total</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><i class="fas fa-envelope-open text-orange-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">12</p><p class="text-xs text-gray-500">Unread</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center"><i class="fas fa-exclamation-triangle text-red-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">5</p><p class="text-xs text-gray-500">High Priority</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center"><i class="fas fa-shield-alt text-purple-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">3</p><p class="text-xs text-gray-500">System Alerts</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"><i class="fas fa-envelope text-green-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">8</p><p class="text-xs text-gray-500">Messages</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center"><i class="fas fa-bullhorn text-teal-600"></i></div>
+            <div><p class="text-2xl font-bold text-gray-900">4</p><p class="text-xs text-gray-500">Announcements</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 fade-up">
+        <button onclick="filterByCategory('')" class="category-btn px-4 py-2 rounded-xl text-sm font-semibold bg-accent-500 text-white whitespace-nowrap transition-all" data-cat="all">
+          <i class="fas fa-layer-group mr-1.5"></i> All
+        </button>
+        <button onclick="filterByCategory('system')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="system">
+          <i class="fas fa-cog mr-1.5"></i> System
+        </button>
+        <button onclick="filterByCategory('bookings')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="bookings">
+          <i class="fas fa-suitcase mr-1.5"></i> Bookings
+        </button>
+        <button onclick="filterByCategory('payments')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="payments">
+          <i class="fas fa-credit-card mr-1.5"></i> Payments
+        </button>
+        <button onclick="filterByCategory('customers')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="customers">
+          <i class="fas fa-users mr-1.5"></i> Customers
+        </button>
+        <button onclick="filterByCategory('reviews')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="reviews">
+          <i class="fas fa-star mr-1.5"></i> Reviews
+        </button>
+        <button onclick="filterByCategory('messages')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="messages">
+          <i class="fas fa-envelope mr-1.5"></i> Messages
+        </button>
+        <button onclick="filterByCategory('marketing')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="marketing">
+          <i class="fas fa-bullhorn mr-1.5"></i> Marketing
+        </button>
+        <button onclick="filterByCategory('security')" class="category-btn px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-600 hover:border-accent-300 hover:text-accent-600 whitespace-nowrap transition-all" data-cat="security">
+          <i class="fas fa-shield-alt mr-1.5"></i> Security
+        </button>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 fade-up">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div class="relative lg:col-span-2">
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+            <input type="text" id="searchInput" placeholder="Search notifications..." oninput="filterNotifications()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+          </div>
+          <select id="filterPriority" onchange="filterNotifications()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <option value="">All Priority</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="critical">Critical</option>
+          </select>
+          <select id="filterRead" onchange="filterNotifications()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <option value="">All Status</option>
+            <option value="unread">Unread</option>
+            <option value="read">Read</option>
+          </select>
+          <select id="filterDate" onchange="filterNotifications()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
+            <option value="">All Time</option>
+            <option value="today">Today</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bulk Actions -->
+      <div id="bulkBar" class="hidden bg-accent-50 border border-accent-200 rounded-xl p-3 flex items-center justify-between fade-up">
+        <span class="text-sm font-medium text-accent-600"><span id="selectedCount">0</span> selected</span>
+        <div class="flex items-center gap-2">
+          <button onclick="bulkMarkRead()" class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs font-semibold transition-all">Mark Read</button>
+          <button onclick="bulkArchive()" class="px-3 py-1.5 bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-xs font-semibold transition-all">Archive</button>
+          <button onclick="bulkDelete()" class="px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg text-xs font-semibold transition-all">Delete</button>
+          <button onclick="clearSelection()" class="px-3 py-1.5 bg-white hover:bg-gray-100 text-gray-700 rounded-lg text-xs font-semibold transition-all border border-gray-200">Cancel</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Notifications List -->
+        <div class="lg:col-span-2 space-y-3 fade-up">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-bold text-gray-900">Notifications</h2>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="selectAll" onchange="toggleSelectAll()" class="rounded border-gray-300 text-accent-500 focus:ring-accent-500">
+              <span class="text-xs text-gray-500">Select All</span>
+            </div>
+          </div>
+          
+          <div id="notificationsList" class="space-y-2">
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex items-center justify-between pt-4">
+            <p id="tableInfo" class="text-xs text-gray-500"></p>
+            <div id="pagination" class="flex items-center gap-1"></div>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="space-y-6">
+          <!-- Recent Activity -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5 fade-up">
+            <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-history text-accent-500 mr-2"></i>Recent Activity</h3>
+            <div class="space-y-3" id="activityFeed">
+            </div>
+          </div>
+
+          <!-- Quick Settings -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-5 fade-up">
+            <h3 class="text-sm font-bold text-gray-900 mb-4"><i class="fas fa-sliders-h text-accent-500 mr-2"></i>Quick Settings</h3>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-envelope text-gray-400 text-sm w-5"></i>
+                  <span class="text-sm text-gray-700">Email Notifications</span>
+                </div>
+                <div class="toggle-switch active w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')">
+                  <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-mobile-alt text-gray-400 text-sm w-5"></i>
+                  <span class="text-sm text-gray-700">Push Notifications</span>
+                </div>
+                <div class="toggle-switch active w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')">
+                  <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-sms text-gray-400 text-sm w-5"></i>
+                  <span class="text-sm text-gray-700">SMS Notifications</span>
+                </div>
+                <div class="toggle-switch w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')">
+                  <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-desktop text-gray-400 text-sm w-5"></i>
+                  <span class="text-sm text-gray-700">Desktop Alerts</span>
+                </div>
+                <div class="toggle-switch w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')">
+                  <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Notification Details Drawer -->
+  <div id="detailDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[450px] bg-white shadow-2xl z-50 drawer overflow-y-auto">
+    <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+      <h2 class="text-lg font-bold text-gray-900">Notification Details</h2>
+      <button onclick="closeDrawer()" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="p-6" id="drawerContent">
+    </div>
+  </div>
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="closeDrawer()"></div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeModal('settingsModal')"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl border border-gray-200 max-h-[80vh] overflow-y-auto">
+      <div class="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white">
+        <h3 class="text-lg font-bold text-gray-900">Notification Settings</h3>
+        <button onclick="closeModal('settingsModal')" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="p-6 space-y-6">
+        <!-- Email Settings -->
+        <div>
+          <h4 class="text-sm font-bold text-gray-900 mb-3"><i class="fas fa-envelope text-accent-500 mr-2"></i>Email Notifications</h4>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <span class="text-sm text-gray-700">Booking confirmations</span>
+              <div class="toggle-switch active w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')"><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div></div>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <span class="text-sm text-gray-700">Payment receipts</span>
+              <div class="toggle-switch active w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')"><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div></div>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <span class="text-sm text-gray-700">New customer registrations</span>
+              <div class="toggle-switch w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')"><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div></div>
+            </div>
+          </div>
+        </div>
+        <!-- SMS Settings -->
+        <div>
+          <h4 class="text-sm font-bold text-gray-900 mb-3"><i class="fas fa-sms text-accent-500 mr-2"></i>SMS Notifications</h4>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <span class="text-sm text-gray-700">Critical alerts</span>
+              <div class="toggle-switch active w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')"><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div></div>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <span class="text-sm text-gray-700">Security alerts</span>
+              <div class="toggle-switch active w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')"><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Push Settings -->
+        <div>
+          <h4 class="text-sm font-bold text-gray-900 mb-3"><i class="fas fa-bell text-accent-500 mr-2"></i>Push Notifications</h4>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <span class="text-sm text-gray-700">All notifications</span>
+              <div class="toggle-switch active w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')"><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div></div>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <span class="text-sm text-gray-700">Marketing updates</span>
+              <div class="toggle-switch w-10 h-5 bg-gray-300 rounded-full relative cursor-pointer" onclick="this.classList.toggle('active')"><div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-end gap-3 p-6 border-t border-gray-200">
+        <button onclick="closeModal('settingsModal')" class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+        <button onclick="closeModal('settingsModal');showToast('Settings saved','success')" class="px-4 py-2.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-x-full transition-transform duration-300">
+    <div class="flex items-center gap-3 px-5 py-3 rounded-xl shadow-2xl bg-white border border-gray-200">
+      <i id="toastIcon" class="fas fa-check-circle text-green-500 text-lg"></i>
+      <span id="toastMsg" class="text-sm font-medium text-gray-800"></span>
+    </div>
+  </div>
+
+  <script>
+    // Data
+    const notifications = [
+      { id: 1, title: 'New Booking Received', desc: 'Ahmed Ali booked "Santorini Explorer" package for 2 adults. Total: $4,500', category: 'bookings', priority: 'high', read: false, time: '5 min ago', icon: 'fa-suitcase', color: 'blue', user: 'Ahmed Ali', ref: 'BK-2024-1234' },
+      { id: 2, title: 'Payment Received', desc: 'Payment of $2,800 confirmed for booking #BK-2024-1230 via credit card', category: 'payments', priority: 'medium', read: false, time: '15 min ago', icon: 'fa-credit-card', color: 'green', user: 'Sara Mohammed', ref: 'PAY-2024-5678' },
+      { id: 3, title: 'New Customer Registration', desc: 'John Smith registered as a new customer. Email: john@email.com', category: 'customers', priority: 'low', read: false, time: '30 min ago', icon: 'fa-user-plus', color: 'purple', user: 'John Smith', ref: 'CUS-2024-890' },
+      { id: 4, title: 'New Review Submitted', desc: 'Maria Garcia left a 5-star review for "Kyoto Adventure" package', category: 'reviews', priority: 'medium', read: false, time: '1 hour ago', icon: 'fa-star', color: 'yellow', user: 'Maria Garcia', ref: 'REV-2024-456' },
+      { id: 5, title: 'System Update Complete', desc: 'System maintenance completed successfully. All services are operational.', category: 'system', priority: 'low', read: true, time: '2 hours ago', icon: 'fa-cog', color: 'gray', user: 'System', ref: 'SYS-2024-001' },
+      { id: 6, title: 'Critical: Security Alert', desc: 'Multiple failed login attempts detected from IP 192.168.1.105', category: 'security', priority: 'critical', read: false, time: '2 hours ago', icon: 'fa-shield-alt', color: 'red', user: 'System', ref: 'SEC-2024-001' },
+      { id: 7, title: 'New Contact Message', desc: 'Emily Chen sent an inquiry about group tour packages for 20 people', category: 'messages', priority: 'medium', read: false, time: '3 hours ago', icon: 'fa-envelope', color: 'teal', user: 'Emily Chen', ref: 'MSG-2024-789' },
+      { id: 8, title: 'Refund Request', desc: 'David Wilson requested a refund of $1,200 for cancelled booking #BK-2024-1220', category: 'payments', priority: 'high', read: false, time: '4 hours ago', icon: 'fa-undo', color: 'orange', user: 'David Wilson', ref: 'REF-2024-123' },
+      { id: 9, title: 'Marketing Campaign Scheduled', desc: '"Summer Sale 2024" campaign scheduled for launch on Jan 20, 2024', category: 'marketing', priority: 'low', read: true, time: '5 hours ago', icon: 'fa-bullhorn', color: 'pink', user: 'Marketing Team', ref: 'MKT-2024-045' },
+      { id: 10, title: 'Booking Cancellation', desc: 'Fatima Ahmed cancelled booking #BK-2024-1215. Refund of $3,200 pending.', category: 'bookings', priority: 'high', read: false, time: '6 hours ago', icon: 'fa-times-circle', color: 'red', user: 'Fatima Ahmed', ref: 'BK-2024-1215' },
+      { id: 11, title: 'New Team Member', desc: 'Omar Al-Harbi has been added to the Operations team', category: 'system', priority: 'low', read: true, time: 'Yesterday', icon: 'fa-user-plus', color: 'blue', user: 'HR System', ref: 'HR-2024-089' },
+      { id: 12, title: 'Low Stock Alert', desc: 'Only 3 spots left for "Desert Safari Premium" package in February', category: 'bookings', priority: 'medium', read: true, time: 'Yesterday', icon: 'fa-exclamation-circle', color: 'yellow', user: 'System', ref: 'INV-2024-234' },
+      { id: 13, title: 'Monthly Report Ready', desc: 'December 2024 analytics report is now available for download', category: 'system', priority: 'low', read: true, time: '2 days ago', icon: 'fa-chart-bar', color: 'indigo', user: 'System', ref: 'RPT-2024-12' },
+      { id: 14, title: 'Customer Complaint', desc: 'Michael Brown reported an issue with hotel accommodation quality', category: 'customers', priority: 'high', read: false, time: '2 days ago', icon: 'fa-exclamation-triangle', color: 'red', user: 'Michael Brown', ref: 'CMP-2024-067' },
+      { id: 15, title: 'Blog Post Published', desc: '"Top 10 Travel Destinations for 2025" has been published successfully', category: 'marketing', priority: 'low', read: true, time: '3 days ago', icon: 'fa-blog', color: 'teal', user: 'Content Team', ref: 'BLOG-2024-089' }
+    ];
+
+    const activities = [
+      { icon: 'fa-suitcase', color: 'blue', title: 'New booking created', time: '5 min ago' },
+      { icon: 'fa-credit-card', color: 'green', title: 'Payment processed', time: '15 min ago' },
+      { icon: 'fa-user-plus', color: 'purple', title: 'New customer registered', time: '30 min ago' },
+      { icon: 'fa-star', color: 'yellow', title: 'Review submitted', time: '1 hour ago' },
+      { icon: 'fa-shield-alt', color: 'red', title: 'Security alert triggered', time: '2 hours ago' },
+      { icon: 'fa-cog', color: 'gray', title: 'System update completed', time: '3 hours ago' }
+    ];
+
+    let currentPage = 1;
+    const perPage = 6;
+    let selectedIds = new Set();
+    let currentCategory = '';
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNotifications();
+      renderActivity();
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+    });
+
+    // Toast
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const m = document.getElementById('toastMsg');
+      m.textContent = msg;
+      icon.className = type === 'success' ? 'fas fa-check-circle text-green-500 text-lg' : type === 'error' ? 'fas fa-exclamation-circle text-red-500 text-lg' : 'fas fa-info-circle text-blue-500 text-lg';
+      t.classList.remove('translate-x-full');
+      setTimeout(() => t.classList.add('translate-x-full'), 3000);
+    }
+
+    // Modal
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.getElementById(id).classList.add('flex');
+      document.body.classList.add('overflow-hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.getElementById(id).classList.remove('flex');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Settings
+    function openSettings() { openModal('settingsModal'); }
+
+    // Drawer
+    function openDrawer(notif) {
+      document.getElementById('drawerContent').innerHTML = `
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-${notif.color}-100 flex items-center justify-center flex-shrink-0">
+              <i class="fas ${notif.icon} text-${notif.color}-600"></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-gray-900">${notif.title}</h3>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="px-2 py-0.5 ${getPriorityClass(notif.priority)} rounded text-xs font-semibold">${notif.priority}</span>
+                <span class="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs font-medium">${notif.category}</span>
+                <span class="text-xs text-gray-500">${notif.time}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 rounded-xl p-4">
+            <p class="text-sm text-gray-700 leading-relaxed">${notif.desc}</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Related User</p>
+              <p class="text-sm font-semibold text-gray-900">${notif.user}</p>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl">
+              <p class="text-xs text-gray-500 mb-1">Reference</p>
+              <p class="text-sm font-semibold text-gray-900">${notif.ref}</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold text-gray-900 mb-3">Timeline</h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center"><i class="fas fa-check text-green-600 text-xs"></i></div>
+                <div class="flex-1">
+                  <p class="text-sm font-medium text-gray-900">Notification Created</p>
+                  <p class="text-xs text-gray-500">${notif.time}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center"><i class="fas fa-eye text-blue-600 text-xs"></i></div>
+                <div class="flex-1">
+                  <p class="text-sm font-medium text-gray-900">Viewed by Admin</p>
+                  <p class="text-xs text-gray-500">Just now</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold text-gray-900 mb-3">Attachments</h4>
+            <div class="p-3 bg-gray-50 rounded-xl flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center"><i class="fas fa-file-pdf text-red-500"></i></div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">booking-details.pdf</p>
+                <p class="text-xs text-gray-500">2.4 MB</p>
+              </div>
+              <button class="text-accent-500 hover:text-accent-600"><i class="fas fa-download"></i></button>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button onclick="markAsRead(${notif.id})" class="flex-1 px-4 py-2.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl text-sm font-semibold transition-all"><i class="fas fa-check mr-2"></i>Mark Read</button>
+            <button onclick="archiveNotif(${notif.id})" class="flex-1 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition-all"><i class="fas fa-archive mr-2"></i>Archive</button>
+            <button onclick="deleteNotif(${notif.id})" class="px-4 py-2.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-sm font-semibold transition-all"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+      `;
+      document.getElementById('detailDrawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.remove('hidden');
+    }
+
+    function closeDrawer() {
+      document.getElementById('detailDrawer').classList.remove('open');
+      document.getElementById('drawerOverlay').classList.add('hidden');
+    }
+
+    // Notifications List
+    function renderNotifications() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const priority = document.getElementById('filterPriority').value;
+      const read = document.getElementById('filterRead').value;
+      const date = document.getElementById('filterDate').value;
+      
+      let list = [...notifications];
+      if (search) list = list.filter(n => n.title.toLowerCase().includes(search) || n.desc.toLowerCase().includes(search));
+      if (currentCategory) list = list.filter(n => n.category === currentCategory);
+      if (priority) list = list.filter(n => n.priority === priority);
+      if (read === 'unread') list = list.filter(n => !n.read);
+      if (read === 'read') list = list.filter(n => n.read);
+
+      const total = list.length;
+      const totalPages = Math.ceil(total / perPage);
+      if (currentPage > totalPages) currentPage = 1;
+      const start = (currentPage - 1) * perPage;
+      const pageList = list.slice(start, start + perPage);
+
+      document.getElementById('notificationsList').innerHTML = pageList.map(n => `
+        <div class="notification-item p-4 bg-white rounded-xl border border-gray-200 shadow-sm cursor-pointer ${!n.read ? 'unread' : ''}" onclick="openDrawer(notifications.find(x=>x.id===${n.id}))">
+          <div class="flex items-start gap-3">
+            <input type="checkbox" ${selectedIds.has(n.id) ? 'checked' : ''} onclick="event.stopPropagation();toggleSelect(${n.id})" class="mt-1 rounded border-gray-300 text-accent-500 focus:ring-accent-500">
+            <div class="w-10 h-10 rounded-xl bg-${n.color}-100 flex items-center justify-center flex-shrink-0">
+              <i class="fas ${n.icon} text-${n.color}-600"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <h4 class="text-sm font-semibold text-gray-900 ${!n.read ? 'font-bold' : ''}">${n.title}</h4>
+                <span class="px-2 py-0.5 ${getPriorityClass(n.priority)} rounded text-[10px] font-semibold flex-shrink-0">${n.priority}</span>
+              </div>
+              <p class="text-xs text-gray-600 mt-1 line-clamp-2">${n.desc}</p>
+              <div class="flex items-center gap-3 mt-2">
+                <span class="text-xs text-gray-500"><i class="fas fa-clock mr-1"></i>${n.time}</span>
+                <span class="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-[10px] font-medium">${n.category}</span>
+                ${!n.read ? '<span class="w-2 h-2 bg-accent-500 rounded-full"></span>' : ''}
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 mt-3 ml-13">
+            <button onclick="event.stopPropagation();markAsRead(${n.id})" class="px-2 py-1 bg-blue-50 text-blue-600 rounded text-[10px] font-medium hover:bg-blue-100 transition-all">Mark Read</button>
+            <button onclick="event.stopPropagation();archiveNotif(${n.id})" class="px-2 py-1 bg-gray-50 text-gray-600 rounded text-[10px] font-medium hover:bg-gray-100 transition-all">Archive</button>
+            <button onclick="event.stopPropagation();deleteNotif(${n.id})" class="px-2 py-1 bg-red-50 text-red-600 rounded text-[10px] font-medium hover:bg-red-100 transition-all">Delete</button>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('tableInfo').textContent = `Showing ${start + 1}-${Math.min(start + perPage, total)} of ${total} notifications`;
+      renderPagination(totalPages);
+      updateBulkBar();
+    }
+
+    function getPriorityClass(priority) {
+      const classes = {
+        low: 'bg-gray-100 text-gray-600',
+        medium: 'bg-blue-100 text-blue-600',
+        high: 'bg-orange-100 text-orange-600',
+        critical: 'bg-red-100 text-red-600'
+      };
+      return classes[priority] || classes.low;
+    }
+
+    function renderPagination(totalPages) {
+      const pg = document.getElementById('pagination');
+      let html = `<button onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-left"></i></button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button onclick="goPage(${i})" class="w-8 h-8 rounded-lg text-xs font-semibold ${i === currentPage ? 'bg-accent-500 text-white shadow' : 'text-gray-600 hover:bg-gray-100'} transition-all">${i}</button>`;
+      }
+      html += `<button onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg text-xs font-medium ${currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-gray-600 hover:bg-gray-100'} transition-all"><i class="fas fa-chevron-right"></i></button>`;
+      pg.innerHTML = html;
+    }
+
+    function goPage(p) { currentPage = p; renderNotifications(); }
+    function filterNotifications() { currentPage = 1; renderNotifications(); }
+    function filterByCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('bg-accent-500', 'text-white');
+        btn.classList.add('bg-white', 'border', 'border-gray-200', 'text-gray-600');
+      });
+      const activeBtn = document.querySelector(`[data-cat="${cat || 'all'}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-accent-500', 'text-white');
+        activeBtn.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-600');
+      }
+      currentPage = 1;
+      renderNotifications();
+    }
+
+    // Selection
+    function toggleSelect(id) {
+      if (selectedIds.has(id)) selectedIds.delete(id);
+      else selectedIds.add(id);
+      updateBulkBar();
+    }
+
+    function toggleSelectAll() {
+      const cb = document.getElementById('selectAll');
+      if (cb.checked) {
+        notifications.forEach(n => selectedIds.add(n.id));
+      } else {
+        selectedIds.clear();
+      }
+      renderNotifications();
+    }
+
+    function clearSelection() {
+      selectedIds.clear();
+      document.getElementById('selectAll').checked = false;
+      renderNotifications();
+    }
+
+    function updateBulkBar() {
+      const bar = document.getElementById('bulkBar');
+      const cnt = document.getElementById('selectedCount');
+      if (selectedIds.size > 0) {
+        bar.classList.remove('hidden');
+        bar.classList.add('flex');
+        cnt.textContent = selectedIds.size;
+      } else {
+        bar.classList.add('hidden');
+        bar.classList.remove('flex');
+      }
+    }
+
+    // Notification Actions
+    function markAsRead(id) {
+      const n = notifications.find(x => x.id === id);
+      if (n) { n.read = true; renderNotifications(); showToast('Marked as read', 'success'); }
+    }
+
+    function archiveNotif(id) {
+      const idx = notifications.findIndex(x => x.id === id);
+      if (idx > -1) { notifications.splice(idx, 1); renderNotifications(); showToast('Archived', 'success'); }
+    }
+
+    function deleteNotif(id) {
+      const idx = notifications.findIndex(x => x.id === id);
+      if (idx > -1) { notifications.splice(idx, 1); renderNotifications(); showToast('Deleted', 'success'); }
+    }
+
+    function markAllRead() {
+      notifications.forEach(n => n.read = true);
+      renderNotifications();
+      showToast('All marked as read', 'success');
+    }
+
+    // Bulk Actions
+    function bulkMarkRead() {
+      selectedIds.forEach(id => {
+        const n = notifications.find(x => x.id === id);
+        if (n) n.read = true;
+      });
+      selectedIds.clear();
+      renderNotifications();
+      showToast('Selected marked as read', 'success');
+    }
+
+    function bulkArchive() {
+      selectedIds.forEach(id => {
+        const idx = notifications.findIndex(x => x.id === id);
+        if (idx > -1) notifications.splice(idx, 1);
+      });
+      selectedIds.clear();
+      renderNotifications();
+      showToast('Selected archived', 'success');
+    }
+
+    function bulkDelete() {
+      selectedIds.forEach(id => {
+        const idx = notifications.findIndex(x => x.id === id);
+        if (idx > -1) notifications.splice(idx, 1);
+      });
+      selectedIds.clear();
+      renderNotifications();
+      showToast('Selected deleted', 'success');
+    }
+
+    // Activity Feed
+    function renderActivity() {
+      document.getElementById('activityFeed').innerHTML = activities.map(a => `
+        <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-all">
+          <div class="w-8 h-8 rounded-full bg-${a.color}-100 flex items-center justify-center flex-shrink-0">
+            <i class="fas ${a.icon} text-${a.color}-600 text-xs"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-medium text-gray-900 truncate">${a.title}</p>
+            <p class="text-[10px] text-gray-500">${a.time}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

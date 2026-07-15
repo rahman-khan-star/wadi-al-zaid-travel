@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Management | Wadi Al Zaid Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        navy: { 50:'#e8ecf4', 100:'#c5cde3', 200:'#9eafd0', 300:'#7791bd', 400:'#5979af', 500:'#3b61a1', 600:'#355999', 700:'#2d4e8f', 800:'#264485', 900:'#0f1d3a' },
+                        accent: { 50:'#fdf3e5', 100:'#f9e0c0', 200:'#f5cc99', 300:'#f0b672', 400:'#eca654', 500:'#e8952f', 600:'#e68b27', 700:'#e27d1d', 800:'#de7014', 900:'#d45700' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-950 text-gray-200">
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar fixed top-0 left-0 h-full bg-navy-900 border-r border-navy-700/50 flex flex-col z-50">
+        <div class="p-5 border-b border-navy-700/50 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="logo.svg" alt="Wadi Al Zaid" class="h-10 w-10 rounded-xl shadow-lg object-contain">
+                <span class="sidebar-text font-bold text-lg text-white tracking-tight">Wadi Al Zaid</span>
+            </div>
+            <button onclick="toggleSidebar()" class="sidebar-text text-gray-400 hover:text-white transition hidden lg:block"><i class="fas fa-chevron-left" id="collapseIcon"></i></button>
+        </div>
+        <nav role="navigation" aria-label="Main navigation" class="flex-1 overflow-y-auto py-4 px-3">
+            <a href="admin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text text-sm">Dashboard</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Tours & Bookings</p>
+            <a href="manage-destinations.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text text-sm">Destinations</span>
+            </a>
+            <a href="manage-bookings.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-calendar-check w-5 text-center"></i><span class="sidebar-text text-sm">Bookings</span>
+            </a>
+            <a href="manage-payments.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text text-sm">Payments</span>
+            </a>
+            <a href="manage-refunds.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white bg-accent-500/10 border border-accent-500/20 transition mb-1" aria-current="page">
+                <i class="fas fa-undo w-5 text-center text-accent-400"></i><span class="sidebar-text text-sm font-medium">Refunds</span>
+                <span class="badge ml-auto bg-orange-500/20 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded-full">5</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Users</p>
+            <a href="manage-customers.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-users w-5 text-center"></i><span class="sidebar-text text-sm">Customers</span>
+            </a>
+            <a href="manage-reviews.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-star w-5 text-center"></i><span class="sidebar-text text-sm">Reviews</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Content</p>
+            <a href="manage-blog.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text text-sm">Blog</span>
+            </a>
+            <a href="manage-messages.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text text-sm">Messages</span>
+            </a>
+            <a href="notifications.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text text-sm">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Settings</p>
+            <a href="website-cms.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text text-sm">Settings</span>
+            </a>
+            <p class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mt-6 mb-2 px-3 sidebar-text">Security</p>
+            <a href="activity-logs.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-history w-5 text-center"></i><span class="sidebar-text text-sm">Activity Logs</span>
+            </a>
+            <a href="login-history.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text text-sm">Login History</span>
+            </a>
+            <a href="backup-restore.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text text-sm">Backup & Restore</span>
+            </a>
+            <a href="maintenance-mode.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-navy-800/50 transition mb-1">
+                <i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text text-sm">Maintenance Mode</span>
+            </a>
+        </nav>
+        <div class="p-4 border-t border-navy-700/50">
+            <div class="flex items-center gap-3">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=e8952f&color=fff&rounded=true&size=36" class="w-9 h-9 rounded-xl">
+                <div class="sidebar-text">
+                    <p class="text-sm font-semibold text-white">Admin</p>
+                    <p class="text-[11px] text-gray-400">Super Admin</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+    <!-- Main Content -->
+    <div class="main-content min-h-screen" role="main" id="mainContent">
+        <!-- Top Navbar -->
+        <header class="topbar sticky top-0 z-30 bg-navy-900/80 border-b border-navy-700/50 px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="lg:hidden text-gray-400 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
+                    <div class="relative hidden md:block">
+                        <input type="text" placeholder="Search refunds..." class="bg-navy-800/60 border border-navy-700/50 rounded-xl pl-10 pr-4 py-2 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500/50 w-72 transition">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-xl bg-navy-800/60 border border-navy-700/50 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-500/50 transition">
+                        <i class="fas fa-moon text-sm" id="darkModeIcon"></i>
+                    </button>
+                    <button class="relative w-9 h-9 rounded-xl bg-navy-800/60 border border-navy-700/50 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-500/50 transition">
+                        <i class="fas fa-bell text-sm"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center">5</span>
+                    </button>
+                    <button class="relative w-9 h-9 rounded-xl bg-navy-800/60 border border-navy-700/50 flex items-center justify-center text-gray-400 hover:text-white hover:border-accent-500/50 transition">
+                        <i class="fas fa-envelope text-sm"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-accent-500 rounded-full text-[9px] font-bold text-white flex items-center justify-center">3</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="p-6">
+            <!-- Breadcrumb & Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 fade-up">
+                <div>
+                    <nav class="flex items-center gap-2 text-sm text-gray-500 mb-1">
+                        <a href="admin.html" class="hover:text-accent-400 transition">Dashboard</a>
+                        <i class="fas fa-chevron-right text-[10px]"></i>
+                        <span class="text-gray-300">Refund Management</span>
+                    </nav>
+                    <h1 class="text-2xl font-bold text-white">Refund Management</h1>
+                    <p class="text-sm text-gray-500 mt-1">Manage and process customer refund requests</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="exportRefunds()" class="px-4 py-2 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 hover:text-white transition">
+                        <i class="fas fa-download mr-2"></i>Export
+                    </button>
+                    <button onclick="openCreateRefundModal()" class="px-4 py-2 bg-accent-500 hover:bg-accent-600 rounded-xl text-sm font-semibold text-white transition shadow-lg shadow-accent-500/20">
+                        <i class="fas fa-plus mr-2"></i>Create Refund
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-4 hover:border-accent-500/30 transition group">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition"><i class="fas fa-undo text-blue-400 text-sm"></i></div>
+                    </div>
+                    <p class="text-xl font-bold text-white">47</p>
+                    <p class="text-[11px] text-gray-500 mt-1">Total Requests</p>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.05s">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500/20 transition"><i class="fas fa-clock text-orange-400 text-sm"></i></div>
+                    </div>
+                    <p class="text-xl font-bold text-white">5</p>
+                    <p class="text-[11px] text-gray-500 mt-1">Pending</p>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.1s">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-9 h-9 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition"><i class="fas fa-check text-green-400 text-sm"></i></div>
+                    </div>
+                    <p class="text-xl font-bold text-white">32</p>
+                    <p class="text-[11px] text-gray-500 mt-1">Approved</p>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.15s">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-9 h-9 rounded-lg bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition"><i class="fas fa-times text-red-400 text-sm"></i></div>
+                    </div>
+                    <p class="text-xl font-bold text-white">10</p>
+                    <p class="text-[11px] text-gray-500 mt-1">Rejected</p>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.2s">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-9 h-9 rounded-lg bg-accent-500/10 flex items-center justify-center group-hover:bg-accent-500/20 transition"><i class="fas fa-dollar-sign text-accent-400 text-sm"></i></div>
+                    </div>
+                    <p class="text-xl font-bold text-white">$38.4K</p>
+                    <p class="text-[11px] text-gray-500 mt-1">Total Refunded</p>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-4 hover:border-accent-500/30 transition group" style="transition-delay:0.25s">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition"><i class="fas fa-hourglass-half text-purple-400 text-sm"></i></div>
+                    </div>
+                    <p class="text-xl font-bold text-white">2.3d</p>
+                    <p class="text-[11px] text-gray-500 mt-1">Avg. Processing</p>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-5 mb-6" style="transition-delay:0.1s">
+                <div class="flex flex-wrap items-end gap-4">
+                    <div class="flex-1 min-w-[200px]">
+                        <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Search</label>
+                        <div class="relative">
+                            <input type="text" id="filterSearch" placeholder="Search by ID, customer, booking..." class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl pl-10 pr-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="min-w-[150px]">
+                        <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Status</label>
+                        <select id="filterStatus" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="under-review">Under Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="processing">Processing</option>
+                            <option value="completed">Completed</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="min-w-[150px]">
+                        <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Payment Method</label>
+                        <select id="filterMethod" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                            <option value="">All Methods</option>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="bank-transfer">Bank Transfer</option>
+                        </select>
+                    </div>
+                    <div class="min-w-[150px]">
+                        <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Date From</label>
+                        <input type="date" id="filterDateFrom" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                    </div>
+                    <div class="min-w-[150px]">
+                        <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Date To</label>
+                        <input type="date" id="filterDateTo" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                    </div>
+                    <div class="min-w-[140px]">
+                        <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Sort By</label>
+                        <select id="filterSort" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                            <option value="newest">Latest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="highest">Highest Amount</option>
+                            <option value="lowest">Lowest Amount</option>
+                        </select>
+                    </div>
+                    <button onclick="resetFilters()" class="px-4 py-2.5 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition">
+                        <i class="fas fa-redo mr-1"></i>Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl overflow-hidden mb-6" style="transition-delay:0.15s">
+                <div class="p-5 border-b border-navy-700/50 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-lg font-bold text-white">Refund Requests</h2>
+                        <span class="bg-accent-500/20 text-accent-400 text-xs font-bold px-2.5 py-1 rounded-lg" id="refundCount">47 requests</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button id="bulkApproveBtn" onclick="bulkApprove()" class="hidden px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded-lg text-xs font-semibold text-green-400 hover:bg-green-500/20 transition">
+                            <i class="fas fa-check mr-1"></i>Approve
+                        </button>
+                        <button id="bulkRejectBtn" onclick="bulkReject()" class="hidden px-3 py-1.5 bg-red-500/10 border border-red-500/30 rounded-lg text-xs font-semibold text-red-400 hover:bg-red-500/20 transition">
+                            <i class="fas fa-times mr-1"></i>Reject
+                        </button>
+                        <button id="bulkExportBtn" onclick="bulkExport()" class="hidden px-3 py-1.5 bg-blue-500/10 border border-blue-500/30 rounded-lg text-xs font-semibold text-blue-400 hover:bg-blue-500/20 transition">
+                            <i class="fas fa-download mr-1"></i>Export
+                        </button>
+                        <button id="bulkDeleteBtn" onclick="bulkDelete()" class="hidden px-3 py-1.5 bg-red-500/10 border border-red-500/30 rounded-lg text-xs font-semibold text-red-400 hover:bg-red-500/20 transition">
+                            <i class="fas fa-trash mr-1"></i>Delete
+                        </button>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="w-full min-w-[1100px]">
+                        <thead>
+                            <tr class="border-b border-navy-700/50">
+                                <th class="text-left px-5 py-3 sticky top-0 bg-navy-900/95"><input type="checkbox" id="selectAll" onchange="toggleSelectAll()" class="rounded border-navy-600 bg-navy-800 text-accent-500 focus:ring-accent-500/50"></th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Refund ID</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Customer</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Destination</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Reason</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Amount</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Date</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Status</th>
+                                <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider sticky top-0 bg-navy-900/95">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="refundsTableBody"></tbody>
+                    </table>
+                </div>
+                <div class="p-5 border-t border-navy-700/50 flex items-center justify-between">
+                    <p class="text-sm text-gray-500" id="paginationInfo">Showing 1-10 of 47 refunds</p>
+                    <div class="flex items-center gap-2">
+                        <button onclick="prevPage()" class="px-3 py-1.5 bg-navy-800/60 border border-navy-700/50 rounded-lg text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition"><i class="fas fa-chevron-left"></i></button>
+                        <div id="pageNumbers" class="flex items-center gap-1"></div>
+                        <button onclick="nextPage()" class="px-3 py-1.5 bg-navy-800/60 border border-navy-700/50 rounded-lg text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-5" style="transition-delay:0.2s">
+                    <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-chart-line text-accent-400"></i>Monthly Refund Trend</h3>
+                    <div class="h-64"><canvas id="refundTrendChart"></canvas></div>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-5" style="transition-delay:0.22s">
+                    <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-chart-bar text-accent-400"></i>Refund Reasons</h3>
+                    <div class="h-64"><canvas id="refundReasonsChart"></canvas></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-5" style="transition-delay:0.24s">
+                    <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-chart-pie text-accent-400"></i>Refund Status</h3>
+                    <div class="h-52"><canvas id="refundStatusChart"></canvas></div>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-5" style="transition-delay:0.26s">
+                    <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-credit-card text-accent-400"></i>By Payment Method</h3>
+                    <div class="h-52"><canvas id="refundMethodChart"></canvas></div>
+                </div>
+                <div class="fade-up bg-navy-900/80 border border-navy-700/50 rounded-2xl p-5" style="transition-delay:0.28s">
+                    <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-list text-accent-400"></i>Top Refund Reasons</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1"><span class="text-xs text-gray-400">Schedule Change</span><span class="text-xs font-semibold text-white">38%</span></div>
+                                <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-blue-500 rounded-full" style="width:38%"></div></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1"><span class="text-xs text-gray-400">Quality Issue</span><span class="text-xs font-semibold text-white">25%</span></div>
+                                <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-orange-500 rounded-full" style="width:25%"></div></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1"><span class="text-xs text-gray-400">Customer Request</span><span class="text-xs font-semibold text-white">20%</span></div>
+                                <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-green-500 rounded-full" style="width:20%"></div></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1"><span class="text-xs text-gray-400">Tour Cancelled</span><span class="text-xs font-semibold text-white">12%</span></div>
+                                <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-red-500 rounded-full" style="width:12%"></div></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1">
+                                <div class="flex justify-between mb-1"><span class="text-xs text-gray-400">Other</span><span class="text-xs font-semibold text-white">5%</span></div>
+                                <div class="w-full h-2 bg-navy-800 rounded-full overflow-hidden"><div class="h-full bg-gray-500 rounded-full" style="width:5%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Drawer -->
+    <div id="drawerOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="closeDrawer()"></div>
+    <div id="refundDrawer" class="drawer fixed top-0 right-0 h-full w-full max-w-lg bg-navy-900 border-l border-navy-700/50 z-50 flex flex-col">
+        <div class="p-5 border-b border-navy-700/50 flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white">Refund Details</h3>
+            <button onclick="closeDrawer()" class="w-8 h-8 rounded-lg bg-navy-800/60 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-5" id="drawerContent"></div>
+    </div>
+
+    <!-- Approve Modal -->
+    <div id="approveModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 modal-overlay" onclick="closeModal('approveModal')"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-navy-900 border border-navy-700/50 rounded-2xl shadow-2xl">
+            <div class="p-6 border-b border-navy-700/50 flex items-center justify-between">
+                <h3 class="text-lg font-bold text-white">Approve Refund</h3>
+                <button onclick="closeModal('approveModal')" class="w-8 h-8 rounded-lg bg-navy-800/60 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="text-sm text-gray-400">Are you sure you want to approve this refund request?</p>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Approved Amount</label>
+                    <input type="text" id="approveAmount" value="$4,299.00" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Admin Note</label>
+                    <textarea id="approveNote" rows="3" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-3 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition resize-none" placeholder="Add a note..."></textarea>
+                </div>
+            </div>
+            <div class="p-6 border-t border-navy-700/50 flex items-center justify-end gap-3">
+                <button onclick="closeModal('approveModal')" class="px-4 py-2 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 transition">Cancel</button>
+                <button onclick="confirmApprove()" class="px-4 py-2 bg-green-500 hover:bg-green-600 rounded-xl text-sm font-semibold text-white transition"><i class="fas fa-check mr-2"></i>Approve</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reject Modal -->
+    <div id="rejectModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 modal-overlay" onclick="closeModal('rejectModal')"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-navy-900 border border-navy-700/50 rounded-2xl shadow-2xl">
+            <div class="p-6 border-b border-navy-700/50 flex items-center justify-between">
+                <h3 class="text-lg font-bold text-white">Reject Refund</h3>
+                <button onclick="closeModal('rejectModal')" class="w-8 h-8 rounded-lg bg-navy-800/60 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <p class="text-sm text-gray-400">Are you sure you want to reject this refund request?</p>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Rejection Reason</label>
+                    <select class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                        <option>Outside Refund Policy</option>
+                        <option>Insufficient Evidence</option>
+                        <option>Already Resolved</option>
+                        <option>Fraud Suspected</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Admin Note</label>
+                    <textarea rows="3" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-3 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition resize-none" placeholder="Add a note..."></textarea>
+                </div>
+            </div>
+            <div class="p-6 border-t border-navy-700/50 flex items-center justify-end gap-3">
+                <button onclick="closeModal('rejectModal')" class="px-4 py-2 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 transition">Cancel</button>
+                <button onclick="confirmReject()" class="px-4 py-2 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-semibold text-white transition"><i class="fas fa-times mr-2"></i>Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 modal-overlay" onclick="closeModal('deleteModal')"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-sm bg-navy-900 border border-navy-700/50 rounded-2xl shadow-2xl">
+            <div class="p-6 text-center">
+                <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4"><i class="fas fa-trash-alt text-red-400 text-2xl"></i></div>
+                <h3 class="text-lg font-bold text-white mb-2">Delete Refund</h3>
+                <p class="text-sm text-gray-400 mb-6">Are you sure you want to delete this refund request? This action cannot be undone.</p>
+                <div class="flex items-center gap-3">
+                    <button onclick="closeModal('deleteModal')" class="flex-1 px-4 py-2.5 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 transition">Cancel</button>
+                    <button onclick="confirmDelete()" class="flex-1 px-4 py-2.5 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-semibold text-white transition">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Refund Modal -->
+    <div id="createRefundModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 modal-overlay" onclick="closeModal('createRefundModal')"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-navy-900 border border-navy-700/50 rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-navy-700/50 flex items-center justify-between">
+                <h3 class="text-lg font-bold text-white">Create Refund Request</h3>
+                <button onclick="closeModal('createRefundModal')" class="w-8 h-8 rounded-lg bg-navy-800/60 flex items-center justify-center text-gray-400 hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Booking ID</label>
+                    <input type="text" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition" placeholder="BK-2025-XXXXX">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Customer</label>
+                    <select class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                        <option>Select customer...</option>
+                        <option>Ahmed Ali Mohammed</option>
+                        <option>Sara Mohammed</option>
+                        <option>Omar Hassan</option>
+                        <option>Fatima Al-Rashid</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Refund Amount</label>
+                    <input type="text" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition" placeholder="$0.00">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Reason</label>
+                    <select class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition">
+                        <option>Select reason...</option>
+                        <option>Schedule Change</option>
+                        <option>Quality Issue</option>
+                        <option>Customer Request</option>
+                        <option>Tour Cancelled</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-gray-400 mb-1.5 block">Description</label>
+                    <textarea rows="3" class="w-full bg-navy-800/60 border border-navy-700/50 rounded-xl px-4 py-3 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition resize-none" placeholder="Describe the refund reason..."></textarea>
+                </div>
+            </div>
+            <div class="p-6 border-t border-navy-700/50 flex items-center justify-end gap-3">
+                <button onclick="closeModal('createRefundModal')" class="px-4 py-2 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 transition">Cancel</button>
+                <button onclick="createRefund()" class="px-4 py-2 bg-accent-500 hover:bg-accent-600 rounded-xl text-sm font-semibold text-white transition"><i class="fas fa-plus mr-2"></i>Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
+        <div class="bg-navy-800 border border-navy-700/50 rounded-xl px-5 py-3 shadow-xl flex items-center gap-3">
+            <i class="fas fa-check-circle text-green-400" id="toastIcon"></i>
+            <span class="text-sm text-white" id="toastMessage">Action completed</span>
+        </div>
+    </div>
+
+    <script src="components.js"></script>
+    <script>
+        let refunds = [
+            { id:'RF-2025-0047', bookingId:'BK-2025-01247', customer:'Ahmed Ali Mohammed', avatar:'Ahmed+Ali', destination:'Santorini, Greece', reason:'Schedule Change', requested:4299, approved:4299, date:'2025-01-10', status:'pending', method:'credit-card', email:'ahmed.ali@email.com', phone:'+971 50 123 4567', policy:'Full refund within 30 days', notes:'Customer needs to reschedule due to work emergency.' },
+            { id:'RF-2025-0046', bookingId:'BK-2025-01198', customer:'Sara Mohammed', avatar:'Sara+Mohammed', destination:'Kyoto, Japan', reason:'Quality Issue', requested:3450, approved:2500, date:'2025-01-09', status:'approved', method:'credit-card', email:'sara.m@email.com', phone:'+966 55 987 6543', policy:'Partial refund for service issues', notes:'Partial refund approved due to hotel upgrade issue.' },
+            { id:'RF-2025-0045', bookingId:'BK-2025-01156', customer:'Omar Hassan', avatar:'Omar+Hassan', destination:'Swiss Alps', reason:'Customer Request', requested:5200, approved:0, date:'2025-01-08', status:'rejected', method:'paypal', email:'omar.h@email.com', phone:'+971 56 456 7890', policy:'Non-refundable after 14 days', notes:'Request denied - outside refund policy window.' },
+            { id:'RF-2025-0044', bookingId:'BK-2025-01089', customer:'Fatima Al-Rashid', avatar:'Fatima+Al-Rashid', destination:'Bali, Indonesia', reason:'Tour Cancelled', requested:2890, approved:2890, date:'2025-01-07', status:'completed', method:'bank-transfer', email:'fatima.r@email.com', phone:'+968 91 234 5678', policy:'Full refund for cancelled tours', notes:'Tour cancelled by operator. Full refund processed.' },
+            { id:'RF-2025-0043', bookingId:'BK-2025-01034', customer:'Khalid bin Said', avatar:'Khalid+Said', destination:'Maldives', reason:'Schedule Change', requested:6750, approved:5000, date:'2025-01-06', status:'processing', method:'credit-card', email:'khalid.s@email.com', phone:'+971 50 876 5432', policy:'80% refund for rescheduling', notes:'Processing 75% refund per policy.' },
+            { id:'RF-2025-0042', bookingId:'BK-2025-00987', customer:'Noor Ibrahim', avatar:'Noor+Ibrahim', destination:'Iceland', reason:'Quality Issue', requested:4100, approved:3200, date:'2025-01-05', status:'approved', method:'credit-card', email:'noor.i@email.com', phone:'+968 92 345 6789', policy:'Partial refund for service issues', notes:'Approved partial refund for guide service issue.' },
+            { id:'RF-2025-0041', bookingId:'BK-2025-00945', customer:'Yusuf Al-Mansoori', avatar:'Yusuf+Al-Mansoori', destination:'Santorini, Greece', reason:'Customer Request', requested:3800, approved:0, date:'2025-01-04', status:'rejected', method:'paypal', email:'yusuf.m@email.com', phone:'+971 56 345 6789', policy:'Non-refundable deposit', notes:'Deposit is non-refundable per terms.' },
+            { id:'RF-2025-0040', bookingId:'BK-2025-00901', customer:'Maryam Al-Farsi', avatar:'Maryam+Al-Farsi', destination:'Kyoto, Japan', reason:'Tour Cancelled', requested:3200, approved:3200, date:'2025-01-03', status:'completed', method:'bank-transfer', email:'maryam.f@email.com', phone:'+968 91 456 7890', policy:'Full refund for cancelled tours', notes:'Full refund processed via bank transfer.' },
+            { id:'RF-2025-0039', bookingId:'BK-2025-00867', customer:'Hassan Al-Balushi', avatar:'Hassan+Balushi', destination:'Swiss Alps', reason:'Schedule Change', requested:4800, approved:3600, date:'2025-01-02', status:'under-review', method:'credit-card', email:'hassan.b@email.com', phone:'+968 92 567 8901', policy:'75% refund for rescheduling', notes:'Reviewing eligibility for rescheduling refund.' },
+            { id:'RF-2025-0038', bookingId:'BK-2025-00823', customer:'Layla Al-Hinai', avatar:'Layla+Hinai', destination:'Bali, Indonesia', reason:'Quality Issue', requested:2750, approved:2000, date:'2025-01-01', status:'approved', method:'paypal', email:'layla.h@email.com', phone:'+968 91 678 9012', policy:'Partial refund for service issues', notes:'Approved partial refund for accommodation issue.' },
+            { id:'RF-2025-0037', bookingId:'BK-2024-01198', customer:'Tariq Al-Nuaimi', avatar:'Tariq+Nuaimi', destination:'Maldives', reason:'Customer Request', requested:5500, approved:0, date:'2024-12-30', status:'rejected', method:'credit-card', email:'tariq.n@email.com', phone:'+971 50 234 5678', policy:'Non-refundable after 14 days', notes:'Request denied - outside refund window.' },
+            { id:'RF-2025-0036', bookingId:'BK-2024-01156', customer:'Aisha Al-Hashmi', avatar:'Aisha+Hashmi', destination:'Iceland', reason:'Tour Cancelled', requested:3900, approved:3900, date:'2024-12-28', status:'completed', method:'bank-transfer', email:'aisha.h@email.com', phone:'+971 56 789 0123', policy:'Full refund for cancelled tours', notes:'Full refund processed.' },
+        ];
+
+        let currentPage = 1;
+        const perPage = 10;
+        let selectedIds = new Set();
+        let actionTarget = null;
+        let deleteTarget = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+            setupFilters();
+            initCharts();
+        });
+
+        function toggleDarkMode() {
+            const icon = document.getElementById('darkModeIcon');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        function setupFilters() {
+            ['filterSearch','filterStatus','filterMethod','filterDateFrom','filterDateTo','filterSort'].forEach(id => {
+                document.getElementById(id).addEventListener('input', () => { currentPage = 1; renderTable(); });
+            });
+        }
+
+        function getFiltered() {
+            let f = [...refunds];
+            const s = document.getElementById('filterSearch').value.toLowerCase();
+            const status = document.getElementById('filterStatus').value;
+            const method = document.getElementById('filterMethod').value;
+            const dFrom = document.getElementById('filterDateFrom').value;
+            const dTo = document.getElementById('filterDateTo').value;
+            const sort = document.getElementById('filterSort').value;
+            if (s) f = f.filter(r => r.id.toLowerCase().includes(s) || r.customer.toLowerCase().includes(s) || r.bookingId.toLowerCase().includes(s));
+            if (status) f = f.filter(r => r.status === status);
+            if (method) f = f.filter(r => r.method === method);
+            if (dFrom) f = f.filter(r => r.date >= dFrom);
+            if (dTo) f = f.filter(r => r.date <= dTo);
+            if (sort === 'oldest') f.reverse();
+            else if (sort === 'highest') f.sort((a,b) => b.requested - a.requested);
+            else if (sort === 'lowest') f.sort((a,b) => a.requested - b.requested);
+            return f;
+        }
+
+        function resetFilters() {
+            document.getElementById('filterSearch').value = '';
+            document.getElementById('filterStatus').value = '';
+            document.getElementById('filterMethod').value = '';
+            document.getElementById('filterDateFrom').value = '';
+            document.getElementById('filterDateTo').value = '';
+            document.getElementById('filterSort').value = 'newest';
+            currentPage = 1;
+            renderTable();
+        }
+
+        function renderTable() {
+            const filtered = getFiltered();
+            const start = (currentPage - 1) * perPage;
+            const pageData = filtered.slice(start, start + perPage);
+            const tbody = document.getElementById('refundsTableBody');
+            document.getElementById('refundCount').textContent = filtered.length + ' requests';
+
+            if (pageData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="px-5 py-12 text-center"><div class="flex flex-col items-center"><i class="fas fa-undo text-gray-600 text-4xl mb-3"></i><p class="text-gray-400 font-medium">No refund requests found</p><p class="text-sm text-gray-500 mt-1">Try adjusting your filters</p></div></td></tr>`;
+            } else {
+                tbody.innerHTML = pageData.map(r => `
+                    <tr class="border-b border-navy-700/30 hover:bg-navy-800/30 transition ${selectedIds.has(r.id) ? 'bg-accent-500/5' : ''}">
+                        <td class="px-5 py-4"><input type="checkbox" class="refund-cb rounded border-navy-600 bg-navy-800 text-accent-500 focus:ring-accent-500/50" data-id="${r.id}" ${selectedIds.has(r.id)?'checked':''} onchange="toggleSelect('${r.id}')"></td>
+                        <td class="px-5 py-4"><span class="text-sm font-semibold text-accent-400">${r.id}</span></td>
+                        <td class="px-5 py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://ui-avatars.com/api/?name=${r.avatar}&background=e8952f&color=fff&rounded=true&size=32" class="w-8 h-8 rounded-lg">
+                                <div><p class="text-sm font-semibold text-white">${r.customer}</p><p class="text-[10px] text-gray-500">${r.bookingId}</p></div>
+                            </div>
+                        </td>
+                        <td class="px-5 py-4"><span class="text-sm text-gray-300">${r.destination}</span></td>
+                        <td class="px-5 py-4"><span class="text-xs text-gray-400">${r.reason}</span></td>
+                        <td class="px-5 py-4">
+                            <div><p class="text-sm font-semibold text-white">$${r.requested.toLocaleString()}</p>${r.approved > 0 && r.approved !== r.requested ? `<p class="text-[10px] text-green-400">Approved: $${r.approved.toLocaleString()}</p>` : ''}</div>
+                        </td>
+                        <td class="px-5 py-4"><span class="text-sm text-gray-500">${formatDate(r.date)}</span></td>
+                        <td class="px-5 py-4">${statusBadge(r.status)}</td>
+                        <td class="px-5 py-4">
+                            <div class="flex items-center gap-1">
+                                <button onclick="viewRefund('${r.id}')" class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition" title="View"><i class="fas fa-eye text-xs"></i></button>
+                                ${r.status === 'pending' || r.status === 'under-review' ? `<button onclick="openApproveModal('${r.id}')" class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 hover:bg-green-500/20 transition" title="Approve"><i class="fas fa-check text-xs"></i></button>` : ''}
+                                ${r.status === 'pending' || r.status === 'under-review' ? `<button onclick="openRejectModal('${r.id}')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition" title="Reject"><i class="fas fa-times text-xs"></i></button>` : ''}
+                                <button onclick="openDeleteModal('${r.id}')" class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition" title="Delete"><i class="fas fa-trash text-xs"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            const totalPages = Math.ceil(filtered.length / perPage);
+            document.getElementById('paginationInfo').textContent = `Showing ${start+1}-${Math.min(start+perPage, filtered.length)} of ${filtered.length} refunds`;
+            renderPageNumbers(totalPages);
+            updateBulkButtons();
+        }
+
+        function renderPageNumbers(total) {
+            const container = document.getElementById('pageNumbers');
+            let html = '';
+            for (let i = 1; i <= Math.min(total, 5); i++) {
+                html += `<button onclick="goToPage(${i})" class="page-btn px-3 py-1.5 ${i === currentPage ? 'bg-accent-500/20 border border-accent-500/30 rounded-lg text-sm font-semibold text-accent-400' : 'bg-navy-800/60 border border-navy-700/50 rounded-lg text-sm text-gray-400 hover:text-white hover:border-accent-500/50 transition'}">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function statusBadge(status) {
+            const map = {
+                'pending':'bg-orange-500/10 text-orange-400 border-orange-500/20',
+                'under-review':'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+                'approved':'bg-green-500/10 text-green-400 border-green-500/20',
+                'processing':'bg-blue-500/10 text-blue-400 border-blue-500/20',
+                'completed':'bg-purple-500/10 text-purple-400 border-purple-500/20',
+                'rejected':'bg-red-500/10 text-red-400 border-red-500/20'
+            };
+            const labels = { 'pending':'Pending', 'under-review':'Under Review', 'approved':'Approved', 'processing':'Processing', 'completed':'Completed', 'rejected':'Rejected' };
+            return `<span class="px-2.5 py-1 rounded-lg text-xs font-semibold border ${map[status]}">${labels[status]}</span>`;
+        }
+
+        function formatDate(d) {
+            return new Date(d).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+        }
+
+        function toggleSelectAll() {
+            const checked = document.getElementById('selectAll').checked;
+            const filtered = getFiltered();
+            const start = (currentPage - 1) * perPage;
+            const pageData = filtered.slice(start, start + perPage);
+            if (checked) pageData.forEach(r => selectedIds.add(r.id));
+            else pageData.forEach(r => selectedIds.delete(r.id));
+            renderTable();
+        }
+
+        function toggleSelect(id) {
+            if (selectedIds.has(id)) selectedIds.delete(id);
+            else selectedIds.add(id);
+            renderTable();
+        }
+
+        function updateBulkButtons() {
+            const h = selectedIds.size > 0;
+            document.getElementById('bulkApproveBtn').classList.toggle('hidden', !h);
+            document.getElementById('bulkRejectBtn').classList.toggle('hidden', !h);
+            document.getElementById('bulkExportBtn').classList.toggle('hidden', !h);
+            document.getElementById('bulkDeleteBtn').classList.toggle('hidden', !h);
+        }
+
+        function viewRefund(id) {
+            const r = refunds.find(x => x.id === id);
+            const statusMap = { 'pending':'bg-orange-500/10 text-orange-400 border-orange-500/20', 'under-review':'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', 'approved':'bg-green-500/10 text-green-400 border-green-500/20', 'processing':'bg-blue-500/10 text-blue-400 border-blue-500/20', 'completed':'bg-purple-500/10 text-purple-400 border-purple-500/20', 'rejected':'bg-red-500/10 text-red-400 border-red-500/20' };
+            const labels = { 'pending':'Pending', 'under-review':'Under Review', 'approved':'Approved', 'processing':'Processing', 'completed':'Completed', 'rejected':'Rejected' };
+            document.getElementById('drawerContent').innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-bold text-white">${r.id}</span>
+                        <span class="px-3 py-1 rounded-lg text-xs font-bold border ${statusMap[r.status]}">${labels[r.status]}</span>
+                    </div>
+                    <div class="p-4 bg-navy-800/40 rounded-xl">
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Customer Information</h4>
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="https://ui-avatars.com/api/?name=${r.avatar}&background=e8952f&color=fff&rounded=true&size=48" class="w-12 h-12 rounded-xl">
+                            <div><p class="text-sm font-bold text-white">${r.customer}</p><p class="text-xs text-gray-500">${r.email}</p></div>
+                        </div>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-500">Phone</span><span class="text-gray-300">${r.phone}</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Booking</span><span class="text-accent-400 font-semibold">${r.bookingId}</span></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-navy-800/40 rounded-xl">
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Refund Details</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-500">Destination</span><span class="text-white">${r.destination}</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Reason</span><span class="text-white">${r.reason}</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Requested</span><span class="text-white font-semibold">$${r.requested.toLocaleString()}</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Approved</span><span class="text-green-400 font-semibold">$${r.approved.toLocaleString()}</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Date</span><span class="text-white">${formatDate(r.date)}</span></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-navy-800/40 rounded-xl">
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Policy Applied</h4>
+                        <p class="text-sm text-gray-300">${r.policy}</p>
+                    </div>
+                    <div class="p-4 bg-navy-800/40 rounded-xl">
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Admin Notes</h4>
+                        <p class="text-sm text-gray-300">${r.notes || 'No notes'}</p>
+                    </div>
+                    <div class="p-4 bg-navy-800/40 rounded-xl">
+                        <h4 class="text-xs font-bold text-gray-400 uppercase mb-3">Timeline</h4>
+                        <div class="space-y-3">
+                            <div class="flex gap-3"><div class="w-2 h-2 rounded-full bg-accent-500 mt-1.5"></div><div><p class="text-xs text-white">Request Created</p><p class="text-[10px] text-gray-500">${formatDate(r.date)}</p></div></div>
+                            ${r.status !== 'pending' ? `<div class="flex gap-3"><div class="w-2 h-2 rounded-full bg-yellow-400 mt-1.5"></div><div><p class="text-xs text-white">Under Review</p><p class="text-[10px] text-gray-500">Jan 11, 2025</p></div></div>` : ''}
+                            ${(r.status === 'approved' || r.status === 'processing' || r.status === 'completed') ? `<div class="flex gap-3"><div class="w-2 h-2 rounded-full bg-green-400 mt-1.5"></div><div><p class="text-xs text-white">Approved</p><p class="text-[10px] text-gray-500">Jan 12, 2025</p></div></div>` : ''}
+                            ${r.status === 'rejected' ? `<div class="flex gap-3"><div class="w-2 h-2 rounded-full bg-red-400 mt-1.5"></div><div><p class="text-xs text-white">Rejected</p><p class="text-[10px] text-gray-500">Jan 12, 2025</p></div></div>` : ''}
+                            ${r.status === 'completed' ? `<div class="flex gap-3"><div class="w-2 h-2 rounded-full bg-purple-400 mt-1.5"></div><div><p class="text-xs text-white">Refund Completed</p><p class="text-[10px] text-gray-500">Jan 15, 2025</p></div></div>` : ''}
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        ${r.status === 'pending' || r.status === 'under-review' ? `<button onclick="openApproveModal('${r.id}');closeDrawer()" class="flex-1 px-4 py-2.5 bg-green-500 hover:bg-green-600 rounded-xl text-sm font-semibold text-white transition"><i class="fas fa-check mr-2"></i>Approve</button>` : ''}
+                        ${r.status === 'pending' || r.status === 'under-review' ? `<button onclick="openRejectModal('${r.id}');closeDrawer()" class="flex-1 px-4 py-2.5 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-semibold text-white transition"><i class="fas fa-times mr-2"></i>Reject</button>` : ''}
+                        <button onclick="closeDrawer()" class="px-4 py-2.5 bg-navy-800/60 border border-navy-700/50 rounded-xl text-sm text-gray-300 hover:border-accent-500/50 transition">Close</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('drawerOverlay').classList.remove('hidden');
+            document.getElementById('refundDrawer').classList.add('open');
+        }
+
+        function closeDrawer() {
+            document.getElementById('drawerOverlay').classList.add('hidden');
+            document.getElementById('refundDrawer').classList.remove('open');
+        }
+
+        function openApproveModal(id) { actionTarget = id; openModal('approveModal'); }
+        function openRejectModal(id) { actionTarget = id; openModal('rejectModal'); }
+        function openDeleteModal(id) { deleteTarget = id; openModal('deleteModal'); }
+        function openCreateRefundModal() { openModal('createRefundModal'); }
+
+        function confirmApprove() {
+            if (actionTarget) {
+                refunds.find(x => x.id === actionTarget).status = 'approved';
+                actionTarget = null;
+                closeModal('approveModal');
+                renderTable();
+                showToast('Refund approved successfully');
+            }
+        }
+
+        function confirmReject() {
+            if (actionTarget) {
+                refunds.find(x => x.id === actionTarget).status = 'rejected';
+                actionTarget = null;
+                closeModal('rejectModal');
+                renderTable();
+                showToast('Refund rejected');
+            }
+        }
+
+        function confirmDelete() {
+            if (deleteTarget) {
+                refunds = refunds.filter(r => r.id !== deleteTarget);
+                deleteTarget = null;
+                closeModal('deleteModal');
+                renderTable();
+                showToast('Refund deleted');
+            }
+        }
+
+        function createRefund() { closeModal('createRefundModal'); showToast('Refund request created'); }
+
+        function bulkApprove() {
+            selectedIds.forEach(id => { const r = refunds.find(x => x.id === id); if (r) r.status = 'approved'; });
+            selectedIds.clear(); renderTable(); showToast('Selected refunds approved');
+        }
+        function bulkReject() {
+            selectedIds.forEach(id => { const r = refunds.find(x => x.id === id); if (r) r.status = 'rejected'; });
+            selectedIds.clear(); renderTable(); showToast('Selected refunds rejected');
+        }
+        function bulkExport() { showToast('Export started'); }
+        function bulkDelete() {
+            refunds = refunds.filter(r => !selectedIds.has(r.id));
+            selectedIds.clear(); renderTable(); showToast('Selected refunds deleted');
+        }
+
+        function exportRefunds() { showToast('Export started'); }
+
+        function goToPage(p) { currentPage = p; renderTable(); }
+        function prevPage() { if (currentPage > 1) { currentPage--; renderTable(); } }
+        function nextPage() { const max = Math.ceil(getFiltered().length / perPage); if (currentPage < max) { currentPage++; renderTable(); } }
+
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.body.style.overflow = ''; }
+
+        function showToast(msg, type='success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            document.getElementById('toastMessage').textContent = msg;
+            icon.className = `fas ${type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'}`;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+
+        // Charts
+        function initCharts() {
+            const months = ['Jul','Aug','Sep','Oct','Nov','Dec','Jan'];
+            new Chart(document.getElementById('refundTrendChart'), {
+                type:'line',
+                data:{
+                    labels:months,
+                    datasets:[{label:'Refund Requests',data:[8,5,7,4,6,3,5],borderColor:'#e8952f',backgroundColor:'rgba(232,149,47,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#e8952f'},{label:'Amount ($K)',data:[12,8,10,6,9,5,7],borderColor:'#3b61a1',backgroundColor:'rgba(59,97,161,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#3b61a1'}]
+                },
+                options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#9ca3af',font:{size:11}}}},scales:{x:{grid:{color:'rgba(45,78,143,0.2)'},ticks:{color:'#6b7280',font:{size:10}}},y:{grid:{color:'rgba(45,78,143,0.2)'},ticks:{color:'#6b7280',font:{size:10}}}}}
+            });
+            new Chart(document.getElementById('refundReasonsChart'), {
+                type:'bar',
+                data:{
+                    labels:['Schedule','Quality','Customer','Cancelled','Other'],
+                    datasets:[{label:'Requests',data:[18,12,9,6,2],backgroundColor:['#3b61a1','#e8952f','#10b981','#ef4444','#6b7280'],borderRadius:8}]
+                },
+                options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#6b7280',font:{size:10}}},y:{grid:{color:'rgba(45,78,143,0.2)'},ticks:{color:'#6b7280',font:{size:10}}}}}
+            });
+            new Chart(document.getElementById('refundStatusChart'), {
+                type:'doughnut',
+                data:{
+                    labels:['Pending','Approved','Rejected','Completed','Processing'],
+                    datasets:[{data:[5,32,10,28,5],backgroundColor:['#f59e0b','#10b981','#ef4444','#8b5cf6','#3b61a1'],borderWidth:0}]
+                },
+                options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#9ca3af',padding:12,font:{size:10}}}}}
+            });
+            new Chart(document.getElementById('refundMethodChart'), {
+                type:'doughnut',
+                data:{
+                    labels:['Credit Card','PayPal','Bank Transfer'],
+                    datasets:[{data:[28,10,9],backgroundColor:['#3b61a1','#f59e0b','#10b981'],borderWidth:0}]
+                },
+                options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#9ca3af',padding:12,font:{size:10}}}}}
+            });
+        }
+    </script>
+</body>
+</html>

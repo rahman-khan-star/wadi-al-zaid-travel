@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Blog - Wadi Al Zaid Tours & Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+
+</head>
+<body class="bg-white text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-11 sm:h-11 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+          <div class="leading-tight">
+            <span class="text-lg sm:text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] sm:text-[10px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours & Travel</span>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="index.html#destinations" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="blog.html" class="px-4 py-2 text-sm font-medium text-accent transition-colors rounded-lg hover:bg-white/5">Blog</a>
+          <a href="contact.html" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="login.html" class="ml-4 btn-accent px-6 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25">
+            <span>Login</span>
+          </a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="index.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="index.html#destinations" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="blog.html" class="mobile-link px-4 py-3 text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Blog</a>
+          <a href="contact.html" class="mobile-link px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="login.html" class="mobile-link mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white">
+            <span>Login</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-bg min-h-[50vh] flex items-center relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+      <div class="max-w-2xl">
+        <nav class="flex items-center gap-2 text-sm text-white/60 mb-6">
+          <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+          <i class="fas fa-chevron-right text-xs"></i>
+          <span class="text-accent">Blog</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+          Travel <span class="text-accent">Blog</span>
+        </h1>
+        <p class="text-lg text-white/70 max-w-lg">Tips, guides, and stories to inspire your next adventure. Stay updated with the latest in travel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED ARTICLE ========== -->
+  <section class="py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="fade-in">
+        <div class="grid lg:grid-cols-2 gap-8 items-center bg-gray-50 rounded-3xl overflow-hidden">
+          <div class="relative h-72 lg:h-96 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Featured" class="w-full h-full object-cover" />
+            <div class="absolute top-4 left-4">
+              <span class="bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full">Featured</span>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8 lg:p-10">
+            <span class="inline-block bg-accent/10 text-accent text-xs font-bold px-3 py-1 rounded-full mb-4">Travel Tips</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-navy mb-4 hover:text-accent transition-colors cursor-pointer">10 Essential Packing Tips for Your Dream Vacation</h2>
+            <p class="text-navy/60 text-sm leading-relaxed mb-6">Packing doesn't have to be stressful. Learn how to pack light, stay organized, and make sure you have everything you need for the perfect trip. From versatile clothing choices to tech essentials...</p>
+            <div class="flex items-center gap-4 mb-6">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed" alt="Author" class="w-10 h-10 rounded-full" />
+              <div>
+                <p class="font-bold text-sm text-navy">Ahmed Al Zaid</p>
+                <div class="flex items-center gap-3 text-xs text-navy/50">
+                  <span><i class="fas fa-calendar mr-1"></i> Jul 12, 2026</span>
+                  <span><i class="fas fa-clock mr-1"></i> 8 min read</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn-accent px-6 py-3 rounded-xl text-white font-bold text-sm">
+              <span>Read More <i class="fas fa-arrow-right ml-2"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <section class="py-12 sm:py-16 bg-gray-50" role="main" id="mainContent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Search & Filters -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-8 fade-in">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+          <div class="flex-1 relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-navy/30"></i>
+            <input type="text" id="searchInput" placeholder="Search articles..." class="input-field w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" oninput="filterPosts()" />
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="filterCategory('all')" class="filter-btn active px-4 py-2 rounded-xl text-sm font-medium bg-accent text-white" data-category="all">All</button>
+            <button onclick="filterCategory('tips')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-navy/60 hover:bg-gray-200" data-category="tips">Travel Tips</button>
+            <button onclick="filterCategory('visa')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-navy/60 hover:bg-gray-200" data-category="visa">Visa</button>
+            <button onclick="filterCategory('adventure')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-navy/60 hover:bg-gray-200" data-category="adventure">Adventure</button>
+            <button onclick="filterCategory('umrah')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-navy/60 hover:bg-gray-200" data-category="umrah">Umrah</button>
+            <button onclick="filterCategory('family')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-navy/60 hover:bg-gray-200" data-category="family">Family Tours</button>
+            <button onclick="filterCategory('news')" class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-navy/60 hover:bg-gray-200" data-category="news">News</button>
+          </div>
+          <select id="sortSelect" onchange="sortPosts()" class="input-field px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none pr-10">
+            <option value="latest">Latest First</option>
+            <option value="popular">Most Popular</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Blog Grid -->
+        <div class="lg:col-span-2">
+          <div id="blogContainer" class="grid sm:grid-cols-2 gap-6">
+            <!-- Blog posts rendered by JavaScript -->
+          </div>
+
+          <!-- Pagination -->
+          <div id="pagination" class="flex items-center justify-center gap-2 mt-10">
+            <button onclick="changePage('prev')" id="prevBtn" class="px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+              <i class="fas fa-chevron-left mr-1"></i> Previous
+            </button>
+            <div id="pageNumbers" class="flex items-center gap-1"></div>
+            <button onclick="changePage('next')" id="nextBtn" class="px-4 py-2 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+              Next <i class="fas fa-chevron-right ml-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Search -->
+          <div class="sidebar-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+            <h3 class="font-bold text-navy mb-4 flex items-center gap-2">
+              <i class="fas fa-search text-accent"></i> Search
+            </h3>
+            <div class="relative">
+              <input type="text" placeholder="Search articles..." class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+              <button class="absolute right-3 top-1/2 -translate-y-1/2 text-navy/40 hover:text-accent"><i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="sidebar-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+            <h3 class="font-bold text-navy mb-4 flex items-center gap-2">
+              <i class="fas fa-th-large text-accent"></i> Categories
+            </h3>
+            <div class="space-y-2">
+              <button onclick="filterCategory('tips')" class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-accent/10 transition-colors text-left">
+                <span class="text-sm font-medium">Travel Tips</span>
+                <span class="text-xs text-navy/40">24</span>
+              </button>
+              <button onclick="filterCategory('visa')" class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-accent/10 transition-colors text-left">
+                <span class="text-sm font-medium">Visa Guides</span>
+                <span class="text-xs text-navy/40">18</span>
+              </button>
+              <button onclick="filterCategory('adventure')" class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-accent/10 transition-colors text-left">
+                <span class="text-sm font-medium">Adventure</span>
+                <span class="text-xs text-navy/40">15</span>
+              </button>
+              <button onclick="filterCategory('umrah')" class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-accent/10 transition-colors text-left">
+                <span class="text-sm font-medium">Umrah</span>
+                <span class="text-xs text-navy/40">12</span>
+              </button>
+              <button onclick="filterCategory('family')" class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-accent/10 transition-colors text-left">
+                <span class="text-sm font-medium">Family Tours</span>
+                <span class="text-xs text-navy/40">10</span>
+              </button>
+              <button onclick="filterCategory('news')" class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-accent/10 transition-colors text-left">
+                <span class="text-sm font-medium">News</span>
+                <span class="text-xs text-navy/40">8</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Posts -->
+          <div class="sidebar-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+            <h3 class="font-bold text-navy mb-4 flex items-center gap-2">
+              <i class="fas fa-clock text-accent"></i> Recent Posts
+            </h3>
+            <div class="space-y-4">
+              <a href="#" class="flex items-start gap-3 group">
+                <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=100&q=80" alt="Post" class="w-16 h-16 rounded-xl object-cover shrink-0" />
+                <div>
+                  <h4 class="font-medium text-sm text-navy group-hover:text-accent transition-colors line-clamp-2">Best Time to Visit Maldives: A Complete Guide</h4>
+                  <p class="text-xs text-navy/50 mt-1"><i class="fas fa-calendar mr-1"></i> Jul 10, 2026</p>
+                </div>
+              </a>
+              <a href="#" class="flex items-start gap-3 group">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=100&q=80" alt="Post" class="w-16 h-16 rounded-xl object-cover shrink-0" />
+                <div>
+                  <h4 class="font-medium text-sm text-navy group-hover:text-accent transition-colors line-clamp-2">Paris on a Budget: Money-Saving Tips</h4>
+                  <p class="text-xs text-navy/50 mt-1"><i class="fas fa-calendar mr-1"></i> Jul 8, 2026</p>
+                </div>
+              </a>
+              <a href="#" class="flex items-start gap-3 group">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=100&q=80" alt="Post" class="w-16 h-16 rounded-xl object-cover shrink-0" />
+                <div>
+                  <h4 class="font-medium text-sm text-navy group-hover:text-accent transition-colors line-clamp-2">Bali Temples You Must Visit</h4>
+                  <p class="text-xs text-navy/50 mt-1"><i class="fas fa-calendar mr-1"></i> Jul 5, 2026</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Popular Tags -->
+          <div class="sidebar-card bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+            <h3 class="font-bold text-navy mb-4 flex items-center gap-2">
+              <i class="fas fa-tags text-accent"></i> Popular Tags
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Maldives</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Paris</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Bali</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Dubai</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Budget</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Luxury</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Family</span>
+              <span class="tag-item px-3 py-10.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Adventure</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Visa</span>
+              <span class="tag-item px-3 py-1.5 bg-gray-100 text-navy/60 text-xs font-medium rounded-full cursor-pointer">Umrah</span>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="bg-gradient-to-br from-navy to-navy-light rounded-2xl p-6 text-white">
+            <h3 class="font-bold mb-2 flex items-center gap-2">
+              <i class="fas fa-envelope text-accent"></i> Newsletter
+            </h3>
+            <p class="text-white/60 text-sm mb-4">Get the latest travel tips and deals delivered to your inbox.</p>
+            <form onsubmit="subscribeNewsletter(event)">
+              <input type="email" required placeholder="Your email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-sm outline-none text-white placeholder-white/40 focus:border-accent mb-3" />
+              <button type="submit" class="btn-accent w-full py-3 rounded-xl text-white font-bold text-sm">
+                <span>Subscribe</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER CTA ========== -->
+  <section class="py-16 sm:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <div class="bg-gradient-to-br from-accent to-accent-dark rounded-3xl p-8 sm:p-12">
+        <i class="fas fa-paper-plane text-4xl text-white/80 mb-4"></i>
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-3">Never Miss a Travel Story</h2>
+        <p class="text-white/70 mb-8 max-w-lg mx-auto">Subscribe to our newsletter and get the best travel tips, destination guides, and exclusive deals.</p>
+        <form onsubmit="subscribeNewsletter(event)" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+          <input type="email" required placeholder="Enter your email" class="flex-1 px-5 py-3.5 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/50 outline-none focus:border-white" />
+          <button type="submit" class="px-8 py-3.5 bg-white text-accent font-bold text-sm rounded-xl hover:bg-gray-100 transition-colors">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-navy-dark pt-16 sm:pt-20 pb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-12">
+        <div>
+          <a href="index.html" class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 sm:w-10 sm:h-10 transition-transform group-hover:scale-110" />
+            <div class="leading-tight">
+              <span class="text-base sm:text-lg font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+              <span class="block text-[8px] sm:text-[9px] uppercase tracking-[2px] sm:tracking-[3px] text-accent font-medium">Tours & Travel</span>
+            </div>
+          </a>
+          <p class="text-xs sm:text-sm text-white/50 leading-relaxed mb-4 sm:mb-5">Crafting unforgettable travel experiences since 2010.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-facebook-f text-sm"></i></a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-instagram text-sm"></i></a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-linkedin-in text-sm"></i></a>
+            <a href="#" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:text-accent hover:bg-white/10 transition-all"><i class="fab fa-youtube text-sm"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Quick Links</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="index.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Home</a></li>
+            <li><a href="index.html#destinations" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Destinations</a></li>
+            <li><a href="blog.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Blog</a></li>
+            <li><a href="contact.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Support</h4>
+          <ul class="space-y-2 sm:space-y-3">
+            <li><a href="support.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Help Center</a></li>
+            <li><a href="support.html" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">FAQs</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="text-xs sm:text-sm text-white/60 hover:text-accent transition-colors">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 sm:col-span-2 lg:col-span-1">
+          <h4 class="font-bold text-xs sm:text-sm uppercase tracking-widest text-white/30 mb-3 sm:mb-5">Contact Us</h4>
+          <ul class="space-y-3 sm:space-y-4">
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-phone text-accent mt-0.5 text-sm"></i>
+              <p class="text-xs sm:text-sm text-white/60">+1 (234) 567-890</p>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-envelope text-accent mt-0.5 text-sm"></i>
+              <p class="text-xs sm:text-sm text-white/60">info@wadialzaid.com</p>
+            </li>
+            <li class="flex items-start gap-2 sm:gap-3">
+              <i class="fas fa-map-marker-alt text-accent mt-0.5 text-sm"></i>
+              <p class="text-xs sm:text-sm text-white/60">123 Travel Avenue, Dubai, UAE</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 py-4 sm:py-5">
+          <p class="text-xs sm:text-sm text-white/30">&copy; 2026 Wadi Al Zaid Tours & Travel. All rights reserved.</p>
+          <div class="flex gap-4 sm:gap-5">
+            <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Privacy Policy</a>
+            <a href="#" class="text-[10px] sm:text-xs text-white/30 hover:text-accent transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== TOAST ========== -->
+  <div id="toast" style="position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; opacity: 0; transform: translateY(1rem); pointer-events: none; transition: all 0.3s ease;">
+    <div style="background: #0f1d3a; color: white; padding: 1rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); display: flex; align-items: center; gap: 0.75rem; min-width: 300px;">
+      <i id="toastIcon" class="fas fa-check-circle" style="color: #22c55e; font-size: 1.125rem;"></i>
+      <span id="toastMessage" style="font-size: 0.875rem; font-weight: 500; flex: 1;"></span>
+    </div>
+  </div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // Blog Data
+    const blogPosts = [
+      { id: 1, title: 'Ultimate Guide to Maldives on a Budget', excerpt: 'Discover how to experience the beauty of Maldives without breaking the bank. From affordable guesthouses to local dining...', category: 'tips', categoryLabel: 'Travel Tips', image: 'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80', author: 'Ahmed Al Zaid', authorImg: 'Ahmed', date: 'Jul 12, 2026', readTime: '6 min', views: 1250 },
+      { id: 2, title: 'Paris: Beyond the Eiffel Tower', excerpt: 'Explore the hidden gems of Paris that most tourists miss. From secret gardens to local bistros...', category: 'tips', categoryLabel: 'Travel Tips', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80', author: 'Sara Khan', authorImg: 'Sara', date: 'Jul 10, 2026', readTime: '8 min', views: 980 },
+      { id: 3, title: 'Bali Adventure: Top 10 Experiences', excerpt: 'From rice terraces to volcanic hikes, discover the most thrilling adventures Bali has to offer...', category: 'adventure', categoryLabel: 'Adventure', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80', author: 'James Wilson', authorImg: 'James', date: 'Jul 8, 2026', readTime: '10 min', views: 1450 },
+      { id: 4, title: 'Complete Umrah Guide for First-Timers', excerpt: 'Everything you need to know before performing Umrah for the first time. Step-by-step preparation guide...', category: 'umrah', categoryLabel: 'Umrah', image: 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&q=80', author: 'Fatima Hassan', authorImg: 'Fatima', date: 'Jul 5, 2026', readTime: '12 min', views: 2100 },
+      { id: 5, title: 'Visa Requirements for Europe Schengen', excerpt: 'A comprehensive guide to Schengen visa requirements, application process, and tips for approval...', category: 'visa', categoryLabel: 'Visa', image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&q=80', author: 'Ahmed Al Zaid', authorImg: 'Ahmed', date: 'Jul 3, 2026', readTime: '7 min', views: 1800 },
+      { id: 6, title: 'Family-Friendly Destinations for Summer 2026', excerpt: 'Planning a family vacation? Here are the top destinations that kids and parents will love...', category: 'family', categoryLabel: 'Family Tours', image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80', author: 'Sara Khan', authorImg: 'Sara', date: 'Jul 1, 2026', readTime: '5 min', views: 890 },
+      { id: 7, title: 'New Flight Routes to Maldives in 2026', excerpt: 'Exciting news! New direct flights are now available from multiple cities to Male International Airport...', category: 'news', categoryLabel: 'News', image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&q=80', author: 'James Wilson', authorImg: 'James', date: 'Jun 28, 2026', readTime: '3 min', views: 650 },
+      { id: 8, title: 'Packing Essentials for Beach Vacations', excerpt: 'Don\'t forget these must-have items for your next beach getaway. From sunscreen to snorkeling gear...', category: 'tips', categoryLabel: 'Travel Tips', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80', author: 'Fatima Hassan', authorImg: 'Fatima', date: 'Jun 25, 2026', readTime: '4 min', views: 720 },
+      { id: 9, title: 'Dubai to Santorini: A Mediterranean Dream', excerpt: 'Follow our journey from the desert landscapes of Dubai to the stunning blue domes of Santorini...', category: 'adventure', categoryLabel: 'Adventure', image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=600&q=80', author: 'Ahmed Al Zaid', authorImg: 'Ahmed', date: 'Jun 22, 2026', readTime: '9 min', views: 1100 }
+    ];
+
+    let currentFilter = 'all';
+    let currentPage = 1;
+    const postsPerPage = 4;
+    let filteredPosts = [...blogPosts];
+
+    // Render Blog Posts
+    function renderPosts() {
+      const container = document.getElementById('blogContainer');
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const sortBy = document.getElementById('sortSelect').value;
+
+      filteredPosts = blogPosts.filter(post => {
+        const matchesCategory = currentFilter === 'all' || post.category === currentFilter;
+        const matchesSearch = post.title.toLowerCase().includes(searchTerm) || post.excerpt.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (sortBy === 'popular') {
+        filteredPosts.sort((a, b) => b.views - a.views);
+      } else if (sortBy === 'oldest') {
+        filteredPosts.sort((a, b) => a.id - b.id);
+      } else {
+        filteredPosts.sort((a, b) => b.id - a.id);
+      }
+
+      const startIndex = (currentPage - 1) * postsPerPage;
+      const paginatedPosts = filteredPosts.slice(startIndex, startIndex + postsPerPage);
+
+      container.innerHTML = paginatedPosts.map(post => `
+        <article class="blog-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden fade-in">
+          <div class="relative h-48 overflow-hidden">
+            <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover" />
+            <div class="absolute top-3 left-3">
+              <span class="bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full">${post.categoryLabel}</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-bold text-navy mb-2 hover:text-accent transition-colors cursor-pointer line-clamp-2">${post.title}</h3>
+            <p class="text-sm text-navy/60 mb-4 line-clamp-2">${post.excerpt}</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${post.authorImg}" alt="${post.author}" class="w-8 h-8 rounded-full" />
+                <div>
+                  <p class="text-xs font-medium text-navy">${post.author}</p>
+                  <p class="text-[10px] text-navy/50">${post.date}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-navy/50">
+                <span><i class="fas fa-clock mr-1"></i>${post.readTime}</span>
+                <span><i class="fas fa-eye mr-1"></i>${post.views}</span>
+              </div>
+            </div>
+            <button class="mt-4 w-full py-2.5 bg-gray-50 text-navy text-sm font-medium rounded-xl hover:bg-accent hover:text-white transition-colors">
+              Read More <i class="fas fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      renderPagination();
+      setTimeout(() => document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible')), 100);
+    }
+
+    // Render Pagination
+    function renderPagination() {
+      const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+      const pageNumbers = document.getElementById('pageNumbers');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+
+      let html = '';
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button onclick="goToPage(${i})" class="w-10 h-10 rounded-xl text-sm font-medium ${currentPage === i ? 'bg-accent text-white' : 'bg-white border border-gray-200 text-navy/60 hover:bg-gray-50'} transition-all">${i}</button>`;
+      }
+      pageNumbers.innerHTML = html;
+    }
+
+    // Filter Category
+    function filterCategory(category) {
+      currentFilter = category;
+      currentPage = 1;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-accent', 'text-white');
+        btn.classList.add('bg-gray-100', 'text-navy/60');
+      });
+      document.querySelector(`[data-category="${category}"]`).classList.add('active', 'bg-accent', 'text-white');
+      document.querySelector(`[data-category="${category}"]`).classList.remove('bg-gray-100', 'text-navy/60');
+      renderPosts();
+    }
+
+    function filterPosts() { currentPage = 1; renderPosts(); }
+    function sortPosts() { currentPage = 1; renderPosts(); }
+    function changePage(dir) { const tp = Math.ceil(filteredPosts.length / postsPerPage); if (dir === 'prev' && currentPage > 1) currentPage--; else if (dir === 'next' && currentPage < tp) currentPage++; renderPosts(); window.scrollTo({ top: 500, behavior: 'smooth' }); }
+    function goToPage(p) { currentPage = p; renderPosts(); window.scrollTo({ top: 500, behavior: 'smooth' }); }
+
+    // Newsletter
+    function subscribeNewsletter(e) {
+      e.preventDefault();
+      showToast('Successfully subscribed to our newsletter!', 'success');
+    }
+
+    // Toast
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+      toastMessage.textContent = message;
+      toastIcon.className = 'fas fa-check-circle';
+      toastIcon.style.color = type === 'success' ? '#22c55e' : '#ef4444';
+      toast.style.opacity = '1'; toast.style.transform = 'translateY(0)'; toast.style.pointerEvents = 'auto';
+      setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateY(1rem)'; toast.style.pointerEvents = 'none'; }, 4000);
+    }
+
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('nav-scrolled', window.scrollY > 50); });
+
+    // Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    menuBtn.addEventListener('click', () => { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+    closeMenu.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; });
+    menuOverlay.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; }));
+
+
+
+    // Init
+    renderPosts();
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

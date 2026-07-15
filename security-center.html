@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Center - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ========== SIDEBAR ========== -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
+    <div class="p-4">
+      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
+        <img src="logo.svg" alt="Logo" class="w-9 h-9 shrink-0" />
+        <div class="logo-text">
+          <span class="text-lg font-extrabold text-navy tracking-tight">Wadi Al Zaid</span>
+          <span class="block text-[8px] uppercase tracking-[2px] text-accent font-medium">Admin Panel</span>
+        </div>
+      </a>
+      <nav class="space-y-1" role="navigation" aria-label="Main navigation">
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
+        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
+        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
+        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
+        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
+        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
+        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
+        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
+        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Contact Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports & Analytics</span></a>
+        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Website Settings</span></a>
+        <a href="security-center.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium" aria-current="page"><i class="fas fa-shield-alt w-5 text-center"></i><span class="sidebar-text">Security Center</span></a>
+        <hr class="my-3 border-gray-100" />
+        <a href="admin.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
+        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
+        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
+        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
+        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
+        <a href="index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div id="mainContent" class="lg:ml-64 transition-all duration-300" role="main">
+
+    <!-- ========== TOP NAVBAR ========== -->
+    <nav class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="flex items-center justify-between h-16 px-4 sm:px-6">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bars"></i></button>
+          <div class="hidden md:flex items-center bg-gray-100 rounded-xl px-4 py-2 gap-2 w-64">
+            <i class="fas fa-search text-gray-400 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-sm outline-none w-full" />
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleDarkMode()" id="darkModeBtn" class="w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-moon"></i></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-bell"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span></button>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"><i class="fas fa-envelope"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full"></span></button>
+          <div class="flex items-center gap-3 pl-3 border-l border-gray-200 cursor-pointer">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin" class="w-9 h-9 rounded-xl" />
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold leading-tight">Admin User</p>
+              <p class="text-[10px] text-gray-400">Super Admin</p>
+            </div>
+            <i class="fas fa-chevron-down text-gray-400 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== PAGE CONTENT ========== -->
+    <div class="p-4 sm:p-6">
+
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 fade-up">
+        <div>
+          <h1 class="text-2xl font-black text-navy flex items-center gap-3">
+            <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center"><i class="fas fa-shield-alt text-green-600"></i></div>
+            Security Center
+          </h1>
+          <p class="text-gray-500 text-sm mt-1">Monitor and manage your application security posture</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-semibold">
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> System Secure
+          </span>
+          <span class="text-xs text-gray-400">Last scan: 2 min ago</span>
+        </div>
+      </div>
+
+      <!-- Security Score + Stats -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+
+        <!-- Security Score Ring -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 fade-up flex flex-col items-center justify-center">
+          <div class="security-score-ring mb-4">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#f3f4f6" stroke-width="10"/>
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="39.21" class="transition-all duration-1000"/>
+            </svg>
+            <div class="score-text">
+              <span class="text-3xl font-black text-green-600">88</span>
+              <span class="text-[10px] text-gray-400 font-medium">/ 100</span>
+            </div>
+          </div>
+          <p class="text-sm font-bold text-navy">Security Score</p>
+          <p class="text-xs text-gray-400 mt-1 text-center">Excellent protection level</p>
+          <button onclick="showToast('Running full security scan...')" class="mt-3 px-4 py-2 bg-green-50 text-green-700 rounded-lg text-xs font-semibold hover:bg-green-100 transition">
+            <i class="fas fa-sync-alt mr-1"></i> Re-scan
+          </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div class="stat-card bg-white rounded-2xl shadow-sm border border-gray-100 p-4 fade-up" style="transition-delay:0.05s">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center"><i class="fas fa-mobile-alt text-blue-600"></i></div>
+              <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Active</span>
+            </div>
+            <p class="text-xl font-black text-navy">2FA</p>
+            <p class="text-xs text-gray-400">Two-Factor Auth</p>
+            <div class="mt-2 flex items-center gap-1">
+              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span class="text-[10px] text-green-600 font-medium">Enabled for 12 users</span>
+            </div>
+          </div>
+          <div class="stat-card bg-white rounded-2xl shadow-sm border border-gray-100 p-4 fade-up" style="transition-delay:0.1s">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center"><i class="fas fa-desktop text-purple-600"></i></div>
+              <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">8</span>
+            </div>
+            <p class="text-xl font-black text-navy">8</p>
+            <p class="text-xs text-gray-400">Active Sessions</p>
+            <div class="mt-2 flex items-center gap-1">
+              <span class="text-[10px] text-gray-500 font-medium">3 browsers, 5 devices</span>
+            </div>
+          </div>
+          <div class="stat-card bg-white rounded-2xl shadow-sm border border-gray-100 p-4 fade-up" style="transition-delay:0.15s">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center"><i class="fas fa-exclamation-triangle text-red-600"></i></div>
+              <span class="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full">+3 today</span>
+            </div>
+            <p class="text-xl font-black text-navy">17</p>
+            <p class="text-xs text-gray-400">Failed Logins (24h)</p>
+            <div class="mt-2 flex items-center gap-1">
+              <span class="text-[10px] text-red-500 font-medium"><i class="fas fa-arrow-up mr-1"></i>12% from yesterday</span>
+            </div>
+          </div>
+          <div class="stat-card bg-white rounded-2xl shadow-sm border border-gray-100 p-4 fade-up" style="transition-delay:0.2s">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center"><i class="fas fa-ban text-orange-600"></i></div>
+              <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full">12</span>
+            </div>
+            <p class="text-xl font-black text-navy">12</p>
+            <p class="text-xs text-gray-400">Blocked IPs</p>
+            <div class="mt-2 flex items-center gap-1">
+              <span class="text-[10px] text-gray-500 font-medium">Last: 45 min ago</span>
+            </div>
+          </div>
+          <div class="stat-card bg-white rounded-2xl shadow-sm border border-gray-100 p-4 fade-up" style="transition-delay:0.25s">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 bg-yellow-50 rounded-xl flex items-center justify-center"><i class="fas fa-bell text-yellow-600"></i></div>
+              <span class="text-[10px] font-bold text-yellow-600 bg-yellow-50 px-2 py-0.5 rounded-full">5</span>
+            </div>
+            <p class="text-xl font-black text-navy">5</p>
+            <p class="text-xs text-gray-400">Security Alerts</p>
+            <div class="mt-2 flex items-center gap-1">
+              <span class="text-[10px] text-yellow-600 font-medium">2 critical</span>
+            </div>
+          </div>
+          <div class="stat-card bg-white rounded-2xl shadow-sm border border-gray-100 p-4 fade-up" style="transition-delay:0.3s">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center"><i class="fas fa-key text-green-600"></i></div>
+              <span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">6</span>
+            </div>
+            <p class="text-xl font-black text-navy">6</p>
+            <p class="text-xs text-gray-400">API Keys</p>
+            <div class="mt-2 flex items-center gap-1">
+              <span class="text-[10px] text-gray-500 font-medium">2 expiring soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 fade-up mb-6">
+        <div class="border-b border-gray-100 px-6 overflow-x-auto">
+          <div class="flex gap-0 -mb-px min-w-max">
+            <button class="tab-btn active px-5 py-3.5 text-sm font-medium whitespace-nowrap" data-tab="overview" onclick="switchTab('overview')"><i class="fas fa-th-large mr-2"></i>Overview</button>
+            <button class="tab-btn px-5 py-3.5 text-sm font-medium whitespace-nowrap" data-tab="auth" onclick="switchTab('auth')"><i class="fas fa-fingerprint mr-2"></i>Authentication</button>
+            <button class="tab-btn px-5 py-3.5 text-sm font-medium whitespace-nowrap" data-tab="sessions" onclick="switchTab('sessions')"><i class="fas fa-desktop mr-2"></i>Sessions</button>
+            <button class="tab-btn px-5 py-3.5 text-sm font-medium whitespace-nowrap" data-tab="network" onclick="switchTab('network')"><i class="fas fa-network-wired mr-2"></i>Network</button>
+            <button class="tab-btn px-5 py-3.5 text-sm font-medium whitespace-nowrap" data-tab="api" onclick="switchTab('api')"><i class="fas fa-key mr-2"></i>API Keys</button>
+            <button class="tab-btn px-5 py-3.5 text-sm font-medium whitespace-nowrap" data-tab="audit" onclick="switchTab('audit')"><i class="fas fa-clipboard-list mr-2"></i>Audit Logs</button>
+          </div>
+        </div>
+
+        <!-- ===== OVERVIEW TAB ===== -->
+        <div id="tab-overview" class="tab-content p-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+            <!-- Login Protection -->
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-lock text-accent"></i> Login Protection</h3>
+                <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Active</span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-medium text-gray-700">Brute Force Protection</p>
+                    <p class="text-xs text-gray-400">Lock account after 5 failed attempts</p>
+                  </div>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-medium text-gray-700">IP Rate Limiting</p>
+                    <p class="text-xs text-gray-400">Limit requests per IP per minute</p>
+                  </div>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-medium text-gray-700">Captcha on Login</p>
+                    <p class="text-xs text-gray-400">Show CAPTCHA after 3 failed attempts</p>
+                  </div>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-medium text-gray-700">Session Timeout</p>
+                    <p class="text-xs text-gray-400">Auto-logout after inactivity</p>
+                  </div>
+                  <select class="text-xs border border-gray-200 rounded-lg px-3 py-1.5 bg-white outline-none">
+                    <option>15 minutes</option>
+                    <option selected>30 minutes</option>
+                    <option>1 hour</option>
+                    <option>4 hours</option>
+                  </select>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-medium text-gray-700">Login Notifications</p>
+                    <p class="text-xs text-gray-400">Email on new device login</p>
+                  </div>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Password Policy -->
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-key text-accent"></i> Password Policy</h3>
+                <button onclick="showToast('Password policy saved')" class="text-xs text-accent font-semibold hover:underline">Save</button>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-700">Minimum Length</p>
+                  <div class="flex items-center gap-2">
+                    <input type="range" min="6" max="16" value="8" class="w-24 accent-amber-500" oninput="this.nextElementSibling.textContent=this.value">
+                    <span class="text-sm font-bold text-navy w-6 text-center">8</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-700">Require Uppercase</p>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-700">Require Numbers</p>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-700">Require Special Characters</p>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-700">Password Expiry</p>
+                  <select class="text-xs border border-gray-200 rounded-lg px-3 py-1.5 bg-white outline-none">
+                    <option>30 days</option>
+                    <option selected>90 days</option>
+                    <option>180 days</option>
+                    <option>Never</option>
+                  </select>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-700">Password History</p>
+                  <select class="text-xs border border-gray-200 rounded-lg px-3 py-1.5 bg-white outline-none">
+                    <option>Last 3</option>
+                    <option selected>Last 5</option>
+                    <option>Last 10</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Encryption + SSL + Backup -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Data Encryption -->
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center"><i class="fas fa-user-lock text-green-600"></i></div>
+                <div>
+                  <h3 class="font-bold text-navy text-sm">Data Encryption</h3>
+                  <span class="text-[10px] text-green-600 font-semibold">AES-256 Active</span>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Database</span>
+                  <span class="inline-flex items-center gap-1 text-green-600 font-medium"><i class="fas fa-check-circle"></i> Encrypted</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">File Storage</span>
+                  <span class="inline-flex items-center gap-1 text-green-600 font-medium"><i class="fas fa-check-circle"></i> Encrypted</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">API Traffic</span>
+                  <span class="inline-flex items-center gap-1 text-green-600 font-medium"><i class="fas fa-check-circle"></i> Encrypted</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Backups</span>
+                  <span class="inline-flex items-center gap-1 text-green-600 font-medium"><i class="fas fa-check-circle"></i> Encrypted</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SSL Status -->
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center"><i class="fas fa-certificate text-blue-600"></i></div>
+                <div>
+                  <h3 class="font-bold text-navy text-sm">SSL Certificate</h3>
+                  <span class="text-[10px] text-green-600 font-semibold">Valid & Active</span>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Issuer</span>
+                  <span class="font-medium text-gray-700">Let's Encrypt</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Expires</span>
+                  <span class="font-medium text-gray-700">Oct 15, 2026</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Protocol</span>
+                  <span class="font-medium text-gray-700">TLS 1.3</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">HSTS</span>
+                  <span class="inline-flex items-center gap-1 text-green-600 font-medium"><i class="fas fa-check-circle"></i> Enabled</span>
+                </div>
+              </div>
+              <div class="mt-3 w-full bg-gray-200 rounded-full h-1.5">
+                <div class="bg-green-500 h-1.5 rounded-full" style="width: 85%"></div>
+              </div>
+              <p class="text-[10px] text-gray-400 mt-1">85 days until expiry</p>
+            </div>
+
+            <!-- Backup Status -->
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center"><i class="fas fa-cloud-upload-alt text-purple-600"></i></div>
+                <div>
+                  <h3 class="font-bold text-navy text-sm">Backup Status</h3>
+                  <span class="text-[10px] text-green-600 font-semibold">Last: Today 3:00 AM</span>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Auto Backup</span>
+                  <span class="inline-flex items-center gap-1 text-green-600 font-medium"><i class="fas fa-check-circle"></i> Daily</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Last Size</span>
+                  <span class="font-medium text-gray-700">2.4 GB</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Retention</span>
+                  <span class="font-medium text-gray-700">30 days</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-gray-500">Location</span>
+                  <span class="font-medium text-gray-700">AWS S3</span>
+                </div>
+              </div>
+              <button onclick="showToast('Creating backup now...')" class="mt-3 w-full px-3 py-1.5 bg-purple-50 text-purple-700 rounded-lg text-xs font-semibold hover:bg-purple-100 transition">
+                <i class="fas fa-download mr-1"></i> Backup Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Security Chart -->
+          <div class="mt-6 bg-gray-50 rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-navy"><i class="fas fa-chart-line text-accent mr-2"></i>Login Attempts (Last 7 Days)</h3>
+              <div class="flex items-center gap-4 text-xs">
+                <span class="flex items-center gap-1"><span class="w-3 h-1 bg-green-500 rounded-full"></span> Successful</span>
+                <span class="flex items-center gap-1"><span class="w-3 h-1 bg-red-500 rounded-full"></span> Failed</span>
+              </div>
+            </div>
+            <div class="chart-container"><canvas id="loginChart"></canvas></div>
+          </div>
+        </div>
+
+        <!-- ===== AUTHENTICATION TAB ===== -->
+        <div id="tab-auth" class="tab-content p-6 hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- 2FA Management -->
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-shield-alt text-accent"></i> Two-Factor Authentication</h3>
+                <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Enforced</span>
+              </div>
+              <div class="space-y-3 mb-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"><i class="fas fa-mobile-alt text-blue-600 text-xs"></i></div>
+                    <div>
+                      <p class="text-sm font-medium text-gray-700">Authenticator App</p>
+                      <p class="text-xs text-gray-400">Google Authenticator / Authy</p>
+                    </div>
+                  </div>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center"><i class="fas fa-sms text-green-600 text-xs"></i></div>
+                    <div>
+                      <p class="text-sm font-medium text-gray-700">SMS Verification</p>
+                      <p class="text-xs text-gray-400">One-time code via SMS</p>
+                    </div>
+                  </div>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center"><i class="fas fa-envelope text-purple-600 text-xs"></i></div>
+                    <div>
+                      <p class="text-sm font-medium text-gray-700">Email Verification</p>
+                      <p class="text-xs text-gray-400">One-time code via email</p>
+                    </div>
+                  </div>
+                  <div class="toggle-switch" onclick="this.classList.toggle('active')"></div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center"><i class="fas fa-key text-yellow-600 text-xs"></i></div>
+                    <div>
+                      <p class="text-sm font-medium text-gray-700">Backup Codes</p>
+                      <p class="text-xs text-gray-400">Recovery codes for emergencies</p>
+                    </div>
+                  </div>
+                  <div class="toggle-switch active" onclick="this.classList.toggle('active')"></div>
+                </div>
+              </div>
+              <button onclick="showToast('Generating new backup codes...')" class="px-4 py-2 bg-accent/10 text-accent rounded-lg text-xs font-semibold hover:bg-accent/20 transition">
+                <i class="fas fa-redo mr-1"></i> Regenerate Backup Codes
+              </button>
+            </div>
+
+            <!-- 2FA Users -->
+            <div class="bg-gray-50 rounded-2xl p-5">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-users text-accent"></i> 2FA User Status</h3>
+                <span class="text-xs text-gray-500">12 / 15 enabled</span>
+              </div>
+              <div class="space-y-2 max-h-64 overflow-y-auto">
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-7 h-7 rounded-lg" />
+                    <div><p class="text-sm font-medium text-gray-700">Admin User</p><p class="text-[10px] text-gray-400">Super Admin</p></div>
+                  </div>
+                  <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Enabled</span>
+                </div>
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" class="w-7 h-7 rounded-lg" />
+                    <div><p class="text-sm font-medium text-gray-700">Sarah Ahmed</p><p class="text-[10px] text-gray-400">Content Manager</p></div>
+                  </div>
+                  <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Enabled</span>
+                </div>
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Omar" class="w-7 h-7 rounded-lg" />
+                    <div><p class="text-sm font-medium text-gray-700">Omar Al-Balushi</p><p class="text-[10px] text-gray-400">Booking Agent</p></div>
+                  </div>
+                  <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Enabled</span>
+                </div>
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Fatima" class="w-7 h-7 rounded-lg" />
+                    <div><p class="text-sm font-medium text-gray-700">Fatima Al-Hinai</p><p class="text-[10px] text-gray-400">Customer Support</p></div>
+                  </div>
+                  <span class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-0.5 rounded-full">Disabled</span>
+                </div>
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Khalid" class="w-7 h-7 rounded-lg" />
+                    <div><p class="text-sm font-medium text-gray-700">Khalid Al-Maawali</p><p class="text-[10px] text-gray-400">Finance Manager</p></div>
+                  </div>
+                  <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Enabled</span>
+                </div>
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5">
+                  <div class="flex items-center gap-2.5">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maryam" class="w-7 h-7 rounded-lg" />
+                    <div><p class="text-sm font-medium text-gray-700">Maryam Al-Lawati</p><p class="text-[10px] text-gray-400">Marketing Lead</p></div>
+                  </div>
+                  <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Enabled</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== SESSIONS TAB ===== -->
+        <div id="tab-sessions" class="tab-content p-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- Active Sessions -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-desktop text-accent"></i> Active Sessions</h3>
+                <button onclick="showToast('All other sessions terminated')" class="text-xs text-red-600 font-semibold hover:underline">Revoke All Others</button>
+              </div>
+              <div class="space-y-3">
+                <div class="bg-white rounded-xl border border-gray-100 p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center"><i class="fas fa-laptop text-green-600"></i></div>
+                      <div>
+                        <p class="text-sm font-bold text-gray-700">MacBook Pro - Chrome</p>
+                        <p class="text-xs text-gray-400">192.168.1.45 - Muscat, Oman</p>
+                      </div>
+                    </div>
+                    <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Current</span>
+                  </div>
+                  <p class="text-[10px] text-gray-400">Last active: Now</p>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center"><i class="fas fa-mobile-alt text-blue-600"></i></div>
+                      <div>
+                        <p class="text-sm font-bold text-gray-700">iPhone 15 Pro - Safari</p>
+                        <p class="text-xs text-gray-400">10.0.0.12 - Muscat, Oman</p>
+                      </div>
+                    </div>
+                    <button onclick="showToast('Session revoked')" class="text-[10px] text-red-500 font-semibold hover:underline">Revoke</button>
+                  </div>
+                  <p class="text-[10px] text-gray-400">Last active: 12 min ago</p>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center"><i class="fas fa-tablet-alt text-purple-600"></i></div>
+                      <div>
+                        <p class="text-sm font-bold text-gray-700">iPad Air - Safari</p>
+                        <p class="text-xs text-gray-400">172.16.0.88 - Salalah, Oman</p>
+                      </div>
+                    </div>
+                    <button onclick="showToast('Session revoked')" class="text-[10px] text-red-500 font-semibold hover:underline">Revoke</button>
+                  </div>
+                  <p class="text-[10px] text-gray-400">Last active: 2 hours ago</p>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center"><i class="fas fa-laptop text-orange-600"></i></div>
+                      <div>
+                        <p class="text-sm font-bold text-gray-700">Windows PC - Firefox</p>
+                        <p class="text-xs text-gray-400">192.168.2.100 - Sohar, Oman</p>
+                      </div>
+                    </div>
+                    <button onclick="showToast('Session revoked')" class="text-[10px] text-red-500 font-semibold hover:underline">Revoke</button>
+                  </div>
+                  <p class="text-[10px] text-gray-400">Last active: 5 hours ago</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trusted Devices -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-shield-alt text-accent"></i> Trusted Devices</h3>
+                <button onclick="showToast('Add device trust via login')" class="text-xs text-accent font-semibold hover:underline">+ Add Device</button>
+              </div>
+              <div class="space-y-3">
+                <div class="bg-white rounded-xl border border-gray-100 p-4">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center"><i class="fas fa-laptop text-green-600"></i></div>
+                      <div>
+                        <p class="text-sm font-bold text-gray-700">MacBook Pro (2024)</p>
+                        <p class="text-xs text-gray-400">Chrome 120 - Muscat</p>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <span class="text-[10px] text-gray-400 block">Trusted since</span>
+                      <span class="text-[10px] font-medium text-gray-600">Jan 15, 2026</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center"><i class="fas fa-mobile-alt text-blue-600"></i></div>
+                      <div>
+                        <p class="text-sm font-bold text-gray-700">iPhone 15 Pro</p>
+                        <p class="text-xs text-gray-400">Safari 17 - Muscat</p>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <span class="text-[10px] text-gray-400 block">Trusted since</span>
+                      <span class="text-[10px] font-medium text-gray-600">Feb 3, 2026</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center"><i class="fas fa-tablet-alt text-purple-600"></i></div>
+                      <div>
+                        <p class="text-sm font-bold text-gray-700">iPad Air M2</p>
+                        <p class="text-xs text-gray-400">Safari 17 - Salalah</p>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <span class="text-[10px] text-gray-400 block">Trusted since</span>
+                      <span class="text-[10px] font-medium text-gray-600">Mar 20, 2026</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Actions -->
+              <div class="mt-6">
+                <h3 class="font-bold text-navy mb-3 flex items-center gap-2"><i class="fas fa-bolt text-accent"></i> Quick Actions</h3>
+                <div class="grid grid-cols-2 gap-3">
+                  <button onclick="showToast('All sessions force-logged out')" class="flex items-center gap-2 px-3 py-2.5 bg-red-50 text-red-700 rounded-xl text-xs font-semibold hover:bg-red-100 transition">
+                    <i class="fas fa-sign-out-alt"></i> Force Logout
+                  </button>
+                  <button onclick="showToast('Sessions reset initiated')" class="flex items-center gap-2 px-3 py-2.5 bg-orange-50 text-orange-700 rounded-xl text-xs font-semibold hover:bg-orange-100 transition">
+                    <i class="fas fa-redo"></i> Reset Sessions
+                  </button>
+                  <button onclick="showToast('Generating new API key...')" class="flex items-center gap-2 px-3 py-2.5 bg-blue-50 text-blue-700 rounded-xl text-xs font-semibold hover:bg-blue-100 transition">
+                    <i class="fas fa-key"></i> Generate API Key
+                  </button>
+                  <button onclick="showToast('Maintenance mode enabled')" class="flex items-center gap-2 px-3 py-2.5 bg-yellow-50 text-yellow-700 rounded-xl text-xs font-semibold hover:bg-yellow-100 transition">
+                    <i class="fas fa-tools"></i> Maintenance
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== NETWORK TAB ===== -->
+        <div id="tab-network" class="tab-content p-6">
+          <!-- Blocked IPs -->
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-ban text-accent"></i> Blocked IP Addresses</h3>
+            <div class="flex items-center gap-2">
+              <input type="text" placeholder="Enter IP to block..." class="text-sm border border-gray-200 rounded-lg px-3 py-2 outline-none focus:border-accent" id="blockIpInput">
+              <button onclick="blockIP()" class="px-4 py-2 bg-red-600 text-white rounded-lg text-xs font-semibold hover:bg-red-700 transition"><i class="fas fa-ban mr-1"></i> Block IP</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl border border-gray-100 overflow-hidden mb-6">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="bg-gray-50 border-b border-gray-100">
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">IP Address</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">Location</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">Reason</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">Blocked On</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">Attempts</th>
+                    <th class="px-5 py-3 text-right text-xs font-bold text-gray-500 uppercase">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="blockedIpsTable">
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-sm font-mono font-medium text-gray-700">185.220.101.34</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Berlin, Germany</td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Brute Force</span></td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Today, 2:15 PM</td>
+                    <td class="px-5 py-3 text-sm font-bold text-red-600">847</td>
+                    <td class="px-5 py-3 text-right"><button onclick="showToast('IP unblocked')" class="text-xs text-green-600 font-semibold hover:underline">Unblock</button></td>
+                  </tr>
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-sm font-mono font-medium text-gray-700">45.33.32.156</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">New York, USA</td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Suspicious Activity</span></td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Yesterday, 8:30 PM</td>
+                    <td class="px-5 py-3 text-sm font-bold text-orange-600">124</td>
+                    <td class="px-5 py-3 text-right"><button onclick="showToast('IP unblocked')" class="text-xs text-green-600 font-semibold hover:underline">Unblock</button></td>
+                  </tr>
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-sm font-mono font-medium text-gray-700">91.134.204.82</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Paris, France</td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full">SQL Injection</span></td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Jul 10, 2026</td>
+                    <td class="px-5 py-3 text-sm font-bold text-red-600">56</td>
+                    <td class="px-5 py-3 text-right"><button onclick="showToast('IP unblocked')" class="text-xs text-green-600 font-semibold hover:underline">Unblock</button></td>
+                  </tr>
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-sm font-mono font-medium text-gray-700">103.21.244.0</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">San Francisco, USA</td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">Rate Limit Exceeded</span></td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Jul 8, 2026</td>
+                    <td class="px-5 py-3 text-sm font-bold text-yellow-600">2,340</td>
+                    <td class="px-5 py-3 text-right"><button onclick="showToast('IP unblocked')" class="text-xs text-green-600 font-semibold hover:underline">Unblock</button></td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-sm font-mono font-medium text-gray-700">198.51.100.42</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">London, UK</td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Bot Traffic</span></td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Jul 5, 2026</td>
+                    <td class="px-5 py-3 text-sm font-bold text-red-600">5,120</td>
+                    <td class="px-5 py-3 text-right"><button onclick="showToast('IP unblocked')" class="text-xs text-green-600 font-semibold hover:underline">Unblock</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Network Stats -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white rounded-xl border border-gray-100 p-4">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center"><i class="fas fa-shield-alt text-green-600"></i></div>
+                <div>
+                  <p class="text-sm font-bold text-navy">Firewall</p>
+                  <span class="text-[10px] text-green-600 font-semibold">Active</span>
+                </div>
+              </div>
+              <div class="space-y-1.5 text-xs text-gray-500">
+                <div class="flex justify-between"><span>Blocked today</span><span class="font-bold text-navy">1,247</span></div>
+                <div class="flex justify-between"><span>Rules active</span><span class="font-bold text-navy">48</span></div>
+                <div class="flex justify-between"><span>Last updated</span><span class="font-bold text-navy">2h ago</span></div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 p-4">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center"><i class="fas fa-robot text-blue-600"></i></div>
+                <div>
+                  <p class="text-sm font-bold text-navy">Bot Protection</p>
+                  <span class="text-[10px] text-green-600 font-semibold">Active</span>
+                </div>
+              </div>
+              <div class="space-y-1.5 text-xs text-gray-500">
+                <div class="flex justify-between"><span>Bots blocked</span><span class="font-bold text-navy">3,891</span></div>
+                <div class="flex justify-between"><span>Challenges sent</span><span class="font-bold text-navy">124</span></div>
+                <div class="flex justify-between"><span>False positives</span><span class="font-bold text-navy">3</span></div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 p-4">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center"><i class="fas fa-globe text-purple-600"></i></div>
+                <div>
+                  <p class="text-sm font-bold text-navy">DDoS Protection</p>
+                  <span class="text-[10px] text-green-600 font-semibold">Active</span>
+                </div>
+              </div>
+              <div class="space-y-1.5 text-xs text-gray-500">
+                <div class="flex justify-between"><span>Attacks mitigated</span><span class="font-bold text-navy">7</span></div>
+                <div class="flex justify-between"><span>Peak traffic</span><span class="font-bold text-navy">4.2 Gbps</span></div>
+                <div class="flex justify-between"><span>Uptime</span><span class="font-bold text-green-600">99.99%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== API KEYS TAB ===== -->
+        <div id="tab-api" class="tab-content p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-key text-accent"></i> API Keys</h3>
+            <button onclick="showToast('New API key generated')" class="px-4 py-2 bg-accent text-white rounded-lg text-xs font-semibold hover:bg-accent-dark transition"><i class="fas fa-plus mr-1"></i> Generate New Key</button>
+          </div>
+          <div class="space-y-3 mb-6">
+            <div class="bg-white rounded-xl border border-gray-100 p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center"><i class="fas fa-server text-blue-600"></i></div>
+                  <div>
+                    <p class="text-sm font-bold text-gray-700">Production API Key</p>
+                    <p class="text-xs text-gray-400">Used for main application</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Active</span>
+                  <button onclick="showToast('Key revoked')" class="text-xs text-red-500 font-semibold hover:underline">Revoke</button>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+                <code class="text-xs text-gray-600 font-mono flex-1" id="apiKey1">waz_prod_8f3k9d2m7x5n1p4q6r0s</code>
+                <button onclick="copyKey('apiKey1')" class="text-xs text-accent font-semibold hover:underline"><i class="fas fa-copy mr-1"></i>Copy</button>
+              </div>
+              <div class="flex items-center gap-4 mt-2 text-[10px] text-gray-400">
+                <span>Created: Jan 10, 2026</span>
+                <span>Last used: 5 min ago</span>
+                <span>Requests today: 12,847</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center"><i class="fas fa-flask text-purple-600"></i></div>
+                  <div>
+                    <p class="text-sm font-bold text-gray-700">Staging API Key</p>
+                    <p class="text-xs text-gray-400">Used for testing environment</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] font-bold text-yellow-600 bg-yellow-100 px-2 py-0.5 rounded-full">Expiring Soon</span>
+                  <button onclick="showToast('Key revoked')" class="text-xs text-red-500 font-semibold hover:underline">Revoke</button>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+                <code class="text-xs text-gray-600 font-mono flex-1" id="apiKey2">waz_stg_2a4b6c8d0e1f3g5h7i9j</code>
+                <button onclick="copyKey('apiKey2')" class="text-xs text-accent font-semibold hover:underline"><i class="fas fa-copy mr-1"></i>Copy</button>
+              </div>
+              <div class="flex items-center gap-4 mt-2 text-[10px] text-gray-400">
+                <span>Created: Mar 22, 2026</span>
+                <span>Expires: Jul 22, 2026</span>
+                <span>Requests today: 342</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-100 p-4">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center"><i class="fas fa-mobile-alt text-orange-600"></i></div>
+                  <div>
+                    <p class="text-sm font-bold text-gray-700">Mobile App API Key</p>
+                    <p class="text-xs text-gray-400">Used for iOS & Android apps</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Active</span>
+                  <button onclick="showToast('Key revoked')" class="text-xs text-red-500 font-semibold hover:underline">Revoke</button>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+                <code class="text-xs text-gray-600 font-mono flex-1" id="apiKey3">waz_mob_k1l2m3n4o5p6q7r8s9t0</code>
+                <button onclick="copyKey('apiKey3')" class="text-xs text-accent font-semibold hover:underline"><i class="fas fa-copy mr-1"></i>Copy</button>
+              </div>
+              <div class="flex items-center gap-4 mt-2 text-[10px] text-gray-400">
+                <span>Created: Feb 14, 2026</span>
+                <span>Last used: 1 hour ago</span>
+                <span>Requests today: 8,234</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- API Rate Limits -->
+          <div class="bg-gray-50 rounded-2xl p-5">
+            <h3 class="font-bold text-navy mb-3"><i class="fas fa-tachometer-alt text-accent mr-2"></i> Rate Limits</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-white rounded-xl p-3">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs text-gray-500">Requests / min</span>
+                  <span class="text-xs font-bold text-navy">60</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-accent h-1.5 rounded-full" style="width:45%"></div></div>
+              </div>
+              <div class="bg-white rounded-xl p-3">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs text-gray-500">Requests / hour</span>
+                  <span class="text-xs font-bold text-navy">1,000</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-blue-500 h-1.5 rounded-full" style="width:62%"></div></div>
+              </div>
+              <div class="bg-white rounded-xl p-3">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs text-gray-500">Requests / day</span>
+                  <span class="text-xs font-bold text-navy">10,000</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-1.5"><div class="bg-green-500 h-1.5 rounded-full" style="width:78%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== AUDIT LOGS TAB ===== -->
+        <div id="tab-audit" class="tab-content p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h3 class="font-bold text-navy flex items-center gap-2"><i class="fas fa-clipboard-list text-accent"></i> Security Audit Logs</h3>
+            <div class="flex items-center gap-2">
+              <select class="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white outline-none">
+                <option>All Events</option>
+                <option>Login Events</option>
+                <option>Failed Logins</option>
+                <option>Data Changes</option>
+                <option>Permission Changes</option>
+              </select>
+              <button onclick="showToast('Exporting logs...')" class="px-3 py-2 bg-gray-100 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-200 transition"><i class="fas fa-download mr-1"></i>Export</button>
+            </div>
+          </div>
+
+          <!-- Alerts Timeline -->
+          <div class="bg-gray-50 rounded-2xl p-5 mb-6">
+            <h4 class="font-bold text-navy text-sm mb-4"><i class="fas fa-exclamation-circle text-yellow-500 mr-2"></i> Security Alerts Timeline</h4>
+            <div class="space-y-4 relative pl-6">
+              <div class="timeline-line"></div>
+              <div class="relative">
+                <div class="timeline-dot bg-red-500 absolute -left-6 top-1 border-2 border-white"></div>
+                <div class="bg-white rounded-xl p-3 border border-gray-100">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-bold text-red-600">Critical: SQL Injection Attempt</span>
+                    <span class="text-[10px] text-gray-400">Today 2:15 PM</span>
+                  </div>
+                  <p class="text-xs text-gray-500">Automated SQL injection attempt blocked from IP 185.220.101.34 targeting /api/search endpoint.</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="timeline-dot bg-orange-500 absolute -left-6 top-1 border-2 border-white"></div>
+                <div class="bg-white rounded-xl p-3 border border-gray-100">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-bold text-orange-600">Warning: Brute Force Detected</span>
+                    <span class="text-[10px] text-gray-400">Today 1:42 PM</span>
+                  </div>
+                  <p class="text-xs text-gray-500">847 failed login attempts from IP 185.220.101.34 within 30 minutes. IP has been auto-blocked.</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="timeline-dot bg-yellow-500 absolute -left-6 top-1 border-2 border-white"></div>
+                <div class="bg-white rounded-xl p-3 border border-gray-100">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-bold text-yellow-600">Warning: Unusual Login Location</span>
+                    <span class="text-[10px] text-gray-400">Yesterday 9:18 PM</span>
+                  </div>
+                  <p class="text-xs text-gray-500">Admin User logged in from Berlin, Germany (new location). Login was verified via 2FA.</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="timeline-dot bg-blue-500 absolute -left-6 top-1 border-2 border-white"></div>
+                <div class="bg-white rounded-xl p-3 border border-gray-100">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-bold text-blue-600">Info: API Key Generated</span>
+                    <span class="text-[10px] text-gray-400">Jul 12, 2026 3:00 PM</span>
+                  </div>
+                  <p class="text-xs text-gray-500">New production API key generated by Admin User for mobile application integration.</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="timeline-dot bg-green-500 absolute -left-6 top-1 border-2 border-white"></div>
+                <div class="bg-white rounded-xl p-3 border border-gray-100">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-bold text-green-600">Resolved: SSL Certificate Renewed</span>
+                    <span class="text-[10px] text-gray-400">Jul 10, 2026 11:00 AM</span>
+                  </div>
+                  <p class="text-xs text-gray-500">SSL certificate successfully renewed for wadialzaid.com. Valid until Oct 15, 2026.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audit Log Table -->
+          <div class="bg-white rounded-xl border border-gray-100 overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="bg-gray-50 border-b border-gray-100">
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">Timestamp</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">User</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">Event</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">IP Address</th>
+                    <th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase">Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-xs text-gray-500 font-mono">Today 3:12 PM</td>
+                    <td class="px-5 py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded-lg"/><span class="text-sm font-medium text-gray-700">Admin User</span></div></td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Login Success</span></td>
+                    <td class="px-5 py-3 text-xs font-mono text-gray-500">192.168.1.45</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Chrome on macOS - 2FA verified</td>
+                  </tr>
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-xs text-gray-500 font-mono">Today 2:58 PM</td>
+                    <td class="px-5 py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" class="w-6 h-6 rounded-lg"/><span class="text-sm font-medium text-gray-700">Sarah Ahmed</span></div></td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Password Changed</span></td>
+                    <td class="px-5 py-3 text-xs font-mono text-gray-500">10.0.0.22</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Password updated successfully</td>
+                  </tr>
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-xs text-gray-500 font-mono">Today 2:15 PM</td>
+                    <td class="px-5 py-3"><div class="flex items-center gap-2"><div class="w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center"><i class="fas fa-user-secret text-red-500 text-[8px]"></i></div><span class="text-sm font-medium text-gray-700">Unknown</span></div></td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded-full">Login Failed</span></td>
+                    <td class="px-5 py-3 text-xs font-mono text-gray-500">185.220.101.34</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Brute force attempt - IP blocked</td>
+                  </tr>
+                  <tr class="border-b border-gray-50 hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-xs text-gray-500 font-mono">Today 1:30 PM</td>
+                    <td class="px-5 py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Omar" class="w-6 h-6 rounded-lg"/><span class="text-sm font-medium text-gray-700">Omar Al-Balushi</span></div></td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">API Key Used</span></td>
+                    <td class="px-5 py-3 text-xs font-mono text-gray-500">172.16.0.50</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">Production key - /api/bookings</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition">
+                    <td class="px-5 py-3 text-xs text-gray-500 font-mono">Today 11:00 AM</td>
+                    <td class="px-5 py-3"><div class="flex items-center gap-2"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="w-6 h-6 rounded-lg"/><span class="text-sm font-medium text-gray-700">Admin User</span></div></td>
+                    <td class="px-5 py-3"><span class="text-[10px] font-bold bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">2FA Settings Changed</span></td>
+                    <td class="px-5 py-3 text-xs font-mono text-gray-500">192.168.1.45</td>
+                    <td class="px-5 py-3 text-xs text-gray-500">SMS verification enabled for all users</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed top-20 right-4 z-[200] space-y-2"></div>
+
+  <script>
+    // Dark Mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('bg-navy-dark');
+      document.body.classList.toggle('bg-gray-50');
+    }
+
+    // Tabs
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.remove('hidden');
+      document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+    }
+
+    // Toast
+    function showToast(msg) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'bg-navy text-white px-5 py-3 rounded-xl text-sm font-medium shadow-lg flex items-center gap-2 toast';
+      toast.innerHTML = '<i class="fas fa-check-circle text-green-400"></i> ' + msg;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    // Copy API Key
+    function copyKey(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.textContent);
+      showToast('API key copied to clipboard');
+    }
+
+    // Block IP
+    function blockIP() {
+      const input = document.getElementById('blockIpInput');
+      if (input.value.trim()) {
+        showToast('IP ' + input.value + ' has been blocked');
+        input.value = '';
+      } else {
+        showToast('Please enter a valid IP address');
+      }
+    }
+
+    // Login Chart
+    const ctx = document.getElementById('loginChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [
+          { label: 'Successful', data: [142, 168, 155, 178, 190, 95, 82], backgroundColor: '#22c55e', borderRadius: 6, barPercentage: 0.6 },
+          { label: 'Failed', data: [8, 12, 5, 17, 9, 3, 6], backgroundColor: '#ef4444', borderRadius: 6, barPercentage: 0.6 }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { grid: { display: false } }, y: { beginAtZero: true, grid: { color: '#f3f4f6' } } }
+      }
+    });
+
+    // Init
+    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>

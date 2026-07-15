@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile & Settings - Wadi Al Zaid Tours</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+            accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-50 text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <button onclick="toggleSidebar()" class="w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+          <a href="index.html" class="flex items-center gap-2 group">
+            <img src="logo.svg" alt="Wadi Al Zaid" class="w-8 h-8 transition-transform group-hover:scale-110 group-hover:rotate-3" />
+            <span class="text-lg font-extrabold text-white tracking-tight hidden sm:block">Wadi Al Zaid</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="hidden md:flex items-center bg-white/10 rounded-xl px-4 py-2 gap-2">
+            <i class="fas fa-search text-white/40 text-sm"></i>
+            <input type="text" placeholder="Search..." class="bg-transparent text-white text-sm outline-none placeholder-white/40 w-48" />
+          </div>
+          <button class="relative w-10 h-10 flex items-center justify-center rounded-xl text-white/80 hover:text-accent hover:bg-white/5 transition-colors">
+            <i class="fas fa-bell text-lg"></i>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+          <div class="flex items-center gap-3 cursor-pointer" onclick="toggleProfileMenu()">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-9 h-9 rounded-xl border-2 border-accent/50" />
+            <div class="hidden sm:block">
+              <p class="text-sm font-bold text-white leading-tight">John Doe</p>
+              <p class="text-[10px] text-white/50">Premium Member</p>
+            </div>
+            <i class="fas fa-chevron-down text-white/40 text-xs hidden sm:block"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar fixed top-16 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 transition-all duration-300 overflow-y-auto custom-scroll">
+    <div class="p-4">
+      <div class="bg-gradient-to-br from-navy to-navy-light rounded-2xl p-4 mb-6">
+        <div class="flex items-center gap-3">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Avatar" class="w-12 h-12 rounded-xl border-2 border-accent/50" />
+          <div class="sidebar-text">
+            <p class="font-bold text-white text-sm">John Doe</p>
+            <p class="text-[10px] text-accent">Premium Member</p>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/10 flex justify-between sidebar-text">
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">12</p>
+            <p class="text-[9px] text-white/50">Trips</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">2,450</p>
+            <p class="text-[9px] text-white/50">Points</p>
+          </div>
+          <div class="text-center">
+            <p class="font-bold text-white text-sm">4.9</p>
+            <p class="text-[9px] text-white/50">Rating</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="space-y-1">
+        <a href="dashboard.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-th-large w-5 text-center"></i>
+          <span class="sidebar-text">Dashboard</span>
+        </a>
+        <a href="bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-suitcase w-5 text-center"></i>
+          <span class="sidebar-text">My Bookings</span>
+        </a>
+        <a href="#history" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-history w-5 text-center"></i>
+          <span class="sidebar-text">Booking History</span>
+        </a>
+        <a href="wishlist.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-heart w-5 text-center"></i>
+          <span class="sidebar-text">Wishlist</span>
+          <span class="ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">3</span>
+        </a>
+        <a href="profile.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy">
+          <i class="fas fa-user w-5 text-center"></i>
+          <span class="sidebar-text">My Profile</span>
+        </a>
+        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-bell w-5 text-center"></i>
+          <span class="sidebar-text">Notifications</span>
+          <span class="ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+        </a>
+        <a href="profile.html#settings" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-navy/60 hover:text-navy">
+          <i class="fas fa-cog w-5 text-center"></i>
+          <span class="sidebar-text">Settings</span>
+        </a>
+        <hr class="my-3 border-gray-100" />
+        <a href="login.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50">
+          <i class="fas fa-sign-out-alt w-5 text-center"></i>
+          <span class="sidebar-text">Logout</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- SIDEBAR OVERLAY (Mobile) -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden" onclick="toggleSidebar()"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="lg:ml-64 pt-16 min-h-screen transition-all duration-300" id="mainContent" role="main">
+    <div class="p-4 sm:p-6 lg:p-8">
+
+      <!-- Profile Header -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6 fade-up">
+        <!-- Cover Image -->
+        <div class="relative h-48 sm:h-64 bg-gradient-to-r from-navy to-navy-light">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80" alt="Cover" class="w-full h-full object-cover opacity-50" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent"></div>
+          <button class="absolute top-4 right-4 px-4 py-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-xl hover:bg-white/30 transition-colors">
+            <i class="fas fa-camera mr-2"></i> Change Cover
+          </button>
+        </div>
+        
+        <!-- Profile Info -->
+        <div class="relative px-6 pb-6">
+          <div class="flex flex-col sm:flex-row sm:items-end gap-4 -mt-16 sm:-mt-20">
+            <!-- Profile Picture -->
+            <div class="relative">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="Profile" class="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl border-4 border-white shadow-lg object-cover bg-white" />
+              <button class="absolute bottom-2 right-2 w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center hover:bg-accent-dark transition-colors shadow-lg">
+                <i class="fas fa-camera"></i>
+              </button>
+            </div>
+            
+            <!-- Name & Badge -->
+            <div class="flex-1 sm:pb-2">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                <h1 class="text-2xl sm:text-3xl font-black text-navy">John Doe</h1>
+                <span class="bg-gradient-to-r from-accent to-accent-dark text-white text-xs font-bold px-3 py-1 rounded-full w-fit">
+                  <i class="fas fa-crown mr-1"></i> Premium Member
+                </span>
+              </div>
+              <p class="text-navy/50 text-sm mt-1">Member since January 2024 • 12 trips completed</p>
+            </div>
+            
+            <!-- Edit Button -->
+            <button onclick="scrollToProfile()" class="btn-accent px-6 py-3 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25 w-fit sm:pb-2">
+              <span><i class="fas fa-edit mr-2"></i> Edit Profile</span>
+            </button>
+          </div>
+          
+          <!-- Profile Completion -->
+          <div class="mt-6 p-4 bg-gray-50 rounded-xl">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm font-medium text-navy">Profile Completion</span>
+              <span class="text-sm font-bold text-accent" id="completionPercent">75%</span>
+            </div>
+            <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div id="progressBar" class="progress-bar h-full bg-gradient-to-r from-accent to-accent-dark rounded-full" style="width: 75%"></div>
+            </div>
+            <p class="text-xs text-navy/50 mt-2">Complete your profile to unlock exclusive benefits and personalized recommendations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-2 fade-up">
+        <button onclick="switchTab('personal')" class="tab-btn active px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap" data-tab="personal">
+          <i class="fas fa-user mr-2"></i> Personal Info
+        </button>
+        <button onclick="switchTab('address')" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 whitespace-nowrap" data-tab="address">
+          <i class="fas fa-map-marker-alt mr-2"></i> Address
+        </button>
+        <button onclick="switchTab('settings')" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 whitespace-nowrap" data-tab="settings">
+          <i class="fas fa-cog mr-2"></i> Account Settings
+        </button>
+        <button onclick="switchTab('security')" class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-navy/60 hover:bg-gray-50 whitespace-nowrap" data-tab="security">
+          <i class="fas fa-shield-alt mr-2"></i> Security
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="space-y-6">
+        
+        <!-- Personal Information Tab -->
+        <div id="tab-personal" class="tab-content">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+              <i class="fas fa-user text-accent"></i> Personal Information
+            </h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <!-- Full Name -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Full Name</label>
+                <input type="text" value="John Doe" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+              </div>
+              <!-- Email -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Email Address</label>
+                <div class="relative">
+                  <input type="email" value="john.doe@email.com" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-green-500 text-xs font-medium"><i class="fas fa-check-circle mr-1"></i> Verified</span>
+                </div>
+              </div>
+              <!-- Phone -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Phone Number</label>
+                <div class="relative">
+                  <select class="absolute left-0 top-0 h-full px-3 bg-gray-100 border border-gray-200 rounded-l-xl text-sm outline-none appearance-none pr-6">
+                    <option>+1</option>
+                    <option>+44</option>
+                    <option>+971</option>
+                  </select>
+                  <input type="tel" value="234 567 8900" class="input-field w-full pl-20 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+                </div>
+              </div>
+              <!-- Date of Birth -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Date of Birth</label>
+                <input type="date" value="1990-05-15" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+              </div>
+              <!-- Gender -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Gender</label>
+                <select class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none">
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+              <!-- Nationality -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Nationality</label>
+                <select class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none">
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                  <option>Canada</option>
+                  <option>Australia</option>
+                  <option>UAE</option>
+                </select>
+              </div>
+              <!-- Passport Number -->
+              <div class="sm:col-span-2">
+                <label class="block text-sm font-medium text-navy mb-2">Passport Number</label>
+                <input type="text" value="********5678" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Tab -->
+        <div id="tab-address" class="tab-content hidden">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+            <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+              <i class="fas fa-map-marker-alt text-accent"></i> Address Information
+            </h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <!-- Country -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Country</label>
+                <select class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none">
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                  <option>Canada</option>
+                  <option>Australia</option>
+                  <option>UAE</option>
+                </select>
+              </div>
+              <!-- City -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">City</label>
+                <input type="text" value="New York" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+              </div>
+              <!-- Postal Code -->
+              <div>
+                <label class="block text-sm font-medium text-navy mb-2">Postal Code</label>
+                <input type="text" value="10001" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
+              </div>
+              <!-- Address -->
+              <div class="sm:col-span-2">
+                <label class="block text-sm font-medium text-navy mb-2">Street Address</label>
+                <textarea rows="3" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none resize-none">123 Broadway, Apt 4B
+New York, NY 10001
+United States</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Settings Tab -->
+        <div id="tab-settings" class="tab-content hidden">
+          <div class="space-y-6">
+            
+            <!-- Notification Preferences -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                <i class="fas fa-bell text-accent"></i> Notification Preferences
+              </h3>
+              <div class="space-y-4">
+                <!-- Email Notifications -->
+                <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
+                      <i class="fas fa-envelope text-blue-500"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-sm">Email Notifications</p>
+                      <p class="text-xs text-navy/50">Receive booking updates via email</p>
+                    </div>
+                  </div>
+                  <div id="emailNotif" class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+                <!-- SMS Notifications -->
+                <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center">
+                      <i class="fas fa-sms text-green-500"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-sm">SMS Notifications</p>
+                      <p class="text-xs text-navy/50">Receive booking updates via SMS</p>
+                    </div>
+                  </div>
+                  <div id="smsNotif" class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                </div>
+                <!-- Marketing Emails -->
+                <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center">
+                      <i class="fas fa-tag text-purple-500"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-sm">Marketing Emails</p>
+                      <p class="text-xs text-navy/50">Receive special offers and promotions</p>
+                    </div>
+                  </div>
+                  <div id="marketingNotif" class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+                <!-- Trip Reminders -->
+                <div class="flex items-center justify-between py-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
+                      <i class="fas fa-clock text-orange-500"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-sm">Trip Reminders</p>
+                      <p class="text-xs text-navy/50">Get reminders before your trips</p>
+                    </div>
+                  </div>
+                  <div id="tripReminder" class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preferences -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                <i class="fas fa-sliders-h text-accent"></i> Preferences
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Language -->
+                <div>
+                  <label class="block text-sm font-medium text-navy mb-2">Language</label>
+                  <select class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none">
+                    <option>English</option>
+                    <option>Arabic</option>
+                    <option>French</option>
+                    <option>Spanish</option>
+                    <option>German</option>
+                  </select>
+                </div>
+                <!-- Currency -->
+                <div>
+                  <label class="block text-sm font-medium text-navy mb-2">Currency</label>
+                  <select class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none">
+                    <option>USD ($)</option>
+                    <option>EUR (€)</option>
+                    <option>GBP (£)</option>
+                    <option>AED (د.إ)</option>
+                    <option>SAR (﷼)</option>
+                  </select>
+                </div>
+                <!-- Time Zone -->
+                <div>
+                  <label class="block text-sm font-medium text-navy mb-2">Time Zone</label>
+                  <select class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none">
+                    <option>Eastern Time (ET)</option>
+                    <option>Central Time (CT)</option>
+                    <option>Pacific Time (PT)</option>
+                    <option>GMT</option>
+                    <option>Gulf Standard Time (GST)</option>
+                  </select>
+                </div>
+                <!-- Date Format -->
+                <div>
+                  <label class="block text-sm font-medium text-navy mb-2">Date Format</label>
+                  <select class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none appearance-none">
+                    <option>MM/DD/YYYY</option>
+                    <option>DD/MM/YYYY</option>
+                    <option>YYYY-MM-DD</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Tab -->
+        <div id="tab-security" class="tab-content hidden">
+          <div class="space-y-6">
+            
+            <!-- Change Password -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                <i class="fas fa-lock text-accent"></i> Change Password
+              </h3>
+              <div class="max-w-md space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-navy mb-2">Current Password</label>
+                  <div class="relative">
+                    <input type="password" placeholder="Enter current password" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none pr-12" />
+                    <button onclick="togglePassword(this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-navy/40 hover:text-navy">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-navy mb-2">New Password</label>
+                  <div class="relative">
+                    <input type="password" placeholder="Enter new password" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none pr-12" />
+                    <button onclick="togglePassword(this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-navy/40 hover:text-navy">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-navy mb-2">Confirm New Password</label>
+                  <div class="relative">
+                    <input type="password" placeholder="Confirm new password" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none pr-12" />
+                    <button onclick="togglePassword(this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-navy/40 hover:text-navy">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <button onclick="changePassword()" class="btn-accent px-6 py-3 rounded-xl text-white font-bold text-sm w-full sm:w-auto">
+                  <span><i class="fas fa-save mr-2"></i> Update Password</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Two-Factor Authentication -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                <i class="fas fa-shield-alt text-accent"></i> Two-Factor Authentication
+              </h3>
+              <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                <div class="flex items-center gap-4">
+                  <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
+                    <i class="fas fa-mobile-alt text-accent text-2xl"></i>
+                  </div>
+                  <div>
+                    <p class="font-bold text-navy">Authenticator App</p>
+                    <p class="text-sm text-navy/50">Use an authenticator app to generate one-time codes</p>
+                  </div>
+                </div>
+                <div id="twoFactor" class="toggle-switch" onclick="toggleSwitch(this)"></div>
+              </div>
+              <div class="mt-4 p-4 bg-blue-50 rounded-xl">
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-info-circle text-blue-500 mt-0.5"></i>
+                  <div>
+                    <p class="text-sm font-medium text-navy">How it works</p>
+                    <p class="text-xs text-navy/60 mt-1">When enabled, you'll need to enter a code from your authenticator app in addition to your password when signing in.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Login Sessions -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6 fade-up">
+              <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+                <i class="fas fa-desktop text-accent"></i> Active Sessions
+              </h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                      <i class="fas fa-laptop text-green-600"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-sm">MacBook Pro - Chrome</p>
+                      <p class="text-xs text-navy/50">New York, US • Current session</p>
+                    </div>
+                  </div>
+                  <span class="text-xs text-green-600 font-medium bg-green-100 px-3 py-1 rounded-full">Active</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gray-200 rounded-xl flex items-center justify-center">
+                      <i class="fas fa-mobile-alt text-gray-500"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-sm">iPhone 15 Pro - Safari</p>
+                      <p class="text-xs text-navy/50">New York, US • 2 hours ago</p>
+                    </div>
+                  </div>
+                  <button class="text-xs text-red-500 font-medium hover:text-red-600">Revoke</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="mt-8 bg-white rounded-2xl shadow-sm border border-red-200 p-5 sm:p-6 fade-up">
+        <h3 class="font-bold text-lg mb-4 flex items-center gap-2 text-red-500">
+          <i class="fas fa-exclamation-triangle"></i> Danger Zone
+        </h3>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-red-50 rounded-xl">
+          <div>
+            <p class="font-medium text-navy">Delete Account</p>
+            <p class="text-sm text-navy/50">Permanently delete your account and all associated data.</p>
+          </div>
+          <button onclick="openDeleteModal()" class="px-5 py-2.5 bg-red-500 text-white text-sm font-medium rounded-xl hover:bg-red-600 transition-colors">
+            <i class="fas fa-trash-alt mr-2"></i> Delete Account
+          </button>
+        </div>
+      </div>
+
+      <!-- Save Button -->
+      <div class="mt-6 flex items-center justify-end gap-4 fade-up">
+        <button onclick="resetForm()" class="px-6 py-3 bg-gray-100 text-navy text-sm font-medium rounded-xl hover:bg-gray-200 transition-colors">
+          Cancel
+        </button>
+        <button id="saveBtn" onclick="saveChanges()" class="save-btn btn-accent px-8 py-3 rounded-xl text-white font-bold text-sm shadow-lg shadow-accent/25">
+          <span id="saveBtnText"><i class="fas fa-save mr-2"></i> Save Changes</span>
+          <span id="saveBtnLoading" class="hidden"><i class="fas fa-spinner fa-spin mr-2"></i> Saving...</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Delete Account Modal -->
+  <div id="deleteModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-exclamation-triangle text-red-500 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-navy mb-2">Delete Account?</h3>
+        <p class="text-navy/50 text-sm mb-4">This action is irreversible. All your data, bookings, and rewards will be permanently deleted.</p>
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-navy mb-2 text-left">Type <span class="font-bold">DELETE</span> to confirm:</label>
+          <input type="text" id="deleteConfirm" placeholder="DELETE" class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none text-center font-mono" oninput="checkDeleteInput()" />
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="closeDeleteModal()" class="flex-1 px-4 py-3 rounded-xl text-sm font-medium bg-gray-100 text-navy hover:bg-gray-200 transition-colors">
+            Cancel
+          </button>
+          <button id="deleteBtn" onclick="confirmDelete()" disabled class="flex-1 px-4 py-3 rounded-xl text-sm font-medium bg-red-500 text-white hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+            Delete Forever
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden">
+    <div class="bg-navy text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3">
+      <i id="toastIcon" class="fas fa-check-circle text-green-400"></i>
+      <span id="toastMessage" class="text-sm font-medium"></span>
+    </div>
+  </div>
+
+  <script>
+    // ─── Tab Switching ────────────────────────────────
+    function switchTab(tab) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      // Remove active from all tab buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('bg-white', 'border', 'border-gray-200', 'text-navy/60');
+      });
+      
+      // Show selected tab
+      document.getElementById(`tab-${tab}`).classList.remove('hidden');
+      
+      // Add active to clicked button
+      const activeBtn = document.querySelector(`[data-tab="${tab}"]`);
+      activeBtn.classList.add('active');
+      activeBtn.classList.remove('bg-white', 'border', 'border-gray-200', 'text-navy/60');
+    }
+
+    // ─── Toggle Switch ────────────────────────────────
+    function toggleSwitch(element) {
+      element.classList.toggle('active');
+    }
+
+    // ─── Toggle Password Visibility ───────────────────
+    function togglePassword(button) {
+      const input = button.parentElement.querySelector('input');
+      const icon = button.querySelector('i');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // ─── Save Changes ─────────────────────────────────
+    function saveChanges() {
+      const saveBtn = document.getElementById('saveBtn');
+      const saveBtnText = document.getElementById('saveBtnText');
+      const saveBtnLoading = document.getElementById('saveBtnLoading');
+      
+      // Show loading state
+      saveBtn.classList.add('loading');
+      saveBtnText.classList.add('hidden');
+      saveBtnLoading.classList.remove('hidden');
+      
+      // Simulate API call
+      setTimeout(() => {
+        saveBtn.classList.remove('loading');
+        saveBtnText.classList.remove('hidden');
+        saveBtnLoading.classList.add('hidden');
+        
+        showToast('Profile updated successfully!', 'success');
+      }, 2000);
+    }
+
+    // ─── Reset Form ───────────────────────────────────
+    function resetForm() {
+      showToast('Changes discarded', 'info');
+    }
+
+    // ─── Change Password ──────────────────────────────
+    function changePassword() {
+      showToast('Password updated successfully!', 'success');
+    }
+
+    // ─── Scroll to Profile ────────────────────────────
+    function scrollToProfile() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ─── Delete Account Modal ─────────────────────────
+    function openDeleteModal() {
+      const modal = document.getElementById('deleteModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.getElementById('deleteConfirm').value = '';
+      document.getElementById('deleteBtn').disabled = true;
+    }
+
+    function closeDeleteModal() {
+      const modal = document.getElementById('deleteModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function checkDeleteInput() {
+      const input = document.getElementById('deleteConfirm').value;
+      const btn = document.getElementById('deleteBtn');
+      btn.disabled = input !== 'DELETE';
+    }
+
+    function confirmDelete() {
+      closeDeleteModal();
+      showToast('Account deleted. Redirecting...', 'success');
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 2000);
+    }
+
+    // ─── Toast Notification ───────────────────────────
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+      
+      toastMessage.textContent = message;
+      
+      if (type === 'success') {
+        toastIcon.className = 'fas fa-check-circle text-green-400';
+      } else if (type === 'error') {
+        toastIcon.className = 'fas fa-exclamation-circle text-red-400';
+      } else {
+        toastIcon.className = 'fas fa-info-circle text-blue-400';
+      }
+      
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 4000);
+    }
+
+    // ─── Active Nav Item ──────────────────────────────
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        if (window.innerWidth < 1024) {
+          toggleSidebar();
+        }
+      });
+    });
+
+    // ─── Initialize ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check hash for tab
+      if (window.location.hash === '#settings') {
+        switchTab('settings');
+      }
+    });
+
+    // ─── Close modal on escape key ───────────────────
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDeleteModal();
+      }
+    });
+  </script>
+  <script src="components.js"></script>
+</body>
+</html>
