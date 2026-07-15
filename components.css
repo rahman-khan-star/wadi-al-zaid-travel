@@ -363,3 +363,13 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .main-content { margin-left: 0 !important; }
   .card { box-shadow: none; border: 1px solid #e5e7eb; }
 }
+
+/* === PUBLIC PAGE UTILITIES === */
+.hero-bg {
+  background: linear-gradient(135deg, rgba(15, 29, 58, 0.92), rgba(15, 29, 58, 0.85)),
+              url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+}
+.btn-accent { background: var(--accent); color: white; }
+.btn-accent:hover { background: var(--accent-dark); }
