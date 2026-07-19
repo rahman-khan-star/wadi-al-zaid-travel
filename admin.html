@@ -35,42 +35,165 @@
   </div>
 
   <!-- ========== SIDEBAR ========== -->
-  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-64 bg-white border-r border-gray-100 z-40 overflow-y-auto">
-    <div class="p-4">
-      <a href="admin.html" class="flex items-center gap-3 mb-8 px-2">
-        <img src="logo.svg" alt="Wadi Al Zaid Tours logo" class="w-9 h-9 shrink-0" />
-        <div class="logo-text">
-          <span class="text-lg font-extrabold text-navy tracking-tight">Wadi Al Zaid</span>
-          <span class="block text-[8px] uppercase tracking-[2px] text-accent font-medium">Admin Panel</span>
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 bottom-0 w-72 z-40 overflow-y-auto" style="background: linear-gradient(180deg, #1a1020 0%, #0f1d3a 50%, #1a0f1e 100%);">
+    <div class="p-5">
+      <!-- User Profile -->
+      <div class="flex items-center gap-3 mb-8 px-1">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="Admin user avatar" class="w-11 h-11 rounded-full ring-2 ring-accent/30" />
+        <div>
+          <p class="text-xs text-white/40 uppercase tracking-widest font-medium">Admin</p>
+          <p class="text-sm font-bold text-white">Admin User</p>
         </div>
-      </a>
+        <button onclick="toggleSidebar()" class="ml-auto w-7 h-7 flex items-center justify-center rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors" aria-label="Collapse sidebar">
+          <i class="fas fa-chevron-left text-xs"></i>
+        </button>
+      </div>
 
-      <nav role="navigation" aria-label="Main navigation" class="space-y-1">
-        <a href="admin.html" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium" aria-current="page"><i class="fas fa-th-large w-5 text-center"></i><span class="sidebar-text">Dashboard</span></a>
-        <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-map-marker-alt w-5 text-center"></i><span class="sidebar-text">Destinations</span></a>
-        <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-suitcase w-5 text-center"></i><span class="sidebar-text">Bookings</span><span class="badge ml-auto bg-accent/10 text-accent text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span></a>
-        <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-users w-5 text-center"></i><span class="sidebar-text">Customers</span></a>
-        <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-credit-card w-5 text-center"></i><span class="sidebar-text">Payments</span></a>
-        <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-star w-5 text-center"></i><span class="sidebar-text">Reviews</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span></a>
-        <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-blog w-5 text-center"></i><span class="sidebar-text">Blog</span></a>
-        <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user-tie w-5 text-center"></i><span class="sidebar-text">Team Members</span></a>
-        <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-envelope w-5 text-center"></i><span class="sidebar-text">Contact Messages</span><span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span></a>
-        <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-bell w-5 text-center"></i><span class="sidebar-text">Notifications</span><span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span></a>
-        <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-chart-bar w-5 text-center"></i><span class="sidebar-text">Reports & Analytics</span></a>
-        <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cog w-5 text-center"></i><span class="sidebar-text">Website Settings</span></a>
-        <hr class="my-3 border-gray-100" />
-        <a href="#" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-user w-5 text-center"></i><span class="sidebar-text">Admin Profile</span></a>
-        <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-history w-5 text-center"></i><span class="sidebar-text">Activity Logs</span></a>
-        <a href="login-history.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-sign-in-alt w-5 text-center"></i><span class="sidebar-text">Login History</span></a>
-        <a href="backup-restore.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-cloud-upload-alt w-5 text-center"></i><span class="sidebar-text">Backup & Restore</span></a>
-        <a href="maintenance-mode.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600"><i class="fas fa-tools w-5 text-center"></i><span class="sidebar-text">Maintenance Mode</span></a>
-        <a href="index.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50"><i class="fas fa-sign-out-alt w-5 text-center"></i><span class="sidebar-text">Logout</span></a>
-      </nav>
+      <!-- Main Navigation -->
+      <div class="mb-6">
+        <p class="text-[10px] uppercase tracking-[3px] text-white/30 font-bold mb-3 px-1">Main</p>
+        <nav role="navigation" aria-label="Main navigation" class="space-y-1">
+          <!-- Dashboard with sub-items -->
+          <div class="sidebar-group">
+            <button onclick="toggleSubmenu('dashboard-sub')" class="nav-item active flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium w-full text-left transition-all" aria-current="page">
+              <i class="fas fa-th-large w-5 text-center text-accent"></i>
+              <span class="sidebar-text text-white">Dashboard</span>
+              <i class="fas fa-chevron-down ml-auto text-[10px] text-white/30 transition-transform" id="dashboard-arrow"></i>
+            </button>
+            <div class="submenu pl-8 mt-1 space-y-1" id="dashboard-sub">
+              <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-white/50 hover:text-accent hover:bg-white/5 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span> Activity
+              </a>
+              <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-white/50 hover:text-accent hover:bg-white/5 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/20"></span> Traffic
+              </a>
+              <a href="reports-analytics.html" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-white/50 hover:text-accent hover:bg-white/5 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Statistic
+              </a>
+            </div>
+          </div>
+
+          <a href="manage-bookings.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-suitcase w-5 text-center"></i>
+            <span class="sidebar-text">Bookings</span>
+            <span class="badge ml-auto bg-accent text-white text-[10px] font-bold px-2 py-0.5 rounded-full sidebar-text">24</span>
+          </a>
+
+          <a href="manage-customers.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-wallet w-5 text-center"></i>
+            <span class="sidebar-text">Customers</span>
+          </a>
+
+          <a href="notifications.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-bell w-5 text-center"></i>
+            <span class="sidebar-text">Notifications</span>
+            <span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">5</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Management Section -->
+      <div class="mb-6">
+        <p class="text-[10px] uppercase tracking-[3px] text-white/30 font-bold mb-3 px-1">Management</p>
+        <nav class="space-y-1">
+          <a href="manage-destinations.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-map-marker-alt w-5 text-center"></i>
+            <span class="sidebar-text">Destinations</span>
+          </a>
+          <a href="manage-payments.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-credit-card w-5 text-center"></i>
+            <span class="sidebar-text">Payments</span>
+          </a>
+          <a href="manage-reviews.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-star w-5 text-center"></i>
+            <span class="sidebar-text">Reviews</span>
+            <span class="badge ml-auto bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">3</span>
+          </a>
+          <a href="manage-blog.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-blog w-5 text-center"></i>
+            <span class="sidebar-text">Blog</span>
+          </a>
+          <a href="manage-team.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-user-tie w-5 text-center"></i>
+            <span class="sidebar-text">Team Members</span>
+          </a>
+          <a href="manage-messages.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-envelope w-5 text-center"></i>
+            <span class="sidebar-text">Messages</span>
+            <span class="badge ml-auto bg-blue-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center sidebar-text">8</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Messages / Contacts -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-3 px-1">
+          <p class="text-[10px] uppercase tracking-[3px] text-white/30 font-bold">Messages</p>
+          <button class="w-5 h-5 flex items-center justify-center rounded-full text-white/30 hover:text-accent hover:bg-white/10 transition-colors" aria-label="Add new message">
+            <i class="fas fa-plus text-[10px]"></i>
+          </button>
+        </div>
+        <div class="space-y-1">
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors group">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Erik" alt="Erik Gunsel avatar" class="w-9 h-9 rounded-full ring-2 ring-white/10" />
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-white/80 group-hover:text-white truncate">Erik Gunsel</p>
+              <p class="text-[10px] text-white/30 truncate">Hey, about the trip...</p>
+            </div>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors group">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emily" alt="Emily Smith avatar" class="w-9 h-9 rounded-full ring-2 ring-white/10" />
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-white/80 group-hover:text-white truncate">Emily Smith</p>
+              <p class="text-[10px] text-white/30 truncate">Thanks for the help!</p>
+            </div>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors group">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arthur" alt="Arthur Adelk avatar" class="w-9 h-9 rounded-full ring-2 ring-white/10" />
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-white/80 group-hover:text-white truncate">Arthur Adelk</p>
+              <p class="text-[10px] text-white/30 truncate">When is the departure?</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="mb-6">
+        <p class="text-[10px] uppercase tracking-[3px] text-white/30 font-bold mb-3 px-1">Settings</p>
+        <nav class="space-y-1">
+          <a href="website-cms.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-cog w-5 text-center"></i>
+            <span class="sidebar-text">Website Settings</span>
+          </a>
+          <a href="reports-analytics.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-chart-bar w-5 text-center"></i>
+            <span class="sidebar-text">Reports</span>
+          </a>
+          <a href="activity-logs.html" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-history w-5 text-center"></i>
+            <span class="sidebar-text">Activity Logs</span>
+          </a>
+          <a href="#" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-white/5 transition-all">
+            <i class="fas fa-user w-5 text-center"></i>
+            <span class="sidebar-text">Admin Profile</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Add New Task Card -->
+      <div class="bg-gradient-to-br from-accent/20 to-accent/5 rounded-2xl p-5 border border-accent/10">
+        <h4 class="text-sm font-bold text-white mb-1">Let's start!</h4>
+        <p class="text-[11px] text-white/40 mb-4 leading-relaxed">Creating or adding new tasks couldn't be easier.</p>
+        <button class="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white py-2.5 rounded-xl text-sm font-semibold transition-colors shadow-lg shadow-accent/25">
+          <i class="fas fa-plus text-xs"></i> Add New Task
+        </button>
+      </div>
     </div>
   </aside>
 
   <!-- ========== MAIN CONTENT ========== -->
-  <div id="mainContent" role="main" class="lg:ml-64 transition-all duration-300">
+  <div id="mainContent" role="main" class="lg:ml-[280px] transition-all duration-300">
 
     <!-- ========== TOP NAVBAR ========== -->
     <nav aria-label="Page navigation" class="sticky top-0 z-30 bg-white border-b border-gray-100">
@@ -363,6 +486,18 @@
       const icon = btn.querySelector('i');
       icon.classList.toggle('fa-moon');
       icon.classList.toggle('fa-sun');
+    }
+
+    // Sidebar submenu toggle
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      const arrow = document.getElementById(id.replace('-sub', '-arrow'));
+      if (submenu) {
+        submenu.classList.toggle('hidden');
+        if (arrow) {
+          arrow.style.transform = submenu.classList.contains('hidden') ? '' : 'rotate(180deg)';
+        }
+      }
     }
 
     // Page Loader
