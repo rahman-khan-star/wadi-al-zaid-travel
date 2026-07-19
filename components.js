@@ -10,6 +10,10 @@ const WZ = {
     const mainContent = document.getElementById('mainContent');
     if (!sidebar) return;
 
+    const styles = getComputedStyle(document.documentElement);
+    const sidebarWidth = styles.getPropertyValue('--sidebar-width').trim() || '280px';
+    const collapsedWidth = styles.getPropertyValue('--sidebar-collapsed-width').trim() || '80px';
+
     const toggle = () => {
       const isMobile = window.innerWidth < 1024;
       if (isMobile) {
@@ -17,25 +21,34 @@ const WZ = {
         overlay?.classList.toggle('show');
       } else {
         sidebar.classList.toggle('collapsed');
-        mainContent.style.marginLeft = sidebar.classList.contains('collapsed') ? '80px' : '256px';
+        if (mainContent) {
+          mainContent.style.marginLeft = sidebar.classList.contains('collapsed') ? collapsedWidth : sidebarWidth;
+        }
       }
+      localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
     };
 
-    document.querySelectorAll('[onclick="toggleSidebar()"]').forEach(btn => {
-      btn.addEventListener('click', toggle);
-    });
+    window.toggleSidebar = toggle;
+
     overlay?.addEventListener('click', toggle);
 
     const saved = localStorage.getItem('sidebarCollapsed');
     if (saved === 'true' && window.innerWidth >= 1024) {
       sidebar.classList.add('collapsed');
-      mainContent.style.marginLeft = '80px';
+      if (mainContent) mainContent.style.marginLeft = collapsedWidth;
+    } else if (mainContent && window.innerWidth >= 1024) {
+      mainContent.style.marginLeft = sidebarWidth;
     }
 
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 1024) {
         sidebar.classList.remove('mobile-open');
         overlay?.classList.remove('show');
+        if (mainContent) {
+          mainContent.style.marginLeft = sidebar.classList.contains('collapsed') ? collapsedWidth : sidebarWidth;
+        }
+      } else {
+        if (mainContent) mainContent.style.marginLeft = '0';
       }
     });
   },
