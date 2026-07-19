@@ -717,6 +717,23 @@
     </div>
   </section>
 
+  <!-- ========== OUR TEAM ========== -->
+  <section id="team" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 sm:mb-12 fade-in">
+        <span class="inline-block text-accent text-xs sm:text-sm font-bold uppercase tracking-[3px] mb-2 sm:mb-3">Our Team</span>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-navy mb-2 sm:mb-4">Meet the Experts</h2>
+        <p class="text-navy/50 max-w-lg mx-auto text-sm sm:text-lg">Passionate professionals dedicated to making your travel dreams a reality.</p>
+      </div>
+      <div id="homeTeamGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"></div>
+      <div class="text-center fade-in">
+        <a href="team.html" class="inline-flex items-center gap-2 text-accent font-semibold hover:underline transition-colors">
+          View Full Team <i class="fas fa-arrow-right text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== GALLERY ========== -->
   <section id="gallery" class="py-20 bg-navy">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1054,6 +1071,28 @@
       }, 3000);
     });
 
+    // Render team section on homepage
+    (function() {
+      if (typeof TeamCMS !== 'undefined') {
+        const members = TeamCMS.getActive().slice(0, 6);
+        const grid = document.getElementById('homeTeamGrid');
+        if (grid && members.length > 0) {
+          grid.innerHTML = members.map(m => `
+            <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 group fade-in">
+              <div class="relative h-56 overflow-hidden bg-gray-100">
+                <img src="${TeamCMS.getPhoto(m)}" alt="${m.firstName} ${m.lastName}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-navy">${m.firstName} ${m.lastName}</h3>
+                <p class="text-accent font-semibold text-sm mb-2">${m.position}</p>
+                <p class="text-navy/50 text-sm leading-relaxed line-clamp-2">${m.bio || TeamCMS.deptLabel(m.department)}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+    })();
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -1067,6 +1106,7 @@
       });
     });
   </script>
+  <script src="team-data.js"></script>
   <script src="components.js"></script>
 </body>
 </html>

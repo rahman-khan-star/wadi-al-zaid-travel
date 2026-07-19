@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team - Wadi Al Zaid Tours &amp; Travel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="components.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          navy: { DEFAULT: '#0f1d3a', light: '#1a2c50', dark: '#091428' },
+          accent: { DEFAULT: '#e8952f', light: '#f0a94e', dark: '#c47a1f' },
+        },
+        fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+      }},
+    };
+  </script>
+</head>
+<body class="bg-white text-navy font-sans antialiased">
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-11 h-11 transition-transform group-hover:scale-110" />
+          <div class="leading-tight">
+            <span class="text-xl font-extrabold text-white tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[10px] uppercase tracking-[3px] text-accent font-medium">Tours &amp; Travel</span>
+          </div>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="index.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Home</a>
+          <a href="index.html#destinations" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Destinations</a>
+          <a href="team.html" class="px-3 py-2 text-sm font-medium text-accent transition-colors rounded-lg bg-white/5">Our Team</a>
+          <a href="blog.html" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Blog</a>
+          <a href="index.html#contact" class="px-3 py-2 text-sm font-medium text-white/80 hover:text-accent transition-colors rounded-lg hover:bg-white/5">Contact</a>
+          <a href="booking.html" class="ml-2 btn-accent px-5 py-2.5 rounded-xl text-sm font-semibold text-white shadow-lg shadow-accent/25">Book Now</a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-xl text-white hover:bg-white/10 transition-colors">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-navy-dark shadow-2xl z-50 md:hidden" style="transform:translateX(100%);transition:transform 0.3s ease;">
+      <div class="p-6">
+        <button id="closeMenu" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors" style="z-index:60;"><i class="fas fa-times text-xl"></i></button>
+        <div class="mt-12 flex flex-col gap-1">
+          <a href="index.html" class="px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Home</a>
+          <a href="index.html#destinations" class="px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Destinations</a>
+          <a href="team.html" class="px-4 py-3 text-accent hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Our Team</a>
+          <a href="blog.html" class="px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Blog</a>
+          <a href="index.html#contact" class="px-4 py-3 text-white/80 hover:text-accent hover:bg-white/5 rounded-xl transition-colors font-medium">Contact</a>
+          <a href="booking.html" class="mt-4 btn-accent px-6 py-3 rounded-xl text-center font-semibold text-white">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+  <main role="main" id="mainContent">
+    <!-- Hero -->
+    <section class="hero-bg pt-32 pb-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block text-accent text-sm font-bold uppercase tracking-[3px] mb-3">Our Team</span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">Meet the <span class="text-accent">Experts</span></h1>
+        <p class="text-lg text-white/60 max-w-xl mx-auto">Passionate professionals dedicated to making your travel dreams a reality.</p>
+      </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="teamGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="emptyState" class="hidden text-center py-20">
+          <i class="fas fa-users text-gray-300 text-5xl mb-4"></i>
+          <p class="text-gray-400 text-lg">Team information coming soon.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-navy">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-black text-white mb-3">Want to Join Our Team?</h2>
+        <p class="text-white/50 mb-6 max-w-lg mx-auto">We're always looking for talented individuals who share our passion for travel.</p>
+        <a href="index.html#contact" class="btn-accent px-8 py-3 rounded-xl text-white font-bold shadow-lg shadow-accent/25 inline-flex items-center gap-2">
+          <i class="fas fa-envelope"></i> Get in Touch
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="logo.svg" alt="Wadi Al Zaid" class="w-9 h-9 transition-transform group-hover:scale-110" />
+          <div class="leading-tight">
+            <span class="text-lg font-extrabold tracking-tight">Wadi Al Zaid</span>
+            <span class="block text-[8px] uppercase tracking-[2px] text-accent font-medium">Tours &amp; Travel</span>
+          </div>
+        </a>
+        <p class="text-sm text-white/40">&copy; 2026 Wadi Al Zaid Tours &amp; Travel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="team-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const members = TeamCMS.getActive();
+      const grid = document.getElementById('teamGrid');
+      const empty = document.getElementById('emptyState');
+
+      if (members.length === 0) {
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      grid.innerHTML = members.map(m => `
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group fade-in">
+          <div class="relative h-64 overflow-hidden bg-gray-100">
+            <img src="${TeamCMS.getPhoto(m)}" alt="${m.firstName} ${m.lastName}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-2">
+              ${m.socials?.linkedin ? `<a href="${m.socials.linkedin}" target="_blank" class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center text-white hover:bg-accent transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>` : ''}
+              ${m.socials?.twitter ? `<a href="${m.socials.twitter}" target="_blank" class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center text-white hover:bg-accent transition-colors"><i class="fab fa-twitter text-sm"></i></a>` : ''}
+              ${m.email ? `<a href="mailto:${m.email}" class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center text-white hover:bg-accent transition-colors"><i class="fas fa-envelope text-sm"></i></a>` : ''}
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-navy">${m.firstName} ${m.lastName}</h3>
+            <p class="text-accent font-semibold text-sm mb-2">${m.position}</p>
+            <p class="text-navy/50 text-sm leading-relaxed">${m.bio || TeamCMS.deptLabel(m.department)}</p>
+          </div>
+        </div>
+      `).join('');
+    });
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    menuBtn.addEventListener('click', () => { mobileMenu.style.transform = 'translateX(0)'; menuOverlay.classList.remove('hidden'); });
+    closeMenu.addEventListener('click', () => { mobileMenu.style.transform = 'translateX(100%)'; menuOverlay.classList.add('hidden'); });
+    menuOverlay.addEventListener('click', () => { mobileMenu.style.transform = 'translateX(100%)'; menuOverlay.classList.add('hidden'); });
+  </script>
+</body>
+</html>
