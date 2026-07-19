@@ -153,15 +153,16 @@
       <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 fade-up">
         <div class="flex flex-col lg:flex-row lg:items-center gap-4">
           <!-- Search Bar -->
-          <div class="flex-1 relative">
-            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-navy/30"></i>
-            <input 
-              type="text" 
-              id="searchInput"
-              placeholder="Search saved destinations..." 
-              class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
-              oninput="filterWishlist()"
-            />
+          <div class="flex-1">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input 
+                type="text" 
+                id="searchInput"
+                placeholder="Search saved destinations..." 
+                oninput="filterWishlist()"
+              />
+            </div>
           </div>
           
           <!-- Filter Dropdowns -->

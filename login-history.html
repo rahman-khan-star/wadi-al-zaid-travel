@@ -159,9 +159,9 @@
         <!-- Search & Filters -->
         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 mb-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <div class="relative lg:col-span-2">
-              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-              <input type="text" id="searchInput" placeholder="Search by user, email, or IP..." oninput="filterLogs()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" id="searchInput" placeholder="Search by user, email, or IP..." oninput="filterLogs()" />
             </div>
             <select id="filterStatus" onchange="filterLogs()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
               <option value="">All Status</option>

@@ -238,9 +238,9 @@
         <div id="historyTab" class="tab-content p-6">
           <!-- Search & Filters -->
           <div class="flex flex-col md:flex-row gap-3 mb-4">
-            <div class="relative flex-1">
-              <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-              <input type="text" id="searchInput" placeholder="Search backups..." class="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-blue-500" oninput="renderTable()">
+            <div class="search-bar" style="background:rgba(30,41,59,0.5);border-color:rgba(100,116,139,0.5);">
+              <i class="fas fa-search" style="color:#94a3b8"></i>
+              <input type="text" id="searchInput" placeholder="Search backups..." oninput="renderTable()" style="background:transparent;border:none;color:white;" />
             </div>
             <select id="typeFilter" class="bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500" onchange="renderTable()">
               <option value="">All Types</option>

@@ -222,9 +222,9 @@ tailwind.config = {
       <!-- Filters -->
       <div class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 items-end gap-3">
-          <div class="relative">
-            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-            <input type="text" id="searchInput" placeholder="Search articles..." oninput="renderArticles()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search articles..." oninput="renderArticles()" />
           </div>
           <select id="filterStatus" onchange="renderArticles()" class="px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
             <option value="">All Status</option>

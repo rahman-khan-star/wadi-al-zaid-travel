@@ -202,10 +202,10 @@
                     <!-- Filters -->
                     <div class="glass-card rounded-xl p-4 mb-6 fade-up">
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
-                            <div class="lg:col-span-2 relative">
-                                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-                                <input type="text" id="searchInput" placeholder="Search messages..." oninput="filterMessages()" class="w-full pl-10 pr-4 py-2.5 rounded-lg bg-navy border border-white/10 text-sm focus:border-orange focus:outline-none transition">
-                            </div>
+                                <div class="search-bar" style="background:rgba(15,29,58,1);border-color:rgba(255,255,255,0.1);">
+                                    <i class="fas fa-search" style="color:rgba(255,255,255,0.4)"></i>
+                                    <input type="text" id="searchInput" placeholder="Search messages..." oninput="filterMessages()" style="background:transparent;border:none;color:white;" />
+                                </div>
                             <select id="typeFilter" onchange="filterMessages()" class="px-4 py-2.5 rounded-lg bg-navy border border-white/10 text-sm focus:border-orange focus:outline-none">
                                 <option value="">All Types</option>
                                 <option value="inquiry">Inquiry</option>

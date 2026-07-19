@@ -131,8 +131,10 @@
       <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-8 fade-in">
         <div class="flex flex-col lg:flex-row lg:items-center gap-4">
           <div class="flex-1 relative">
-            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-navy/30"></i>
-            <input type="text" id="searchInput" placeholder="Search articles..." class="input-field w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" oninput="filterPosts()" />
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" id="searchInput" placeholder="Search articles..." oninput="filterPosts()" />
+            </div>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <button onclick="filterCategory('all')" class="filter-btn active px-4 py-2 rounded-xl text-sm font-medium bg-accent text-white" data-category="all">All</button>
@@ -177,9 +179,9 @@
             <h3 class="font-bold text-navy mb-4 flex items-center gap-2">
               <i class="fas fa-search text-accent"></i> Search
             </h3>
-            <div class="relative">
-              <input type="text" placeholder="Search articles..." class="input-field w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none" />
-              <button class="absolute right-3 top-1/2 -translate-y-1/2 text-navy/40 hover:text-accent"><i class="fas fa-arrow-right"></i></button>
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search articles..." />
             </div>
           </div>
 

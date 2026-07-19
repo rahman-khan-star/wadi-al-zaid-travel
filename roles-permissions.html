@@ -157,10 +157,10 @@
           <!-- Search & Filter -->
           <div class="p-4 border-b border-gray-100">
             <div class="flex flex-col sm:flex-row gap-3">
-              <div class="relative flex-1">
-                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                <input type="text" id="roleSearch" placeholder="Search roles..." oninput="filterRoles()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500 transition-all">
-              </div>
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" id="roleSearch" placeholder="Search roles..." oninput="filterRoles()" />
+            </div>
               <select id="roleFilter" onchange="filterRoles()" class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-accent-500/50">
                 <option value="">All Status</option>
                 <option value="active">Active</option>
@@ -336,9 +336,9 @@
         <button onclick="closeModal('assignModal')" class="w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-500"><i class="fas fa-times"></i></button>
       </div>
       <div class="p-6 space-y-4">
-        <div class="relative">
-          <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-          <input type="text" id="userSearch" placeholder="Search users..." oninput="filterUsers()" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-accent-500/50 transition-all">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="userSearch" placeholder="Search users..." oninput="filterUsers()" />
         </div>
         <div class="max-h-64 overflow-y-auto space-y-2" id="userList">
         </div>
