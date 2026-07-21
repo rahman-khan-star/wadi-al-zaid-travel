@@ -423,6 +423,36 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .fade-up-delay-3 { transition-delay: 0.3s; }
 .fade-up-delay-4 { transition-delay: 0.4s; }
 
+/* === PAGE TRANSITIONS === */
+@keyframes pageSlideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.page-transition { animation: pageSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.page-transition-fade { animation: pageFadeIn 0.35s ease forwards; }
+.page-transition-stagger > * { opacity: 0; animation: pageSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.page-transition-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.page-transition-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.page-transition-stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.page-transition-stagger > *:nth-child(4) { animation-delay: 0.2s; }
+.page-transition-stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.page-transition-stagger > *:nth-child(6) { animation-delay: 0.3s; }
+
+/* === ENHANCED LOADING SKELETONS === */
+@keyframes shimmerEnhanced { 0% { background-position: -300% 0; } 100% { background-position: 300% 0; } }
+.skeleton-enhanced { background: linear-gradient(90deg, #f0f0f0 0%, #fafafa 25%, #e8e8e8 50%, #fafafa 75%, #f0f0f0 100%); background-size: 300% 100%; animation: shimmerEnhanced 2s ease-in-out infinite; border-radius: var(--radius-sm); }
+.skeleton-hero { height: 340px; border-radius: var(--radius-xl); }
+.skeleton-card-lg { height: 200px; border-radius: var(--radius-xl); }
+.skeleton-card-sm { height: 140px; border-radius: var(--radius-lg); }
+.skeleton-circle { border-radius: 50%; }
+.skeleton-destination-card { border-radius: var(--radius-xl); overflow: hidden; }
+.skeleton-destination-card .skeleton-img { height: 200px; }
+.skeleton-destination-card .skeleton-body { padding: 20px; }
+.skeleton-blog-card { border-radius: var(--radius-xl); overflow: hidden; }
+.skeleton-blog-card .skeleton-img { height: 180px; }
+.skeleton-testimonial { height: 160px; border-radius: var(--radius-xl); }
+.skeleton-nav { display: flex; gap: 16px; padding: 16px 24px; }
+.skeleton-nav-item { height: 32px; width: 80px; border-radius: 8px; }
+.skeleton-cta { height: 300px; border-radius: var(--radius-xl); }
+
 /* === LOADING SPINNER === */
 .spinner { width: 20px; height: 20px; border: 2px solid #e5e7eb; border-top-color: var(--accent); border-radius: 50%; animation: spin 0.6s linear infinite; }
 .spinner-sm { width: 16px; height: 16px; }

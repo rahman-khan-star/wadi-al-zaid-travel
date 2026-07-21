@@ -63,7 +63,7 @@
   </nav>
   <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
 
-  <main role="main" id="mainContent">
+  <main role="main" id="mainContent" class="page-transition-fade">
     <!-- Hero -->
     <section class="hero-bg pt-32 pb-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -75,6 +75,17 @@
 
     <!-- Team Grid -->
     <section class="py-20 bg-gray-50">
+      <!-- Loading Skeleton -->
+      <div id="teamSkeleton" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="skeleton-enhanced skeleton-card-lg rounded-2xl"></div>
+          <div class="skeleton-enhanced skeleton-card-lg rounded-2xl"></div>
+          <div class="skeleton-enhanced skeleton-card-lg rounded-2xl"></div>
+          <div class="skeleton-enhanced skeleton-card-lg rounded-2xl"></div>
+          <div class="skeleton-enhanced skeleton-card-lg rounded-2xl"></div>
+          <div class="skeleton-enhanced skeleton-card-lg rounded-2xl"></div>
+        </div>
+      </div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="teamGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         <div id="emptyState" class="hidden text-center py-20">
@@ -142,6 +153,12 @@
           </div>
         </div>
       `).join('');
+
+      // Dismiss skeleton
+      setTimeout(() => {
+        const skel = document.getElementById('teamSkeleton');
+        if (skel) { skel.style.opacity = '0'; skel.style.transition = 'opacity 0.3s'; setTimeout(() => skel.remove(), 300); }
+      }, 500);
     });
 
     // Navbar scroll
